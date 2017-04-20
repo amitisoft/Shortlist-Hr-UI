@@ -1,0 +1,26 @@
+﻿<div class="container">
+  <div class="row">
+
+    <div class="col-xs-10">
+      <hr />
+      <table class="table table-striped" >
+        <tr>
+          <!--<th>CATEGORY ID</th>-->
+          <th>CATEGORY TYPE</th>
+          <th>DESCRIPTION</th>
+          <th>EDIT</th>
+          <th>DELETE</th>
+        </tr>
+        <tr *ngFor="let item of items; let i = index; ">
+          <!--<td>{{item.index}}</td>-->
+          <td>{{item.CATEGORYNAME}}</td>
+          <td>{{item.CATEDESCRIPTION}}</td>
+          <td><button class="btn btn-success" (click)="onEditCategory()"><span class="glyphicon glyphicon-pencil"></span></button></td>
+          <td><button class="btn btn-danger" (click)="onDeleteCategory()"><span class="glyphicon glyphicon-trash"></span></button></td>
+        
+      </table>
+
+
+    </div>
+  </div>
+</div>

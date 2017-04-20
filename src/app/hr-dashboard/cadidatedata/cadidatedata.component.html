@@ -1,0 +1,21 @@
+﻿<!--<div class="container">-->
+  <div class="row">
+    <div class="col-lg-4 col-xs-8"></div>
+    <div class="col-lg-4 col-xs-8">
+      <label class="label label-success" for="files">UPLOAD CADIDATE FILE HERE</label>
+      <hr />
+      <input class="form-control" id="files"
+             type="file"
+             multiple
+             ngModel
+             required
+             name="files"
+             #files
+             >
+      <hr />
+      <button class="btn btn-default" type="submit" (click)="onFileUpload(files.value)">UPLOAD</button>
+      <!--<span>{{value.files}}</span>-->
+    </div>
+    <div class="col-lg-4 col-xs-8"></div>
+  </div>
+<!--</div>-->

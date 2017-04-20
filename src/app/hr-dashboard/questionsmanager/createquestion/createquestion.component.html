@@ -1,0 +1,72 @@
+﻿
+<div class="container" >
+
+  <div class="row">
+    <div class="col-xs-10">
+      <form>
+        <hr />
+        <div class="form-group row">
+          <label for="question" class="col-sm-2 col-form-label col-form-label-lg">Enter Question : </label>
+          <div class="col-xs-6">
+            <textarea type="text" class="form-control form-control-lg" id="question" 
+                   placeholder="Enter or Paste Your Question Here"></textarea>
+          </div>
+        </div>
+        <!--<hr />-->
+        <div class="form-group options">
+          <label for="option1IsCorrect">Option1 &nbsp; &nbsp;</label>
+          <input type="checkbox" id="option1IsCorrect" name="option1IsCorrect" ngModel (change)="yourfunc($event)"> &nbsp; &nbsp;
+          <input type="text" class="form-control" name="option1" [(ngModel)]="option1" required>
+          <span *ngIf="show">{{option1}}</span>
+
+        </div>
+        <div class="form-group options">
+          <label for="option2IsCorrect">Option2 &nbsp; &nbsp;</label>
+          <input type="checkbox" id="option2IsCorrect" name="option2IsCorrect" ngModel> &nbsp; &nbsp;
+          <input type="text" class="form-control" name="option2" ngModel required>
+
+        </div>
+        <div class="form-group options">
+          <label for="option3IsCorrect">Option3 &nbsp; &nbsp;</label>
+          <input type="checkbox" id="option3IsCorrect" name="option3IsCorrect" ngModel> &nbsp; &nbsp;
+          <input type="text" class="form-control" name="option3" ngModel required>
+
+        </div>
+        <div class="form-group options">
+          <label for="option4IsCorrect">Option4 &nbsp; &nbsp;</label>
+          <input type="checkbox" id="option4IsCorrect" name="option4IsCorrect" ngModel> &nbsp; &nbsp;
+          <input type="text" class="form-control" name="option4" ngModel required>
+
+        </div>
+
+        <hr />
+        <div class="row">
+      
+          <div class="form-group">
+            <div class="col-xs-4">
+
+              <label for="singleSelect"></label><br>
+              <select name="singleSelect" id="singleSelect" 
+                      class="form-control "
+                      >
+                <option value="">Category</option> <!-- not selected / blank option -->
+                <option value="" *ngFor="let category of items">{{category.CATEGORYNAME}}</option> <!-- interpolation -->
+               
+              </select>
+            </div>
+           
+
+          </div>
+        </div>
+
+
+        <hr />
+        <button type="submit" class="btn btn-primary">ADD <span class="glyphicon glyphicon-ok"></span></button>
+        <button type="button" class="btn btn-success">CLEAR <span class="glyphicon glyphicon-erase"></span></button>
+        <button type="button" class="btn btn-danger">DELETE <span class="glyphicon glyphicon-trash"></span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+

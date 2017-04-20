@@ -1,0 +1,79 @@
+﻿<div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <hr />
+    </div>
+     
+    </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="form-group">
+      <div class="col-xs-4">
+
+        <label for="singleSelect"></label><br>
+        <select name="singleSelect" id="singleSelect"
+                class="form-control ">
+          <option value="">Category</option> <!-- not selected / blank option -->
+          <option value="" *ngFor="let category of items">{{category.CATEGORYNAME}}</option> <!-- interpolation -->
+
+        </select>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+  
+
+
+    <div class="container" >
+      <div class="row">
+       
+        <div class="col-xs-10">
+          <hr />
+          <table class="table table-striped">
+            <tr>
+              <th>QUESTION ID</th>
+              <th>QUESTIONS</th>
+              <th>CATEGORY</th>
+              <th>CREATED DATE</th>
+              <th>EDIT</th>
+              <th>DELETE</th>
+            </tr>
+            <tr>
+              <td>01</td>
+              <td>Java is an Object Oriented Program</td>
+              <td>java</td>
+              <td>01-02-2017</td>
+              <td><button class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></button></td>
+              <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Java is an Object Oriented Program</td>
+              <td>java</td>
+              <td>01-02-2017</td>
+              <td><button class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></button></td>
+              <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>Java is an Object Oriented Program</td>
+              <td>java</td>
+              <td>01-02-2017</td>
+              <td><button class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></button></td>
+              <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
+            </tr>
+
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+

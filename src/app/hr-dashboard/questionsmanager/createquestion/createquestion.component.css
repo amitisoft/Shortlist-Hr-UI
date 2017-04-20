@@ -1,0 +1,8 @@
+﻿.options {
+  width: 50%;
+}
+
+  .options .form-control {
+    display: inline-block;
+    width: 60%;
+  }

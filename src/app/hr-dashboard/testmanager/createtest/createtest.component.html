@@ -1,0 +1,82 @@
+﻿<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <hr />
+      <form>
+        <div class="form-group row">
+          <label for="email" class="col-sm-2 col-form-label col-form-label-lg">Enter Candidate Email(s)</label>
+          <div class="col-xs-9">
+            <textarea type="email" class="form-control form-control-lg" id="email" 
+                      placeholder="Enter Cadidates Emails-Seperated By Comas (,)"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="subject" class="col-sm-2 col-form-label col-form-label-sm">Subject</label>
+          <div class="col-xs-9">
+            <input type="text" class="form-control form-control-sm" id="subject" placeholder="Enter Mail Subject">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="postApply" class="col-sm-2 col-form-label col-form-label-sm">Post Applied</label>
+          <div class="col-xs-9">
+            <ul style="list-style: none; margin-left:0">
+              <li class="dropdown" appDropdown>
+                <span class="btn btn-default">
+                  <a style="cursor:pointer;text-decoration: none" class="dropdown-toggle" role="button" >
+                    Post Applied For<span class="caret"></span>
+                  </a>
+
+                </span>
+                <ul class="dropdown-menu">
+                  <li><a style="cursor:pointer">Java</a></li>
+
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="mailbody" class="col-sm-2 col-form-label col-form-label-sm">Mail Body</label>
+          <div class="col-xs-9">
+            <textarea type="text" class="form-control form-control-sm" id="mailbody" placeholder="Enter Mail Body"
+                      style="height:160px;"
+                      ></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="category" class="col-sm-2 col-form-label col-form-label-sm">Select Exam Categories</label>
+          <div class="col-xs-5" >
+            <input type="text" class="form-control form-control-sm" id="category" placeholder="Select Category">
+            <button type="button" class="btn btn-primary">Add</button>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="subject" class="col-sm-2 col-form-label col-form-label-sm">Selected Categories</label>
+          <div class="col-xs-9">
+            <p>Category 1</p> <p>Category 2</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="container">
+          <div class="row">
+            <div class="form-group row" style="margin-left:350px">
+              <button class="btn btn-primary" type="submit">Send Link
+              <span class="glyphicon glyphicon-envelope"></span></button>
+              <button class="btn btn-info" type="reset">Reset
+              <span class="glyphicon glyphicon-refresh"></span></button>
+            </div>
+            
+          </div>
+        </div>
+        
+</form>
+    </div>
+  </div>
+  
+</div>
