@@ -10,15 +10,17 @@ import { HrDashboardComponent } from './hr-dashboard/hr-dashboard.component';
 import { DashboardpanelComponent } from './hr-dashboard/dashboardpanel/dashboardpanel.component';
 
 import { QuestionsmanagerComponent } from './hr-dashboard/questionsmanager/questionsmanager.component';
-import { ResultsmanagerComponent } from './hr-dashboard/resultsmanager/resultsmanager.component';
+
 import { CategorymanagerComponent } from './hr-dashboard/categorymanager/categorymanager.component';
 import { TestmanagerComponent } from './hr-dashboard/testmanager/testmanager.component';
 
 import { CreatequestionComponent } from './hr-dashboard/questionsmanager/createquestion/createquestion.component';
 import { ViewquestionsComponent } from './hr-dashboard/questionsmanager/viewquestions/viewquestions.component';
+import { PapermanagementComponent } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.component';
 
 import { CreatetestComponent } from './hr-dashboard/testmanager/createtest/createtest.component';
 import { ManagetestComponent } from './hr-dashboard/testmanager/managetest/managetest.component';
+import { ResultmanagerComponent } from './hr-dashboard/testmanager/resultmanager/resultmanager.component';
 
 import { CreatecategoryComponent } from './hr-dashboard/categorymanager/createcategory/createcategory.component';
 import { ViewcategoryComponent } from './hr-dashboard/categorymanager/viewcategory/viewcategory.component';
@@ -37,22 +39,26 @@ const appRoutes: Routes = [
             {
                 path: 'qmanager', component: QuestionsmanagerComponent, children: [
                     { path: 'createquestion', component: CreatequestionComponent },
-                    { path: 'viewquestion', component: ViewquestionsComponent }
+                    { path: 'viewquestion', component: ViewquestionsComponent },
+                    { path: 'papermange', component: PapermanagementComponent }
                 ]
             },
-            { path: 'resultmanager', component: ResultsmanagerComponent },
+            
 
             {
                 path: 'catmanager', component: CategorymanagerComponent, children: [
                     { path: 'createcategory', component: CreatecategoryComponent },
-                    { path: 'viewcategory', component: ViewcategoryComponent }
+                    { path: 'viewcategory', component: ViewcategoryComponent },
+                    { path: ':id', component: CreatecategoryComponent },
+                    { path: ':id/createcategory', component: CreatecategoryComponent }
                 ]
             },
 
             {
                 path: 'testmanagerComp', component: TestmanagerComponent, children: [
                     { path: 'createtest', component: CreatetestComponent },
-                    { path: 'managetest', component: ManagetestComponent }
+                    { path: 'managetest', component: ManagetestComponent },
+                    { path: 'testmanager', component: ResultmanagerComponent },
                 ]
             },
 

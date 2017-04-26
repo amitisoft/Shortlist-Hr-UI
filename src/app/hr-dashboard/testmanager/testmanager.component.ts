@@ -21,4 +21,7 @@ export class TestmanagerComponent implements OnInit {
   onManageTest() {
       this.router.navigate(['managetest'], { relativeTo: this.route });
   }
+  onTestManager() {
+      this.router.navigate(['testmanager'], { relativeTo: this.route });
+  }
 }

@@ -22,5 +22,8 @@ export class QuestionsmanagerComponent implements OnInit {
       this.router.navigate(['viewquestion'], { relativeTo: this.route });
   }
 
+  onPaperManage() {
+      this.router.navigate(['papermange'], { relativeTo: this.route });
+  }
 
 }

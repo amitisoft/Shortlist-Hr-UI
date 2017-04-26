@@ -17,10 +17,6 @@ export class DashboardpanelComponent implements OnInit {
       this.router.navigate(['qmanager'], { relativeTo: this.route });
   }
   
-    onResultManager() {
-        this.router.navigate(['resultmanager'], { relativeTo: this.route });
-    }
-
     onCategoryManager() {
         this.router.navigate(['catmanager'], { relativeTo: this.route });
     }

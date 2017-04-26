@@ -1,0 +1,117 @@
+﻿<div class="row">
+  <div class="col-xs-12">
+    <hr />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-6">
+    SELECT CATEGORY
+    <hr />
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+
+          <div class="col-xs-5">
+            <!--<div class="form-group">-->
+           
+            <!--<select name="singleSelect" id="singleSelect"
+                    class="form-control ">
+              <option value="">Category</option>
+              <option value="" *ngFor="let category of items">{{category.CATEGORYNAME}}</option>
+            </select>-->
+            <!--</div>-->
+
+            <select class="form-control ">
+              
+                  <option style="cursor:pointer" (click)="onJava()"> JAVA </option>
+                  <option style="cursor:pointer" (click)="onQa()">QA</option>
+                  <option style="cursor:pointer" (click)="onAngular()">ANGULAR </option>
+                  <option style="cursor:pointer" (click)="onNode()">NODE</option>
+                  <option style="cursor:pointer" (click)="onApptitude()">APPTITUDE</option>
+                  <option style="cursor:pointer" (click)="onEnglish()">ENGLISH</option>
+                  <option style="cursor:pointer" (click)="onJ2ee()">J2EE</option>
+              
+            </select>
+
+          </div>
+
+
+          <div class="col-xs-6">
+            <button class="btn btn-primary">SEND<span class="glyphicon glyphicon-send"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="row">
+
+
+      <hr />
+      <table class="table table-striped">
+        <tr>
+          <th><span class="glyphicon glyphicon-hand-down"></span></th>
+          <th>QUESTION ID</th>
+          <th>QUESTIONS</th>
+          <th>CATEGORY</th>
+        </tr>
+
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>01</td>
+          <td>Java is an Object Oriented Program</td>
+          <td>java</td>
+
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>02</td>
+          <td>Java is an Object Oriented Program</td>
+          <td>java</td>
+
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>03</td>
+          <td>Java is an Object Oriented Program</td>
+          <td>java</td>
+
+        </tr>
+
+      </table>
+
+
+    </div>
+
+
+  </div>
+
+  <!--PAPER SECTION-->
+
+  <div class="col-xs-6">
+    CREATE PAPER
+    <hr />
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-5">
+           
+           <input type="text" class="form-control" placeholder="Paper Name:"/>
+          </div>
+
+
+          <div class="col-xs-3">
+            <label></label>
+            <button class="btn btn-success">SAVE  <span class="glyphicon glyphicon-floppy-save"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

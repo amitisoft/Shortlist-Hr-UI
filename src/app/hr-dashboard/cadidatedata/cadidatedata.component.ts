@@ -10,6 +10,7 @@ import { CandidateDataService } from './candidatedata.service';
 })
 export class CadidatedataComponent implements OnInit {
 
+    status: string;
     constructor(private candidateDataService: CandidateDataService) { }
 
   ngOnInit() {
@@ -19,10 +20,11 @@ export class CadidatedataComponent implements OnInit {
 
       this.candidateDataService.sendCandidateData({ CADIDATEFILE: files })
           .subscribe(
-          data => alert("Successfully Upload"),
-         // data => console.log(data),
+         // data => alert("Successfully Upload"),
+          data => console.log(data.status),
 
-          error => console.log(error)
+          error => console.log(error),
+          () => {this.status="File Upload Sucessfully"}
           );
   }
 

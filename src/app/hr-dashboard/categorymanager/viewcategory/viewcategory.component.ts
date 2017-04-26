@@ -5,9 +5,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'amiti-viewcategory',
   templateUrl: './viewcategory.component.html',
-  styleUrls: ['./viewcategory.component.css']
+  styleUrls: ['./viewcategory.component.css'],
+
 })
 export class ViewcategoryComponent implements OnInit {
+    id: number;
     items: any[] = [];
 
     constructor(private categoryMngService: CategorymanagerService,
@@ -29,9 +31,22 @@ export class ViewcategoryComponent implements OnInit {
             );
     }
 
-    onEditCategory() {
-
+    onEditCategory(index: number) {
+       
+        this.categoryMngService.startedEditing.next(index);
         this.router.navigate(['../createcategory'], { relativeTo: this.route });
+       // this.router.navigate(['../', this.id, 'createcategory'], { relativeTo: this.route });
+       
+    }
+
+    deleteCategory(index: number) {
+        this.items.splice(index, 1);
+        
+    }
+
+    onDeleteCategory() {
+        
+
     }
 
 }

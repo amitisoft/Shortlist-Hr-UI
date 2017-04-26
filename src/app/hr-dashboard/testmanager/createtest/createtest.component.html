@@ -1,56 +1,102 @@
-﻿<div class="container">
+﻿
   <div class="row">
-    <div class="col-xs-9">
+    <div class="col-xs-12">
       <hr />
-      <form>
+      <form #f="ngForm" (ngSubmit)="sendTestLink(f)">
         <div class="form-group row">
-          <label for="email" class="col-sm-2 col-form-label col-form-label-lg">Enter Candidate Email(s)</label>
-          <div class="col-xs-9">
-            <textarea type="email" class="form-control form-control-lg" id="email" 
-                      placeholder="Enter Cadidates Emails-Seperated By Comas (,)"></textarea>
+          <label for="email" class="col-lg-2 col-xs-2 col-form-label col-form-label-lg">Enter Candidate Email(s)</label>
+          <div class="col-lg-4 col-xs-4">
+            <!--<textarea type="email" class="form-control form-control-lg" id="email"
+              placeholder="Enter Cadidates Emails-Seperated By Comas (,)"></textarea>-->
+            <div class="form-group">
+              <input class="form-control" id="emailTextArea" name="emailTextArea" [(ngModel)]="query" (keyup)="filter()" ngModel />
+              <br />
+            </div>
+            <div class="suggestions" *ngIf="filteredList.length > 0">
+              <ul *ngFor="let item of filteredList; let i=index"  style="list-style: none;">
+                <li>
+                  <a (click)="select(item)" *ngIf="i<4">{{item}}</a>
+                </li>
+              </ul>
+            </div>
           </div>
+
+          <div class="" [hidden]="true">
+            <textarea class="form-control" name="queryResults" [(ngModel)]="queryResults"></textarea>
+          </div>
+          <div class="col-lg-6 col-xs-12">
+            <div *ngFor="let item of selected">
+              <div class="selected">
+                <span>{{item}}</span>
+                <a (click)="remove(item)">x</a>
+              </div>
+            </div>
+          </div>
+
+
+
+            <!--sssssssssssssssssssssssssssssssssssss-->
+
         </div>
 
         <div class="form-group row">
           <label for="subject" class="col-sm-2 col-form-label col-form-label-sm">Subject</label>
           <div class="col-xs-9">
-            <input type="text" class="form-control form-control-sm" id="subject" placeholder="Enter Mail Subject">
+            <input type="text" class="form-control form-control-sm" id="subject"
+                   placeholder="Enter Mail Subject" name="subject"
+                   ngModel required>
           </div>
         </div>
 
         <div class="form-group row">
-          <label for="postApply" class="col-sm-2 col-form-label col-form-label-sm">Post Applied</label>
+          <label for="subject" class="col-sm-2 col-form-label col-form-label-sm">Post Applied For </label>
           <div class="col-xs-9">
-            <ul style="list-style: none; margin-left:0">
-              <li class="dropdown" appDropdown>
-                <span class="btn btn-default">
-                  <a style="cursor:pointer;text-decoration: none" class="dropdown-toggle" role="button" >
-                    Post Applied For<span class="caret"></span>
-                  </a>
 
-                </span>
-                <ul class="dropdown-menu">
-                  <li><a style="cursor:pointer">Java</a></li>
+            <label for="singleSelect"></label><br>
+            <select name="singleSelect" id="singleSelect"
+                    class="form-control" ngModel required >
+              <option value="">Select Post Applied Option here</option>
+              <option value="JAVA TRAINEE"> JAVA TRAINEE</option>
+              <option value="QA TRAINEE"> QA TRAINEE</option>
+              <option value="JAVA SENIOR"> JAVA SENIOR </option>
+              <option value="QA SENIOR"> QA SENIOR</option>
+              <option value="UI DEVELOPER"> UI DEVELOPER</option>
+              <option value="UI SENIOR DEVELOPER"> UI SENIOR DEVELOPER</option>
+              <option value="IOS"> IOS </option>
 
-                </ul>
-              </li>
-            </ul>
+
+            </select>
           </div>
+
+
         </div>
 
         <div class="form-group row">
           <label for="mailbody" class="col-sm-2 col-form-label col-form-label-sm">Mail Body</label>
           <div class="col-xs-9">
-            <textarea type="text" class="form-control form-control-sm" id="mailbody" placeholder="Enter Mail Body"
-                      style="height:160px;"
-                      ></textarea>
+            <textarea type="text" [froalaEditor] class="form-control form-control-sm" id="mailbody"
+                      placeholder="Enter Mail Body"
+                      name="mailbody"
+                      ngModel required
+                      style="height:auto;"></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label for="category" class="col-sm-2 col-form-label col-form-label-sm">Select Exam Categories</label>
-          <div class="col-xs-5" >
-            <input type="text" class="form-control form-control-sm" id="category" placeholder="Select Category">
-            <button type="button" class="btn btn-primary">Add</button>
+
+  <label for="category" class="col-sm-2 col-form-label col-form-label-sm">Select Exam Categories</label>
+          <div class="col-xs-9">
+            <div class="col-xs-5">
+
+              <input type="text" id="category"
+                     class="form-control"
+                     name="category" placeholder="select category"
+                     ngModel
+                     required />
+            </div>
+            <div class="col-xs-3">
+              <button type="button" class="btn btn-primary" (click)="onCategoryAdd()">Add</button>
+            </div>
+
           </div>
         </div>
 
@@ -66,17 +112,20 @@
         <div class="container">
           <div class="row">
             <div class="form-group row" style="margin-left:350px">
-              <button class="btn btn-primary" type="submit">Send Link
-              <span class="glyphicon glyphicon-envelope"></span></button>
-              <button class="btn btn-info" type="reset">Reset
-              <span class="glyphicon glyphicon-refresh"></span></button>
+              <button class="btn btn-primary" type="submit">
+                Send Link
+                <span class="glyphicon glyphicon-envelope"></span>
+              </button>
+              <button class="btn btn-info" type="reset">
+                Reset
+                <span class="glyphicon glyphicon-refresh"></span>
+              </button>
             </div>
-            
+
           </div>
         </div>
-        
-</form>
+
+      </form>
     </div>
   </div>
-  
-</div>
+

@@ -1,3 +1,90 @@
-<p>
-  managetest works!
-</p>
+﻿MANAGE TEST
+
+<div class="row">
+  <div class="col-xs-12">
+    <hr />
+    <ul class="nav navbar-nav">
+      <li>
+        <button class="btn btn-primary" type="button">
+          Start Test
+          <span class="glyphicon glyphicon-hourglass"></span>
+        </button>
+
+      </li>
+
+    </ul>
+  </div>
+  
+</div>
+
+
+
+
+
+<div class="row">
+
+  <div class="col-xs-12">
+    <hr />
+    <table class="table table-striped "  style="overflow:scroll">
+      <tr >
+        <th ><span class="glyphicon glyphicon-hand-down"></span></th>
+        <th>SL NO</th>
+        <th>CANDIDATE ID</th>
+        <th>CANDIDATE NAME</th>
+        <th>POST APPLIED</th>
+        <th>CANDIDATE EMAIL</th>
+        <th>DATE</th>
+        <th>CATEGORY</th>
+        <th>SELECT PAPER</th>
+        <th>TEST STATUS</th>
+        <th style="color:aqua">RESEND LINK</th>
+      </tr>
+      <tr  *ngFor="let mgtxt of manageTest; let i = index; ">
+        <td><input type="checkbox" /></td>
+        <td>01</td>
+        <td>00234</td>
+        <td>sarath</td>
+        <td>Java</td>
+        <td>sarath@amiti.com</td>
+        <td>16-02-2017</td>
+        <td>{{mgtxt.CATEGORYNAME}}</td>
+        <td><button class="btn btn-info">select paper<span class="caret"></span></button></td>
+        <td>30</td>
+        <td><a>resend Link....</a> </td>
+        
+
+      </tr>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>01</td>
+        <td>00234</td>
+        <td>sarath</td>
+        <td>Java</td>
+        <td>sarath@amiti.com</td>
+        <td>16-02-2017</td>
+        <td><button class="btn btn-info">category<span class="caret"></span></button></td>
+        <td><button class="btn btn-info">select paper<span class="caret"></span></button></td>
+        <td>30</td>
+        <td><a>resend Link....</a> </td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>01</td>
+        <td>00234</td>
+        <td>sarath</td>
+        <td>Java</td>
+        <td>sarath@amiti.com</td>
+        <td>16-02-2017</td>
+        <td><button class="btn btn-info">category<span class="caret"></span></button></td>
+        <td><button class="btn btn-info">select paper<span class="caret"></span></button></td>
+        <td>30</td>
+        <td><a>resend Link....</a> </td>
+      </tr>
+
+    </table>
+
+
+  </div>
+</div>
+
+

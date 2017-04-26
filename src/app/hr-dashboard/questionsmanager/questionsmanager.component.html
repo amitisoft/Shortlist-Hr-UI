@@ -1,20 +1,42 @@
 ﻿
-   QUESTIONS MANAGER
- 
 
+ 
+<div class="row">
+  <div class="col-xs-12">
+    QUESTION MANAGER
+  </div>
+</div>
 
  <div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <button class="btn btn-success" (click)="onCreateQuestions()">CREATE QUESTIONS
-    <span class="glyphicon glyphicon-plus"></span>
-    </button>
-    <button class="btn btn-primary" (click)="onViewQuestions()">SHOW QUESTIONS
-    <span class="glyphicon glyphicon-play-circle"></span>
-    </button>
+  <div class="col-xs-12  col-sm-offset-1 col-md-offset-2"> <!--<div class="col-sm-10 col-md-8"></div>-->
+   
+      <button class="btn btn-success" (click)="onCreateQuestions()">
+        CREATE QUESTIONS
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+   
+    
+   
+      <button class="btn btn-primary" (click)="onViewQuestions()">
+        SHOW QUESTIONS
+        <span class="glyphicon glyphicon-play-circle"></span>
+      </button>
+   
+    
+   
+      <button class="btn btn-warning" (click)="onPaperManage()">
+        PAPER MANAGEMENT
+        <span class="glyphicon glyphicon-paperclip"></span>
+      </button>
+   
+   
 </div>
 </div>
 
 
+<div class="row">
+  <div class="col-xs-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
-
-<router-outlet></router-outlet>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-9">
       <hr />
-      <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <form (ngSubmit)="onSubmit()" #f="ngForm" >
         <div class="form-group">
           <div class="row">
             <label for="categoryname" class="col-sm-2 col-form-label col-form-label-lg">Enter Category Type</label>
@@ -11,6 +11,7 @@
                      id="categoryname" 
                      placeholder="Enter Category Type"
                      name="categoryname"
+                    
                      ngModel
                      required
                      #categoryname
@@ -30,6 +31,7 @@
                         placeholder="Enter Category Description"
                         style="height:80px;"
                         name="categorydescription"
+                        
                         ngModel
                         required
                         #categorydescription></textarea>
@@ -41,16 +43,16 @@
        
         <hr />
 
-        <div class="container">
+       
           <div class="row">
             <div class="form-group row" style="margin-left:250px">
               <button class="btn btn-primary" 
                       type="submit" 
                       [disabled]="!f.valid"
-                      (click)="onCreateCategory(categoryname.value,categorydescription.value)">Add
+                      (click)="onCreateCategory(categoryname.value,categorydescription.value)">{{ editMode ? 'Update' : 'Add'}}
                 <span class="glyphicon glyphicon-ok"></span></button>
 
-              <button class="btn btn-success" type="reset">Clear
+              <button class="btn btn-success" type="reset" (click)="onClear()">Clear
                 <span class="glyphicon glyphicon-erase"></span></button>
 
               <!--<button class="btn btn-danger" type="button">Delete
@@ -58,7 +60,7 @@
             </div>
 
           </div>
-        </div>
+       
 
       </form>
     </div>
