@@ -31,6 +31,7 @@ import { CategorymanagerService } from './hr-dashboard/categorymanager/categorym
 import { CadidatedataComponent } from './hr-dashboard/cadidatedata/cadidatedata.component';
 import { ResultmanagerComponent } from './hr-dashboard/testmanager/resultmanager/resultmanager.component';
 import { PapermanagementComponent } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.component';
+import { PapermanagementService } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { PapermanagementComponent } from './hr-dashboard/questionsmanager/paperm
     FormsModule,ReactiveFormsModule,
       HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
-  providers: [AuthService, CategorymanagerService, CreateTestService],
+  providers: [AuthService, CategorymanagerService, CreateTestService, PapermanagementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

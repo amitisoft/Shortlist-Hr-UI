@@ -22,23 +22,54 @@
             </select>-->
             <!--</div>-->
 
-            <select class="form-control ">
-              
-                  <option style="cursor:pointer" (click)="onJava()"> JAVA </option>
-                  <option style="cursor:pointer" (click)="onQa()">QA</option>
-                  <option style="cursor:pointer" (click)="onAngular()">ANGULAR </option>
-                  <option style="cursor:pointer" (click)="onNode()">NODE</option>
-                  <option style="cursor:pointer" (click)="onApptitude()">APPTITUDE</option>
-                  <option style="cursor:pointer" (click)="onEnglish()">ENGLISH</option>
-                  <option style="cursor:pointer" (click)="onJ2ee()">J2EE</option>
-              
+          
+            <select class="form-control " name="selectCat" 
+                    [(ngModel)]="selectedCategory"
+                  >
+              <option value="">Category</option>
+              <option style="cursor:pointer"
+
+                      *ngFor="let category of questions"
+                      [value] ="category.CATEGORYNAME"
+                      #categoryName
+                       (click)="onGetCategoryQuestion(selectCat.value)">
+                {{category.CATEGORYNAME}}
+              </option>
             </select>
+
+            <!--<select (change)="selectedCategory = $event.target.value">
+              <option value="">Category</option>
+              <option style="cursor:pointer"
+                      *ngFor="let category of questions"
+                      [value]="category.CATEGORYNAME"
+                      #categoryName
+                      (click)="onGetCategoryQuestion(selectedCategory.categoryName)">
+                {{category.CATEGORYNAME}}
+              </option>
+
+            </select>-->
+                
+              
+            <!--<ul class="form-control">
+              <li class="dropdown" appDropdown>
+                <a style="cursor:pointer" class="dropdown-toggle" role="button"> Category<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li  *ngFor="let category of questions" value="{{category.CATEGORYNAME}}"  #categoryName>
+                  <a style="cursor:pointer" (click)="onGetCategoryQuestion(categoryName.value)">
+                    {{category.CATEGORYNAME}}</a>
+                  </li>
+                 
+                </ul>
+              </li>
+            </ul>-->
+            
 
           </div>
 
 
           <div class="col-xs-6">
-            <button class="btn btn-primary">SEND<span class="glyphicon glyphicon-send"></span></button>
+            <button class="btn btn-primary"  >SEND
+            <span class="glyphicon glyphicon-send"></span></button>
           </div>
         </div>
       </div>

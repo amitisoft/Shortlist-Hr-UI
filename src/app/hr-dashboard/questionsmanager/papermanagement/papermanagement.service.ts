@@ -13,7 +13,7 @@ export class PapermanagementService {
 
   getData() {
       // return this Observable
-      return this.http.get('https://amitionlinetest.firebaseio.com/createcategory.json')
+      return this.http.get('https://amitionlinetestcategory.firebaseio.com/category.json')
           .map((response: Response) => response.json());
   }
 
@@ -26,7 +26,21 @@ export class PapermanagementService {
 
       headers.append('Content-Type', 'application/json');
 
-      return this.http.post('https://amitionlinetest.firebaseio.com/createcategory.json', body, {
+      return this.http.post('https://amitionlinetestcategory.firebaseio.com/category.json', body, {
+          headers: headers
+      })
+          .map((data: Response) => data.json())
+          .catch(this.handleError); // For Error Handling
+  }
+
+  sendCategory(user: any) {
+      const body = JSON.stringify(user);
+
+      const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
+
+      headers.append('Content-Type', 'application/json');
+
+      return this.http.post('https://amitionlinetestcategory.firebaseio.com/categoryPermission.json', body, {
           headers: headers
       })
           .map((data: Response) => data.json())

@@ -5,7 +5,7 @@
     <hr />
     <ul class="nav navbar-nav">
       <li>
-        <button class="btn btn-primary" type="button">
+        <button class="btn btn-primary" type="button" (click)="startTest(sampleManageTestData)">
           Start Test
           <span class="glyphicon glyphicon-hourglass"></span>
         </button>
@@ -39,47 +39,19 @@
         <th>TEST STATUS</th>
         <th style="color:aqua">RESEND LINK</th>
       </tr>
-      <tr  *ngFor="let mgtxt of manageTest; let i = index; ">
-        <td><input type="checkbox" /></td>
-        <td>01</td>
-        <td>00234</td>
-        <td>sarath</td>
-        <td>Java</td>
-        <td>sarath@amiti.com</td>
-        <td>16-02-2017</td>
-        <td>{{mgtxt.CATEGORYNAME}}</td>
-        <td><button class="btn btn-info">select paper<span class="caret"></span></button></td>
-        <td>30</td>
-        <td><a>resend Link....</a> </td>
+      <tr  *ngFor="let mgtxt of sampleManageTestData; let i = index; ">
+        <td><input type="checkbox" [disabled]="false" id="{{ 'row' + mgtxt.id }}" name="{{ 'row' + mgtxt.id }}" /></td>
         
-
-      </tr>
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td>01</td>
-        <td>00234</td>
-        <td>sarath</td>
-        <td>Java</td>
-        <td>sarath@amiti.com</td>
-        <td>16-02-2017</td>
-        <td><button class="btn btn-info">category<span class="caret"></span></button></td>
-        <td><button class="btn btn-info">select paper<span class="caret"></span></button></td>
-        <td>30</td>
-        <td><a>resend Link....</a> </td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td>01</td>
-        <td>00234</td>
-        <td>sarath</td>
-        <td>Java</td>
-        <td>sarath@amiti.com</td>
-        <td>16-02-2017</td>
-        <td><button class="btn btn-info">category<span class="caret"></span></button></td>
-        <td><button class="btn btn-info">select paper<span class="caret"></span></button></td>
-        <td>30</td>
-        <td><a>resend Link....</a> </td>
-      </tr>
+        <td>{{mgtxt.id}}</td>
+        <td>{{mgtxt.studentId}}</td>
+        <td>{{mgtxt.name}}</td>
+        <td>{{mgtxt.postApplied}}</td>
+        <td>{{mgtxt.emailId}}</td>
+        <td>{{mgtxt.date}}</td>
+        <td>{{mgtxt.subject}}</td>
+        <td>{{mgtxt.paper}}</td>
+        <td>{{mgtxt.status}}</td>
+        <td><a>{{mgtxt.resendLink}}</a> </td>
 
     </table>
 

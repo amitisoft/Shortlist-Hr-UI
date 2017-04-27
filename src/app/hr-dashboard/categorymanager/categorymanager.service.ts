@@ -20,7 +20,7 @@ export class CategorymanagerService {
 
     getData() {
         // return this Observable
-        return this.http.get('https://amitionlinetest.firebaseio.com/createcategory.json')
+        return this.http.get('https://amitionlinetestcategory.firebaseio.com/category.json')
             .map((response: Response) => response.json());
     }
 
@@ -33,7 +33,7 @@ export class CategorymanagerService {
 
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post('https://amitionlinetest.firebaseio.com/createcategory.json', body, {
+        return this.http.post('https://amitionlinetestcategory.firebaseio.com/category.json', body, {
             headers: headers
         })
             .map((data: Response) => data.json())
@@ -42,7 +42,7 @@ export class CategorymanagerService {
 
 
     getOwnData() {
-        return this.http.get('https://amitionlinetest.firebaseio.com/createcategory.json')
+        return this.http.get('https://amitionlinetestcategory.firebaseio.com/category.json')
             .map((response: Response) => response.json());
 
 

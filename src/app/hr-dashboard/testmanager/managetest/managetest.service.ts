@@ -44,6 +44,22 @@ export class ManagetestService {
         console.log(error);
         return Observable.throw(error.json()); // (error.json());
     }
+
+    sendStartTestdata(startTestData: any) {
+        const ManageTestbody = JSON.stringify(startTestData);
+
+        const headers = new Headers();
+        return this.http.post('https://amitionlinemanagetest.firebaseio.com/startTestData.json', ManageTestbody, {
+            headers: headers
+        })
+            .map((data: Response) => data.json())
+            .catch(this.handleError);
+        
+    }
+    getStartTestdata() {
+        return this.http.get('https://questiontable-630db.firebaseio.com/startTestData.json')
+            .map((response: Response) => response.json());
+    }
 }
 
 
