@@ -8,9 +8,6 @@ export class CreateTestService {
 
     constructor(private http: Http) { }
 
-    saveEmail(emails) {
-        return this.http.post('https://questiontable-630db.firebaseio.com/createEmailList.json', emails);
-    }
     sendEmail(selectedEmailList) {
         return this.http.post('https://questiontable-630db.firebaseio.com/saveSelectedEmailList.json', selectedEmailList);
     }
