@@ -13,9 +13,9 @@ import { Http } from '@angular/http';
 })
 export class CreatequestionComponent implements OnInit {
 
-    items: any[] = [];
+  items: any[] = [];
 
-    constructor(private categoryMngService: CategorymanagerService, private http: Http) { }
+  constructor(private categoryMngService: CategorymanagerService, private http: Http) { }
 
   ngOnInit() {
 
@@ -33,7 +33,7 @@ export class CreatequestionComponent implements OnInit {
   }
 
 
-  questionData = [];
+  questionData:any;
 
   show1: boolean = false;
   show2: boolean = false;
@@ -48,13 +48,13 @@ export class CreatequestionComponent implements OnInit {
 
   correctOptions = [];
 
+  multipleAnswers:any;
+
   //constructor() { }
 
  
 
   addQuestion(form: NgForm) {
-
-      console.log(form.value.singleSelect);
 
       if (!this.question || !this.option1 || !this.option2 || !this.option3 || !this.option4) {
           alert('please provide required fields');
@@ -71,31 +71,58 @@ export class CreatequestionComponent implements OnInit {
           return false;
       }
 
-      this.correctOptions.push({
-          option1: form.value.option1IsCorrect,
-          option2: form.value.option2IsCorrect,
-          option3: form.value.option3IsCorrect,
-          option4: form.value.option4IsCorrect
-      });
+      this.correctOptions = [];
 
-      this.questionData.push({
-          question: form.value.question,
-          option1: form.value.option1,
-          option2: form.value.option2,
-          option3: form.value.option3,
-          option4: form.value.option4,
-          category: form.value.singleSelect,
-          correctoptions: this.correctOptions
-      });
+      if(form.value.option1IsCorrect){
+        this.correctOptions.push(
+          'option1'
+        );
+      }
+      if(form.value.option2IsCorrect){
+        this.correctOptions.push(
+          'option2'
+        );
+      }
+      if(form.value.option3IsCorrect){
+        this.correctOptions.push(
+          'option3'
+        );
+      }
+      if(form.value.option4IsCorrect){
+        this.correctOptions.push(
+          'option4'
+        );
+      }
 
-      console.log(this.questionData);
-      this.http.post(' https://amitionlinetest.firebaseio.com/createquestion.json', this.questionData).subscribe(
-          (response) => alert('Question Added'),
-          (error) => console.log(error)
+      if(this.correctOptions.length>1){
+        this.multipleAnswers = true;
+      }else{
+        this.multipleAnswers = false;
+      }
+
+      this.questionData = {
+        question: form.value.question,
+        option1: form.value.option1,
+        option2: form.value.option2,
+        option3: form.value.option3,
+        option4: form.value.option4,
+        category: form.value.singleSelect,
+        correctoptions: this.correctOptions,
+        multipleAnswers: this.multipleAnswers
+      };
+
+      this.http.post('https://questiontable-630db.firebaseio.com/createquestionoptions.json', this.questionData).subscribe(
+          (response) => {
+                if (response.status == 200) {
+                    alert('data submitted auccessfully');
+                    form.reset();
+                    this.show1 = false;
+                    this.show2 = false;
+                    this.show3 = false;
+                    this.show4 = false;
+                }
+          }
       );
-
-      
-
   }
 
   showOption1(e) {
