@@ -20,6 +20,7 @@ import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CreateTestService } from './createtest.service';
 import { Response } from '@angular/http';
+import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
 
 @Component({
     selector: 'amiti-createtest',
@@ -27,15 +28,18 @@ import { Response } from '@angular/http';
   styleUrls: ['./createtest.component.css'],
   providers: [CreateTestService]
 })
+
 export class CreatetestComponent implements OnInit {
     items: any[] = []; // for getting array
+    categoryItems:any=[];
     emailData = [];
     getData: any;
     convertedEmailData = [];
     saveStatus: boolean = false;
     listOfSelectedEmails = [];
     arrayOfSelectedEmails = [];
-    constructor(private autoCompleteService: CreateTestService, myElement: ElementRef) {
+    html = '';
+    constructor(private autoCompleteService: CreateTestService, myElement: ElementRef,private categoryManagerService:CategorymanagerService) {
         this.elementRef = myElement;
     }
 
@@ -43,59 +47,36 @@ export class CreatetestComponent implements OnInit {
 
     }
 
-    addEmail(form: NgForm) {
+    sendTestLink(form:NgForm){
+        if(!form.value.queryResults || !form.value.subject || !form.value.singleSelect || !form.value.mailbody || !form.value.categoryQueryResults){
+            alert('Please provide required inputs');
+            return false;
+        }
         this.emailData.push({
-            emails: form.value.emailTextArea
+            emailsList: form.value.queryResults,
+            emailSubject : form.value.subject,
+            postApplied : form.value.singleSelect,
+            emailBody:form.value.mailbody,
+            category:form.value.categoryQueryResults,
         });
-        this.autoCompleteService.saveEmail(this.emailData).subscribe(
+        this.autoCompleteService.sendEmail(this.emailData).subscribe(
             (response) => {
                 if (response.status == 200) {
                     this.saveStatus = true;
+                    alert('data submitted auccessfully');
                 }
             }
         );
-
-    }
-
-    sendTestLink(form: NgForm) {
-        this.arrayOfSelectedEmails = form.value.queryResults.split(',');
-        this.listOfSelectedEmails.push({
-            listedEmails: form.value.queryResults
-        });
-        this.autoCompleteService.sendEmail(this.listOfSelectedEmails).subscribe(
-            (response) => {
-                if (response.status == 200) {
-                    this.saveStatus = true;
-                }
-            }
-        );
-    }
-
-    getEmail() {
-        const myArray = [];
-        this.autoCompleteService.getEmail().subscribe(
-            data => {
-                for (let key in data) {
-                    myArray.push(data[key][0].emails);
-                }
-                this.items = myArray;
-            }
-        );
-
-        console.log(this.items);
     }
 
     public query = '';
-    public countries = [];
+    public emailsList = [];
     public filteredList = [];
     public elementRef;
     public selected = [];
     queryResults: any;
-    public sampleSelect = ['hi', 'hello'];
 
-    /* constructor(myElement: ElementRef) {
-         this.elementRef = myElement;
-     }*/
+     //auto complete for email starts here
 
     filter() {
         const myArray = [];
@@ -107,9 +88,9 @@ export class CreatetestComponent implements OnInit {
                 this.items = myArray;
             }
         );
-        this.countries = this.items;
+        this.emailsList = this.items;
         if (this.query !== "") {
-            this.filteredList = this.countries.filter(function (el) {
+            this.filteredList = this.emailsList.filter(function (el) {
                 return el.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
             }.bind(this));
         } else {
@@ -144,5 +125,50 @@ export class CreatetestComponent implements OnInit {
         }
     }
 
-}
+    //auto complete for email ends here
 
+
+    //auto complete for category starts here
+    public categoryQuery = '';
+    public categoryList = [];
+    public categoryFilteredList = [];
+    public categoryElementRef;
+    public categorySelected = [];
+    categoryQueryResults: any;
+
+    categoryFilter() {
+        const myCategoryArray = [];
+        this.categoryManagerService.getOwnData().subscribe(
+            data => {
+                for (let key in data) {
+                    if(data[key].CATEGORYNAME){
+                        myCategoryArray.push(data[key].CATEGORYNAME);
+                    }
+                }
+                this.categoryItems = myCategoryArray;
+            }
+        );
+        this.categoryList = this.categoryItems;
+        if (this.categoryQuery !== "") {
+            this.categoryFilteredList = this.categoryList.filter(function (el) {
+                return el.toLowerCase().indexOf(this.categoryQuery.toLowerCase()) > -1;
+            }.bind(this));
+        } else {
+            this.categoryFilteredList = [];
+        }
+    }
+    selectCategory(item) {
+        this.categorySelected.push(item);
+        this.categoryQuery = '';
+        this.categoryFilteredList = [];
+        this.categoryQueryResults = this.categorySelected.toString();
+        console.log(this.categorySelected.toString());
+    }
+
+    removeCategory(item) {
+        this.categorySelected.splice(this.categorySelected.indexOf(item), 1);
+        this.categoryQueryResults = this.categorySelected.toString();
+    }
+
+    //auto complete for category ends here
+}

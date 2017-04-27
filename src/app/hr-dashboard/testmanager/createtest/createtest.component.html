@@ -13,16 +13,16 @@
               <br />
             </div>
             <div class="suggestions" *ngIf="filteredList.length > 0">
-              <ul *ngFor="let item of filteredList; let i=index"  style="list-style: none;">
+              <ul *ngFor="let item of filteredList">
                 <li>
-                  <a (click)="select(item)" *ngIf="i<4">{{item}}</a>
+                  <a (click)="select(item)">{{item}}</a>
                 </li>
               </ul>
             </div>
           </div>
-
+         
           <div class="" [hidden]="true">
-            <textarea class="form-control" name="queryResults" [(ngModel)]="queryResults"></textarea>
+            <textarea class="form-control" name="queryResults" required [(ngModel)]="queryResults"></textarea>
           </div>
           <div class="col-lg-6 col-xs-12">
             <div *ngFor="let item of selected">
@@ -36,13 +36,13 @@
 
 
             <!--sssssssssssssssssssssssssssssssssssss-->
-
+          
         </div>
 
         <div class="form-group row">
           <label for="subject" class="col-sm-2 col-form-label col-form-label-sm">Subject</label>
           <div class="col-xs-9">
-            <input type="text" class="form-control form-control-sm" id="subject"
+            <input type="text" class="form-control form-control-sm" id="subject" 
                    placeholder="Enter Mail Subject" name="subject"
                    ngModel required>
           </div>
@@ -74,7 +74,7 @@
         <div class="form-group row">
           <label for="mailbody" class="col-sm-2 col-form-label col-form-label-sm">Mail Body</label>
           <div class="col-xs-9">
-            <textarea type="text" [froalaEditor] class="form-control form-control-sm" id="mailbody"
+            <textarea type="text" [froalaEditor] class="form-control form-control-sm" id="mailbody" 
                       placeholder="Enter Mail Body"
                       name="mailbody"
                       ngModel required
@@ -82,28 +82,43 @@
           </div>
         </div>
         <div class="form-group row">
-
-  <label for="category" class="col-sm-2 col-form-label col-form-label-sm">Select Exam Categories</label>
-          <div class="col-xs-9">
-            <div class="col-xs-5">
-
+          <label for="category" class="col-sm-2 col-form-label col-form-label-sm">Select Exam Categories</label>
+          <div class="col-xs-5">
               <input type="text" id="category"
                      class="form-control"
                      name="category" placeholder="select category"
-                     ngModel
-                     required />
-            </div>
-            <div class="col-xs-3">
+                     id="category" 
+                    [(ngModel)]="categoryQuery" (keyup)="categoryFilter()" />
+            <!-- <div class="col-xs-3">
               <button type="button" class="btn btn-primary" (click)="onCategoryAdd()">Add</button>
-            </div>
-
+            </div> -->
           </div>
+        </div>
+        <div class="form-group row">
+           <div class="col-lg-3 col-xs-3"></div>
+           <div class="col-lg-6 col-xs-6 suggestions" *ngIf="categoryFilteredList.length > 0">
+            <ul *ngFor="let item of categoryFilteredList">
+              <li>
+                <a (click)="selectCategory(item)">{{item}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-xs-3"></div>
         </div>
 
         <div class="form-group row">
           <label for="subject" class="col-sm-2 col-form-label col-form-label-sm">Selected Categories</label>
           <div class="col-xs-9">
-            <p>Category 1</p> <p>Category 2</p>
+            <div class="" [hidden]="true">
+               <textarea class="form-control" name="categoryQueryResults" required [(ngModel)]="categoryQueryResults"></textarea>
+            </div>
+             <!-- <p>Category 1</p> <p>Category 2</p>-->
+              <div *ngFor="let item of categorySelected">
+                <div class="selected">
+                  <span>{{item}}</span>
+                  <a (click)="removeCategory(item)">x</a>
+                </div>
+              </div>
           </div>
         </div>
 
@@ -112,7 +127,7 @@
         <div class="container">
           <div class="row">
             <div class="form-group row" style="margin-left:350px">
-              <button class="btn btn-primary" type="submit">
+              <button class="btn btn-primary" [disabled]="f.invalid" type="submit">
                 Send Link
                 <span class="glyphicon glyphicon-envelope"></span>
               </button>
@@ -128,4 +143,3 @@
       </form>
     </div>
   </div>
-
