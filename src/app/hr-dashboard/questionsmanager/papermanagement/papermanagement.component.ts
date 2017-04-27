@@ -10,11 +10,36 @@ import { PapermanagementService } from './papermanagement.service';
 })
 export class PapermanagementComponent implements OnInit {
 
+    questions: any[] = [];
+
     constructor(private paperService: PapermanagementService ) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
 
+        this.paperService.getData()
+            .subscribe(
+            data => {
+                const myArray = [];
+                for (let key in data) {
+                    myArray.push(data[key]);
+                }
+                this.questions = myArray;
+            }
 
+            );
+    }
+
+    onGetCategoryQuestion(selectedCategory: string) {
+        this.paperService.sendCategory({ CATEGORYNAME: selectedCategory })
+            .subscribe(
+            data => console.log(data),
+
+            error => console.log(error)
+            );
+    }
+
+  
+      
+ 
 
 }

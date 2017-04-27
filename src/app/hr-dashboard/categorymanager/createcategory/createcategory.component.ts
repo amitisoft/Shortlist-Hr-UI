@@ -16,7 +16,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class CreatecategoryComponent implements OnInit, OnDestroy {
     @ViewChild('f') catForm: NgForm;
-    subscription: Subscription;
+   // subscription: Subscription;
     editedCategory: categoryManagerModel; // service name
 
     categoryForm: FormGroup;
@@ -29,74 +29,19 @@ export class CreatecategoryComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
 
-        this.route.params
-            .subscribe(
-            (params: Params) => {
-                this.id = +params['id'];
-                this.editMode = params['id'] != null;
-                console.log(this.editMode);
-                }
-            )
+        //this.route.params
+        //    .subscribe(
+        //    (params: Params) => {
+        //        this.id = +params['id'];
+        //        this.editMode = params['id'] != null;
+        //        console.log(this.editMode);
+        //        }
+        //    )
 
-       // this.initForm();
-
-
-        this.subscription = this.categoryMngService.startedEditing
-            .subscribe(
-            (index: number) => {
-                this.id = index;
-                this.editMode = true;
-                this.editedCategory = this.categoryMngService.getCategoryForEdit(index);
-                this.catForm.setValue({
-                    categoryname: this.editedCategory.categoryname,
-                    categorydescription: this.editedCategory.categorydescription
-
-
-                })
-            }
-            ); 
+      
     }
 
-    //getCategory(index: number) {
-    //    return this.items[index];
-    //}
-
-    //onSubmit() {
-    //    console.log(this.categoryForm);
-    //}
-
-    //private initForm() {
-    //    let categoryName = new FormArray([]);
-    //    let categoryDescription = '';
-
-    //    if (this.editMode) {
-    //        const category = this.categoryMngService.getCategory(this.id);
-
-    //        //categoryName = category.CATEGORYNAME;
-    //       // categoryDescription = category.CATEDESCRIPTION;
-
-    //        if (category['items']) {
-    //            for (let item of category.items) {
-    //                categoryName.push(new FormGroup({
-    //                    'categoryname': new FormControl(item.CATEGORYNAME),
-    //                    'categorydescription': new FormControl(item.CATEDESCRIPTION, [
-
-                          
-    //                    ])
-    //                }));
-    //            }
-    //        }
-
-    //    }
-    //    this.categoryForm = new FormGroup({
-
-    //        'items': categoryName
-
-    //        //'categoryname': new FormControl(categoryName),
-    //        //'categorydescription': new FormControl(categoryDescription)
-    //    });
-    //}
-
+    
 
 
   onCreateCategory(categoryname: string, categorydescription: string) {
@@ -115,6 +60,6 @@ export class CreatecategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-      this.subscription.unsubscribe();
+      //this.subscription.unsubscribe();
   }
 }
