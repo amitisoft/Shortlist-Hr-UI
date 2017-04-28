@@ -14,7 +14,7 @@
 
     </ul>
   </div>
-  
+
 </div>
 
 
@@ -39,19 +39,21 @@
         <th>TEST STATUS</th>
         <th style="color:aqua">RESEND LINK</th>
       </tr>
-      <tr  *ngFor="let mgtxt of sampleManageTestData; let i = index; ">
-        <td><input type="checkbox" [disabled]="false" id="{{ 'row' + mgtxt.id }}" name="{{ 'row' + mgtxt.id }}" /></td>
-        
-        <td>{{mgtxt.id}}</td>
-        <td>{{mgtxt.studentId}}</td>
-        <td>{{mgtxt.name}}</td>
-        <td>{{mgtxt.postApplied}}</td>
-        <td>{{mgtxt.emailId}}</td>
+      <tr *ngFor="let mgtxt of manageTest; let i = index; ">
+        <td><input type="checkbox" [disabled]="false" id="{{ 'row' + mgtxt.candidateId }}" name="{{ 'row' + mgtxt.candidateId }}" /></td>
+        <td></td>
+        <td>{{mgtxt.candidateId}}</td>
+        <td>{{mgtxt.candidateFullName}}</td>
+        <td>{{mgtxt.cat}}</td>
+        <td>{{mgtxt.candidateMailId}}</td>
         <td>{{mgtxt.date}}</td>
+        <td>{{mgtxt.category}}</td>
         <td>{{mgtxt.subject}}</td>
-        <td>{{mgtxt.paper}}</td>
+        <td>{{mgtxt.testStatus}}</td>
         <td>{{mgtxt.status}}</td>
         <td><a>{{mgtxt.resendLink}}</a> </td>
+
+      </tr>
 
     </table>
 

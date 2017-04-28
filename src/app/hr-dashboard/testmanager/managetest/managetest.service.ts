@@ -13,8 +13,8 @@ export class ManagetestService {
 
     getData() {
         // return this Observable
-        return this.http.get('https://amitionlinetest.firebaseio.com/createcategory.json')
-            .map((response: Response) => response.json());
+      return this.http.get('https://api.myjson.com/bins/mm34p')
+        .map((response: Response) => response.json());
     }
 
     // Send Data's to Server
@@ -39,7 +39,7 @@ export class ManagetestService {
             .map((response: Response) => response.json());
     }
 
-    // For Error Handling 
+    // For Error Handling
     private handleError(error: any) {
         console.log(error);
         return Observable.throw(error.json()); // (error.json());
@@ -54,7 +54,7 @@ export class ManagetestService {
         })
             .map((data: Response) => data.json())
             .catch(this.handleError);
-        
+
     }
     getStartTestdata() {
         return this.http.get('https://questiontable-630db.firebaseio.com/startTestData.json')

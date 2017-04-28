@@ -46,7 +46,7 @@ export class ManagetestComponent implements OnInit {
             resendLink: 'www.test.com'
         });
 
-      this.mngTestService.getManageTestData()
+     /** this.mngTestService.getManageTestData()
           .subscribe(
           //for loopping // data => this.items = data
           data => {
@@ -56,7 +56,17 @@ export class ManagetestComponent implements OnInit {
               }
               this.manageTest = myArray;
           }
-          );
+          ); **/
+
+     this.mngTestService.getData()
+       .subscribe((data: any) => {
+           console.log(data.bookings[0].candidateFullName)
+
+           this.manageTest = data.bookings;
+         }
+
+       );
+
     }
 
     startTest(sampleManageTestData) {
@@ -88,7 +98,7 @@ export class ManagetestComponent implements OnInit {
                 (response) => {
                     console.log(this.startTestRows);
                     if (response.status == 200) {
-                        
+
                     }
                 }
             );
