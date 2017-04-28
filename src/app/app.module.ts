@@ -33,6 +33,8 @@ import { ResultmanagerComponent } from './hr-dashboard/testmanager/resultmanager
 import { PapermanagementComponent } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.component';
 import { PapermanagementService } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.service';
 
+import { TruncateModule } from 'ng2-truncate';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,7 @@ import { PapermanagementService } from './hr-dashboard/questionsmanager/paperman
     SigninComponent,
     HrDashboardComponent,
     QuestionsmanagerComponent,
-    
+
     CategorymanagerComponent,
     TestmanagerComponent,
     DashboardpanelComponent,
@@ -57,8 +59,8 @@ import { PapermanagementService } from './hr-dashboard/questionsmanager/paperman
   ],
   imports: [
     BrowserModule,
-    FormsModule,ReactiveFormsModule,
-      HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    FormsModule, ReactiveFormsModule , TruncateModule,
+    HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [AuthService, CategorymanagerService, CreateTestService, PapermanagementService],
   bootstrap: [AppComponent]
