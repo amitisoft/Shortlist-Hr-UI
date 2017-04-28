@@ -32,13 +32,14 @@ import { CategorymanagerService } from '../../categorymanager/categorymanager.se
 export class CreatetestComponent implements OnInit {
     items: any[] = []; // for getting array
     categoryItems:any=[];
-    emailData = [];
+    emailData:any;
     getData: any;
     convertedEmailData = [];
     saveStatus: boolean = false;
     listOfSelectedEmails = [];
     arrayOfSelectedEmails = [];
-    html = '';
+    queryResults: any;
+    categoryQueryResults: any;
     constructor(private autoCompleteService: CreateTestService, myElement: ElementRef,private categoryManagerService:CategorymanagerService) {
         this.elementRef = myElement;
     }
@@ -52,18 +53,26 @@ export class CreatetestComponent implements OnInit {
             alert('Please provide required inputs');
             return false;
         }
-        this.emailData.push({
+
+        this.emailData = {
             emailsList: form.value.queryResults,
             emailSubject : form.value.subject,
             postApplied : form.value.singleSelect,
             emailBody:form.value.mailbody,
-            category:form.value.categoryQueryResults,
-        });
+            category:form.value.categoryQueryResults
+        };
+
         this.autoCompleteService.sendEmail(this.emailData).subscribe(
             (response) => {
                 if (response.status == 200) {
                     this.saveStatus = true;
                     alert('data submitted auccessfully');
+                    this.categoryQueryResults = '';
+                    this.queryResults = '';
+                    this.selected = [];
+                    this.categorySelected = [];
+                    document.getElementsByClassName('fr-element fr-view')[0].innerHTML = '';
+                    form.reset();
                 }
             }
         );
@@ -74,7 +83,6 @@ export class CreatetestComponent implements OnInit {
     public filteredList = [];
     public elementRef;
     public selected = [];
-    queryResults: any;
 
      //auto complete for email starts here
 
@@ -134,7 +142,6 @@ export class CreatetestComponent implements OnInit {
     public categoryFilteredList = [];
     public categoryElementRef;
     public categorySelected = [];
-    categoryQueryResults: any;
 
     categoryFilter() {
         const myCategoryArray = [];
