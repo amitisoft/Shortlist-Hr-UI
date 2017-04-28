@@ -1,5 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
+import { CreateQuestionService } from './createquestion.service';
+import { CreateQuestionProperties } from './createquestion.properties';
 
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -9,13 +11,14 @@ import { Http } from '@angular/http';
 @Component({
   selector: 'amiti-createquestion',
   templateUrl: './createquestion.component.html',
-  styleUrls: ['./createquestion.component.css']
+  styleUrls: ['./createquestion.component.css'],
+  providers:[CreateQuestionService,CreateQuestionProperties]
 })
 export class CreatequestionComponent implements OnInit {
 
   items: any[] = [];
 
-  constructor(private categoryMngService: CategorymanagerService, private http: Http) { }
+  constructor(private categoryMngService: CategorymanagerService, private http: Http,private questionService:CreateQuestionService) { }
 
   ngOnInit() {
 
@@ -111,8 +114,8 @@ export class CreatequestionComponent implements OnInit {
         multipleAnswers: this.multipleAnswers
       };
 
-      this.http.post('https://questiontable-630db.firebaseio.com/createquestionoptions.json', this.questionData).subscribe(
-          (response) => {
+      this.questionService.saveQuestion(this.questionData).subscribe(
+        (response) => {
                 if (response.status == 200) {
                     alert('data submitted auccessfully');
                     form.reset();
@@ -121,7 +124,7 @@ export class CreatequestionComponent implements OnInit {
                     this.show3 = false;
                     this.show4 = false;
                 }
-          }
+        }
       );
   }
 
