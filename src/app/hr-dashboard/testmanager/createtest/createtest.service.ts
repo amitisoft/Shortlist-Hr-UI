@@ -2,18 +2,19 @@
 import { Http } from '@angular/http';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { CreatetestProperties } from './createtest.properties';
 
 @Injectable()
 export class CreateTestService {
 
-    constructor(private http: Http) { }
+    constructor(private http: Http,private createtestProperties:CreatetestProperties) { }
 
     sendEmail(selectedEmailList) {
-        return this.http.post('https://questiontable-630db.firebaseio.com/saveSelectedEmailList.json', selectedEmailList);
+        return this.http.post(this.createtestProperties.sendEmailUrl, selectedEmailList);
     }
 
     getEmail() {
-        return this.http.get('https://questiontable-630db.firebaseio.com/createEmailList.json').map(response => response.json());
+        return this.http.get(this.createtestProperties.getEmailUrl).map(response => response.json());
     }
 
 }

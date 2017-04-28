@@ -21,12 +21,13 @@ import { FormsModule } from '@angular/forms';
 import { CreateTestService } from './createtest.service';
 import { Response } from '@angular/http';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
+import { CreatetestProperties } from './createtest.properties';
 
 @Component({
     selector: 'amiti-createtest',
   templateUrl: './createtest.component.html',
   styleUrls: ['./createtest.component.css'],
-  providers: [CreateTestService]
+  providers: [CreateTestService,CreatetestProperties]
 })
 
 export class CreatetestComponent implements OnInit {
