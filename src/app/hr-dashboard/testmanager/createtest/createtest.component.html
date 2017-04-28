@@ -14,8 +14,8 @@
             </div>
             <div class="suggestions" *ngIf="filteredList.length > 0">
               <ul *ngFor="let item of filteredList; let i=index"  style="list-style: none;">
-                <li class="label">
-                  <a (click)="select(item)" *ngIf="i<4">{{item}}</a>
+                <li class="label" *ngIf="i<4">
+                  <a (click)="select(item)"  >{{item}}</a>
                 </li>
               </ul>
             </div>
