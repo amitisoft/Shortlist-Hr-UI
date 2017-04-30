@@ -14,7 +14,6 @@
 
           <div class="col-xs-5">
             <!--<div class="form-group">-->
-           
             <!--<select name="singleSelect" id="singleSelect"
                     class="form-control ">
               <option value="">Category</option>
@@ -22,19 +21,21 @@
             </select>-->
             <!--</div>-->
 
-          
-            <select class="form-control " name="selectCat" 
-                    [(ngModel)]="selectedCategory"
-                  >
+
+            <!--<select class="form-control " name="selectCat"
+                    [(ngModel)]="selectedCategory">
               <option value="">Category</option>
               <option style="cursor:pointer"
-
                       *ngFor="let category of questions"
-                      [value] ="category.CATEGORYNAME"
+                      [value]="category.CATEGORYNAME"
                       #categoryName
-                       (click)="onGetCategoryQuestion(selectCat.value)">
+                      (click)="onGetCategoryQuestion(selectCat.value)">
                 {{category.CATEGORYNAME}}
               </option>
+            </select>-->
+
+            <select class="form-control" [(ngModel)]="selectedCategory" (ngModelChange)="changeCategory($event)">
+              <option *ngFor="let categoryName of categoryList" [ngValue]="categoryName">{{categoryName}}</option>
             </select>
 
             <!--<select (change)="selectedCategory = $event.target.value">
@@ -48,8 +49,6 @@
               </option>
 
             </select>-->
-                
-              
             <!--<ul class="form-control">
               <li class="dropdown" appDropdown>
                 <a style="cursor:pointer" class="dropdown-toggle" role="button"> Category<span class="caret"></span></a>
@@ -58,18 +57,20 @@
                   <a style="cursor:pointer" (click)="onGetCategoryQuestion(categoryName.value)">
                     {{category.CATEGORYNAME}}</a>
                   </li>
-                 
+
                 </ul>
               </li>
             </ul>-->
-            
+
 
           </div>
 
 
           <div class="col-xs-6">
-            <button class="btn btn-primary"  >SEND
-            <span class="glyphicon glyphicon-send"></span></button>
+            <button class="btn btn-primary">
+              SEND
+              <span class="glyphicon glyphicon-send"></span>
+            </button>
           </div>
         </div>
       </div>
@@ -84,36 +85,37 @@
 
       <hr />
       <table class="table table-striped">
-        <tr>
-          <th><span class="glyphicon glyphicon-hand-down"></span></th>
-          <th>QUESTION ID</th>
-          <th>QUESTIONS</th>
-          <th>CATEGORY</th>
+        <thead>
+          <tr>
+            <th><span class="glyphicon glyphicon-hand-down"></span></th>
+            <th>QUESTION Number</th>
+            <th>QUESTIONS</th>
+            <th>CATEGORY</th>
+          </tr>
+        </thead>
+
+
+        <tr *ngFor="let eachCatQuestion of catQuestions; let i = index; let lastQuestion = last ">
+          <td><input type="checkbox" #chkbx [attr.data-questionName]="eachCatQuestion.question" [attr.data-categoryName]="eachCatQuestion.category" value={{eachCatQuestion.questionid}} (change)="updateQuestionsCheckbox(chkbx, $event)" /></td>
+          <td>{{i+1}}</td>
+          <td>{{eachCatQuestion.question | truncate: 25}}</td>
+          <td>{{eachCatQuestion.category}}</td>
         </tr>
 
-        <tr>
-          <td><input type="checkbox" /></td>
-          <td>01</td>
-          <td>Java is an Object Oriented Program</td>
-          <td>java</td>
 
-        </tr>
-        <tr>
-          <td><input type="checkbox" /></td>
-          <td>02</td>
-          <td>Java is an Object Oriented Program</td>
-          <td>java</td>
-
-        </tr>
-        <tr>
-          <td><input type="checkbox" /></td>
-          <td>03</td>
-          <td>Java is an Object Oriented Program</td>
-          <td>java</td>
-
-        </tr>
+        <!--
+          <input type="checkbox" #chkbx [attr.data-questionName]="eachCatQuestion.question" value={{eachCatQuestion.questionid}} (change)="updateQuestionsCheckbox(chkbx, $event)" />
+          Note: if we give [attr.data-questionName]="{{eachCatQuestion.question}}" then it will give error.
+         -->
 
       </table>
+
+      <ul class="pager">
+        <li><a href="javascript:void(0);" (click)="getPrevPageQuestions(selectedCategory)">Previous</a></li>
+        <li><a href="javascript:void(0);" (click)="getNextPageQuestions(selectedCategory)">Next</a></li>
+      </ul>
+
+      <!-- <amiti-datatable [catQuestions]="catQuestions" (rowSelected)="onRowSelected($event)"></amiti-datatable> -->
 
 
     </div>
@@ -128,20 +130,40 @@
     <hr />
 
     <div class="row">
-      <div class="col-xs-12">
-        <div class="row">
-          <div class="col-xs-5">
-           
-           <input type="text" class="form-control" placeholder="Paper Name:"/>
-          </div>
-
-
-          <div class="col-xs-3">
-            <label></label>
-            <button class="btn btn-success">SAVE  <span class="glyphicon glyphicon-floppy-save"></span></button>
-          </div>
-        </div>
+      <!-- <div class="col-xs-12"> -->
+      <!-- <div class="row"> -->
+      <div class="col-xs-5">
+        <input type="text" class="form-control" placeholder="Paper Name:" />
       </div>
+      <div class="col-xs-3">
+        <label></label>
+        <button class="btn btn-success">SAVE  <span class="glyphicon glyphicon-floppy-save"></span></button>
+      </div>
+      <div class="col-xs-4"></div>
+      <div class="col-xs-12"><hr /></div>
+      <div class="col-xs-12">
+        <!-- <hr /> -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>QUESTION Number</th>
+              <th>QUESTIONS</th>
+              <th>CATEGORY</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr; let i = index ">
+              <td>{{i+1}}</td>
+              <td>{{eachQuestionsCheckedArr.questionName}}</td>
+              <td>{{eachQuestionsCheckedArr.questionCategory}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- </div> -->
+      <!--</div>-->
     </div>
 
   </div>

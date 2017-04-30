@@ -20,11 +20,12 @@ export class CadidatedataComponent implements OnInit {
 
       this.candidateDataService.sendCandidateData({ CADIDATEFILE: files })
           .subscribe(
-         // data => alert("Successfully Upload"),
-          data => console.log(data.status),
+          data => alert('Successfully Upload'),
+         // data => console.log(data.status),
+
 
           error => console.log(error),
-          () => {this.status="File Upload Sucessfully"}
+         // () => {this.status="Fail To Upload"}
           );
   }
 
