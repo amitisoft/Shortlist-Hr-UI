@@ -98,7 +98,7 @@
         <tr *ngFor="let eachCatQuestion of catQuestions; let i = index; let lastQuestion = last ">
           <td><input type="checkbox" #chkbx [attr.data-questionName]="eachCatQuestion.question" [attr.data-categoryName]="eachCatQuestion.category" value={{eachCatQuestion.questionid}} (change)="updateQuestionsCheckbox(chkbx, $event)" /></td>
           <td>{{i+1}}</td>
-          <td>{{eachCatQuestion.question | truncate: 25}}</td>
+          <td>{{eachCatQuestion.question | truncate: 30}}</td>
           <td>{{eachCatQuestion.category}}</td>
         </tr>
 
