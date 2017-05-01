@@ -2,11 +2,12 @@
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
+import { CandidateDataProperties } from './candidatedata.properties';
 
 @Injectable()
 export class CandidateDataService {
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private candidateDataPro: CandidateDataProperties) { }
 
 
 
@@ -17,7 +18,7 @@ export class CandidateDataService {
 
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post('https://amitionlinetest.firebaseio.com/candidateData.json', body, {
+        return this.http.post(this.candidateDataPro.uploadCandidateDataUrl, body, {
             headers: headers
         })
             .map((data: Response) => data.json())
