@@ -40,7 +40,9 @@
         <th style="color:aqua">RESEND LINK</th>
       </tr>
       <tr *ngFor="let mgtxt of manageTest; let i = index; ">
-        <td><input type="checkbox" [disabled]="false" id="{{ 'row' + mgtxt.candidateId }}" name="{{ 'row' + mgtxt.candidateId }}" /></td>
+        <td><input type="checkbox" [disabled]="false" 
+                   id="{{ 'row' + mgtxt.candidateId }}"
+                   name="{{ 'row' + mgtxt.candidateId }}" /></td>
         <td></td>
         <td>{{mgtxt.candidateId}}</td>
         <td>{{mgtxt.candidateFullName}}</td>

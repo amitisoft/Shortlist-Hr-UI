@@ -2,18 +2,19 @@
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
+import { ManageTestProperties } from './managetest.properties';
 
 
 @Injectable()
 export class ManagetestService {
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private manageTestPro: ManageTestProperties) { }
 
 
 
     getData() {
         // return this Observable
-      return this.http.get('https://api.myjson.com/bins/mm34p')
+        return this.http.get(this.manageTestPro.getManageTestDatas)
         .map((response: Response) => response.json());
     }
 
@@ -49,7 +50,7 @@ export class ManagetestService {
         const ManageTestbody = JSON.stringify(startTestData);
 
         const headers = new Headers();
-        return this.http.post('https://amitionlinemanagetest.firebaseio.com/startTestData.json', ManageTestbody, {
+        return this.http.post(this.manageTestPro.sendTestStartedDatas, ManageTestbody, {
             headers: headers
         })
             .map((data: Response) => data.json())

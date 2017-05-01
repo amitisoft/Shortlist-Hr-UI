@@ -1,11 +1,12 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ManagetestService } from './managetest.service';
+import { ManageTestProperties } from './managetest.properties'
 
 @Component({
   selector: 'amiti-managetest',
   templateUrl: './managetest.component.html',
   styleUrls: ['./managetest.component.css'],
-  providers: [ManagetestService]
+  providers: [ManagetestService, ManageTestProperties]
 })
 export class ManagetestComponent implements OnInit {
 

@@ -41,7 +41,8 @@ export class CreatetestComponent implements OnInit {
     arrayOfSelectedEmails = [];
     queryResults: any;
     categoryQueryResults: any;
-    constructor(private autoCompleteService: CreateTestService, myElement: ElementRef,private categoryManagerService:CategorymanagerService) {
+    constructor(private autoCompleteService: CreateTestService,
+        myElement: ElementRef, private categoryManagerService: CategorymanagerService) {
         this.elementRef = myElement;
     }
 
