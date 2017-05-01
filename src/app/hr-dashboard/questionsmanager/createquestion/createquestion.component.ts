@@ -18,7 +18,8 @@ export class CreatequestionComponent implements OnInit {
 
   items: any[] = [];
 
-  constructor(private categoryMngService: CategorymanagerService, private http: Http,private questionService:CreateQuestionService) { }
+  constructor(private categoryMngService: CategorymanagerService,
+      private http: Http, private createQuestion: CreateQuestionService) { }
 
   ngOnInit() {
 
@@ -114,7 +115,8 @@ export class CreatequestionComponent implements OnInit {
         multipleAnswers: this.multipleAnswers
       };
 
-      this.questionService.saveQuestion(this.questionData).subscribe(
+      this.createQuestion.saveQuestion(this.questionData)
+          .subscribe(
         (response) => {
                 if (response.status == 200) {
                     alert('data submitted auccessfully');

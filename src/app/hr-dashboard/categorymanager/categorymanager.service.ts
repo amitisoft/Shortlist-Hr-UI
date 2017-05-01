@@ -2,6 +2,7 @@
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable, Subject } from 'rxjs/Rx';
+import { CategoryProperties } from './category.properties';
 
 @Injectable()
 export class CategorymanagerService {
@@ -9,7 +10,8 @@ export class CategorymanagerService {
 
     startedEditing = new Subject<number>();
 
-    constructor(private http: Http) { }
+    constructor(private http: Http,
+                private categoryPro: CategoryProperties) { }
 
 
     getCategoryForEdit(index: number) {
@@ -20,7 +22,7 @@ export class CategorymanagerService {
 
     getData() {
         // return this Observable
-        return this.http.get('https://amitionlinetestcategory.firebaseio.com/category.json')
+        return this.http.get(this.categoryPro.viewCategories)
             .map((response: Response) => response.json());
     }
 
@@ -33,7 +35,7 @@ export class CategorymanagerService {
 
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post('https://amitionlinetestcategory.firebaseio.com/category.json', body, {
+        return this.http.post(this.categoryPro.sendCategories, body, {
             headers: headers
         })
             .map((data: Response) => data.json())
@@ -42,7 +44,7 @@ export class CategorymanagerService {
 
 
     getOwnData() {
-        return this.http.get('https://amitionlinetestcategory.firebaseio.com/category.json')
+        return this.http.get(this.categoryPro.viewCategories)
             .map((response: Response) => response.json());
 
 

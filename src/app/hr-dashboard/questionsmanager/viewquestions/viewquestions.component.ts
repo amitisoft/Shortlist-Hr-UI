@@ -2,11 +2,14 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
 import { Http } from '@angular/http';
+import { ViewQuestionProperties } from './viewquestions.properties';
+import { ViewQuestionsService } from './viewquestions.service';
 
 @Component({
   selector: 'amiti-viewquestions',
   templateUrl: './viewquestions.component.html',
-  styleUrls: ['./viewquestions.component.css']
+  styleUrls: ['./viewquestions.component.css'],
+  providers: [ViewQuestionsService, ViewQuestionProperties]
 })
 export class ViewquestionsComponent implements OnInit {
 
@@ -17,7 +20,10 @@ export class ViewquestionsComponent implements OnInit {
     createQuestionClicked: boolean = false;
 
     constructor(private router: Router, private route: ActivatedRoute,
-        private categoryMngService: CategorymanagerService , private http: Http) { }
+        private categoryMngService: CategorymanagerService,
+        private http: Http,
+        private viewQuestionsProperties: ViewQuestionProperties,
+        private viewQuestionService: ViewQuestionsService) { }
 
     ngOnInit() {
         this.categoryMngService.getOwnData()
@@ -32,8 +38,8 @@ export class ViewquestionsComponent implements OnInit {
             }
             );
 
-        return this.http.get(' https://amitionlinetest.firebaseio.com/createquestion.json')
-            .map(response => response.json())
+        this.viewQuestionService.ViewQuestions()
+            
             .subscribe(
             data => {
                 const myArray = [];
