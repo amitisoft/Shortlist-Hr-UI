@@ -50,7 +50,8 @@ export class PapermanagementComponent implements OnInit {
     changeCategory(catName: string) {
         var lastQuestion: any = undefined;
         var startQuestions: string = "startQue";
-        this.questionService.getThisCategoryQuestions(catName, lastQuestion, startQuestions).subscribe(
+        this.questionService.getThisCategoryQuestions(catName, lastQuestion, startQuestions)
+            .subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -62,7 +63,8 @@ export class PapermanagementComponent implements OnInit {
         var nextQuestions: string = "nextQue";
         console.log("Category Name: " + catName);
         console.log("Last question id: " + lastQuestionIdVal);
-        this.questionService.getThisCategoryQuestions(catName, lastQuestionIdVal, nextQuestions).subscribe(
+        this.questionService.getThisCategoryQuestions(catName, lastQuestionIdVal, nextQuestions)
+            .subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -74,7 +76,8 @@ export class PapermanagementComponent implements OnInit {
         var prevQuestions: string = "prevQue";
         console.log("Category Name: " + catName);
         console.log("First question id: " + firstQuestionIdVal);
-        this.questionService.getThisCategoryQuestions(catName, firstQuestionIdVal, prevQuestions).subscribe(
+        this.questionService.getThisCategoryQuestions(catName, firstQuestionIdVal, prevQuestions)
+            .subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
