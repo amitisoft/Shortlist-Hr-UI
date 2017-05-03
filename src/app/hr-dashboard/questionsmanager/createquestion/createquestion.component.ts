@@ -44,11 +44,15 @@ export class CreatequestionComponent implements OnInit {
   show3: boolean = false;
   show4: boolean = false;
 
-  option1: any;
-  option2: any;
-  option3: any;
-  option4: any;
+  option1Value: any;
+  option2Value: any;
+  option3Value: any;
+  option4Value: any;
+
   question: any;
+  option:any;
+  show: boolean = false;
+
 
   correctOptions = [];
 
@@ -59,8 +63,8 @@ export class CreatequestionComponent implements OnInit {
  
 
   addQuestion(form: NgForm) {
-
-      if (!this.question || !this.option1 || !this.option2 || !this.option3 || !this.option4) {
+    debugger;
+      if (!this.question || !this.option1Value || !this.option2Value || !this.option3Value || !this.option4Value) {
           alert('please provide required fields');
           return false;
       }
@@ -106,10 +110,10 @@ export class CreatequestionComponent implements OnInit {
 
       this.questionData = {
         question: form.value.question,
-        option1: form.value.option1,
-        option2: form.value.option2,
-        option3: form.value.option3,
-        option4: form.value.option4,
+        option1: form.value.option1Value,
+        option2: form.value.option2Value,
+        option3: form.value.option3Value,
+        option4: form.value.option4Value,
         category: form.value.singleSelect,
         correctoptions: this.correctOptions,
         multipleAnswers: this.multipleAnswers
@@ -130,39 +134,12 @@ export class CreatequestionComponent implements OnInit {
       );
   }
 
-  showOption1(e) {
+  showOption(option,e) {
       if (e.target.checked) {
-          this.option1 = this.option1;
-          this.show1 = true;
+         this['option'+option] = this['option'+option+'Value'];
+         this['show'+option] = true;
       } else {
-          this.show1 = false;
-      }
-  }
-
-  showOption2(e) {
-      if (e.target.checked) {
-          this.option2 = this.option2;
-          this.show2 = true;
-      } else {
-          this.show2 = false;
-      }
-  }
-
-  showOption3(e) {
-      if (e.target.checked) {
-          this.option3 = this.option3;
-          this.show3 = true;
-      } else {
-          this.show3 = false;
-      }
-  }
-
-  showOption4(e) {
-      if (e.target.checked) {
-          this.option4 = this.option4;
-          this.show4 = true;
-      } else {
-          this.show4 = false;
+           this['show'+option] = false;
       }
   }
 
