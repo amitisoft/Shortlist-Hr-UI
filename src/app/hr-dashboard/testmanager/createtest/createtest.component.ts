@@ -1,20 +1,4 @@
-﻿//import { Component, OnInit } from '@angular/core';
-
-//@Component({
-//  selector: 'amiti-createtest',
-//  templateUrl: './createtest.component.html',
-//  styleUrls: ['./createtest.component.css']
-//})
-//export class CreatetestComponent implements OnInit {
-
-//  constructor() { }
-
-//  ngOnInit() {
-//  }
-
-//}
-
-
+﻿
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +15,6 @@ import { CreatetestProperties } from './createtest.properties';
 })
 
 export class CreatetestComponent implements OnInit {
-    items: any[] = []; // for getting array
     categoryItems:any=[];
     emailData:any;
     getData: any;
@@ -41,13 +24,34 @@ export class CreatetestComponent implements OnInit {
     arrayOfSelectedEmails = [];
     queryResults: any;
     categoryQueryResults: any;
+    allEmailsArray = [];
+    allCategoriesArray = [];
     constructor(private autoCompleteService: CreateTestService,
         myElement: ElementRef, private categoryManagerService: CategorymanagerService) {
         this.elementRef = myElement;
     }
 
     ngOnInit() {
+        //Getting all registered user emails 
+        this.autoCompleteService.getEmail().subscribe(
+            data => {
+                for (let key in data) {
+                    this.allEmailsArray.push(data[key][0].emails);
+                }
+            }
+        );
 
+        //Getting all enetred categories 
+        this.categoryManagerService.getOwnData().subscribe(
+            data => {
+                for (let key in data) {
+                    if(data[key].CATEGORYNAME){
+                        this.allCategoriesArray.push(data[key].CATEGORYNAME);
+                    }
+                }
+                this.categoryItems = this.allCategoriesArray;
+            }
+        );
     }
 
     sendTestLink(form:NgForm){
@@ -80,45 +84,43 @@ export class CreatetestComponent implements OnInit {
         );
     }
 
-    public query = '';
-    public emailsList = [];
-    public filteredList = [];
-    public elementRef;
-    public selected = [];
+    private query = '';
+    private emailsList = [];
+    private filteredList = [];
+    private elementRef;
+    private selected = [];
 
-     //auto complete for email starts here
+    private categoryQuery = '';
+    private categoryList = [];
+    private categoryFilteredList = [];
+    private categoryElementRef;
+    private categorySelected = [];
 
-    filter() {
-        const myArray = [];
-        this.autoCompleteService.getEmail().subscribe(
-            data => {
-                for (let key in data) {
-                    myArray.push(data[key][0].emails);
-                }
-                this.items = myArray;
-            }
-        );
-        this.emailsList = this.items;
-        if (this.query !== "") {
-            this.filteredList = this.emailsList.filter(function (el) {
-                return el.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+     //auto complete code starts here
+
+    filter(emails,query,filteredList,emailsList) {
+    
+        this.emailsList = this.allEmailsArray;
+        this.categoryList = this.allCategoriesArray;
+        if (this[query] !== "") {
+            this[filteredList] = this[emailsList].filter(function (el) {
+                return el.toLowerCase().indexOf(this[query].toLowerCase()) > -1;
             }.bind(this));
         } else {
-            this.filteredList = [];
+            this[filteredList] = [];
         }
     }
 
-    select(item) {
-        this.selected.push(item);
-        this.query = '';
-        this.filteredList = [];
-        this.queryResults = this.selected.toString();
-        console.log(this.selected.toString());
+    select(item,query,selected,filteredList,queryResults) {
+        this[selected].push(item);
+        this[query] = '';
+        this[filteredList] = [];
+        this[queryResults] = this[selected].toString();
     }
 
-    remove(item) {
-        this.selected.splice(this.selected.indexOf(item), 1);
-        this.queryResults = this.selected.toString();
+    remove(item,selected,queryResults) {
+        this[selected].splice(this[selected].indexOf(item), 1);
+        this[queryResults] = this[selected].toString();
     }
 
     handleClick(event) {
@@ -135,49 +137,5 @@ export class CreatetestComponent implements OnInit {
         }
     }
 
-    //auto complete for email ends here
-
-
-    //auto complete for category starts here
-    public categoryQuery = '';
-    public categoryList = [];
-    public categoryFilteredList = [];
-    public categoryElementRef;
-    public categorySelected = [];
-
-    categoryFilter() {
-        const myCategoryArray = [];
-        this.categoryManagerService.getOwnData().subscribe(
-            data => {
-                for (let key in data) {
-                    if(data[key].CATEGORYNAME){
-                        myCategoryArray.push(data[key].CATEGORYNAME);
-                    }
-                }
-                this.categoryItems = myCategoryArray;
-            }
-        );
-        this.categoryList = this.categoryItems;
-        if (this.categoryQuery !== "") {
-            this.categoryFilteredList = this.categoryList.filter(function (el) {
-                return el.toLowerCase().indexOf(this.categoryQuery.toLowerCase()) > -1;
-            }.bind(this));
-        } else {
-            this.categoryFilteredList = [];
-        }
-    }
-    selectCategory(item) {
-        this.categorySelected.push(item);
-        this.categoryQuery = '';
-        this.categoryFilteredList = [];
-        this.categoryQueryResults = this.categorySelected.toString();
-        console.log(this.categorySelected.toString());
-    }
-
-    removeCategory(item) {
-        this.categorySelected.splice(this.categorySelected.indexOf(item), 1);
-        this.categoryQueryResults = this.categorySelected.toString();
-    }
-
-    //auto complete for category ends here
+    //auto complete code ends here
 }
