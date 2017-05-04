@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+
 @Component({
   selector: 'amiti-createquestion',
   templateUrl: './createquestion.component.html',
@@ -33,7 +34,7 @@ export class CreatequestionComponent implements OnInit {
               }
               this.items = myArray;
           }
-          );
+       );
   }
 
 
@@ -57,6 +58,12 @@ export class CreatequestionComponent implements OnInit {
   correctOptions = [];
 
   multipleAnswers:any;
+
+  checkbox1IsValid:boolean = false;
+  checkbox2IsValid:boolean = false;
+  checkbox3IsValid:boolean = false;
+  checkbox4IsValid:boolean = false;
+  checkboxIsValid:boolean = false;
 
   //constructor() { }
 
@@ -138,8 +145,15 @@ export class CreatequestionComponent implements OnInit {
       if (e.target.checked) {
          this['option'+option] = this['option'+option+'Value'];
          this['show'+option] = true;
+         this['checkbox'+option+'IsValid'] = true;
       } else {
            this['show'+option] = false;
+           this['checkbox'+option+'IsValid'] = false;
+      }
+      if(this.checkbox1IsValid||this.checkbox2IsValid||this.checkbox3IsValid||this.checkbox4IsValid){
+        this.checkboxIsValid = true;
+      }else{
+        this.checkboxIsValid = false;
       }
   }
 
