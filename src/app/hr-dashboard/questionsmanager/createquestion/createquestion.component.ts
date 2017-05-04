@@ -115,17 +115,7 @@ export class CreatequestionComponent implements OnInit {
         this.multipleAnswers = false;
       }
 
-      //this.questionData = {
-      //  question: form.value.question,
-      //  option1: form.value.option1Value,
-      //  option2: form.value.option2Value,
-      //  option3: form.value.option3Value,
-      //  option4: form.value.option4Value,
-      //  category: form.value.singleSelect,
-      //  correctoptions: this.correctOptions,
-      //  multipleAnswers: this.multipleAnswers
-      //};
-
+   
       this.questionData = {
           Qsn: form.value.question,
           Option1: form.value.option1Value,

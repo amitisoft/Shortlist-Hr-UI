@@ -8,6 +8,5 @@ export class CreateQuestionProperties {
 
     // saveQuestionUrl = 'https://questiontable-630db.firebaseio.com/createquestionoptions.json';
 
-    ViewQuestions = ' ';
-
+    
 }
