@@ -1,12 +1,13 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { PapermanagementProperties } from './papermanagement.properties';
 
 @Injectable()
 
 export class GetcategoryquestionsService {
 
-    constructor(private _http: Http) { }
+    constructor(private _http: Http, private paperProperties:PapermanagementProperties) { }
 
     getThisCategoryQuestions(categoryName, lastQuestionId, nextprevQuestions) {
         if (nextprevQuestions === "nextQue")
@@ -21,14 +22,14 @@ export class GetcategoryquestionsService {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
         if (categoryName === "Java") {
-            /*return this._http.post('https://java-questions-c1c4a.firebaseio.com/questions.json',params, {headers: headers}).map(res => res.json());*/
-            return this._http.get('https://java-questions-c1c4a.firebaseio.com/questions.json').map(res => res.json())
+            /*return this._http.post(this.paperProperties.javaquestions, params, {headers: headers}).map(res => res.json());*/
+            return this._http.get(this.paperProperties.javaquestions).map(res => res.json())
         } else if (categoryName === "QA") {
-            /*return this._http.post('https://javascript-questions.firebaseio.com/questions.json', params, {headers: headers}).map(res => res.json());*/
-            return this._http.get('https://qa-questions.firebaseio.com/questions.json').map(res => res.json())
+            /*return this._http.post(this.paperProperties.qaquestions, params, {headers: headers}).map(res => res.json());*/
+            return this._http.get(this.paperProperties.qaquestions).map(res => res.json())
         } else if (categoryName === "JavaScript") {
-            /*return this._http.post('https://qa-questions.firebaseio.com/questions.json',params, {headers: headers}).map(res => res.json());*/
-            return this._http.get('https://javascript-questions.firebaseio.com/questions.json').map(res => res.json())
+            /*return this._http.post(this.paperProperties.javascript, params, {headers: headers}).map(res => res.json());*/
+            return this._http.get(this.paperProperties.javascript).map(res => res.json())
         } else {
             return;
         }
