@@ -115,21 +115,35 @@ export class CreatequestionComponent implements OnInit {
         this.multipleAnswers = false;
       }
 
+      //this.questionData = {
+      //  question: form.value.question,
+      //  option1: form.value.option1Value,
+      //  option2: form.value.option2Value,
+      //  option3: form.value.option3Value,
+      //  option4: form.value.option4Value,
+      //  category: form.value.singleSelect,
+      //  correctoptions: this.correctOptions,
+      //  multipleAnswers: this.multipleAnswers
+      //};
+
       this.questionData = {
-        question: form.value.question,
-        option1: form.value.option1Value,
-        option2: form.value.option2Value,
-        option3: form.value.option3Value,
-        option4: form.value.option4Value,
-        category: form.value.singleSelect,
-        correctoptions: this.correctOptions,
-        multipleAnswers: this.multipleAnswers
+          Qsn: form.value.question,
+          Option1: form.value.option1Value,
+          Option2: form.value.option2Value,
+          Option3: form.value.option3Value,
+          Option4: form.value.option4Value,
+          Category: form.value.singleSelect,
+          Crct_ans: this.correctOptions,
+          Multi_flag: this.multipleAnswers
       };
+
 
       this.createQuestion.saveQuestion(this.questionData)
           .subscribe(
         (response) => {
-                if (response.status == 200) {
+            if (response.status == 200) {
+
+
                     alert('data submitted auccessfully');
                     form.reset();
                     this.show1 = false;
