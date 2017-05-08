@@ -132,15 +132,13 @@ export class CreatequestionComponent implements OnInit {
           .subscribe(
         (response) => {
             if (response.status == 200) {
-
-
                     alert('data submitted auccessfully');
                     form.reset();
                     this.show1 = false;
                     this.show2 = false;
                     this.show3 = false;
                     this.show4 = false;
-                }
+            }
         }
       );
   }

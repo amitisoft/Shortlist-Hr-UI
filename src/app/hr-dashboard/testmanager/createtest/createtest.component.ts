@@ -61,10 +61,10 @@ export class CreatetestComponent implements OnInit {
         }
 
         this.emailData = {
-            emailsList: form.value.queryResults,
-            emailSubject : form.value.subject,
-            postApplied : form.value.singleSelect,
-            emailBody:form.value.mailbody,
+            emails: form.value.queryResults,
+            emailsubject : form.value.subject,
+            jobPosition : form.value.singleSelect,
+            emailbody:form.value.mailbody,
             category:form.value.categoryQueryResults
         };
 
