@@ -1,6 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { PapermanagementService } from './papermanagement.service';
-import { GetcategoryquestionsService } from './getcategoryquestions.service';
 import { PapermanagementProperties } from './papermanagement.properties';
 import 'rxjs/Rx';
 
@@ -8,21 +7,22 @@ import 'rxjs/Rx';
   selector: 'amiti-papermanagement',
   templateUrl: './papermanagement.component.html',
   styleUrls: ['./papermanagement.component.css'],
-  providers: [PapermanagementService , GetcategoryquestionsService, PapermanagementProperties]
+  providers: [PapermanagementService, PapermanagementProperties]
 })
 export class PapermanagementComponent implements OnInit {
 
     questions: any[] = [];
     catQuestions: any;
     selectedCategory: any;
-    categoryList: any[] = ["Java", "QA", "JavaScript"];
+    categoryList: any[] = ["Java", "JavaScript", "QA", "Angular4"];
     //categoryList: any[] = [];
     questionsCheckedArr: Array<any> = [];
-
     //qpQuestionsCount: number = this.questionsCheckedArr.length;
     paperName:string;
+    paperCreationData:any;
+    paperCreationArray: Array<any> = [];
 
-    constructor(private paperService: PapermanagementService, private questionService: GetcategoryquestionsService) {
+    constructor(private paperService: PapermanagementService) {
         this.selectedCategory = this.categoryList[0];
         this.changeCategory(this.categoryList[0]);
     }
@@ -31,22 +31,19 @@ export class PapermanagementComponent implements OnInit {
 
     }
 
-
-
-
     onGetCategoryQuestion(selectedCategory: string) {
         this.paperService.sendCategory({ CATEGORYNAME: selectedCategory })
             .subscribe(
             data => console.log(data),
-
             error => console.log(error)
             );
     }
 
     changeCategory(catName: string) {
-        var lastQuestion: any = undefined;
+        var lastQuestion: any = null;
         var startQuestions: string = "startQue";
-        this.questionService.getThisCategoryQuestions(catName, lastQuestion, startQuestions).subscribe(
+        //catName = "UI@";
+        this.paperService.getThisCategoryQuestions(catName, lastQuestion, startQuestions).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -58,7 +55,7 @@ export class PapermanagementComponent implements OnInit {
         var nextQuestions: string = "nextQue";
         console.log("Category Name: " + catName);
         console.log("Last question id: " + lastQuestionIdVal);
-        this.questionService.getThisCategoryQuestions(catName, lastQuestionIdVal, nextQuestions).subscribe(
+        this.paperService.getThisCategoryQuestions(catName, lastQuestionIdVal, nextQuestions).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -70,7 +67,7 @@ export class PapermanagementComponent implements OnInit {
         var prevQuestions: string = "prevQue";
         console.log("Category Name: " + catName);
         console.log("First question id: " + firstQuestionIdVal);
-        this.questionService.getThisCategoryQuestions(catName, firstQuestionIdVal, prevQuestions).subscribe(
+        this.paperService.getThisCategoryQuestions(catName, firstQuestionIdVal, prevQuestions).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -84,7 +81,7 @@ export class PapermanagementComponent implements OnInit {
         console.log(evnt.target.checked);
         console.log(evnt.target.getAttribute('data-questionName'));
         console.log(evnt.target.getAttribute('data-categoryName'));
-        var queObj = { questionid: evnt.target.value, questionName: evnt.target.getAttribute('data-questionName'), questionCategory: evnt.target.getAttribute('data-categoryName') };
+        var queObj = { Qsn_id: evnt.target.value, Qsn: evnt.target.getAttribute('data-questionName'), Category: evnt.target.getAttribute('data-categoryName') };
         console.log("-----------------------------");
         console.log(queObj);
 
@@ -101,6 +98,10 @@ export class PapermanagementComponent implements OnInit {
     }
 
     createCandidatePaper() {
+        var paperNameArray: Array<any> = [];
+        //this.paperName.trim();
+        console.log("Paper name: "+this.paperName);
+
         if (this.questionsCheckedArr.length == 0) {
             alert("Please select atleast one question to create the Question Paper");
             return;
@@ -109,19 +110,62 @@ export class PapermanagementComponent implements OnInit {
             alert("Please enter the paper name to save the question paper.");
             return;
         }
-        this.paperService.createPaperService(this.paperName, this.questionsCheckedArr).subscribe(
+
+        
+        for(let newArr of this.questionsCheckedArr){
+            this.paperCreationArray.push({"QsnId": newArr.Qsn_id, "Category":newArr.Category});
+        }
+        this.paperCreationData = {"paperName":this.paperName, "paperArr":this.paperCreationArray};
+
+/*
+"{"paperName":"QATest","paperArr":[{"QsnId":"13650e87-2d58-8fcf-716b-258afc808953","Category":"Java"},{"QsnId":"baa7e34d-ec6f-303a-d5f8-cdd4a3f5a9e6","Category":"Java"}]}"
+*/
+        this.paperService.getPaperList().subscribe(
+            data => {
+                let paperTemp = data;
+                // paperNameArray;
+            },
+            error => {alert(error);},
+            () => {
+                console.log("Finished.");
+            }
+        );
+        
+        this.paperService.createPaperService(this.paperCreationData).subscribe(
             error => alert(error),
             () => {
                     alert("Paper saved successfully.");
                     this.paperName='';
                     this.questionsCheckedArr = [];
 
-                    this.catQuestions.forEach((eachCatQuestion) => {
+                    /*this.catQuestions.forEach((eachCatQuestion) => {
                         eachCatQuestion.checked = false;
-                    });
+                    });*/
                   }
         );
+/*
+--------------------------------------------------
+ {
+    
 
+"paperName": xxxxxx,
+ "paperArr": [
+   {
+     "QsnId": "KKLLL",
+     "Category": "KLLLL1"
+   },
+   {
+      "QsnId": "LLDDD",
+      "Category": "DDDDDL1"
+   },
+   {
+      "QsnId": "MMKKKK",
+       "Category": "PPPPPM1"
+  }
+ ]
+  }
+--------------------------------------------------
+*/
     }
 
 }

@@ -12,7 +12,7 @@ export class ViewQuestionsService {
 
     }
 
-    ViewQuestions() {
+    ViewQuestions(catName) {
         return this.http.get(this.viewQuestionProperties.viewQuestionsUrl)
             .map(response => response.json());
     }

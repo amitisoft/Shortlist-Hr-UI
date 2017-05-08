@@ -8,7 +8,6 @@ import { PapermanagementProperties } from './papermanagement.properties';
 export class PapermanagementService {
 
     items: any[] = [];
-
     constructor(private http: Http, private paperProperties:PapermanagementProperties) { }
 
 
@@ -60,11 +59,27 @@ export class PapermanagementService {
       return Observable.throw(error.json()); // (error.json());
   }
 
-  createPaperService(paperName, paperQuestions){
-    const headers = new Headers();
-    var paperjson = JSON.stringify({ "paperName": paperName, "paperQuestions": paperQuestions });
+  getThisCategoryQuestions(categoryName, lastQuestionId, nextprevQuestions) {
+    var getCategoryQuestionsUrl = 'https://e92rcpg85i.execute-api.us-east-1.amazonaws.com/dev/api/getquestionbycategory/Category/'+categoryName+'/LastqsnId/'+lastQuestionId+''; 
+    // var headers = new Headers();
+    // headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.get(getCategoryQuestionsUrl).map(res => res.json());
+  }
+    
+  createPaperService(paperCreationData){
+    //const headers = new Headers();
+    //headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    //var paperjson = JSON.stringify({ "paperName": paperName, "paperQuestions": paperQuestions });
+    //var params = 'json=' + paperjson;
+    //return this.http.post(this.paperProperties.questionpaper, params, {headers: headers}).map(res => res.json());
+
+    var paperjson = JSON.stringify(paperCreationData);
     var params = 'json=' + paperjson;
-    return this.http.post(this.paperProperties.questionpaper, params, {headers: headers}).map(res => res.json());
+    return this.http.post(this.paperProperties.questionpaper, params);
+  }
+
+  getPaperList(){
+    return this.http.get(this.paperProperties.getPaperList).map(res => res.json());
   }
 
 }

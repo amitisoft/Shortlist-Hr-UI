@@ -1,0 +1,90 @@
+.table-style{
+	width: 100%;
+}
+.table-style thead, .table-style tbody, .table-style tr, .table-style td, .table-style th { display:block; }
+/*.table-style thead{display: table-header-group;}*/
+.table-style tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.table-style thead th {
+    height: 52px;
+    font-size:13px;
+    /*text-align: left;*/
+}
+.table-style tbody {
+    height: auto;
+    max-height: 500px;
+    overflow-y: auto;
+}
+.table-style thead {
+    /* fallback */
+}
+.table-style tbody td, .table-style thead th {
+    width: auto;
+    float: left;
+    word-wrap: break-word;
+}
+.table-style tbody td:nth-child(1), .table-style thead th:nth-child(1) {
+    width: 8%;
+    float: left;
+}
+.table-style tbody td:nth-child(2), .table-style thead th:nth-child(2) {
+    width: 12%;
+    float: left;
+}
+.table-style tbody td:nth-child(3), .table-style thead th:nth-child(3) {
+    width: 58%;
+    float: left;
+}
+.table-style tbody td:nth-child(4), .table-style thead th:nth-child(4) {
+    width: 22%;
+    float: left;
+}
+
+/*--------------------- Paper created table ---------------------*/
+
+.table-style2{
+    width: 100%;
+}
+.table-style2 thead, .table-style2 tbody, .table-style2 tr, .table-style2 td, .table-style2 th { display:block; }
+/*.table-style2 thead{display: table-header-group;}*/
+.table-style2 tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.table-style2 thead th {
+    height: 52px;
+    font-size:13px;
+    /*text-align: left;*/
+}
+.table-style2 tbody {
+    height: auto;
+    max-height: 500px;
+    overflow-y: auto;
+}
+.table-style2 thead {
+    /* fallback */
+}
+.table-style2 tbody td, .table-style2 thead th {
+    width: auto;
+    float: left;
+    word-wrap: break-word;
+}
+.table-style2 tbody td:nth-child(1), .table-style2 thead th:nth-child(1) {
+    width: 12%;
+    float: left;
+}
+.table-style2 tbody td:nth-child(2), .table-style2 thead th:nth-child(2) {
+    width: 66%;
+    float: left;
+}
+.table-style2 tbody td:nth-child(3), .table-style2 thead th:nth-child(3) {
+    width: 22%;
+    float: left;
+}
+

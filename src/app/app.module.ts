@@ -33,7 +33,6 @@ import { CadidatedataComponent } from './hr-dashboard/cadidatedata/cadidatedata.
 import { ResultmanagerComponent } from './hr-dashboard/testmanager/resultmanager/resultmanager.component';
 import { PapermanagementComponent } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.component';
 import { PapermanagementService } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.service';
-import { GetcategoryquestionsService } from './hr-dashboard/questionsmanager/papermanagement/getcategoryquestions.service';
 
 import { TruncateModule } from 'ng2-truncate';
 
@@ -64,8 +63,7 @@ import { TruncateModule } from 'ng2-truncate';
     FormsModule, ReactiveFormsModule , TruncateModule,
     HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
-  providers: [AuthService, CategorymanagerService, CreateTestService, PapermanagementService,
-      GetcategoryquestionsService, CategoryProperties],
+  providers: [AuthService, CategorymanagerService, CreateTestService, PapermanagementService, CategoryProperties],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
