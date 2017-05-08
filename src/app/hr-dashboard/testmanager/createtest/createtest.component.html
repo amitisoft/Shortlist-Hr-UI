@@ -9,7 +9,7 @@
             <!--<textarea type="email" class="form-control form-control-lg" id="email"
               placeholder="Enter Cadidates Emails-Seperated By Comas (,)"></textarea>-->
             <div class="form-group">
-              <input class="form-control" id="emailTextArea" name="emailTextArea" [(ngModel)]="query" (keyup)="filter('emails','query','filteredList','emailsList')" ngModel />
+              <input class="form-control" id="emailTextArea" name="emailTextArea" [(ngModel)]="query" (keyup)="filter('emails','query','filteredList','emailsList')" ngModel #emailTextArea="ngModel" />
               <br />
             </div>
             <div class="suggestions" *ngIf="filteredList.length > 0">
@@ -22,8 +22,9 @@
           </div>
 
           <div class="" [hidden]="true">
-            <textarea class="form-control" name="queryResults" required [(ngModel)]="queryResults"></textarea>
+            <textarea class="form-control" name="queryResults" required [(ngModel)]="queryResults" #emailsList="ngModel"></textarea>
           </div>
+          <p class="help-block error" *ngIf="!emailsList.valid">Enter Email(s)</p>
           <div class="col-lg-6 col-xs-12">
             <div *ngFor="let item of selected">
               <div class="selected">
@@ -44,7 +45,8 @@
           <div class="col-xs-9">
             <input type="text" class="form-control form-control-sm" id="subject"
                    placeholder="Enter Mail Subject" name="subject"
-                   ngModel required>
+                   ngModel #emailSubject="ngModel" required>
+            <p class="help-block error" *ngIf="!emailSubject.valid">Enter Subject</p>
           </div>
         </div>
 
@@ -54,7 +56,7 @@
 
             <label for="singleSelect"></label><br>
             <select name="singleSelect" id="singleSelect"
-                    class="form-control" ngModel required >
+                    class="form-control" ngModel required #postApplied="ngModel">
               <option value="">Select Post Applied Option here</option>
               <option value="JAVA TRAINEE"> JAVA TRAINEE</option>
               <option value="QA TRAINEE"> QA TRAINEE</option>
@@ -63,9 +65,8 @@
               <option value="UI DEVELOPER"> UI DEVELOPER</option>
               <option value="UI SENIOR DEVELOPER"> UI SENIOR DEVELOPER</option>
               <option value="IOS"> IOS </option>
-
-
             </select>
+            <p class="help-block error" *ngIf="!postApplied.valid">Select post applied</p>
           </div>
 
 
@@ -78,7 +79,8 @@
                       placeholder="Enter Mail Body"
                       name="mailbody"
                       ngModel required
-                      style="height:auto;"></textarea>
+                      style="height:auto;" #emailBody="ngModel"></textarea>
+            <p class="help-block error" *ngIf="!emailBody.valid">Enter Email Body</p>
           </div>
         </div>
         <div class="form-group row">
@@ -87,7 +89,7 @@
               <input type="text" id="category"
                      class="form-control"
                      name="category" placeholder="select category"
-                     id="category" [(ngModel)]="categoryQuery" (keyup) = "filter('categories','categoryQuery','categoryFilteredList','categoryList')"
+                     id="category" [(ngModel)]="categoryQuery" #categoriesInput="ngModel" (keyup) = "filter('categories','categoryQuery','categoryFilteredList','categoryList')"
                      />
           </div>
         </div>
@@ -107,8 +109,9 @@
           <label for="subject" class="col-sm-2 col-form-label col-form-label-sm">Selected Categories</label>
           <div class="col-xs-9">
             <div class="" [hidden]="true">
-               <textarea class="form-control" name="categoryQueryResults" required [(ngModel)]="categoryQueryResults"></textarea>
+               <textarea class="form-control" name="categoryQueryResults" required #categories="ngModel" [(ngModel)]="categoryQueryResults"></textarea>
             </div>
+             <p class="help-block error" *ngIf="!categories.valid">Select Categories</p>
              <!-- <p>Category 1</p> <p>Category 2</p>-->
               <div *ngFor="let item of categorySelected">
                 <div class="selected">
