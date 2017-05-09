@@ -59,7 +59,7 @@ export class PapermanagementService {
       return Observable.throw(error.json()); // (error.json());
   }
 
-  getThisCategoryQuestions(categoryName, lastQuestionId, nextprevQuestions) {
+  getThisCategoryQuestions(categoryName, lastQuestionId) {
     var getCategoryQuestionsUrl = 'https://e92rcpg85i.execute-api.us-east-1.amazonaws.com/dev/api/getquestionbycategory/Category/'+categoryName+'/LastqsnId/'+lastQuestionId+''; 
     // var headers = new Headers();
     // headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -73,9 +73,12 @@ export class PapermanagementService {
     //var params = 'json=' + paperjson;
     //return this.http.post(this.paperProperties.questionpaper, params, {headers: headers}).map(res => res.json());
 
-    var paperjson = JSON.stringify(paperCreationData);
-    var params = 'json=' + paperjson;
-    return this.http.post(this.paperProperties.questionpaper, params);
+    /*var paperjson = JSON.stringify(paperCreationData);
+    var params = paperjson;
+    console.log(params);*/
+    
+    console.log(paperCreationData);
+    return this.http.post(this.paperProperties.questionpaper, paperCreationData);
   }
 
   getPaperList(){
