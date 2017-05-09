@@ -48,9 +48,13 @@ export class CreatecategoryComponent implements OnInit, OnDestroy {
 
       this.categoryMngService.sendData({ CATEGORYNAME: categoryname, CATEDESCRIPTION: categorydescription })
       .subscribe(
-          data => console.log(data),
+          (response) => {
+            if (response.status == 200) {
+                    alert('data submitted auccessfully');
+                    this.onClear();
+            }
+        }
 
-          error => console.log(error)
       );
     }
 

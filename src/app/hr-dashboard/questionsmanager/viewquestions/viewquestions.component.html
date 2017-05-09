@@ -42,16 +42,16 @@
           <table class="table table-striped table-style">
             <thead>
               <tr>
-                <th align="center">Index</th>
+                <th align="center" class="textCenter">Index</th>
                 <th>QUESTIONS</th>
-                <th align="center"><!--<label for="singleSelect"></label>-->
+                <th align="center" class="textCenter"><!--<label for="singleSelect"></label>-->
                   <select name="singleSelect" id="singleSelect" class="form-control" (ngModelChange)="changeCategory($event)" [(ngModel)]="selectedCategory" required>
                     <option [ngValue]="category" *ngFor="let category of categoryList">{{category}}</option>
                   </select>
                 </th>
-                <th align="center" class="textDecorationScratch">CREATED DATE</th>
-                <th align="center">EDIT</th>
-                <th align="center">DELETE</th>
+                <th align="center" class="textDecorationScratch textCenter">CREATED DATE</th>
+                <!-- <th align="center">EDIT</th>
+                <th align="center">DELETE</th> -->
               </tr>
             </thead>
 
@@ -61,14 +61,14 @@
                 <td>{{eachCatQuestion.Qsn | truncate: 30}}</td>
                 <td align="center">{{eachCatQuestion.Category}}</td>
                 <td align="center" class="textDecorationScratch">01-02-2017</td>
-                <td align="center"><button class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></button></td>
-                <td align="center"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
+                <!-- <td align="center"><button class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                <td align="center"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td> -->
               </tr>
             </tbody>
           </table>
 
       <ul class="pager">
-        <li><a href="javascript:void(0);" (click)="getPrevPageQuestions(selectedCategory)">Previous</a></li>
+        <!-- <li><a href="javascript:void(0);" (click)="getPrevPageQuestions(selectedCategory)">Previous</a></li> -->
         <li><a href="javascript:void(0);" (click)="getNextPageQuestions(selectedCategory)">Next</a></li>
       </ul>
 

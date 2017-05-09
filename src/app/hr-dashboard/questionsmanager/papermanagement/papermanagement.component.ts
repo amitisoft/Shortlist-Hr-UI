@@ -14,7 +14,7 @@ export class PapermanagementComponent implements OnInit {
     questions: any[] = [];
     catQuestions: any;
     selectedCategory: any;
-    categoryList: any[] = ["Java", "JavaScript", "QA", "Angular4"];
+    categoryList: any[] = ["Java", "JavaScript", "QA", "Angular4", "AWS Engineer", "Bootstrap"];
     //categoryList: any[] = [];
     questionsCheckedArr: Array<any> = [];
     //qpQuestionsCount: number = this.questionsCheckedArr.length;
@@ -43,7 +43,7 @@ export class PapermanagementComponent implements OnInit {
         var lastQuestion: any = null;
         var startQuestions: string = "startQue";
         //catName = "UI@";
-        this.paperService.getThisCategoryQuestions(catName, lastQuestion, startQuestions).subscribe(
+        this.paperService.getThisCategoryQuestions(catName, lastQuestion).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -51,11 +51,11 @@ export class PapermanagementComponent implements OnInit {
     }
 
     getNextPageQuestions(catName: string) {
-        var lastQuestionIdVal: string = this.catQuestions[this.catQuestions.length - 1]['questionid'];
-        var nextQuestions: string = "nextQue";
+        var lastQuestionIdVal: string = this.catQuestions[this.catQuestions.length - 1]['Qsn_id'];
+        //var nextQuestions: string = "nextQue";
         console.log("Category Name: " + catName);
         console.log("Last question id: " + lastQuestionIdVal);
-        this.paperService.getThisCategoryQuestions(catName, lastQuestionIdVal, nextQuestions).subscribe(
+        this.paperService.getThisCategoryQuestions(catName, lastQuestionIdVal).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -67,7 +67,7 @@ export class PapermanagementComponent implements OnInit {
         var prevQuestions: string = "prevQue";
         console.log("Category Name: " + catName);
         console.log("First question id: " + firstQuestionIdVal);
-        this.paperService.getThisCategoryQuestions(catName, firstQuestionIdVal, prevQuestions).subscribe(
+        this.paperService.getThisCategoryQuestions(catName, firstQuestionIdVal).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -115,7 +115,8 @@ export class PapermanagementComponent implements OnInit {
         for(let newArr of this.questionsCheckedArr){
             this.paperCreationArray.push({"QsnId": newArr.Qsn_id, "Category":newArr.Category});
         }
-        this.paperCreationData = {"paperName":this.paperName, "paperArr":this.paperCreationArray};
+        
+        //this.paperCreationData = {"paperName":this.paperName, "paperArr":this.paperCreationArray};
 
 /*
 "{"paperName":"QATest","paperArr":[{"QsnId":"13650e87-2d58-8fcf-716b-258afc808953","Category":"Java"},{"QsnId":"baa7e34d-ec6f-303a-d5f8-cdd4a3f5a9e6","Category":"Java"}]}"
@@ -131,8 +132,8 @@ export class PapermanagementComponent implements OnInit {
             }
         );
         
-        this.paperService.createPaperService(this.paperCreationData).subscribe(
-            error => alert(error),
+        this.paperService.createPaperService(this.paperCreationArray).subscribe(
+            error => alert("Error in saving the paper"),
             () => {
                     alert("Paper saved successfully.");
                     this.paperName='';

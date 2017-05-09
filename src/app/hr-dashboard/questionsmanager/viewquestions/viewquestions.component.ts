@@ -17,7 +17,7 @@ export class ViewquestionsComponent implements OnInit {
 
     questionsList: Array<any> = [];
     selectedCategory: any;
-    categoryList: any[] = ["Java", "JavaScript", "QA", "Angular4"];
+    categoryList: any[] = ["Java", "JavaScript", "QA", "Angular4", "AWS Engineer", "Bootstrap"];
     catQuestions: any;
 
     items: any[] = [];
@@ -43,7 +43,7 @@ export class ViewquestionsComponent implements OnInit {
         var lastQuestion: any = null;
         var startQuestions: string = "startQue";
         //catName = "UI@";
-        this.paperService.getThisCategoryQuestions(catName, lastQuestion, startQuestions).subscribe(
+        this.paperService.getThisCategoryQuestions(catName, lastQuestion).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -51,11 +51,11 @@ export class ViewquestionsComponent implements OnInit {
     }
 
     getNextPageQuestions(catName: string) {
-        var lastQuestionIdVal: string = this.catQuestions[this.catQuestions.length - 1]['questionid'];
+        var lastQuestionIdVal: string = this.catQuestions[this.catQuestions.length - 1]['Qsn_id'];
         var nextQuestions: string = "nextQue";
         console.log("Category Name: " + catName);
         console.log("Last question id: " + lastQuestionIdVal);
-        this.paperService.getThisCategoryQuestions(catName, lastQuestionIdVal, nextQuestions).subscribe(
+        this.paperService.getThisCategoryQuestions(catName, lastQuestionIdVal).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
@@ -67,7 +67,7 @@ export class ViewquestionsComponent implements OnInit {
         var prevQuestions: string = "prevQue";
         console.log("Category Name: " + catName);
         console.log("First question id: " + firstQuestionIdVal);
-        this.paperService.getThisCategoryQuestions(catName, firstQuestionIdVal, prevQuestions).subscribe(
+        this.paperService.getThisCategoryQuestions(catName, firstQuestionIdVal).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
