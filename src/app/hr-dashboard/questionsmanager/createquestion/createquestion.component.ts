@@ -70,7 +70,6 @@ export class CreatequestionComponent implements OnInit {
  
 
   addQuestion(form: NgForm) {
-    debugger;
       if (!this.question || !this.option1Value || !this.option2Value || !this.option3Value || !this.option4Value) {
           alert('please provide required fields');
           return false;
