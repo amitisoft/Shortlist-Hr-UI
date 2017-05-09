@@ -121,28 +121,38 @@ export class PapermanagementComponent implements OnInit {
 /*
 "{"paperName":"QATest","paperArr":[{"QsnId":"13650e87-2d58-8fcf-716b-258afc808953","Category":"Java"},{"QsnId":"baa7e34d-ec6f-303a-d5f8-cdd4a3f5a9e6","Category":"Java"}]}"
 */
-        this.paperService.getPaperList().subscribe(
-            data => {
-                let paperTemp = data;
-                // paperNameArray;
-            },
-            error => {alert(error);},
-            () => {
-                console.log("Finished.");
-            }
-        );
+        // this.paperService.getPaperList().subscribe(
+        //     data => {
+        //         let paperTemp = data;
+        //         // paperNameArray;
+        //     },
+        //     error => {alert(error);},
+        //     () => {
+        //         console.log("Finished.");
+        //     }
+        // );
         
         this.paperService.createPaperService(this.paperCreationArray).subscribe(
-            error => alert("Error in saving the paper"),
-            () => {
-                    alert("Paper saved successfully.");
-                    this.paperName='';
-                    this.questionsCheckedArr = [];
+            // data => {console.log("Data: "+data);},
+            // error => alert("CustomError: "+error),
+            // () => {
+            //         alert("Paper saved successfully.");
+            //         this.paperName='';
+            //         this.questionsCheckedArr = [];
+            //         this.paperCreationArray = [];
 
-                    /*this.catQuestions.forEach((eachCatQuestion) => {
-                        eachCatQuestion.checked = false;
-                    });*/
-                  }
+            //         this.changeCategory(this.categoryList[0]);
+            //       }
+
+            (response) => {
+                if (response.status == 200) {
+                        alert('paper saved auccessfully');
+                        this.paperName='';
+                    this.questionsCheckedArr = [];
+                    this.paperCreationArray = [];    
+                    this.changeCategory(this.categoryList[0]);
+                }
+            }
         );
 /*
 --------------------------------------------------
