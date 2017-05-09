@@ -60,7 +60,7 @@ export class PapermanagementService {
   }
 
   getThisCategoryQuestions(categoryName, lastQuestionId) {
-    var getCategoryQuestionsUrl = 'https://e92rcpg85i.execute-api.us-east-1.amazonaws.com/dev/api/getquestionbycategory/Category/'+categoryName+'/LastqsnId/'+lastQuestionId+''; 
+    var getCategoryQuestionsUrl = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/getquestionbycategory/Category/'+categoryName+'/LastqsnId/'+lastQuestionId+'';
     // var headers = new Headers();
     // headers.append('Content-Type', 'application/x-www-form-urlencoded');
     return this.http.get(getCategoryQuestionsUrl).map(res => res.json());
@@ -78,6 +78,8 @@ export class PapermanagementService {
     console.log(params);*/
     
     console.log(paperCreationData);
+    // var paperjson = JSON.stringify(paperCreationData);
+    // console.log(paperjson);
     return this.http.post(this.paperProperties.questionpaper, paperCreationData);
   }
 

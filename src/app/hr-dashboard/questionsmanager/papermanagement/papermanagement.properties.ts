@@ -7,7 +7,8 @@ export class PapermanagementProperties {
     amitionlinetestcategory = 'https://amitionlinetestcategory.firebaseio.com/category.json';
     categoryPermission = 'https://amitionlinetestcategory.firebaseio.com/categoryPermission.json';
     /*questionpaper = 'https://question-paper-fd450.firebaseio.com/question-paper.json';*/
-    questionpaper = 'https://e92rcpg85i.execute-api.us-east-1.amazonaws.com/dev/api/questionpaper';
+    questionpaper = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/questionpaper';
+    
     getPaperList = '';
     
     viewCategories2 = 'https://category-list-4e53a.firebaseio.com/categorylist.json';
