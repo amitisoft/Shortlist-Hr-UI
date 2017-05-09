@@ -13,6 +13,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { HrDashboardComponent } from './hr-dashboard/hr-dashboard.component';
 
 import { AuthService } from './auth/auth.service';
+import { AuthGaurd } from './auth/auth-gaurd.service';
 import { QuestionsmanagerComponent } from './hr-dashboard/questionsmanager/questionsmanager.component';
 
 import { CategorymanagerComponent } from './hr-dashboard/categorymanager/categorymanager.component';
@@ -63,7 +64,7 @@ import { TruncateModule } from 'ng2-truncate';
     FormsModule, ReactiveFormsModule , TruncateModule,
     HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
-  providers: [AuthService, CategorymanagerService, CreateTestService, PapermanagementService, CategoryProperties],
+  providers: [AuthService, AuthGaurd, CategorymanagerService, CreateTestService, PapermanagementService, CategoryProperties],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -26,15 +26,17 @@ import { CreatecategoryComponent } from './hr-dashboard/categorymanager/createca
 import { ViewcategoryComponent } from './hr-dashboard/categorymanager/viewcategory/viewcategory.component';
 import { CadidatedataComponent } from './hr-dashboard/cadidatedata/cadidatedata.component';
 
+import { AuthGaurd } from './auth/auth-gaurd.service';
+
 
 // Root Router Part
 
 const appRoutes: Routes = [
-    //{ path: '', redirectTo: '/SigninComponent', pathMatch: 'full' },
+    { path: '', redirectTo: '/signin', pathMatch: 'full' },
     { path: 'signin', component: SigninComponent },
     // { path: 'protected', component: ProtectedComponent },
     {
-        path: 'hrdashboard', component: HrDashboardComponent, children: [
+        path: 'hrdashboard', component: HrDashboardComponent, canActivate: [AuthGaurd], children: [
             //{ path: '', component: DashboardpanelComponent } ,
             {
                 path: 'qmanager', component: QuestionsmanagerComponent, children: [

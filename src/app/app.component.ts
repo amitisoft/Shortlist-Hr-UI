@@ -15,6 +15,9 @@ export class AppComponent implements OnInit {
 
         firebase.initializeApp({
 
+            //apiKey: "AIzaSyB-EJfxhS3klbfhCbTtYk_wwjxPeG69i2U",
+            //authDomain: "mytestapp-cabaf.firebaseapp.com"
+
             apiKey: "AIzaSyDZ3Hd4RA5T64NTXYqSw0XiOGV76zsQaiM",
             authDomain: "amitionlinetest.firebaseapp.com"
         });
