@@ -37,9 +37,9 @@ export class CategorymanagerService {
 
         return this.http.post(this.categoryPro.sendCategories, body, {
             headers: headers
-        })
-            .map((data: Response) => data.json())
-            .catch(this.handleError); // For Error Handling
+        });
+            // .map((data: Response) => data.json())
+            // .catch(this.handleError); // For Error Handling
     }
 
 
