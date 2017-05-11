@@ -39,26 +39,27 @@ export class ManagetestComponent implements OnInit {
             if (isChecked) {
                 this.startTestRows.push({
                     id: sampleManageTestData[i].candidateId,
-                    studentId: sampleManageTestData[i].candidateId,
-                    name: sampleManageTestData[i].candidateFullName,
-                    postApplied: sampleManageTestData[i].postApplied,
+                    candidateId: sampleManageTestData[i].candidateId,
+                    bookingId: sampleManageTestData[i].bookingId,
+                    //name: sampleManageTestData[i].candidateFullName,
+                    jobPosition: sampleManageTestData[i].jobPosition,
                     emailId: sampleManageTestData[i].candidateMailId,
-                    date: sampleManageTestData[i].DOE,
-                    subject: sampleManageTestData[i].category,
-                    paper: sampleManageTestData[i].paperType,
-                    status: sampleManageTestData[i].testStatus,
-                    resendLink: sampleManageTestData[i].resendLink
+                    DOE: sampleManageTestData[i].DOE,
+                    category: sampleManageTestData[i].category,
+                    //paper: sampleManageTestData[i].paperType,
+                    testStatus: sampleManageTestData[i].testStatus,
+                    //resendLink: sampleManageTestData[i].resendLink
                 })
                 this.selectedRows = true;
             }
         }
-
+   
         if (this.selectedRows) {
             this.mngTestService.sendStartTestdata(this.startTestRows).subscribe(
                 (response) => {
                     console.log(this.startTestRows);
                     if (response.status == 200) {
-
+                        alert('data submitted auccessfully');
                     }
                 }
             );

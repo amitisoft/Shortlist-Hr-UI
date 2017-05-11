@@ -1,6 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { MdInputModule } from '@angular/material';
+
 import { AuthService } from '../auth.service';
 
 @Component({

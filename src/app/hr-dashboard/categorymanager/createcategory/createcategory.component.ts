@@ -6,7 +6,7 @@ import { categoryManagerModel } from '../categorymanager.model';
 import { Response } from '@angular/http';
 
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
   selector: 'amiti-createcategory',
@@ -25,7 +25,7 @@ export class CreatecategoryComponent implements OnInit, OnDestroy {
     
     items: any[] = [];
 
-    constructor(private categoryMngService: CategorymanagerService, private route: ActivatedRoute) { }
+    constructor(private categoryMngService: CategorymanagerService, private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
 
@@ -50,9 +50,13 @@ export class CreatecategoryComponent implements OnInit, OnDestroy {
       this.categoryMngService.sendData(categoryInfo)
       .subscribe(
           (response) => {
+              alert('data submitted auccessfully');
+              this.onClear();
+              this.router.navigate(['../viewcategory'], { relativeTo: this.route });
+
             if (response.status == 200) {
-                    alert('data submitted auccessfully');
-                    this.onClear();
+                    
+                   
             }
         }
 

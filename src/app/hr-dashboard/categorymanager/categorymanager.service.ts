@@ -34,6 +34,7 @@ export class CategorymanagerService {
             headers: headers
         }).map((data: Response) => data.json())
           .catch(this.handleError); // For Error Handling
+
     }
 
     getOwnData() {
