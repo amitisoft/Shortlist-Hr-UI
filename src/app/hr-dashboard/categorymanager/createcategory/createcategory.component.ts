@@ -45,8 +45,9 @@ export class CreatecategoryComponent implements OnInit, OnDestroy {
 
 
   onCreateCategory(categoryname: string, categorydescription: string) {
-
-      this.categoryMngService.sendData({ CATEGORYNAME: categoryname, CATEDESCRIPTION: categorydescription })
+    var categoryInfo:any = {categoryname: categoryname, categorydescription: categorydescription};
+    console.log(categoryInfo);
+      this.categoryMngService.sendData(categoryInfo)
       .subscribe(
           (response) => {
             if (response.status == 200) {

@@ -15,9 +15,7 @@ export class CategorymanagerService {
 
 
     getCategoryForEdit(index: number) {
-
         return this.getOwnData[index];
-
     }
 
     getData() {
@@ -28,33 +26,25 @@ export class CategorymanagerService {
 
     // Send Data's to Server
 
-    sendData(user: any) {
-        const body = JSON.stringify(user);
-
+    sendData(categorydata: any) {
+        const categorydataconst = JSON.stringify(categorydata);
         const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
-
         headers.append('Content-Type', 'application/json');
-
-        return this.http.post(this.categoryPro.sendCategories, body, {
+        return this.http.post(this.categoryPro.sendCategories, categorydataconst, {
             headers: headers
-        })
-            .map((data: Response) => data.json())
-            .catch(this.handleError); // For Error Handling
+        }).map((data: Response) => data.json())
+          .catch(this.handleError); // For Error Handling
     }
-
 
     getOwnData() {
         return this.http.get(this.categoryPro.viewCategories)
             .map((response: Response) => response.json());
-
-
     }
+
 
     getCategory(index: number) {
         return this.items[index];
     }
-
-
     // For Error Handling 
     private handleError(error: any) {
         console.log(error);

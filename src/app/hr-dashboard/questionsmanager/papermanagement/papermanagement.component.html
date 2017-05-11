@@ -14,14 +14,8 @@
 
           <div class="col-xs-5">
               <select name="singleSelect" id="singleSelect" class="form-control" (ngModelChange)="changeCategory($event)" [(ngModel)]="selectedCategory" required>
-                <option [ngValue]="category" *ngFor="let category of categoryList">{{category}}</option>
+                <option [ngValue]="category.categoryname" *ngFor="let category of categoryList">{{category.categoryname}}</option>
               </select>
-              <!-- <label for="singleSelect">Select Category:</label>
-              <select name="singleSelect" id="singleSelect" class="form-control"  [(ngModel)]="category" required>
-                <option value="" ></option>
-                <option [value]="category.CATEGORYNAME" *ngFor="let category of items">{{category.CATEGORYNAME}}</option>
-              </select> -->
-
           </div>
 
           <div class="col-xs-6">
@@ -51,7 +45,7 @@
 
         <tbody>
         <tr *ngFor="let eachCatQuestion of catQuestions; let i = index; let lastQuestion = last ">
-          <td align="center"><input type="checkbox" #chkbx [attr.data-questionName]="eachCatQuestion.Qsn" [attr.data-categoryName]="eachCatQuestion.Category" value={{eachCatQuestion.Qsn_id}} (change)="updateQuestionsCheckbox(chkbx, $event)" /></td>
+          <td align="center"><input type="checkbox" #chkbx [attr.data-questionName]="eachCatQuestion.Qsn" [attr.data-categoryName]="eachCatQuestion.Category" value={{eachCatQuestion.Qsn_id}} (change)="updateQuestionsCheckbox(chkbx, $event)" [checked]="eachCatQuestion.checked" /></td>
           <td align="center">{{i+1}}</td>
           <td>{{eachCatQuestion.Qsn | truncate: 30}}</td>
           <td align="center">{{eachCatQuestion.Category}}</td>
@@ -84,7 +78,13 @@
         <label></label>
         <button class="btn btn-success" (click)="createCandidatePaper()">SAVE <span class="glyphicon glyphicon-floppy-save"></span></button>
       </div>
-      <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+        <label></label>
+        <button class="btn btn-success" (click)="clearCandidatePaper()">Clear <span class="glyphicon glyphicon-floppy-save"></span></button>
+      </div>
+    </div>
+    
+    <div class="row">
       <div class="col-xs-12"><hr /></div>
       <div class="col-xs-12">
         <!-- <hr /> -->

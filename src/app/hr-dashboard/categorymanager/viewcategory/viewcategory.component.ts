@@ -17,7 +17,6 @@ export class ViewcategoryComponent implements OnInit {
         private route: ActivatedRoute) { }
 
     ngOnInit() {
-
         this.categoryMngService.getOwnData()
             .subscribe(
             //for loopping // data => this.items = data
@@ -27,8 +26,7 @@ export class ViewcategoryComponent implements OnInit {
                     myArray.push(data[key]);
                 }
                 this.items = myArray;
-            }
-            );
+            });
     }
 
     onEditCategory(index: number) {
