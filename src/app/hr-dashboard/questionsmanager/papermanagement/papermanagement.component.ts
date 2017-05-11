@@ -1,47 +1,53 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PapermanagementService } from './papermanagement.service';
 import { PapermanagementProperties } from './papermanagement.properties';
+import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
 import 'rxjs/Rx';
 
 @Component({
   selector: 'amiti-papermanagement',
   templateUrl: './papermanagement.component.html',
   styleUrls: ['./papermanagement.component.css'],
-  providers: [PapermanagementService, PapermanagementProperties]
+  providers: [PapermanagementService, CategorymanagerService, PapermanagementProperties]
 })
 export class PapermanagementComponent implements OnInit {
 
     questions: any[] = [];
     catQuestions: any;
+
+    /*------- Category list variables ----------*/
     selectedCategory: any;
-    categoryList: any[] = ["Java", "JavaScript", "QA", "Angular4", "AWS Engineer", "Bootstrap"];
-    //categoryList: any[] = [];
+    categoryList: any[] = [];
+
     questionsCheckedArr: Array<any> = [];
     //qpQuestionsCount: number = this.questionsCheckedArr.length;
     paperName:string;
     paperCreationData:any;
     paperCreationArray: Array<any> = [];
 
-    constructor(private paperService: PapermanagementService) {
-        this.selectedCategory = this.categoryList[0];
-        this.changeCategory(this.categoryList[0]);
+    constructor(private paperService: PapermanagementService, private categoryMngService: CategorymanagerService) {
+        this.categoryMngService.getOwnData()
+            .subscribe(
+            data => {
+                for (let key in data) {
+                    this.categoryList.push(data[key]);
+                }
+                console.log(this.categoryList[0]);
+            },
+            error => {console.log(error)},
+            () => {
+                this.selectedCategory = this.categoryList[0]['categoryname'];
+                this.changeCategory(this.categoryList[0]['categoryname']);
+        });
     }
 
     ngOnInit() {
 
     }
 
-    onGetCategoryQuestion(selectedCategory: string) {
-        this.paperService.sendCategory({ CATEGORYNAME: selectedCategory })
-            .subscribe(
-            data => console.log(data),
-            error => console.log(error)
-            );
-    }
-
     changeCategory(catName: string) {
         var lastQuestion: any = null;
-        var startQuestions: string = "startQue";
+        //var startQuestions: string = "startQue";
         //catName = "UI@";
         this.paperService.getThisCategoryQuestions(catName, lastQuestion).subscribe(
             data => this.catQuestions = data,
@@ -64,7 +70,7 @@ export class PapermanagementComponent implements OnInit {
 
     getPrevPageQuestions(catName: string) {
         var firstQuestionIdVal: string = this.catQuestions[0]['questionid'];
-        var prevQuestions: string = "prevQue";
+        //var prevQuestions: string = "prevQue";
         console.log("Category Name: " + catName);
         console.log("First question id: " + firstQuestionIdVal);
         this.paperService.getThisCategoryQuestions(catName, firstQuestionIdVal).subscribe(
@@ -116,67 +122,42 @@ export class PapermanagementComponent implements OnInit {
             this.paperCreationArray.push({"QsnId": newArr.Qsn_id, "Category":newArr.Category});
         }
         
-        //this.paperCreationData = {"paperName":this.paperName, "paperArr":this.paperCreationArray};
-
-/*
-"{"paperName":"QATest","paperArr":[{"QsnId":"13650e87-2d58-8fcf-716b-258afc808953","Category":"Java"},{"QsnId":"baa7e34d-ec6f-303a-d5f8-cdd4a3f5a9e6","Category":"Java"}]}"
-*/
-        // this.paperService.getPaperList().subscribe(
-        //     data => {
-        //         let paperTemp = data;
-        //         // paperNameArray;
-        //     },
-        //     error => {alert(error);},
-        //     () => {
-        //         console.log("Finished.");
-        //     }
-        // );
-        
         this.paperService.createPaperService(this.paperCreationArray).subscribe(
-            // data => {console.log("Data: "+data);},
-            // error => alert("CustomError: "+error),
-            // () => {
-            //         alert("Paper saved successfully.");
-            //         this.paperName='';
-            //         this.questionsCheckedArr = [];
-            //         this.paperCreationArray = [];
+        /* data => {console.log("Data: "+data);},
+            error => alert("CustomError: "+error),
+            () => {
+                    alert("Paper saved successfully.");
+                    this.paperName='';
+                    this.questionsCheckedArr = [];
+                    this.paperCreationArray = [];
 
-            //         this.changeCategory(this.categoryList[0]);
-            //       }
+                    this.selectedCategory = this.categoryList[0]['categoryname'];
+                    this.changeCategory(this.categoryList[0]['categoryname']);
+                  } */
 
             (response) => {
                 if (response.status == 200) {
                         alert('paper saved auccessfully');
                         this.paperName='';
                     this.questionsCheckedArr = [];
-                    this.paperCreationArray = [];    
-                    this.changeCategory(this.categoryList[0]);
+                    this.paperCreationArray = [];   
+                    //this.selectedCategory = this.categoryList[0]['categoryname']; 
+                    //this.changeCategory(this.categoryList[0]['categoryname']);
+                    this.catQuestions.forEach((eachCatQuestion) => {
+                        eachCatQuestion.checked = false;
+                    })
                 }
             }
         );
-/*
---------------------------------------------------
- {
-    
+    }
 
-"paperName": xxxxxx,
- "paperArr": [
-   {
-     "QsnId": "KKLLL",
-     "Category": "KLLLL1"
-   },
-   {
-      "QsnId": "LLDDD",
-      "Category": "DDDDDL1"
-   },
-   {
-      "QsnId": "MMKKKK",
-       "Category": "PPPPPM1"
-  }
- ]
-  }
---------------------------------------------------
-*/
+    clearCandidatePaper(){
+        this.paperName='';
+        this.questionsCheckedArr = [];
+        this.paperCreationArray = [];
+        this.catQuestions.forEach((eachCatQuestion) => {
+            eachCatQuestion.checked = false;
+        })
     }
 
 }

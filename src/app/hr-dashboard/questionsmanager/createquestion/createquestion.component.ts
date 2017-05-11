@@ -13,29 +13,29 @@ import { Http } from '@angular/http';
   selector: 'amiti-createquestion',
   templateUrl: './createquestion.component.html',
   styleUrls: ['./createquestion.component.css'],
-  providers:[CreateQuestionService,CreateQuestionProperties]
+  providers:[CreateQuestionService,CreateQuestionProperties, CategorymanagerService]
 })
 export class CreatequestionComponent implements OnInit {
 
-  items: any[] = [];
+  /*------- Category list variables ----------*/
+  selectedCategory: any;
+  categoryList: any[] = [];
 
   constructor(private categoryMngService: CategorymanagerService,
-      private http: Http, private createQuestion: CreateQuestionService) { }
-
-  ngOnInit() {
-
-      this.categoryMngService.getOwnData()
-          .subscribe(
-          //for loopping // data => this.items = data
-          data => {
-              const myArray = [];
-              for (let key in data) {
-                  myArray.push(data[key]);
-              }
-              this.items = myArray;
-          }
-       );
+      private http: Http, private createQuestion: CreateQuestionService) {
+        this.categoryMngService.getOwnData()
+            .subscribe(
+            data => {
+                for (let key in data) {
+                    this.categoryList.push(data[key]);
+                }
+                console.log(this.categoryList[0]);
+            },
+            error => {console.log(error)},
+            () => { });
   }
+
+  ngOnInit() {}
 
 
   questionData:any;

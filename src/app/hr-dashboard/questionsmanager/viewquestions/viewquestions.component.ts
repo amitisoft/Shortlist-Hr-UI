@@ -11,17 +11,16 @@ import { PapermanagementProperties } from '../papermanagement/papermanagement.pr
   selector: 'amiti-viewquestions',
   templateUrl: './viewquestions.component.html',
   styleUrls: ['./viewquestions.component.css'],
-  providers: [ViewQuestionsService, PapermanagementService, ViewQuestionProperties, PapermanagementProperties]
+  providers: [ViewQuestionsService, PapermanagementService, ViewQuestionProperties, CategorymanagerService, PapermanagementProperties]
 })
 export class ViewquestionsComponent implements OnInit {
 
     questionsList: Array<any> = [];
+    /*------- Category list variables ----------*/
     selectedCategory: any;
-    categoryList: any[] = ["Java", "JavaScript", "QA", "Angular4", "AWS Engineer", "Bootstrap"];
+    categoryList: any[] = [];
+
     catQuestions: any;
-
-    items: any[] = [];
-
     createQuestionClicked: boolean = false;
 
     constructor(private router: Router, private route: ActivatedRoute,
@@ -31,8 +30,19 @@ export class ViewquestionsComponent implements OnInit {
         private viewQuestionService: ViewQuestionsService,
         private paperService: PapermanagementService){
 
-        this.selectedCategory = this.categoryList[0];
-        this.changeCategory(this.categoryList[0]);
+        this.categoryMngService.getOwnData()
+            .subscribe(
+            data => {
+                for (let key in data) {
+                    this.categoryList.push(data[key]);
+                }
+                console.log(this.categoryList[0]);
+            },
+            error => {console.log(error)},
+            () => {
+                this.selectedCategory = this.categoryList[0]['categoryname'];
+                this.changeCategory(this.categoryList[0]['categoryname']);
+        });
     }
 
     ngOnInit() {  
@@ -41,8 +51,7 @@ export class ViewquestionsComponent implements OnInit {
 
     changeCategory(catName: string) {
         var lastQuestion: any = null;
-        var startQuestions: string = "startQue";
-        //catName = "UI@";
+        //var startQuestions: string = "startQue";
         this.paperService.getThisCategoryQuestions(catName, lastQuestion).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
@@ -52,7 +61,7 @@ export class ViewquestionsComponent implements OnInit {
 
     getNextPageQuestions(catName: string) {
         var lastQuestionIdVal: string = this.catQuestions[this.catQuestions.length - 1]['Qsn_id'];
-        var nextQuestions: string = "nextQue";
+        //var nextQuestions: string = "nextQue";
         console.log("Category Name: " + catName);
         console.log("Last question id: " + lastQuestionIdVal);
         this.paperService.getThisCategoryQuestions(catName, lastQuestionIdVal).subscribe(
@@ -61,10 +70,10 @@ export class ViewquestionsComponent implements OnInit {
             () => console.log(this.catQuestions)
         );
     }
-
+    
     getPrevPageQuestions(catName: string) {
         var firstQuestionIdVal: string = this.catQuestions[0]['questionid'];
-        var prevQuestions: string = "prevQue";
+        //var prevQuestions: string = "prevQue";
         console.log("Category Name: " + catName);
         console.log("First question id: " + firstQuestionIdVal);
         this.paperService.getThisCategoryQuestions(catName, firstQuestionIdVal).subscribe(

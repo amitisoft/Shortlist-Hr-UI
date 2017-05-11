@@ -5,54 +5,9 @@ import { Observable } from 'rxjs/Rx';
 import { PapermanagementProperties } from './papermanagement.properties';
 
 @Injectable()
+
 export class PapermanagementService {
-
-    items: any[] = [];
-    constructor(private http: Http, private paperProperties:PapermanagementProperties) { }
-
-
-  getData() {
-      // return this Observable
-      return this.http.get(this.paperProperties.amitionlinetestcategory)
-          .map((response: Response) => response.json());
-  }
-
-  // Send Data's to Server
-
-  sendData(user: any) {
-      const body = JSON.stringify(user);
-
-      const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
-
-      headers.append('Content-Type', 'application/json');
-
-      return this.http.post(this.paperProperties.amitionlinetestcategory, body, {
-          headers: headers
-      })
-          .map((data: Response) => data.json())
-          .catch(this.handleError); // For Error Handling
-  }
-
-    getCategoryList(){
-        return this.http.get(this.paperProperties.viewCategories2)
-            .map((response: Response) => response.json());
-    }
-
-  sendCategory(user: any) {
-      const body = JSON.stringify(user);
-
-      const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
-
-      headers.append('Content-Type', 'application/json');
-
-      return this.http.post(this.paperProperties.categoryPermission, body, {
-          headers: headers
-      })
-          .map((data: Response) => data.json())
-          .catch(this.handleError); // For Error Handling
-  }
-
-
+  constructor(private http: Http, private paperProperties:PapermanagementProperties) { }
 
   private handleError(error: any) {
       console.log(error);
@@ -60,9 +15,9 @@ export class PapermanagementService {
   }
 
   getThisCategoryQuestions(categoryName, lastQuestionId) {
-    var getCategoryQuestionsUrl = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/getquestionbycategory/Category/'+categoryName+'/LastqsnId/'+lastQuestionId+'';
     // var headers = new Headers();
     // headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    var getCategoryQuestionsUrl = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/getquestionbycategory/Category/'+categoryName+'/LastqsnId/'+lastQuestionId+'';
     return this.http.get(getCategoryQuestionsUrl).map(res => res.json());
   }
     
@@ -77,14 +32,9 @@ export class PapermanagementService {
     var params = paperjson;
     console.log(params);*/
     
-    console.log(paperCreationData);
     // var paperjson = JSON.stringify(paperCreationData);
     // console.log(paperjson);
     return this.http.post(this.paperProperties.questionpaper, paperCreationData);
-  }
-
-  getPaperList(){
-    return this.http.get(this.paperProperties.getPaperList).map(res => res.json());
   }
 
 }

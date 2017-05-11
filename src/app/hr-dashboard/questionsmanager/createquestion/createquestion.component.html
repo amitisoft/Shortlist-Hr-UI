@@ -53,9 +53,8 @@
   <div class="col-lg-12 col-xs-12">
     <div class="form-group">
         <label for="singleSelect">Select Category:</label>
-        <select name="singleSelect" id="singleSelect" class="form-control"  [(ngModel)]="category" #categoryText="ngModel" required>
-          <option value="" ></option>
-          <option [value]="category.CATEGORYNAME" *ngFor="let category of items">{{category.CATEGORYNAME}}</option>
+        <select name="singleSelect" id="singleSelect" class="form-control"  [(ngModel)]="selectedCategory" #categoryText="ngModel" required>
+          <option [ngValue]="category.categoryname" *ngFor="let category of categoryList">{{category.categoryname}}</option>
         </select>
         <p class="help-block error" *ngIf="!categoryText.valid && categoryText.touched">Select Category</p>
     </div>
