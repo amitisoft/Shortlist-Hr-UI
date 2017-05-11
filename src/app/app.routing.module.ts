@@ -20,6 +20,8 @@ import { PapermanagementComponent } from './hr-dashboard/questionsmanager/paperm
 
 import { CreatetestComponent } from './hr-dashboard/testmanager/createtest/createtest.component';
 import { ManagetestComponent } from './hr-dashboard/testmanager/managetest/managetest.component';
+import { ManagetestTestnottakenComponent } from './hr-dashboard/testmanager/managetest/managetest-testnottaken/managetest-testnottaken.component';
+import { ManagetestTestinprocessComponent } from './hr-dashboard/testmanager/managetest/managetest-testinprocess/managetest-testinprocess.component';
 import { ResultmanagerComponent } from './hr-dashboard/testmanager/resultmanager/resultmanager.component';
 
 import { CreatecategoryComponent } from './hr-dashboard/categorymanager/createcategory/createcategory.component';
@@ -59,7 +61,13 @@ const appRoutes: Routes = [
             {
                 path: 'testmanagerComp', component: TestmanagerComponent, children: [
                     { path: 'createtest', component: CreatetestComponent },
-                    { path: 'managetest', component: ManagetestComponent },
+                    {
+                        path: 'managetest', component: ManagetestComponent, children: [
+                            { path: 'testNotTaken', component: ManagetestTestnottakenComponent },
+                            { path: 'testInProgress', component: ManagetestTestinprocessComponent }
+
+                        ]
+                    },
                     { path: 'testmanager', component: ResultmanagerComponent },
                 ]
             },

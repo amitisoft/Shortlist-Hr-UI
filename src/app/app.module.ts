@@ -41,6 +41,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MdInputModule, MdCheckboxModule } from '@angular/material';
+import { ManagetestTestnottakenComponent } from './hr-dashboard/testmanager/managetest/managetest-testnottaken/managetest-testnottaken.component';
+import { ManagetestTestinprocessComponent } from './hr-dashboard/testmanager/managetest/managetest-testinprocess/managetest-testinprocess.component';
 
 
 
@@ -64,7 +66,9 @@ import { MdInputModule, MdCheckboxModule } from '@angular/material';
       DropdownDirective,
       CadidatedataComponent,
       ResultmanagerComponent,
-      PapermanagementComponent
+      PapermanagementComponent,
+      ManagetestTestnottakenComponent,
+      ManagetestTestinprocessComponent
   ],
   imports: [
       BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,

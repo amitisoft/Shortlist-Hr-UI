@@ -2,7 +2,7 @@
 
 export class ManageTestProperties {
 
-    // Getting Manage Test Data
+    // Getting Manage Test Data [ Not Taken List]
 
     //getManageTestDatas = 'https://api.myjson.com/bins/mm34p';
     getManageTestDatas = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/starttestdashboard/candidateId/%7BcandidateId%7D/bookingId/%7BbookingId%7D/testStatus/%7BtestStatus%7D';
@@ -11,4 +11,9 @@ export class ManageTestProperties {
 
     //sendTestStartedDatas = 'https://amitionlinemanagetest.firebaseio.com/startTestData.json';
     sendTestStartedDatas = ' https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
+
+
+    // Getting Manage Test Data [Test In Progress]
+
+    getManageTestInProgress = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/starttestdashboard/candidateId/%7BcandidateId%7D/bookingId/%7BbookingId%7D/testStatus/%7BtestStatus%7D';
 }
