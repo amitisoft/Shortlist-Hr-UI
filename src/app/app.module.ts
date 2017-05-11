@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+
 import { AppRoutingModule } from './app.routing.module';
 
 
@@ -14,6 +14,7 @@ import { HrDashboardComponent } from './hr-dashboard/hr-dashboard.component';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGaurd } from './auth/auth-gaurd.service';
+
 import { QuestionsmanagerComponent } from './hr-dashboard/questionsmanager/questionsmanager.component';
 
 import { CategorymanagerComponent } from './hr-dashboard/categorymanager/categorymanager.component';
@@ -36,6 +37,12 @@ import { PapermanagementComponent } from './hr-dashboard/questionsmanager/paperm
 import { PapermanagementService } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.service';
 
 import { TruncateModule } from 'ng2-truncate';
+import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MdInputModule, MdCheckboxModule } from '@angular/material';
+
+
 
 @NgModule({
   declarations: [
@@ -60,6 +67,7 @@ import { TruncateModule } from 'ng2-truncate';
       PapermanagementComponent
   ],
   imports: [
+      BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,
     BrowserModule,
     FormsModule, ReactiveFormsModule , TruncateModule,
     HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()

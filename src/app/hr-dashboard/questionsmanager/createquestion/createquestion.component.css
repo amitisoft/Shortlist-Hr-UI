@@ -15,3 +15,7 @@ textarea.ng-invalid.ng-touched {
 .error{
 	color: red;
 }
+
+.example-margin {
+  margin: 0 10px;
+}
