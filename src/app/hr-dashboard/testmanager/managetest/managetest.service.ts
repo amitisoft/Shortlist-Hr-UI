@@ -12,10 +12,15 @@ export class ManagetestService {
 
 
 
-    getData() {
+    getDataTestNotTaken() {
         // return this Observable
         return this.http.get(this.manageTestPro.getManageTestDatas)
         .map((response: Response) => response.json());
+    }
+
+    getDataTestInProgress() {
+        return this.http.get(this.manageTestPro.getManageTestInProgress)
+            .map((response: Response) => response.json());
     }
 
     // Send Data's to Server
