@@ -27,7 +27,7 @@ import { ResultmanagerComponent } from './hr-dashboard/testmanager/resultmanager
 import { CreatecategoryComponent } from './hr-dashboard/categorymanager/createcategory/createcategory.component';
 import { ViewcategoryComponent } from './hr-dashboard/categorymanager/viewcategory/viewcategory.component';
 import { CadidatedataComponent } from './hr-dashboard/cadidatedata/cadidatedata.component';
-
+import { HomeComponent } from './hr-dashboard/home/home.component';
 import { AuthGaurd } from './auth/auth-gaurd.service';
 
 
@@ -39,7 +39,8 @@ const appRoutes: Routes = [
     // { path: 'protected', component: ProtectedComponent },
     {
         path: 'hrdashboard', component: HrDashboardComponent, canActivate: [AuthGaurd], children: [
-            //{ path: '', component: DashboardpanelComponent } ,
+            { path: '', component: HomeComponent } ,
+            { path: 'home', component: HomeComponent } ,
             {
                 path: 'qmanager', component: QuestionsmanagerComponent, children: [
                     { path: 'createquestion', component: CreatequestionComponent },
