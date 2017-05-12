@@ -19,4 +19,10 @@ defineSupportCode(function ({Given,When}) {
     return questionManager.createQuestion();
 
   });
+
+  When(/^I click on create Questions$/, () => {
+
+    return questionManager.createQuestion();
+
+  });
 });

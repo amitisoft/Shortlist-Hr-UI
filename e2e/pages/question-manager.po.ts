@@ -21,8 +21,12 @@ export class QuestionManagerPage {
     this.proHelper.verifyElementVisibleUsingXPath(this.hrDashboardPanelXPath);
   }
 
-  clickQuestionManagerTab() {
+  verifyQuestionManagerTabVisible() {
     this.proHelper.verifyElementVisibleUsingXPath(this.questionManagerTabXPath);
+  }
+
+  clickQuestionManagerTab() {
+    this.proHelper.clickUsingXPath(this.questionManagerTabXPath);
   }
 
   clickCreateQuestionButton() {
@@ -49,21 +53,16 @@ export class QuestionManagerPage {
     return this.proHelper.clickUsingXPath(categoryName);
   }
 
- // clickAddButton() {
- //   this.proHelper.clickUsingButtonText(this.);
-  //}
+  clickAddButton() {
+    this.proHelper.clickUsingButtonText(this.addQuestionButtonText);
+ }
 
- // clickCreateQuestionButton() {
- //   this.proHelper.clickUsingButtonText(this.createQuestionButtonText);
- // }
+  clickClearButton() {
+    this.proHelper.clickUsingButtonText(this.clearFieldsButtonText);
+  }
 
-
- // getLoginButton() {
- //   return this.proHelper.getWebElementUsingXPath(this.loginButtonXPath);
- // }
-
- // waitForLoginButton() {
- //   return this.proHelper.waitForElementXPath(this.loginButtonXPath);
- // }
+ verifySelectedOption() {
+   return this.proHelper.waitForElementXPath(this.answersSelected);
+ }
 
 }
