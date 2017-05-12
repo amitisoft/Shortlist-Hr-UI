@@ -69,6 +69,6 @@ import { Router } from '@angular/router';
     logOut() {
         firebase.auth().signOut();
         this.token = null;
-        this.router.navigate(['/signin']);
+        this.router.navigate(['/signinpanel']);
     }
 }
