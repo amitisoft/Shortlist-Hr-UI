@@ -2,15 +2,12 @@
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
-import { ManageTestProperties } from './managetest.properties';
-
+import { CommonProperties } from '../../../common.properties';
 
 @Injectable()
 export class ManagetestService {
 
-    constructor(private http: Http, private manageTestPro: ManageTestProperties) { }
-
-
+    constructor(private http: Http, private manageTestPro: CommonProperties) { }
 
     getDataTestNotTaken() {
         // return this Observable

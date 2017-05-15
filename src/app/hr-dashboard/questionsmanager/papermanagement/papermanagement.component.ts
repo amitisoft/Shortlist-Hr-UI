@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { PapermanagementService } from './papermanagement.service';
-import { PapermanagementProperties } from './papermanagement.properties';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
 import 'rxjs/Rx';
+declare var swal: any;
 
 @Component({
   selector: 'amiti-papermanagement',
   templateUrl: './papermanagement.component.html',
   styleUrls: ['./papermanagement.component.css'],
-  providers: [PapermanagementService, CategorymanagerService, PapermanagementProperties]
+  providers: [PapermanagementService, CategorymanagerService]
 })
 export class PapermanagementComponent implements OnInit {
 
@@ -24,6 +24,7 @@ export class PapermanagementComponent implements OnInit {
     paperName:string;
     paperCreationData:any;
     paperCreationArray: Array<any> = [];
+    
 
     constructor(private paperService: PapermanagementService, private categoryMngService: CategorymanagerService) {
         this.categoryMngService.getOwnData()
@@ -108,6 +109,12 @@ export class PapermanagementComponent implements OnInit {
         //this.paperName.trim();
         console.log("Paper name: "+this.paperName);
 
+/*        if (this.questionsCheckedArr.length == 0) {
+            swal("Alert", "Please select atleast one question to create the Question Paper").then(function(){
+                return;
+            })
+        }*/
+
         if (this.questionsCheckedArr.length == 0) {
             alert("Please select atleast one question to create the Question Paper");
             return;
@@ -152,12 +159,29 @@ export class PapermanagementComponent implements OnInit {
     }
 
     clearCandidatePaper(){
-        this.paperName='';
-        this.questionsCheckedArr = [];
-        this.paperCreationArray = [];
-        this.catQuestions.forEach((eachCatQuestion) => {
-            eachCatQuestion.checked = false;
+    swal({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then(function() {
+            this.paperName='';
+            this.questionsCheckedArr = [];
+            this.paperCreationArray = [];
+            this.catQuestions.forEach((eachCatQuestion) => {
+                eachCatQuestion.checked = false;
+            });
+          swal(
+            'cleared!',
+            'Your paper name is cleared.',
+            'success'
+          );
         })
+// alert("Check");
+
     }
 
 }

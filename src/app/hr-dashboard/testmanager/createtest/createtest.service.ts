@@ -2,12 +2,12 @@
 import { Http } from '@angular/http';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { CreatetestProperties } from './createtest.properties';
+import { CommonProperties } from '../../../common.properties';
 
 @Injectable()
 export class CreateTestService {
 
-    constructor(private http: Http,private createtestProperties:CreatetestProperties) { }
+    constructor(private http: Http,private createtestProperties:CommonProperties) { }
 
     sendEmail(selectedEmailList) {
         return this.http.post(this.createtestProperties.sendEmailUrl, selectedEmailList);

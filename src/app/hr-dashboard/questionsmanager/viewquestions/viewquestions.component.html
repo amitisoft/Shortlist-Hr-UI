@@ -50,8 +50,8 @@
               </select>
                 </th>
                 <th align="center" class="textDecorationScratch textCenter">CREATED DATE</th>
-                <!-- <th align="center">EDIT</th>
-                <th align="center">DELETE</th> -->
+                <th align="center">EDIT</th>
+                <th align="center">DELETE</th>
               </tr>
             </thead>
 
@@ -61,8 +61,8 @@
                 <td>{{eachCatQuestion.Qsn | truncate: 30}}</td>
                 <td align="center">{{eachCatQuestion.Category}}</td>
                 <td align="center" class="textDecorationScratch">01-02-2017</td>
-                <!-- <td align="center"><button class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></button></td>
-                <td align="center"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td> -->
+                <td align="center"><button class="btn btn-success"><span #qbox [attr.data-questionName]="eachCatQuestion.Qsn" [attr.data-questionObject]="eachCatQuestion" [attr.data-questionId]="eachCatQuestion.Qsn_id" [attr.data-questionCat]="eachCatQuestion.Category" (click)="editQuestion(qbox, $event)" class="glyphicon glyphicon-pencil"></span></button></td>
+                <td align="center"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
               </tr>
             </tbody>
           </table>
