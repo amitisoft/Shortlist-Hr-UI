@@ -45,6 +45,9 @@ import { MdInputModule, MdCheckboxModule } from '@angular/material';
 import { ManagetestTestnottakenComponent } from './hr-dashboard/testmanager/managetest/managetest-testnottaken/managetest-testnottaken.component';
 import { ManagetestTestinprocessComponent } from './hr-dashboard/testmanager/managetest/managetest-testinprocess/managetest-testinprocess.component';
 import { HomeComponent } from './hr-dashboard/home/home.component';
+import { UploadlistComponent } from './hr-dashboard/cadidatedata/uploadlist/uploadlist.component';
+import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata.component';
+import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
 import { SigninPanelComponent } from './auth/signin/signin-panel.component';
 import { SignupComponent } from './auth/signin/signup.component';
 import { ForgotpasswordComponent } from './auth/signin/forgotpassword.component';
@@ -75,6 +78,9 @@ import { ForgotpasswordComponent } from './auth/signin/forgotpassword.component'
       ManagetestTestnottakenComponent,
       ManagetestTestinprocessComponent,
       HomeComponent,
+      UploadlistComponent,
+      ListdataComponent,
+      RegisterComponent
       SigninPanelComponent,
       SignupComponent,
       ForgotpasswordComponent

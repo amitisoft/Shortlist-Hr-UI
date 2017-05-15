@@ -30,12 +30,17 @@ import { CreatecategoryComponent } from './hr-dashboard/categorymanager/createca
 import { ViewcategoryComponent } from './hr-dashboard/categorymanager/viewcategory/viewcategory.component';
 import { CadidatedataComponent } from './hr-dashboard/cadidatedata/cadidatedata.component';
 import { HomeComponent } from './hr-dashboard/home/home.component';
+import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata.component';
+import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
+import { UploadlistComponent } from './hr-dashboard/cadidatedata/uploadlist/uploadlist.component';
 import { AuthGaurd } from './auth/auth-gaurd.service';
 
 
 // Root Router Part
 
 const appRoutes: Routes = [
+    { path: '', redirectTo: 'signin', pathMatch: 'full' },
+    { path: 'signin', component: SigninComponent },
     { path: '', redirectTo: '/signinpanel', pathMatch: 'full' },
     { path: 'signinpanel', component: SigninPanelComponent },
     { path: 'signinpanel/signin', component: SigninComponent },
@@ -79,7 +84,12 @@ const appRoutes: Routes = [
                     { path: 'testmanager', component: ResultmanagerComponent },
                 ]
             },
-
+            { path: 'cadidateTest', component: CadidatedataComponent, children: [
+                { path: '', redirectTo: 'listdata', pathMatch: 'full' },
+                { path: 'listdata', component: ListdataComponent },
+                { path: 'register', component: RegisterComponent },
+                { path: 'uploadlist', component: UploadlistComponent }
+            ] },
             { path: 'cadidateTest', component: CadidatedataComponent, canActivate: [AuthGaurd] },
 
         ]

@@ -4,6 +4,7 @@
    <div class="card-header">
                Monthly Status
             </div>
+            <hr>
     <canvas baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"
@@ -19,6 +20,7 @@
             <div class="card-header">
                 Candidate Status
             </div>
+            <hr>
             <div class="card-block">
                 <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                 </canvas>

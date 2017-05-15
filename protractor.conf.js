@@ -18,7 +18,7 @@ exports.config = {
     compiler: "ts:ts-node/register",
     strict: true,
     format: ['pretty'],
-    require: ['./e2e/**/*.e2e-spec.ts','../../support/*.ts'],
+    require: ['./e2e/**/*.e2e-spec.ts','./e2e/support/*.ts'],
     tags: '@Login or @CreateQuestion'
   },
   beforeLaunch: function() {
