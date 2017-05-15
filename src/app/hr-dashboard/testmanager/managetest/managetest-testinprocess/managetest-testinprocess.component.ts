@@ -1,12 +1,11 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ManagetestService } from '../managetest.service';
-import { ManageTestProperties } from '../managetest.properties'
 
 @Component({
   selector: 'amiti-managetest-testinprocess',
   templateUrl: './managetest-testinprocess.component.html',
   styleUrls: ['./managetest-testinprocess.component.css'],
-  providers: [ManagetestService, ManageTestProperties]
+  providers: [ManagetestService]
 })
 export class ManagetestTestinprocessComponent implements OnInit {
     manageTest: any[] = [];

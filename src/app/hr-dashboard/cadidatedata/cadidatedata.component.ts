@@ -1,13 +1,11 @@
 ﻿import { Component, OnInit } from '@angular/core';
-
 import { CandidateDataService } from './candidatedata.service';
 
-import { CandidateDataProperties } from './candidatedata.properties';
 @Component({
   selector: 'amiti-cadidatedata',
   templateUrl: './cadidatedata.component.html',
   styleUrls: ['./cadidatedata.component.css'],
-  providers: [CandidateDataService,CandidateDataProperties]
+  providers: [CandidateDataService]
 })
 export class CadidatedataComponent implements OnInit {
 

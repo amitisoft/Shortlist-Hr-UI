@@ -2,7 +2,7 @@
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable, Subject } from 'rxjs/Rx';
-import { CategoryProperties } from './category.properties';
+import { CommonProperties } from '../../common.properties';
 
 @Injectable()
 export class CategorymanagerService {
@@ -11,7 +11,7 @@ export class CategorymanagerService {
     startedEditing = new Subject<number>();
 
     constructor(private http: Http,
-                private categoryPro: CategoryProperties) { }
+                private categoryPro: CommonProperties) { }
 
 
     getCategoryForEdit(index: number) {

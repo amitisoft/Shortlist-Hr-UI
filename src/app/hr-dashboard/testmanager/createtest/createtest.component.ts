@@ -1,17 +1,15 @@
-﻿
-import { Component, OnInit, ElementRef } from '@angular/core';
+﻿import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CreateTestService } from './createtest.service';
 import { Response } from '@angular/http';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
-import { CreatetestProperties } from './createtest.properties';
 
 @Component({
     selector: 'amiti-createtest',
   templateUrl: './createtest.component.html',
   styleUrls: ['./createtest.component.css'],
-  providers: [CreateTestService,CreatetestProperties]
+  providers: [CreateTestService]
 })
 
 export class CreatetestComponent implements OnInit {
