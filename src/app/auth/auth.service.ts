@@ -48,6 +48,7 @@ export class AuthService {
                     (token: string) => this.token = token
                     )
 
+
                 this.router.navigate(['/hrdashboard']);
             }
             )
@@ -66,6 +67,26 @@ export class AuthService {
         //console.log(this.token);
         return this.token != null;
     }
+
+  //          this.router.navigate(['/hrdashboard/home']);
+  //      }
+  //    )
+  //    .catch(
+  //      error => console.log(error)
+  //    );
+  //}
+  //getToken(){
+  //  firebase.auth().currentUser.getToken()
+  //    .then(
+  //      (token: string) => this.token = token
+  //    )
+  //  return this.token;
+  //}
+  //  isAuthenticated(){
+  //    //console.log(this.token);
+  //    return this.token != null;
+  //  } 
+
 
     logOut() {
         firebase.auth().signOut();

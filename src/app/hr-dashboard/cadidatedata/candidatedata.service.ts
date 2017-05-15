@@ -53,7 +53,11 @@ export class CandidateDataService {
         console.log(alldata);
         return this.http.post(this.candidateDataPro.addcandidateurl, alldata);
     }
-    getuserlist() {
+
+  
+
+    getuserlist(){
+
         return this.http.get(this.candidateDataPro.getcandidateurl)
             .map(response => response.json());
     }

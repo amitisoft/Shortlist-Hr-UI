@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
     constructor(private candidateService: CandidateDataService, private route: ActivatedRoute) { }
 
     ngOnInit() {
+
         this.route.params
             .subscribe(
             (params: Params) => {
@@ -28,6 +29,16 @@ export class RegisterComponent implements OnInit {
                 this.initForm();
             }
             )
+//=======
+//       this.route.params
+//    .subscribe(
+//        (params: Params) => {
+//            this.id= +params['id'];
+//            this.editMode=params['id'] != null;
+//            this.initForm();
+//        }
+//        )
+//>>>>>>> refs/remotes/origin/master
     }
     initForm() {
         console.log(this.id);
