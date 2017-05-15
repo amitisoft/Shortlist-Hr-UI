@@ -1,5 +1,6 @@
-import { Component,OnInit,ViewChild } from '@angular/core';
-import { NgForm,FormsModule } from '@angular/forms';
+﻿
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm, FormsModule } from '@angular/forms';
 import { Response } from '@angular/http';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CandidateDataService } from '../candidatedata.service';
@@ -15,20 +16,31 @@ export class RegisterComponent implements OnInit {
     fileToUpload: any[] = [];
     data: any[] = [];
     id: number;
-    editMode=false;
-    constructor(private candidateService: CandidateDataService,private route:ActivatedRoute) {}
+    editMode = false;
+    constructor(private candidateService: CandidateDataService, private route: ActivatedRoute) { }
 
     ngOnInit() {
-       this.route.params
-    .subscribe(
-        (params: Params) => {
-            this.id= +params['id'];
-            this.editMode=params['id'] != null;
-            this.initForm();
-        }
-        )
+
+        this.route.params
+            .subscribe(
+            (params: Params) => {
+                this.id = +params['id'];
+                this.editMode = params['id'] != null;
+                this.initForm();
+            }
+            )
+//=======
+//       this.route.params
+//    .subscribe(
+//        (params: Params) => {
+//            this.id= +params['id'];
+//            this.editMode=params['id'] != null;
+//            this.initForm();
+//        }
+//        )
+//>>>>>>> refs/remotes/origin/master
     }
-    initForm(){
+    initForm() {
         console.log(this.id);
     }
     onSubmitData(form: NgForm) {
@@ -38,9 +50,9 @@ export class RegisterComponent implements OnInit {
         }
         this.candidateService.addUser(form.value, this.fileToUpload)
             .subscribe(
-                (response: Response) => {
-                 console.log(response);
-                }
+            (response: Response) => {
+                console.log(response);
+            }
             );
         this.onClear();
     }
