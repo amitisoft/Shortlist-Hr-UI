@@ -8,15 +8,16 @@ import { Router } from '@angular/router';
 
    export class AuthService {
 
-  token: string;
-//    signupUser(email: string, password: string) {
+    token: string;
 
-//        firebase.auth().createUserWithEmailAndPassword(email, password)
-//            .catch(
-//            error => console.log(error)
-//            )
+    signupUser(email: string, password: string) {
 
-//    }
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .catch(
+            error => console.log(error)
+            )
+
+    }
 
     constructor(private router: Router ){ }
 
