@@ -1,7 +1,7 @@
-export class CommonProperties {
+﻿export class CommonProperties {
 
 	/*----cadidatedata Component----*/
-    uploadCandidateDataUrl = 'https://cwnlvat845.execute-api.us-east-1.amazonaws.com/dev/api/getCandidatesListFile';
+    uploadCandidateDataUrl = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/getCandidatesListFile';
 
 	/*----categorymanager Component----*/
     sendCategories = 'https://category-creation.firebaseio.com/createcategory.json';
