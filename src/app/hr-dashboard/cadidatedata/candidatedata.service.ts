@@ -3,17 +3,15 @@ import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 // import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
-import { CandidateDataProperties } from './candidatedata.properties';
+import { CommonProperties } from '../../common.properties';
+
 @Injectable()
 export class CandidateDataService {
 
-    constructor(private http: Http, private candidateDataPro: CandidateDataProperties) {}
+    constructor(private http: Http, private candidateDataPro: CommonProperties) { }
 
-
-
-    sendCandidateData(user: any) {
-        const body = JSON.stringify(user);
-
+      sendCandidateData(user: any) {
+        const body = JSON.stringify(user); 
         const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
 
         headers.append('Content-Type', 'application/json');
