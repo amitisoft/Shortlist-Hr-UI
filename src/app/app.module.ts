@@ -45,6 +45,9 @@ import { MdInputModule, MdCheckboxModule } from '@angular/material';
 import { ManagetestTestnottakenComponent } from './hr-dashboard/testmanager/managetest/managetest-testnottaken/managetest-testnottaken.component';
 import { ManagetestTestinprocessComponent } from './hr-dashboard/testmanager/managetest/managetest-testinprocess/managetest-testinprocess.component';
 import { HomeComponent } from './hr-dashboard/home/home.component';
+import { UploadlistComponent } from './hr-dashboard/cadidatedata/uploadlist/uploadlist.component';
+import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata.component';
+import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
 
 
 
@@ -71,7 +74,10 @@ import { HomeComponent } from './hr-dashboard/home/home.component';
       PapermanagementComponent,
       ManagetestTestnottakenComponent,
       ManagetestTestinprocessComponent,
-      HomeComponent
+      HomeComponent,
+      UploadlistComponent,
+      ListdataComponent,
+      RegisterComponent
   ],
   imports: [
       BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,
