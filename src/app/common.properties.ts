@@ -1,7 +1,7 @@
 export class CommonProperties {
 
 	/*----cadidatedata Component----*/
-    uploadCandidateDataUrl = 'https://amitionlinetest.firebaseio.com/candidateData.json';
+    uploadCandidateDataUrl = 'https://cwnlvat845.execute-api.us-east-1.amazonaws.com/dev/api/getCandidatesListFile';
 
 	/*----categorymanager Component----*/
     sendCategories = 'https://category-creation.firebaseio.com/createcategory.json';
@@ -28,5 +28,6 @@ export class CommonProperties {
     // Getting Manage Test Data [Test In Progress]
     getManageTestInProgress = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/starttestdashboard/candidateId/%7BcandidateId%7D/bookingId/%7BbookingId%7D/testStatus/%7BtestStatus%7D';
 
-    
+ 
+        
 }

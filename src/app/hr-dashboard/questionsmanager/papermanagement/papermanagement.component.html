@@ -3,70 +3,50 @@
     <hr />
   </div>
 </div>
-
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-lg-6 col-sm-6 col-xs-12">
     SELECT CATEGORY
-    <hr />
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="row">
-
-          <div class="col-xs-5">
-              <select name="singleSelect" id="singleSelect" class="form-control" (ngModelChange)="changeCategory($event)" [(ngModel)]="selectedCategory" required>
-                <option [ngValue]="category.categoryname" *ngFor="let category of categoryList">{{category.categoryname}}</option>
-              </select>
-          </div>
-
-          <div class="col-xs-6">
-            <p>Questions selected: {{questionsCheckedArr.length}} - Out Of 30</p>
-          </div>
-        </div>
-      </div>
+    <div class="col-xs-12"><hr/></div>
+    <div class="col-xs-5">
+        <select name="singleSelect" id="singleSelect" class="form-control" (ngModelChange)="changeCategory($event)" [(ngModel)]="selectedCategory" required>
+          <option [ngValue]="category.categoryname" *ngFor="let category of categoryList">{{category.categoryname}}</option>
+        </select>
     </div>
-
-
-
-
-
-    <div class="row">
-
-
-      <hr />
-      <table class="table table-striped table-style">
+    <div class="col-xs-7">
+      <span>Questions selected: {{questionsCheckedArr.length}} - Out Of 30</span>
+    </div>
+    <div class="col-xs-12"><hr/></div>
+    <div class="col-xs-12">
+      <table class="table table-striped table-responsive">
         <thead>
           <tr>
             <th align="center"><span class="glyphicon glyphicon-hand-down"></span></th>
-            <th align="center">Index</th>
+            <th align="center" class="hidden-xs">Index</th>
             <th>QUESTIONS</th>
             <th align="center">CATEGORY</th>
           </tr>
         </thead>
-
         <tbody>
         <tr *ngFor="let eachCatQuestion of catQuestions; let i = index; let lastQuestion = last ">
           <td align="center"><input type="checkbox" #chkbx [attr.data-questionName]="eachCatQuestion.Qsn" [attr.data-categoryName]="eachCatQuestion.Category" value={{eachCatQuestion.Qsn_id}} (change)="updateQuestionsCheckbox(chkbx, $event)" [checked]="eachCatQuestion.checked" /></td>
-          <td align="center">{{i+1}}</td>
+          <td align="center" class="hidden-xs">{{i+1}}</td>
           <td>{{eachCatQuestion.Qsn | truncate: 30}}</td>
           <td align="center">{{eachCatQuestion.Category}}</td>
         </tr>
         </tbody>
       </table>
-
+    </div>
+    <div class="col-xs-12">
       <ul class="pager">
         <!-- <li><a href="javascript:void(0);" (click)="getPrevPageQuestions(selectedCategory)">Previous</a></li> -->
         <li><a href="javascript:void(0);" (click)="getNextPageQuestions(selectedCategory)">Next</a></li>
       </ul>
-
-
     </div>
-
-
   </div>
 
   <!--PAPER SECTION-->
 
-  <div class="col-xs-6">
+  <div class="col-lg-6 col-sm-6 col-xs-12">
     CREATE PAPER
     <hr />
 
@@ -83,30 +63,24 @@
         <button class="btn btn-success" (click)="clearCandidatePaper()">Clear <span class="glyphicon glyphicon-floppy-save"></span></button>
       </div>
     </div>
-    
-    <div class="row">
-      <div class="col-xs-12"><hr /></div>
-      <div class="col-xs-12">
-        <!-- <hr /> -->
-        <table class="table table-striped table-style2">
-          <thead>
-            <tr>
-              <th align="center">Index</th>
-              <th>QUESTIONS</th>
-              <th align="center">CATEGORY</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr; let i = index ">
-              <td>{{i+1}}</td>
-              <td>{{eachQuestionsCheckedArr.Qsn}}</td>
-              <td>{{eachQuestionsCheckedArr.Category}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="col-xs-12"><hr/></div>
+    <div class="col-xs-12">
+      <table class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th align="center" class="hidden-xs">Index</th>
+            <th>QUESTIONS</th>
+            <th align="center">CATEGORY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr; let i = index ">
+            <td class="hidden-xs">{{i+1}}</td>
+            <td>{{eachQuestionsCheckedArr.Qsn}}</td>
+            <td>{{eachQuestionsCheckedArr.Category}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
   </div>
 </div>

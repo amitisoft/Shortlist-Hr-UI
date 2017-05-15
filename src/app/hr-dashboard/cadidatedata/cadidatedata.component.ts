@@ -9,23 +9,11 @@ import { CandidateDataService } from './candidatedata.service';
 })
 export class CadidatedataComponent implements OnInit {
 
-    status: string;
-    constructor(private candidateDataService: CandidateDataService) { }
+    constructor() { }
 
   ngOnInit() {
   }
 
-  onFileUpload(files: string) {
-
-      this.candidateDataService.sendCandidateData({ CADIDATEFILE: files })
-          .subscribe(
-          data => alert('Successfully Upload'),
-         // data => console.log(data.status),
-
-
-          error => console.log(error),
-         // () => {this.status="Fail To Upload"}
-          );
-  }
+  
 
 }
