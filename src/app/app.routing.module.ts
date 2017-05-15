@@ -39,8 +39,8 @@ import { AuthGaurd } from './auth/auth-gaurd.service';
 // Root Router Part
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: 'signin', pathMatch: 'full' },
-    { path: 'signin', component: SigninComponent },
+    //{ path: '', redirectTo: 'signin', pathMatch: 'full' },
+    //{ path: 'signin', component: SigninComponent },
     { path: '', redirectTo: '/signinpanel', pathMatch: 'full' },
     { path: 'signinpanel', component: SigninPanelComponent },
     { path: 'signinpanel/signin', component: SigninComponent },
@@ -88,6 +88,7 @@ const appRoutes: Routes = [
                 { path: '', redirectTo: 'listdata', pathMatch: 'full' },
                 { path: 'listdata', component: ListdataComponent },
                 { path: 'register', component: RegisterComponent },
+                 { path: 'register/:id', component: RegisterComponent },
                 { path: 'uploadlist', component: UploadlistComponent }
             ] },
             { path: 'cadidateTest', component: CadidatedataComponent, canActivate: [AuthGaurd] },

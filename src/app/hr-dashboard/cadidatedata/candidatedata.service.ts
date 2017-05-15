@@ -59,4 +59,7 @@ export class CandidateDataService {
         return this.http.get('https://user-a1ecd.firebaseio.com/userlist.json')
             .map(response => response.json());
     }
+    deleteCandidate(mobile){
+        console.log(mobile);
+    }
 }

@@ -23,5 +23,11 @@ export class ListdataComponent implements OnInit {
             }
         );
   }
+  deletecandidate(user,index){
+    if(confirm('Are you sure to delete')){
+      this.candidateService.deleteCandidate(user.mobile);
+      this.useritems.splice(index,1);
+    }
+  }
 
 }
