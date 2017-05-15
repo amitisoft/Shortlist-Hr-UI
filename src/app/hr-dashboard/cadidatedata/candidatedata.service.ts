@@ -26,11 +26,11 @@ export class CandidateDataService {
     }
 
 
-    getOwnData() {
-        return this.http.get('https://amitionlinetest.firebaseio.com/candidateData.json')
-            .map((response: Response) => response);
-        //.map((response: Response) => response.json());
-    }
+    // getOwnData() {
+    //     return this.http.get('https://amitionlinetest.firebaseio.com/candidateData.json')
+    //         .map((response: Response) => response);
+    //     //.map((response: Response) => response.json());
+    // }
 
     // For Error Handling 
     private handleError(error: any) {
@@ -51,10 +51,10 @@ export class CandidateDataService {
             "file": newObject
         };
         console.log(alldata);
-        return this.http.post('https://user-a1ecd.firebaseio.com/userlist.json', alldata);
+        return this.http.post(this.candidateDataPro.addcandidateurl, alldata);
     }
     getuserlist(){
-        return this.http.get('https://user-a1ecd.firebaseio.com/userlist.json')
+        return this.http.get(this.candidateDataPro.getcandidateurl)
             .map(response => response.json());
     }
     deleteCandidate(mobile){

@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
         (params: Params) => {
             this.id= +params['id'];
             this.editMode=params['id'] != null;
-        this.initForm();
+            this.initForm();
         }
         )
     }
