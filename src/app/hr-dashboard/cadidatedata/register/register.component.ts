@@ -1,18 +1,8 @@
-import {
-    Component,
-    OnInit,
-    ViewChild
-} from '@angular/core';
-import {
-    NgForm,
-    FormsModule
-} from '@angular/forms';
-import {
-    Response
-} from '@angular/http';
-import {
-    CandidateDataService
-} from '../candidatedata.service';
+import { Component,OnInit,ViewChild } from '@angular/core';
+import { NgForm,FormsModule } from '@angular/forms';
+import { Response } from '@angular/http';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { CandidateDataService } from '../candidatedata.service';
 @Component({
     selector: 'amiti-register',
     templateUrl: './register.component.html',
@@ -24,9 +14,23 @@ export class RegisterComponent implements OnInit {
 
     fileToUpload: any[] = [];
     data: any[] = [];
-    constructor(private candidateService: CandidateDataService) {}
+    id: number;
+    editMode=false;
+    constructor(private candidateService: CandidateDataService,private route:ActivatedRoute) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+       this.route.params
+    .subscribe(
+        (params: Params) => {
+            this.id= +params['id'];
+            this.editMode=params['id'] != null;
+        this.initForm();
+        }
+        )
+    }
+    initForm(){
+        console.log(this.id);
+    }
     onSubmitData(form: NgForm) {
         let fi = this.fileInput.nativeElement;
         if (fi.files && fi.files[0]) {
