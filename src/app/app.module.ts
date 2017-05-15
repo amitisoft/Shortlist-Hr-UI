@@ -80,7 +80,7 @@ import { ForgotpasswordComponent } from './auth/signin/forgotpassword.component'
       HomeComponent,
       UploadlistComponent,
       ListdataComponent,
-      RegisterComponent
+      RegisterComponent,
       SigninPanelComponent,
       SignupComponent,
       ForgotpasswordComponent
