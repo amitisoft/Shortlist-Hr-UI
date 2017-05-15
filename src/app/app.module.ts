@@ -48,6 +48,9 @@ import { HomeComponent } from './hr-dashboard/home/home.component';
 import { UploadlistComponent } from './hr-dashboard/cadidatedata/uploadlist/uploadlist.component';
 import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata.component';
 import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
+import { SigninPanelComponent } from './auth/signin/signin-panel.component';
+import { SignupComponent } from './auth/signin/signup.component';
+import { ForgotpasswordComponent } from './auth/signin/forgotpassword.component';
 
 
 
@@ -78,6 +81,9 @@ import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register
       UploadlistComponent,
       ListdataComponent,
       RegisterComponent
+      SigninPanelComponent,
+      SignupComponent,
+      ForgotpasswordComponent
   ],
   imports: [
       BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,

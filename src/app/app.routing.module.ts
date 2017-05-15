@@ -3,8 +3,10 @@
 
 import { Routes, RouterModule } from '@angular/router';
 
-
+import { SigninPanelComponent } from './auth/signin/signin-panel.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signin/signup.component';
+import { ForgotpasswordComponent } from './auth/signin/forgotpassword.component';
 
 import { HrDashboardComponent } from './hr-dashboard/hr-dashboard.component';
 import { DashboardpanelComponent } from './hr-dashboard/dashboardpanel/dashboardpanel.component';
@@ -39,13 +41,19 @@ import { AuthGaurd } from './auth/auth-gaurd.service';
 const appRoutes: Routes = [
     { path: '', redirectTo: 'signin', pathMatch: 'full' },
     { path: 'signin', component: SigninComponent },
+    { path: '', redirectTo: '/signinpanel', pathMatch: 'full' },
+    { path: 'signinpanel', component: SigninPanelComponent },
+    { path: 'signinpanel/signin', component: SigninComponent },
+    { path: 'signinpanel/signup', component: SignupComponent },
+    { path: 'signinpanel/forgotpassword', component: ForgotpasswordComponent },
+
     // { path: 'protected', component: ProtectedComponent },
     {
         path: 'hrdashboard', component: HrDashboardComponent, canActivate: [AuthGaurd], children: [
             { path: '', component: HomeComponent } ,
             { path: 'home', component: HomeComponent } ,
             {
-                path: 'qmanager', component: QuestionsmanagerComponent, children: [
+                path: 'qmanager', component: QuestionsmanagerComponent, canActivate: [AuthGaurd], children: [
                     { path: 'createquestion', component: CreatequestionComponent },
                     { path: 'viewquestion', component: ViewquestionsComponent },
                     { path: 'papermange', component: PapermanagementComponent }
@@ -54,7 +62,7 @@ const appRoutes: Routes = [
             
 
             {
-                path: 'catmanager', component: CategorymanagerComponent, children: [
+                path: 'catmanager', component: CategorymanagerComponent, canActivate: [AuthGaurd], children: [
                     { path: 'createcategory', component: CreatecategoryComponent },
                     { path: 'viewcategory', component: ViewcategoryComponent },
                     { path: ':id', component: CreatecategoryComponent },
@@ -63,7 +71,8 @@ const appRoutes: Routes = [
             },
 
             {
-                path: 'testmanagerComp', component: TestmanagerComponent, children: [
+                path: 'testmanagerComp', component: TestmanagerComponent, canActivate: [AuthGaurd], children: [
+
                     { path: 'createtest', component: CreatetestComponent },
                     {
                         path: 'managetest', component: ManagetestComponent, children: [
@@ -75,13 +84,13 @@ const appRoutes: Routes = [
                     { path: 'testmanager', component: ResultmanagerComponent },
                 ]
             },
-
             { path: 'cadidateTest', component: CadidatedataComponent, children: [
                 { path: '', redirectTo: 'listdata', pathMatch: 'full' },
                 { path: 'listdata', component: ListdataComponent },
                 { path: 'register', component: RegisterComponent },
                 { path: 'uploadlist', component: UploadlistComponent }
             ] },
+            { path: 'cadidateTest', component: CadidatedataComponent, canActivate: [AuthGaurd] },
 
         ]
     }
