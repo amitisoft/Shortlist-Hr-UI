@@ -10,6 +10,7 @@
 							<th>Mobile</th>
 							<th>Gender</th>
 							<th>Address</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -19,6 +20,10 @@
 							<td>{{users.data.mobile}}</td>
 							<td>{{users.data.gender}}</td>
 							<td>{{users.data.address}}</td>
+							<td>
+								<a [routerLink]="['../register',users.data.mobile]"><span class="glyphicon glyphicon-edit" title="Edit"></span></a>
+								<a (click)="deletecandidate(users.data,i)"><span class="glyphicon glyphicon-trash" title="Delete"></span></a>
+							</td>
 						</tr>
 					</tbody>
 				</table>
