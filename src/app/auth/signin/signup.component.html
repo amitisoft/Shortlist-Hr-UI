@@ -9,9 +9,15 @@
           <input type="email" id="email" name="email"
                  ngModel class="example-full-width"
                  mdInput placeholder="Enter HR Mail-ID" 
-                 pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
-                 required/>
+                 
+                 required
+                 email 
+                 #mail="ngModel"
+                 />
         </md-input-container>
+        <p class="help-block error" 
+           style="color: red" 
+           *ngIf="!mail.valid && mail.touched">Please provide your E-mail</p>
       </div>
       <div class="form-group">
         <label for="password">Password :</label>
@@ -19,11 +25,16 @@
           <input type="password" id="password" name="password"
                  ngModel class="example-full-width"
                  mdInput placeholder="Enter Password" 
-                 required/>
+                 required #pass="ngModel" 
+                 minlength="7"/>
         </md-input-container>
+        <p class="help-block error" style="color: red" 
+           *ngIf="!pass.valid && pass.touched">Password : Add Minimum 7 characters</p>
       </div>
       <hr />
-      <button class="btn btn-success" type="submit" (click)="onSignup(f)">Sign Up</button>
+      <button class="btn btn-success" type="submit" 
+              [disabled]="!f.valid"
+              (click)="onSignup(f)">Sign Up</button>
       <button class="btn btn-warning" type="button" (click)="onClearReg()">Clear</button>
 
     </form>
