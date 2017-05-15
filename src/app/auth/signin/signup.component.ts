@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'amiti-signup',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+    @ViewChild('f')  signUpForm: NgForm;
+
+    constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
+  onSignup(form: NgForm) {
+
+      const email = form.value.email;
+      const password = form.value.password;
+      this.authService.signupUser(email, password);
+      alert("Registered Successfully");
+      this.onClearReg();
+  }
+
+  onClearReg() {
+      this.signUpForm.reset();
+  }
 }
