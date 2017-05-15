@@ -48,7 +48,7 @@ import { Router } from '@angular/router';
               (token: string) => this.token = token
             )
 
-            this.router.navigate(['/hrdashboard']);
+            this.router.navigate(['/hrdashboard/home']);
         }
       )
       .catch(
