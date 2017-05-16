@@ -10,15 +10,16 @@ export class CandidateDataService {
 
     constructor(private http: Http, private candidateDataPro: CommonProperties) { }
 
-      sendCandidateData(user: any) {
-        const body = JSON.stringify(user); 
-        const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
+    sendCandidateData(user: any) {
+        const body = JSON.stringify(user);
+       // const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
 
-        headers.append('Content-Type', 'application/json');
+      //  headers.append('Content-Type', 'application/json');
 
         return this.http.post(this.candidateDataPro.uploadCandidateDataUrl, body, {
-                headers: headers
-            })
+        //    headers: headers
+
+        })
             .map((data: Response) => data.json())
 
             .catch(this.handleError); // For Error Handling
@@ -53,11 +54,15 @@ export class CandidateDataService {
         console.log(alldata);
         return this.http.post(this.candidateDataPro.addcandidateurl, alldata);
     }
+
+  
+
     getuserlist(){
+
         return this.http.get(this.candidateDataPro.getcandidateurl)
             .map(response => response.json());
     }
-    deleteCandidate(mobile){
+    deleteCandidate(mobile) {
         console.log(mobile);
     }
 }
