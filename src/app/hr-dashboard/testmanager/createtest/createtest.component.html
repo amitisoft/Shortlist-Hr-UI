@@ -15,7 +15,7 @@
             <div class="suggestions" *ngIf="filteredList.length > 0">
               <ul *ngFor="let item of filteredList; let i=index"  style="list-style: none;">
                 <li class="label" *ngIf="i<4">
-                  <a (click)="select(item,'query','selected','filteredList','queryResults')" >{{item}}</a>
+                  <a (click)="select(item,'query','selected','filteredList','queryResults','emailsList')" >{{item}}</a>
                 </li>
               </ul>
             </div>
@@ -29,7 +29,7 @@
             <div *ngFor="let item of selected">
               <div class="selected">
                 <span>{{item}}</span>
-                <a (click)="remove(item,'selected','queryResults')">x</a>
+                <a (click)="remove(item,'selected','queryResults','emailsList')">x</a>
               </div>
             </div>
           </div>
@@ -76,11 +76,13 @@
             <textarea type="text" [froalaEditor] class="form-control form-control-sm" id="mailbody"
                       placeholder="Enter Mail Body"
                       name="mailbody"
-                      ngModel required
+                      ngModel
                       style="height:auto;" #emailBody="ngModel"></textarea>
-            <p class="help-block error" *ngIf="!emailBody.valid">Enter Email Body</p>
+            <p class="help-block error" *ngIf="!emailBody.valid && emailBody.touched">Enter Email Body</p>
           </div>
         </div>
+
+        
         <div class="form-group row">
           <label for="category" class="col-sm-2 col-xs-12 col-form-label col-form-label-sm">Select Exam Categories</label>
           <div class="col-sm-5 col-xs-12">
@@ -89,14 +91,17 @@
                      name="category" placeholder="select category"
                      id="category" [(ngModel)]="categoryQuery" #categoriesInput="ngModel" (keyup) = "filter('categories','categoryQuery','categoryFilteredList','categoryList')"
                      />
+                    <!--  <p class="help-block error" *ngIf="!categoriesInput.valid && categoriesInput.touched">Select Categories</p> -->
           </div>
         </div>
+
+
         <div class="form-group row">
            <div class="col-sm-3 col-xs-12"></div>
            <div class="col-sm-6 col-xs-12 suggestions" *ngIf="categoryFilteredList.length > 0">
             <ul *ngFor="let item of categoryFilteredList; let i=index"  style="list-style: none;">
               <li class="label" *ngIf="i<3">
-                <a (click)="select(item,'categoryQuery','categorySelected','categoryFilteredList','categoryQueryResults')" >{{item}}</a>
+                <a (click)="select(item,'categoryQuery','categorySelected','categoryFilteredList','categoryQueryResults','categoryList')" >{{item}}</a>
               </li>
             </ul>
           </div>
@@ -109,12 +114,12 @@
             <div class="" [hidden]="true">
                <textarea class="form-control" name="categoryQueryResults" required #categories="ngModel" [(ngModel)]="categoryQueryResults"></textarea>
             </div>
-             <p class="help-block error" *ngIf="!categories.valid">Select Categories</p>
+             <p class="help-block error" *ngIf="!categories.valid && categoriesInput.touched ">Select Categories</p>
              <!-- <p>Category 1</p> <p>Category 2</p>-->
               <div *ngFor="let item of categorySelected">
                 <div class="selected">
                   <span>{{item}}</span>
-                  <a (click)="remove(item,'categorySelected','categoryQueryResults')">x</a>
+                  <a (click)="remove(item,'categorySelected','categoryQueryResults','categoryList')">x</a>
                 </div>
               </div>
           </div>
