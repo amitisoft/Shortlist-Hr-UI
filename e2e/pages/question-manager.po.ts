@@ -7,22 +7,24 @@ export class QuestionManagerPage {
   private questionManagerTabXPath = "//amiti-hr-dashboard/amiti-dashboardpanel/nav/div/div/ul/li[1]/a";
   private createQuestionButtonText = "CREATE QUESTIONS";
   private questionTextFieldId = "question";
-  private optionsTextFieldPrefixName = "optionNo";
+  private optionsTextFieldPrefixName = "option";
+  private optionsTextFieldSuffixName = "Value";
   private optionsCheckboxPrefixName = "option";
   private optionsCheckboxSuffixName = "IsCorrect";
-  private CategoryComboXPath = "//*[@id='singleSelect']";
+  private CategoryComboXPath = ".//*[@id='singleSelect']";
   private CategoryOptionsPrefixXpath = "/option[@value='";
   private CategoryOptionsSuffixXPath = "']";
   private addQuestionButtonText = "ADD";
   private clearFieldsButtonText = "CLEAR";
   private answersSelected = "amiti-questionsmanager/div[3]/div/amiti-createquestion/form/div[3]/div[1]";
+  private categoryComboId = "singleSelect";
 
   verifyHrDashboardVisible() {
-    this.proHelper.verifyElementVisibleUsingXPath(this.hrDashboardPanelXPath);
+    return this.proHelper.verifyElementVisibleUsingXPath(this.hrDashboardPanelXPath);
   }
 
   verifyQuestionManagerTabVisible() {
-    this.proHelper.verifyElementVisibleUsingXPath(this.questionManagerTabXPath);
+    return this.proHelper.verifyElementVisibleUsingXPath(this.questionManagerTabXPath);
   }
 
   clickQuestionManagerTab() {
@@ -38,19 +40,17 @@ export class QuestionManagerPage {
   }
 
   enterOption(optionNo: number, optionString: string){
-    const optionName = this.optionsCheckboxPrefixName + optionNo + this.optionsCheckboxSuffixName;
+    const optionName = this.optionsTextFieldPrefixName+optionNo+this.optionsTextFieldSuffixName;
     this.proHelper.sendKeysUsingName(optionName, optionString);
   }
 
   selectCorrectOption(optionNo: number){
-    const optionName = this.optionsTextFieldPrefixName + optionNo;
+    const optionName = this.optionsCheckboxPrefixName+optionNo+this.optionsCheckboxSuffixName;
     this.proHelper.clickUsingName(optionName);
   }
 
-
-  selectCategory(category: string) {
-    const categoryName = this.CategoryComboXPath + this.CategoryOptionsPrefixXpath + category + this.CategoryOptionsSuffixXPath;
-    return this.proHelper.clickUsingXPath(categoryName);
+  selectCategory(optionValue: string) {
+    this.proHelper.selectComboOptionByValue(this.categoryComboId,optionValue);
   }
 
   clickAddButton() {
