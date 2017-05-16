@@ -7,14 +7,14 @@
 							<div class="form-group">
 								<label class="form-label"  for="firstname">First Name</label>
 								<div class="controls">
-									<input type="text" id="firstname" name="firstname" placeholder="" class="form-control" [(ngModel)]="hjk" required #fname="ngModel">
+									<input type="text" id="firstname" name="firstName" placeholder="" class="form-control" [(ngModel)]="hjk" required #fname="ngModel">
 									<p class="help-block error" *ngIf="(!fname.valid && fname.touched)||(fname.pristine && f.submitted)">Enter First Name</p>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="form-label"  for="lastname">Last Name</label>
 								<div class="controls">
-									<input type="text" id="lastname" name="lastname" placeholder="" class="form-control" ngModel required #lname="ngModel">
+									<input type="text" id="lastname" name="lastName" placeholder="" class="form-control" ngModel required #lname="ngModel">
 									<p class="help-block error" *ngIf="(!lname.valid && lname.touched)|| (lname.pristine && f.submitted)">Enter Last Name</p>
 								</div>
 							</div>
@@ -27,31 +27,31 @@
 							</div>
 							
 							
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label class="form-label" for="password">Password</label>
 								<div class="controls">
 									<input type="password" id="password" name="password" placeholder="" class="form-control" ngModel required #pass="ngModel"  minlength="6">
 									<p class="help-block error" *ngIf="!pass.valid && pass.touched" >Password should be at least 6 characters</p>
 								</div>
-							</div>
+							</div> -->
 							
 						</div>
 						<div class="col-sm-5 col-md-5 col-md-offset-1">
 							<div class="form-group">
 								<label class="form-label" for="mobile">Mobile</label>
 								<div class="controls">
-									<input type="number" id="mobile" name="mobile" placeholder="" class="form-control" required ngModel pattern="^[1-9]+[0-9]*$" minlength="10" maxlength="10">
-									<!-- <p class="help-block">Please provide your E-mail</p> -->
+									<input type="number" id="mobile" name="phoneNumber" placeholder="" class="form-control" required ngModel pattern="^[1-9]+[0-9]*$" minlength="10" maxlength="10" #mobiles>
+									<p class="help-block error" *ngIf="!mobiles.valid && mobiles.touched" >Provide 10 digit mobile number</p>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="form-label" for="address">Address</label>
 								<div class="controls">
-									<textarea type="text" id="address" name="address" placeholder="" class="form-control" required ngModel></textarea>
-									<!-- <p class="help-block">Please provide your E-mail</p> -->
+									<textarea type="text" id="address" name="address" placeholder="" class="form-control" required ngModel #addresss></textarea>
+									<p class="help-block error" *ngIf="!addresss.valid && addresss.touched">Enter Address</p>
 								</div>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label class="form-label" for="gender">Gender</label>
 								<div class="controls">
 									<label class="radio-inline" for="male">
@@ -66,16 +66,14 @@
 										<input type="radio" name="gender" id="other" value="Other" ngModel required>
 										Others
 									</label>
-									<!-- <p class="help-block">Please provide your E-mail</p> -->
 								</div>
-							</div>
-							<div class="form-group">
+							</div> -->
+							<!-- <div class="form-group">
 								<label class="form-label" for="image">Image</label>
 								<div class="controls">
 									<input type="file" id="image" name="image" placeholder="" class="form-control"  #fileInput>
-									<!-- <p class="help-block">Please provide your E-mail</p> -->
 								</div>
-							</div>
+							</div> -->
 							<div class="form-group">
 								<div class="controls">
 									<button class="btn btn-warning" type="button" (click)="onClear()">Cancel</button>

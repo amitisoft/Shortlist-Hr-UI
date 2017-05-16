@@ -29,29 +29,17 @@ export class RegisterComponent implements OnInit {
                 this.initForm();
             }
             )
-//=======
-//       this.route.params
-//    .subscribe(
-//        (params: Params) => {
-//            this.id= +params['id'];
-//            this.editMode=params['id'] != null;
-//            this.initForm();
-//        }
-//        )
-//>>>>>>> refs/remotes/origin/master
     }
     initForm() {
         console.log(this.id);
     }
     onSubmitData(form: NgForm) {
-        let fi = this.fileInput.nativeElement;
-        if (fi.files && fi.files[0]) {
-            this.fileToUpload = fi.files[0];
-        }
-        this.candidateService.addUser(form.value, this.fileToUpload)
+        this.candidateService.addUser(form.value)
             .subscribe(
             (response: Response) => {
-                console.log(response);
+             var res=JSON.parse(JSON.stringify(response));
+             alert(res._body);
+             console.log(res._body);
             }
             );
         this.onClear();
