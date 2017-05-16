@@ -52,6 +52,7 @@ import { UploadlistComponent } from './hr-dashboard/cadidatedata/uploadlist/uplo
 import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata.component';
 import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ChangepasswordComponent } from './hr-dashboard/changepassword/changepassword.component';
 
 
 
@@ -82,7 +83,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
       UploadlistComponent,
       ListdataComponent,
       RegisterComponent,
-      ForgotpasswordComponent
+      ForgotpasswordComponent,
+      ChangepasswordComponent
   ],
   imports: [
       BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,
