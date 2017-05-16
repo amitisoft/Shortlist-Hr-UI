@@ -43,6 +43,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MdInputModule, MdCheckboxModule } from '@angular/material';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+
 import { ManagetestTestnottakenComponent } from './hr-dashboard/testmanager/managetest/managetest-testnottaken/managetest-testnottaken.component';
 import { ManagetestTestinprocessComponent } from './hr-dashboard/testmanager/managetest/managetest-testinprocess/managetest-testinprocess.component';
 import { HomeComponent } from './hr-dashboard/home/home.component';
@@ -85,6 +87,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
   imports: [
       BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,
     BrowserModule,ChartsModule,FileSaverModule,
+      BrowserModule, ChartsModule, Ng2AutoCompleteModule,
     FormsModule, ReactiveFormsModule , TruncateModule,
     HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
