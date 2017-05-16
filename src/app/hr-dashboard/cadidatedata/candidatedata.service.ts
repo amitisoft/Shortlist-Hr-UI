@@ -12,12 +12,13 @@ export class CandidateDataService {
 
     sendCandidateData(user: any) {
         const body = JSON.stringify(user);
-        const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
+       // const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
 
-        headers.append('Content-Type', 'application/json');
+      //  headers.append('Content-Type', 'application/json');
 
         return this.http.post(this.candidateDataPro.uploadCandidateDataUrl, body, {
-            headers: headers
+        //    headers: headers
+
         })
             .map((data: Response) => data.json())
 
