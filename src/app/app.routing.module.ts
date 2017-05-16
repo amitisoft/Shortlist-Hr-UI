@@ -28,6 +28,7 @@ import { CreatecategoryComponent } from './hr-dashboard/categorymanager/createca
 import { ViewcategoryComponent } from './hr-dashboard/categorymanager/viewcategory/viewcategory.component';
 import { CadidatedataComponent } from './hr-dashboard/cadidatedata/cadidatedata.component';
 import { HomeComponent } from './hr-dashboard/home/home.component';
+import { ChangepasswordComponent } from './hr-dashboard/changepassword/changepassword.component';
 import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata.component';
 import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
 import { UploadlistComponent } from './hr-dashboard/cadidatedata/uploadlist/uploadlist.component';
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
         path: 'hrdashboard', component: HrDashboardComponent, canActivate: [AuthGaurd], children: [
             { path: '', component: HomeComponent } ,
             { path: 'home', component: HomeComponent } ,
+             { path: 'changepassword', component: ChangepasswordComponent } ,
             {
                 path: 'qmanager', component: QuestionsmanagerComponent, canActivate: [AuthGaurd], children: [
                     { path: 'createquestion', component: CreatequestionComponent },
