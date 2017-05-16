@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CreateTestService } from './createtest.service';
@@ -43,8 +43,8 @@ export class CreatetestComponent implements OnInit {
         this.categoryManagerService.getOwnData().subscribe(
             data => {
                 for (let key in data) {
-                    if(data[key].CATEGORYNAME){
-                        this.allCategoriesArray.push(data[key].CATEGORYNAME);
+                    if(data[key]['categoryname']){
+                        this.allCategoriesArray.push(data[key]['categoryname']);
                     }
                 }
                 this.categoryItems = this.allCategoriesArray;
@@ -53,34 +53,49 @@ export class CreatetestComponent implements OnInit {
     }
 
     sendTestLink(form:NgForm){
-        if(!form.value.queryResults || !form.value.subject || !form.value.singleSelect || !form.value.mailbody || !form.value.categoryQueryResults){
+        var frm = form;
+/*        if(!form.value.queryResults || !form.value.subject || !form.value.singleSelect || !form.value.mailbody || !form.value.categoryQueryResults){
             alert('Please provide required inputs');
             return false;
-        }
+        }*/
 
-        this.emailData = {
-            emails: form.value.queryResults,
-            emailsubject : form.value.subject,
-            jobPosition : form.value.singleSelect,
-            emailbody:form.value.mailbody,
-            category:form.value.categoryQueryResults
-        };
-
-        this.autoCompleteService.sendEmail(this.emailData).subscribe(
-            (response) => {
-                if (response.status == 200) {
-                    this.saveStatus = true;
-                    alert('data submitted auccessfully');
-                    this.categoryQueryResults = '';
-                    this.queryResults = '';
-                    this.selected = [];
-                    this.categorySelected = [];
-                    document.getElementsByClassName('fr-element fr-view')[0].innerHTML = '';
-                    form.reset();
-                }
-            }
-        );
+        if(!form.value.mailbody){
+            var retVal = confirm("The mail has no body, Do you want to continue ?");
+               if( retVal == true ){
+                  this.wrapFunction(frm);
+               }
+               else{
+                  return false;
+               }
+        }else{
+           this.wrapFunction(frm);
+        }  
     }
+
+    wrapFunction(form:NgForm){
+            this.emailData = {
+                emails: form.value.queryResults,
+                emailsubject : form.value.subject,
+                jobPosition : form.value.singleSelect,
+                emailbody:form.value.mailbody,
+                category:form.value.categoryQueryResults
+            };
+
+            this.autoCompleteService.sendEmail(this.emailData).subscribe(
+                (response) => {
+                    if (response.status == 200) {
+                        this.saveStatus = true;
+                        alert('data submitted auccessfully');
+                        this.categoryQueryResults = '';
+                        this.queryResults = '';
+                        this.selected = [];
+                        this.categorySelected = [];
+                        document.getElementsByClassName('fr-element fr-view')[0].innerHTML = '';
+                        form.reset();
+                    }
+                }
+            );
+        }
 
     private query = '';
     private emailsList = [];
@@ -122,9 +137,9 @@ export class CreatetestComponent implements OnInit {
         }
     }*/
 
-    select(item,query,selected,filteredList,queryResults) {
+    select(item,query,selected,filteredList,queryResults, catEmailList) {
         this[selected].push(item);
-        this.emailsList.splice(this.emailsList.indexOf(item), 1);
+        this[catEmailList].splice(this[catEmailList].indexOf(item), 1);
         this[query] = '';
         this[filteredList] = [];
         this[queryResults] = this[selected].toString();
@@ -144,9 +159,9 @@ export class CreatetestComponent implements OnInit {
         this[queryResults] = this[selected].toString();
     }*/
 
-    remove(item,selected,queryResults) {
+    remove(item,selected,queryResults, catEmailList) {
         this[selected].splice(this[selected].indexOf(item), 1);
-        this.emailsList.push(item);
+        this[catEmailList].push(item);
         this[queryResults] = this[selected].toString();
     }
 
