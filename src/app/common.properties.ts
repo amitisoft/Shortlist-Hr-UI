@@ -29,11 +29,11 @@
     getEmailUrl = 'https://questiontable-630db.firebaseio.com/createEmailList.json';
 
     /*----managetest Component----*/
-    getManageTestDatas = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/starttestdashboard/candidateId/%7BcandidateId%7D/bookingId/%7BbookingId%7D/testStatus/%7BtestStatus%7D';
+    getManageTestDatas = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/starttestdashboard/candidateId/%7BcandidateId%7D/bookingId/%7BbookingId%7D/testStatus/%7BtestStatus%7D';
     //sendTestStartedDatas = 'https://amitionlinemanagetest.firebaseio.com/startTestData.json';
-    sendTestStartedDatas = ' https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
+    sendTestStartedDatas = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
     // Getting Manage Test Data [Test In Progress]
-    getManageTestInProgress = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/starttestdashboard/candidateId/%7BcandidateId%7D/bookingId/%7BbookingId%7D/testStatus/%7BtestStatus%7D';
+    getManageTestInProgress = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/startTestInProgressDashboard';
 
 
 
