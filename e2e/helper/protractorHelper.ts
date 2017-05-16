@@ -1,4 +1,4 @@
-import { browser, by, element, protractor } from "protractor";
+import { browser, by, element, protractor, $ } from "protractor";
 import { By } from "@angular/platform-browser";
 import { expect } from "chai";
 
@@ -301,6 +301,16 @@ export class ProtractorHelper {
   }
 
   /**
+   * Method that return a WebElement based on provided id Attribute
+   *
+   * @param id id attribute use to find element
+   */
+  getWebElementUsingId(id: string) {
+    return this.getWebElementUsingBy(by.id(id));
+  }
+
+
+  /**
    * Simulates typing keys into the specified id attribute
    *
    * @param name attribute of element to send keys to
@@ -317,5 +327,27 @@ export class ProtractorHelper {
   clickUsingName(name: string) {
     this.clickUsingBy(by.name(name));
   }
+
+  /**
+   *
+   * @param  CSS text of element to click
+   */
+  clickUsingCss(cssString: string) {
+    this.clickUsingBy(by.css(cssString));
+  }
+
+  /**
+   * Simulates selecting options in the specified combo.
+   *
+   * @param by   By locator of comboBox
+   * @param optionValue option text to be selected
+   */
+  selectComboOptionByValue(idValue: string, optionValue: string) {
+    //let select = element(by.id('singleSelect'));
+     //select.$('[value="'+optionValue+'"]').click();
+    element(by.id('singleSelect')).$('[value="Stack"]');
+  }
+
+
 
 }

@@ -4,6 +4,7 @@
 exports.config = {
 
   allScriptsTimeout: 11000,
+  getPageTimeout: 60000,
   specs: [
     './e2e/features/*.feature'
   ],
@@ -21,10 +22,14 @@ exports.config = {
     require: ['./e2e/**/*.e2e-spec.ts','./e2e/support/*.ts'],
     tags: '@Login or @CreateQuestion'
   },
+  onPrepare: function() {
+    browser.driver.manage().window().maximize();
+  },
   beforeLaunch: function() {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
+
   },
 
 };

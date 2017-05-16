@@ -4,23 +4,37 @@ export class QuestionManagerSteps {
   private questionmanagerpage: QuestionManagerPage = new QuestionManagerPage();
 
   waitForHrDashboard() {
-   this.questionmanagerpage.verifyHrDashboardVisible();
+    return this.questionmanagerpage.verifyHrDashboardVisible();
   }
 
   gotoHrDashboard() {
-    this.questionmanagerpage.clickQuestionManagerTab();
+    return this.questionmanagerpage.clickQuestionManagerTab();
+  }
+
+  clickQuestionManagerTab() {
+    return this.questionmanagerpage.clickQuestionManagerTab();
+
   }
 
   createQuestion() {
-    this.questionmanagerpage.clickCreateQuestionButton();
+    return this.questionmanagerpage.clickCreateQuestionButton();
 
   }
   enterQuestion(questionText: string) {
-    this.questionmanagerpage.enterQuestion(questionText);
+    return this.questionmanagerpage.enterQuestion(questionText);
   }
 
-  enterOption() {
-    return this.questionmanagerpage.enterOption(1,"");
+  enterOption(optionNumber : number, optionText : string) {
+    return this.questionmanagerpage.enterOption(optionNumber,optionText);
+  }
+
+  selectCorrectOption(optionNumber : number){
+    return this.questionmanagerpage.selectCorrectOption(optionNumber);
+
+  }
+  selectQuestionCategory(comboOption: string){
+    return this.questionmanagerpage.selectCategory(comboOption);
+
   }
 
 }
