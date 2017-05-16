@@ -2,13 +2,13 @@
 import { Http } from '@angular/http';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { CreateQuestionProperties } from './createquestion.properties';
+import { CommonProperties } from '../../../common.properties';
 
 
 @Injectable()
 export class CreateQuestionService {
 
-    constructor(private http: Http,private questionProperties:CreateQuestionProperties) {
+    constructor(private http: Http,private questionProperties:CommonProperties) {
       
     }
 

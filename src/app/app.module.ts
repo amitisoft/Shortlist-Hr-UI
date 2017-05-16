@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app.routing.module';
 
+import { CommonProperties } from './common.properties';
 
 import { DropdownDirective } from './share/dropdown.directive';
 import { AppComponent } from './app.component';
@@ -29,7 +30,6 @@ import { CreatetestComponent } from './hr-dashboard/testmanager/createtest/creat
 import { CreateTestService } from './hr-dashboard/testmanager/createtest/createtest.service';
 import { ManagetestComponent } from './hr-dashboard/testmanager/managetest/managetest.component';
 import { ViewcategoryComponent } from './hr-dashboard/categorymanager/viewcategory/viewcategory.component';
-import { CategoryProperties } from './hr-dashboard/categorymanager/category.properties';
 
 import { CategorymanagerService } from './hr-dashboard/categorymanager/categorymanager.service';
 import { CadidatedataComponent } from './hr-dashboard/cadidatedata/cadidatedata.component';
@@ -45,6 +45,9 @@ import { MdInputModule, MdCheckboxModule } from '@angular/material';
 import { ManagetestTestnottakenComponent } from './hr-dashboard/testmanager/managetest/managetest-testnottaken/managetest-testnottaken.component';
 import { ManagetestTestinprocessComponent } from './hr-dashboard/testmanager/managetest/managetest-testinprocess/managetest-testinprocess.component';
 import { HomeComponent } from './hr-dashboard/home/home.component';
+import { UploadlistComponent } from './hr-dashboard/cadidatedata/uploadlist/uploadlist.component';
+import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata.component';
+import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
 import { SigninPanelComponent } from './auth/signin/signin-panel.component';
 import { SignupComponent } from './auth/signin/signup.component';
 import { ForgotpasswordComponent } from './auth/signin/forgotpassword.component';
@@ -75,6 +78,9 @@ import { ForgotpasswordComponent } from './auth/signin/forgotpassword.component'
       ManagetestTestnottakenComponent,
       ManagetestTestinprocessComponent,
       HomeComponent,
+      UploadlistComponent,
+      ListdataComponent,
+      RegisterComponent,
       SigninPanelComponent,
       SignupComponent,
       ForgotpasswordComponent
@@ -85,7 +91,7 @@ import { ForgotpasswordComponent } from './auth/signin/forgotpassword.component'
     FormsModule, ReactiveFormsModule , TruncateModule,
     HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
-  providers: [AuthService, AuthGaurd, CategorymanagerService, CreateTestService, PapermanagementService, CategoryProperties],
+  providers: [AuthService, AuthGaurd, CategorymanagerService, CreateTestService, PapermanagementService, CommonProperties],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

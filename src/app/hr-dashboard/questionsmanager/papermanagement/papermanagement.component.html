@@ -48,15 +48,20 @@
 
   <div class="col-lg-6 col-sm-6 col-xs-12">
     CREATE PAPER
-    <div class="col-xs-12"><hr/></div>
-    <div class="col-xs-4">
-      <input type="text" class="form-control" [(ngModel)]="paperName" placeholder="Paper Name" />
-    </div>
-    <div class="col-xs-4">
-      <button class="btn btn-success" (click)="createCandidatePaper()">SAVE <span class="glyphicon glyphicon-floppy-save"></span></button>
-    </div>
-    <div class="col-xs-4">
-      <button class="btn btn-success" (click)="clearCandidatePaper()">Clear <span class="glyphicon glyphicon-floppy-save"></span></button>
+    <hr />
+
+    <div class="row">
+      <div class="col-xs-5">
+        <input type="text" id="papername" class="form-control" [(ngModel)]="paperName" placeholder="Paper Name" />
+      </div>
+      <div class="col-xs-3">
+        <label></label>
+        <button class="btn btn-success" (click)="createCandidatePaper()">SAVE <span class="glyphicon glyphicon-floppy-save"></span></button>
+      </div>
+      <div class="col-xs-4">
+        <label></label>
+        <button class="btn btn-success" (click)="clearCandidatePaper()">Clear <span class="glyphicon glyphicon-floppy-save"></span></button>
+      </div>
     </div>
     <div class="col-xs-12"><hr/></div>
     <div class="col-xs-12">

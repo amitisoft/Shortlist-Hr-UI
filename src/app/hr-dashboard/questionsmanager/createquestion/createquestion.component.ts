@@ -1,7 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
 import { CreateQuestionService } from './createquestion.service';
-import { CreateQuestionProperties } from './createquestion.properties';
 
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +12,7 @@ import { Http } from '@angular/http';
   selector: 'amiti-createquestion',
   templateUrl: './createquestion.component.html',
   styleUrls: ['./createquestion.component.css'],
-  providers:[CreateQuestionService,CreateQuestionProperties, CategorymanagerService]
+  providers:[CreateQuestionService, CategorymanagerService]
 })
 export class CreatequestionComponent implements OnInit {
 

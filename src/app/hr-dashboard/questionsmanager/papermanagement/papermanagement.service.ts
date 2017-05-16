@@ -2,12 +2,12 @@
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
-import { PapermanagementProperties } from './papermanagement.properties';
+import { CommonProperties } from '../../../common.properties';
 
 @Injectable()
 
 export class PapermanagementService {
-  constructor(private http: Http, private paperProperties:PapermanagementProperties) { }
+  constructor(private http: Http, private paperProperties:CommonProperties) { }
 
   private handleError(error: any) {
       console.log(error);

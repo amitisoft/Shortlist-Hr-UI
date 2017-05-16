@@ -1,4 +1,4 @@
-﻿
+
   <div class="row">
     <div class="col-xs-12">
       <hr />
@@ -25,7 +25,7 @@
             <textarea class="form-control" name="queryResults" required [(ngModel)]="queryResults" #emailsList="ngModel"></textarea>
           </div>
           <div class="col-sm-6 col-xs-12">
-            <p class="help-block error" *ngIf="!emailsList.valid">Enter Email(s)</p>
+            <p class="help-block error" *ngIf="!emailsList.valid && emailTextArea.touched">Enter Email(s)</p>
             <div *ngFor="let item of selected">
               <div class="selected">
                 <span>{{item}}</span>
@@ -46,7 +46,7 @@
             <input type="text" class="form-control form-control-sm" id="subject"
                    placeholder="Enter Mail Subject" name="subject"
                    ngModel #emailSubject="ngModel" required>
-            <p class="help-block error" *ngIf="!emailSubject.valid">Enter Subject</p>
+            <p class="help-block error" *ngIf="!emailSubject.valid && emailSubject.touched">Enter Subject</p>
           </div>
         </div>
 
@@ -65,7 +65,9 @@
               <option value="UI SENIOR DEVELOPER"> UI SENIOR DEVELOPER</option>
               <option value="IOS"> IOS </option>
             </select>
-            <p class="help-block error" *ngIf="!postApplied.valid">Select post applied</p>
+            <p class="help-block error" *ngIf="!postApplied.valid && postApplied.touched">Select post applied</p>
+            <!-- <p class="help-block error" *ngIf="rangeForm.controls.range.errors?.required">Select post applied</p> -->
+            
           </div>
         </div>
         <div class="form-group row">

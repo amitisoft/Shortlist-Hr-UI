@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="well">
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Mobile</th>
+							<th>Gender</th>
+							<th>Address</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let users of useritems; let i = index" style="cursor: pointer;">
+							<td>{{users.data.firstname}} {{users.data.lastname}}</td>
+							<td>{{users.data.email}}</td>
+							<td>{{users.data.mobile}}</td>
+							<td>{{users.data.gender}}</td>
+							<td>{{users.data.address}}</td>
+							<td>
+								<a [routerLink]="['../register',users.data.mobile]"><span class="glyphicon glyphicon-edit" title="Edit"></span></a>
+								<a (click)="deletecandidate(users.data,i)"><span class="glyphicon glyphicon-trash" title="Delete"></span></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

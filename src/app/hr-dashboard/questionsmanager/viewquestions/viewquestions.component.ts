@@ -2,16 +2,14 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
 import { Http } from '@angular/http';
-import { ViewQuestionProperties } from './viewquestions.properties';
 import { ViewQuestionsService } from './viewquestions.service';
 import { PapermanagementService } from '../papermanagement/papermanagement.service';
-import { PapermanagementProperties } from '../papermanagement/papermanagement.properties';
 
 @Component({
   selector: 'amiti-viewquestions',
   templateUrl: './viewquestions.component.html',
   styleUrls: ['./viewquestions.component.css'],
-  providers: [ViewQuestionsService, PapermanagementService, ViewQuestionProperties, CategorymanagerService, PapermanagementProperties]
+  providers: [ViewQuestionsService, PapermanagementService, CategorymanagerService]
 })
 export class ViewquestionsComponent implements OnInit {
 
@@ -26,7 +24,6 @@ export class ViewquestionsComponent implements OnInit {
     constructor(private router: Router, private route: ActivatedRoute,
         private categoryMngService: CategorymanagerService,
         private http: Http,
-        private viewQuestionsProperties: ViewQuestionProperties,
         private viewQuestionService: ViewQuestionsService,
         private paperService: PapermanagementService){
 
@@ -89,6 +86,14 @@ export class ViewquestionsComponent implements OnInit {
       this.createQuestionClicked = clicked;
   }
 
+editQuestion(qbox, event){
+    console.log("QBOX: "+qbox);
+    var temp = event.target.getAttribute('data-questionObject');
+    console.log("Question Name: "+event.target.getAttribute('data-questionName'));
+    console.log("Question Id: "+event.target.getAttribute('data-questionId'));
+    console.log("Question Category: "+event.target.getAttribute('data-questionCat'));  
+    this.router.navigate(['../createquestion'], { relativeTo: this.route });
+}
 
 
 }

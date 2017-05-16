@@ -1,17 +1,15 @@
-﻿
-import { Component, OnInit, ElementRef } from '@angular/core';
+﻿import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CreateTestService } from './createtest.service';
 import { Response } from '@angular/http';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
-import { CreatetestProperties } from './createtest.properties';
 
 @Component({
     selector: 'amiti-createtest',
   templateUrl: './createtest.component.html',
   styleUrls: ['./createtest.component.css'],
-  providers: [CreateTestService,CreatetestProperties]
+  providers: [CreateTestService]
 })
 
 export class CreatetestComponent implements OnInit {
@@ -111,15 +109,44 @@ export class CreatetestComponent implements OnInit {
         }
     }
 
+/*    filter(emailsParam,queryParam,filteredListParam,emailsListParam) {
+    
+        this.emailsList = this.allEmailsArray;
+        this.categoryList = this.allCategoriesArray;
+        if (this[queryParam] !== "") {
+            this[filteredListParam] = this[emailsParam].filter(function (el) {
+                return el.toLowerCase().indexOf(this[queryParam].toLowerCase()) > -1;
+            }.bind(this));
+        } else {
+            this[filteredListParam] = [];
+        }
+    }*/
+
     select(item,query,selected,filteredList,queryResults) {
         this[selected].push(item);
+        this.emailsList.splice(this.emailsList.indexOf(item), 1);
         this[query] = '';
         this[filteredList] = [];
         this[queryResults] = this[selected].toString();
     }
 
+/*    select(item,query,selected,filteredList,queryResults) {
+        for(let x in this[selected]){
+            if(x === item){
+                alert("This Email is already selected.");
+            }
+            else{
+                this[selected].push(item);
+            }
+        }
+        this[query] = '';
+        this[filteredList] = [];
+        this[queryResults] = this[selected].toString();
+    }*/
+
     remove(item,selected,queryResults) {
         this[selected].splice(this[selected].indexOf(item), 1);
+        this.emailsList.push(item);
         this[queryResults] = this[selected].toString();
     }
 

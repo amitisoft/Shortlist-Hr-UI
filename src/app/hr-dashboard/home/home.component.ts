@@ -30,7 +30,7 @@ public barChartOptions:any = {
   }
  
  // Pie
-    public pieChartLabels:string[] = ['Total Link Send', 'Total Link Active', 'Total Exam Given'];
+    public pieChartLabels:string[] = ['Total Link Sent', 'Total Link Active', 'Total Exam Given'];
     public pieChartData:number[] = [500, 100, 200];
     public pieChartType:string = 'pie';
 }
