@@ -29,22 +29,12 @@ export class ViewcategoryComponent implements OnInit {
             });
     }
 
-    onEditCategory(index: number) {
-       
-        this.categoryMngService.startedEditing.next(index);
-        this.router.navigate(['../createcategory'], { relativeTo: this.route });
-       // this.router.navigate(['../', this.id, 'createcategory'], { relativeTo: this.route });
-       
-    }
-
-    deleteCategory(index: number) {
+    deleteCategory(item: any,index: number) {
+        if(confirm('Are you sure to delete ?')){
+        //this.categoryMngService.deletecategory(item);
         this.items.splice(index, 1);
-        
+        }
     }
 
-    onDeleteCategory() {
-        
-
-    }
 
 }

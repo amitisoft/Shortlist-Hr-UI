@@ -3,10 +3,8 @@
 
 import { Routes, RouterModule } from '@angular/router';
 
-import { SigninPanelComponent } from './auth/signin/signin-panel.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { SignupComponent } from './auth/signin/signup.component';
-import { ForgotpasswordComponent } from './auth/signin/forgotpassword.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 import { HrDashboardComponent } from './hr-dashboard/hr-dashboard.component';
 import { DashboardpanelComponent } from './hr-dashboard/dashboardpanel/dashboardpanel.component';
@@ -39,13 +37,9 @@ import { AuthGaurd } from './auth/auth-gaurd.service';
 // Root Router Part
 
 const appRoutes: Routes = [
-    //{ path: '', redirectTo: 'signin', pathMatch: 'full' },
-    //{ path: 'signin', component: SigninComponent },
-    { path: '', redirectTo: '/signinpanel', pathMatch: 'full' },
-    { path: 'signinpanel', component: SigninPanelComponent },
-    { path: 'signinpanel/signin', component: SigninComponent },
-    { path: 'signinpanel/signup', component: SignupComponent },
-    { path: 'signinpanel/forgotpassword', component: ForgotpasswordComponent },
+    { path: '', redirectTo: '/signin', pathMatch: 'full' },
+    { path: 'signin', component: SigninComponent },
+    { path: 'forgotpassword/:id', component: ForgotpasswordComponent },
 
     // { path: 'protected', component: ProtectedComponent },
     {
@@ -63,10 +57,10 @@ const appRoutes: Routes = [
 
             {
                 path: 'catmanager', component: CategorymanagerComponent, canActivate: [AuthGaurd], children: [
+                    { path: '', redirectTo: 'viewcategory', pathMatch: 'full' },
                     { path: 'createcategory', component: CreatecategoryComponent },
                     { path: 'viewcategory', component: ViewcategoryComponent },
-                    { path: ':id', component: CreatecategoryComponent },
-                    { path: ':id/createcategory', component: CreatecategoryComponent }
+                    { path: 'createcategory/:id', component: CreatecategoryComponent }
                 ]
             },
 

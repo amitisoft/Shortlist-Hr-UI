@@ -15,9 +15,10 @@ export class ListdataComponent implements OnInit {
         this.candidateService.getuserlist()
             .subscribe(
             data => {
+                console.log(data.candidates);
                 const myArray = [];
-                for (let key in data) {
-                    myArray.push(data[key]);
+                for (let key in data.candidates) {
+                    myArray.push(data.candidates[key]);
                 }
                 this.useritems = myArray;
                 console.log(this.useritems);
