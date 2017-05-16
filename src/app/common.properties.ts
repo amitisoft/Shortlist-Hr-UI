@@ -5,8 +5,8 @@
     uploadCandidateDataUrl = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/getCandidatesListFile';
 
    
-    addcandidateurl='https://user-a1ecd.firebaseio.com/userlist.json';
-    getcandidateurl='https://user-a1ecd.firebaseio.com/userlist.json';
+    addcandidateurl='https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate' ;//'https://user-a1ecd.firebaseio.com/userlist.json';
+    getcandidateurl='https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/allcandidates';
 
 
 	/*----categorymanager Component----*/

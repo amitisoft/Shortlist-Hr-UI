@@ -7,19 +7,19 @@ Feature: HR can view and edit question manager dashboard
 Scenario: HR can create question by entering text
 	Given I am on the Dashboard page
 	When I click on question manager
-	When I click on create Questions
-	When I enter the question "Which of these keywords is used to refer to member of base class from a sub class?"
-	When I enter multiple choice Answer
-		| answers  |
-		| upper    |
-		| super    |
-		| this     |
+	And I click on create Questions
+	And I enter the question "Which of these keywords is used to refer to member of base class from a sub class?"
+	And I enter multiple choice Answer
+		| answers               |
+		| upper                 |
+		| super                 |
+		| this                  |
 		| None of the mentioned |
-	When I select the check box for right choices
-	When I select category "Java" from dropdown
-	When I click on Add Button
+	And I select the check box for right choices
+	And I select category "Java" from dropdown
+	And I click on Add Button
 	Then I Verify the success alert
-	#Then I Verify the question count is updated to 4
+# Then I Verify the question count is updated to 4
 
 
 #@CannotCreateQuestion

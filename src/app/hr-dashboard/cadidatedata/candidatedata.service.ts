@@ -38,21 +38,21 @@ export class CandidateDataService {
         console.log(error);
         return Observable.throw(error.json()); // (error.json());
     }
-    addUser(userdata, files) {
-        var newObject = {
-            'lastModified': files.lastModified,
-            'lastModifiedDate': files.lastModifiedDate,
-            'name': files.name,
-            'size': files.size,
-            'type': files.type
-        };
-        var newobbj = JSON.stringify(newObject);
-        var alldata = {
-            'data': userdata,
-            "file": newObject
-        };
-        console.log(alldata);
-        return this.http.post(this.candidateDataPro.addcandidateurl, alldata);
+    addUser(userdata) {
+        // var newObject = {
+        //     'lastModified': files.lastModified,
+        //     'lastModifiedDate': files.lastModifiedDate,
+        //     'name': files.name,
+        //     'size': files.size,
+        //     'type': files.type
+        // };
+        // var newobbj = JSON.stringify(newObject);
+        // var alldata = {
+        //     'data': userdata,
+        //     "file": newObject
+        // };
+        console.log(userdata);
+        return this.http.post(this.candidateDataPro.addcandidateurl, userdata);
     }
 
   

@@ -91,6 +91,6 @@ export class AuthService {
     logOut() {
         firebase.auth().signOut();
         this.token = null;
-        this.router.navigate(['/signinpanel']);
+        this.router.navigate(['/signin']);
     }
 }

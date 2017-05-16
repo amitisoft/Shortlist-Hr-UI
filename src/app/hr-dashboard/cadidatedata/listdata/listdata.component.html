@@ -8,21 +8,17 @@
 							<th>Name</th>
 							<th>Email</th>
 							<th>Mobile</th>
-							<th>Gender</th>
-							<th>Address</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr *ngFor="let users of useritems; let i = index" style="cursor: pointer;">
-							<td>{{users.data.firstname}} {{users.data.lastname}}</td>
-							<td>{{users.data.email}}</td>
-							<td>{{users.data.mobile}}</td>
-							<td>{{users.data.gender}}</td>
-							<td>{{users.data.address}}</td>
+							<td>{{users.firstName}} {{users.lastName}}</td>
+							<td>{{users.email}}</td>
+							<td>{{users.phoneNumber}}</td>
 							<td>
-								<a [routerLink]="['../register',users.data.mobile]"><span class="glyphicon glyphicon-edit" title="Edit"></span></a>
-								<a (click)="deletecandidate(users.data,i)"><span class="glyphicon glyphicon-trash" title="Delete"></span></a>
+								<a [routerLink]="['../register',users.candidateId]" class="btn btn-success"><span class="glyphicon glyphicon-pencil" title="Edit"></span></a>
+								<a (click)="deletecandidate(users.candidateId,i)" class="btn btn-danger"><span class="glyphicon glyphicon-trash" title="Delete"></span></a>
 							</td>
 						</tr>
 					</tbody>
