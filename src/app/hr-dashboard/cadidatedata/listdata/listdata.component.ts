@@ -30,26 +30,6 @@ export class ListdataComponent implements OnInit {
             this.useritems.splice(index, 1);
         }
     }
-//=======
-// ngOnInit() {
-//  this.candidateService.getuserlist()
-//           .subscribe(
-//           data => {
-//               const myArray = [];
-//               for (let key in data) {
-//                   myArray.push(data[key]);
-//               }
-//               this.useritems = myArray;
-//              console.log(this.useritems);
-//           }
-//       );
-// }
-// deletecandidate(user,index){
-//  if(confirm("Are you sure to delete?")){
-//  this.candidateService.deleteCandidate(user.mobile);
-//  this.useritems.splice(index,1);
-// }
-// }
-//>>>>>>> refs/remotes/origin/master
+
 
 }
