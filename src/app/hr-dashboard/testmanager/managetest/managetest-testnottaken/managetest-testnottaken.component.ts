@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, OnChanges } from '@angular/core';
 import { ManagetestService } from '../managetest.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { ManagetestService } from '../managetest.service';
   styleUrls: ['./managetest-testnottaken.component.css'],
   providers: [ManagetestService]
 })
-export class ManagetestTestnottakenComponent implements OnInit {
+export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
 
     manageTest: any[] = [];
 
@@ -15,6 +15,8 @@ export class ManagetestTestnottakenComponent implements OnInit {
     rowValue: any;
     selectedRows: boolean = false;
     startTestRows = [];
+
+    items: any[] = []; // Question paper
 
     constructor(private mngTestService: ManagetestService) { }
 
@@ -25,6 +27,9 @@ export class ManagetestTestnottakenComponent implements OnInit {
             }
 
             );
+
+
+        this.onSelectPaper();
     }
 
     startTest(sampleManageTestData) {
@@ -64,6 +69,47 @@ export class ManagetestTestnottakenComponent implements OnInit {
             alert('Please select atleast one row');
             return false;
         }
+    }
+
+    /** Select Paper **/
+
+    onSendCategory(value: string, java) {
+        this.mngTestService.sendCategoryForPaper(java)
+            .subscribe(
+            (response) => {
+               // alert('data submitted auccessfully');
+               // this.onSelectPaper();
+                
+                //if (response.status == 200) {
+
+
+                //}
+                this.onSelectPaper();
+            }
+
+            );
+    }
+
+    onSelectPaper() {
+       // alert("Hi Sarath");
+        this.mngTestService.getQuestionPaper()
+            .subscribe(
+            //for loopping // data => this.items = data
+            data => {
+                const myArray = [];
+                for (let key in data) {
+                    myArray.push(data[key]);
+                }
+                this.items = myArray;
+
+            }); console.log(this.items);
+
+    }
+
+    ngOnChanges() {
+
+       
+
     }
 
 

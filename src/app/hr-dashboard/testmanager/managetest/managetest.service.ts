@@ -59,6 +59,31 @@ export class ManagetestService {
             .catch(this.handleError);
 
     }
+
+
+    /**Select Paper**/
+
+    sendCategoryForPaper(user: any) {
+        const body = JSON.stringify(user);
+
+        const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
+
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.post('https://collectpaper-182eb.firebaseio.com/sendcategory.json', body, {
+            headers: headers
+        })
+            .map((data: Response) => data.json())
+            .catch(this.handleError); // For Error Handling
+    }
+
+    getQuestionPaper() {
+        return this.http.get('https://collectpaper-182eb.firebaseio.com/getPaper.json')
+            .map((response: Response) => response.json());
+    }
+
+    /**Select Paper**/
+
     getStartTestdata() {
         return this.http.get('https://questiontable-630db.firebaseio.com/startTestData.json')
             .map((response: Response) => response.json());

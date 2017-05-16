@@ -34,22 +34,57 @@
         <th>TEST STATUS</th>
         <!-- <th style="color:aqua">RESEND LINK</th> -->
       </tr>
-      <tr *ngFor="let mgtxt of manageTest; let i = index; ">
+      <!--<tr *ngFor="let mgtxt of manageTest; let i = index; ">
         <td>
           <input type="checkbox" [disabled]="false"
                  id="{{ 'row' + mgtxt.candidateId }}"
                  name="{{ 'row' + mgtxt.candidateId }}" />
         </td>
-        <!-- <td></td> -->
-        <td>{{mgtxt.candidateId}}</td>
+        
+        <!--<td>{{mgtxt.candidateId}}</td>
         <td>{{mgtxt.candidateFullName}}</td>
         <td>{{mgtxt.jobPosition}}</td>
         <td>{{mgtxt.candidateMailId}}</td>
         <td>{{mgtxt.DOE}}</td>
         <td>{{mgtxt.category}}</td>
-        <!-- <td>{{mgtxt.subject}}</td> -->
+        
+         <td><input type="text" 
+                     
+                    class="form-control" 
+                    (click)="onSelectPaper(this.value,mgtxt.category)"/></td> 
         <td>{{mgtxt.testStatus}}</td>
-        <td>{{mgtxt.status}}</td>
+        <td>{{mgtxt.status}}</td>-->
+        <!-- <td><a>{{mgtxt.resendLink}}</a> </td> -->
+
+      <!--</tr>-->
+
+      <tr >
+        <td>
+          <input type="checkbox" [disabled]="false"
+                 />
+        </td>
+        <!-- <td></td> -->
+        <td>0007</td>
+        <td>sarath</td>
+        <td>java developer</td>
+        <td>sarath@amiti.com</td>
+        <td>22-02-17</td>
+        <td >java</td>
+
+        <td>
+          <!--<button type="button" class="btn btn-success"
+                  >Select Paper</button>-->
+
+          <input  type="text" 
+                 class="form-control" 
+                  
+                 (click)="onSendCategory(this.value,'java')"
+                 
+                 auto-complete 
+                 [source]="items" (keyup)="onSelectPaper()" style="overflow:scroll"/>
+        </td>
+        <td>Not Taken</td>
+        <!--<td>{{mgtxt.status}}</td>-->
         <!-- <td><a>{{mgtxt.resendLink}}</a> </td> -->
 
       </tr>
