@@ -83,7 +83,8 @@ import { ChangepasswordComponent } from './hr-dashboard/changepassword/changepas
       UploadlistComponent,
       ListdataComponent,
       RegisterComponent,
-      ForgotpasswordComponent
+      ForgotpasswordComponent,
+      ChangepasswordComponent
   ],
   imports: [
       BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,
