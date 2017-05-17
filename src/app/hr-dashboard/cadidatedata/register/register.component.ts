@@ -11,28 +11,33 @@ import { CandidateDataService } from '../candidatedata.service';
 })
 export class RegisterComponent implements OnInit {
     @ViewChild('f') uForm: NgForm;
-    @ViewChild("fileInput") fileInput;
-
-    fileToUpload: any[] = [];
     data: any[] = [];
     id: number;
     editMode = false;
+    user: any[]=[];
     constructor(private candidateService: CandidateDataService, private route: ActivatedRoute) { }
 
     ngOnInit() {
-
         this.route.params
             .subscribe(
             (params: Params) => {
-                this.id = +params['id'];
+                this.id = params['id'];
                 this.editMode = params['id'] != null;
                 this.initForm();
             }
             )
     }
     initForm() {
-        console.log(this.id);
+   
+    if(this.editMode){
+        this.candidateService.getcandidateDetails(this.id)
+            .subscribe(
+            data => {
+                this.user=data;
+            }
+            );
     }
+}
     onSubmitData(form: NgForm) {
         this.candidateService.addUser(form.value)
             .subscribe(

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm, FormsModule } from '@angular/forms';
+import { Response } from '@angular/http';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'amiti-changepassword',
@@ -11,5 +14,7 @@ export class ChangepasswordComponent implements OnInit {
 
   ngOnInit() {
   }
-
+changepassword(form: NgForm){
+	console.log(form.value);
+}
 }

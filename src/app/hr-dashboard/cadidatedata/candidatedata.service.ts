@@ -39,18 +39,6 @@ export class CandidateDataService {
         return Observable.throw(error.json()); // (error.json());
     }
     addUser(userdata) {
-        // var newObject = {
-        //     'lastModified': files.lastModified,
-        //     'lastModifiedDate': files.lastModifiedDate,
-        //     'name': files.name,
-        //     'size': files.size,
-        //     'type': files.type
-        // };
-        // var newobbj = JSON.stringify(newObject);
-        // var alldata = {
-        //     'data': userdata,
-        //     "file": newObject
-        // };
         console.log(userdata);
         return this.http.post(this.candidateDataPro.addcandidateurl, userdata);
     }
@@ -60,6 +48,10 @@ export class CandidateDataService {
     getuserlist(){
 
         return this.http.get(this.candidateDataPro.getcandidateurl)
+            .map(response => response.json());
+    }
+    getcandidateDetails(id){
+        return this.http.get(this.candidateDataPro.getcandidateDetails+'/'+id)
             .map(response => response.json());
     }
     deleteCandidate(mobile) {
