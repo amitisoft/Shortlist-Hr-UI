@@ -2,12 +2,12 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppRoutingModule } from './app.routing.module';
 
 import { CommonProperties } from './common.properties';
 
 import { DropdownDirective } from './share/dropdown.directive';
+import { EqualValidator } from './share/equal-validator.directive';
 import { AppComponent } from './app.component';
 import { HeaderMainComponent } from './header-main/header-main.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -87,6 +87,7 @@ import { ViewpapersComponent } from './hr-dashboard/questionsmanager/viewpapers/
       ForgotpasswordComponent,
       ChangepasswordComponent,
       ViewpapersComponent
+      EqualValidator
   ],
   imports: [
       BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,

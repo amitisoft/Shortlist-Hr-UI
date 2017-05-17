@@ -7,7 +7,7 @@
    
     addcandidateurl='https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate' ;//'https://user-a1ecd.firebaseio.com/userlist.json';
     getcandidateurl='https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/allcandidates';
-
+    getcandidateDetails='https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
 
 	/*----categorymanager Component----*/
 
