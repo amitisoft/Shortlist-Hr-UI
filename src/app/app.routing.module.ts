@@ -17,6 +17,7 @@ import { TestmanagerComponent } from './hr-dashboard/testmanager/testmanager.com
 import { CreatequestionComponent } from './hr-dashboard/questionsmanager/createquestion/createquestion.component';
 import { ViewquestionsComponent } from './hr-dashboard/questionsmanager/viewquestions/viewquestions.component';
 import { PapermanagementComponent } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.component';
+import { ViewpapersComponent } from './hr-dashboard/questionsmanager/viewpapers/viewpapers.component';
 
 import { CreatetestComponent } from './hr-dashboard/testmanager/createtest/createtest.component';
 import { ManagetestComponent } from './hr-dashboard/testmanager/managetest/managetest.component';
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
                 path: 'qmanager', component: QuestionsmanagerComponent, canActivate: [AuthGaurd], children: [
                     { path: 'createquestion', component: CreatequestionComponent },
                     { path: 'viewquestion', component: ViewquestionsComponent },
-                    { path: 'papermange', component: PapermanagementComponent }
+                    { path: 'papermange', component: PapermanagementComponent },
+                    { path: 'viewPaper', component: ViewpapersComponent}
                 ]
             },
             
