@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http, RequestOptions, ResponseContentType, Response } from '@angular/http';
 import { FileSaverService } from 'ngx-filesaver';
 import { Observable } from "rxjs/Observable";
@@ -12,9 +12,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./uploadlist.component.css']
 })
 export class UploadlistComponent implements OnInit {
+  @ViewChild("files") files;
     status: string;
     public text: string;
   public fileName: string;
+  fileToUpload: any[]=[];
   constructor(private candidateDataService: CandidateDataService,private _http: Http, private _FileSaverService: FileSaverService) { }
 
   ngOnInit() {
@@ -22,16 +24,20 @@ export class UploadlistComponent implements OnInit {
   }
 
   onFileUpload(form: NgForm) {
+      let fi = this.files.nativeElement;
+  if (fi.files && fi.files[0]) {
+       this.fileToUpload = fi.files[0];
+    }
+    console.log(this.fileToUpload);
+      // this.candidateDataService.sendCandidateData({ CADIDATEFILE: form })
+      //    .subscribe(
+      //     data => alert('Successfully Upload'),
 
-      this.candidateDataService.sendCandidateData({ CADIDATEFILE: form })
-         .subscribe(
-          data => alert('Successfully Upload'),
 
 
+      //   error => console.log(error),
 
-        error => console.log(error),
-
-         );
+      //    );
      }
   onDownload() {
     const fileName = 'candidateformat.xlsx';

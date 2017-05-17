@@ -7,7 +7,7 @@
    
     addcandidateurl='https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate' ;//'https://user-a1ecd.firebaseio.com/userlist.json';
     getcandidateurl='https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/allcandidates';
-
+    getcandidateDetails='https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
 
 	/*----categorymanager Component----*/
 
@@ -21,8 +21,9 @@
     categoryPermission = 'https://amitionlinetestcategory.firebaseio.com/categoryPermission.json';
     questionpaper = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/questionpaper';
 
+
     /*----viewquestions Component----*/
-    viewQuestionsUrl = 'https://e92rcpg85i.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
+    viewQuestionsUrl = ' https://xe79yp7gz2.execute-api.us-east-1.amazonaws.com/dev/api/getquestionpapernames';
 
     /*----createtest Component----*/
     sendEmailUrl = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/testlink';
