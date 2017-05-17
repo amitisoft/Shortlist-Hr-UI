@@ -23,7 +23,9 @@ export class SigninComponent implements OnInit {
       const password = form.value.password;
       this.authService.signinUser(email, password);
   }
-  sendforgotlink(){
+  sendforgotlink(){ 
+    if(confirm("Are sure to send link ?")){
     alert('Link sent to your mail,Pls check !');
+  }
   }
 }
