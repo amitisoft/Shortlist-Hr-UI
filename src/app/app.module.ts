@@ -53,6 +53,7 @@ import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata
 import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ChangepasswordComponent } from './hr-dashboard/changepassword/changepassword.component';
+import { ViewpapersComponent } from './hr-dashboard/questionsmanager/viewpapers/viewpapers.component';
 
 
 
@@ -85,6 +86,7 @@ import { ChangepasswordComponent } from './hr-dashboard/changepassword/changepas
       RegisterComponent,
       ForgotpasswordComponent,
       ChangepasswordComponent,
+      ViewpapersComponent
       EqualValidator
   ],
   imports: [
