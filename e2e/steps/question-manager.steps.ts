@@ -13,13 +13,12 @@ export class QuestionManagerSteps {
 
   clickQuestionManagerTab() {
     return this.questionmanagerpage.clickQuestionManagerTab();
-
   }
 
   createQuestion() {
     return this.questionmanagerpage.clickCreateQuestionButton();
-
   }
+
   enterQuestion(questionText: string) {
     return this.questionmanagerpage.enterQuestion(questionText);
   }
@@ -30,11 +29,31 @@ export class QuestionManagerSteps {
 
   selectCorrectOption(optionNumber : number){
     return this.questionmanagerpage.selectCorrectOption(optionNumber);
-
   }
-  selectQuestionCategory(comboOption: string){
-    return this.questionmanagerpage.selectCategory(comboOption);
-
+  selectQuestionCategory(){
+     this.questionmanagerpage.selectCategory();
   }
+
+  selectAddButton(){
+    return this.questionmanagerpage.clickAddButton();
+  }
+
+  waitForQuestionManager() {
+    return this.questionmanagerpage.verifyQuestionManagerVisible();
+  }
+
+  selectPaperManagement() {
+    return this.questionmanagerpage.selectPaperManagement();
+  }
+
+  enterPaperName(paperName: string) {
+    return this.questionmanagerpage.enterPaperName(paperName);
+  }
+
+  selectCategory(categoryName: string) {
+    return this.questionmanagerpage.enterPaperName(categoryName);
+  }
+
+
 
 }

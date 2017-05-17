@@ -17,7 +17,9 @@ export class QuestionManagerPage {
   private addQuestionButtonText = "ADD";
   private clearFieldsButtonText = "CLEAR";
   private answersSelected = "amiti-questionsmanager/div[3]/div/amiti-createquestion/form/div[3]/div[1]";
-  private categoryComboId = "singleSelect";
+  private questionManagerTextXPath = "//amiti-hr-dashboard/div/div/amiti-questionsmanager/div[1]/div";
+  private paperManagementButtonText = "PAPER MANAGEMENT";
+  private paperNameCss = '[placeholder="Paper Name"]';
 
   verifyHrDashboardVisible() {
     return this.proHelper.verifyElementVisibleUsingXPath(this.hrDashboardPanelXPath);
@@ -49,20 +51,31 @@ export class QuestionManagerPage {
     this.proHelper.clickUsingName(optionName);
   }
 
-  selectCategory(optionValue: string) {
-    this.proHelper.selectComboOptionByValue(this.categoryComboId,optionValue);
+  selectCategory() {
   }
 
   clickAddButton() {
     this.proHelper.clickUsingButtonText(this.addQuestionButtonText);
- }
+  }
 
   clickClearButton() {
     this.proHelper.clickUsingButtonText(this.clearFieldsButtonText);
   }
 
- verifySelectedOption() {
-   return this.proHelper.waitForElementXPath(this.answersSelected);
- }
+  verifySelectedOption() {
+    this.proHelper.waitForElementXPath(this.answersSelected);
+  }
+
+  verifyQuestionManagerVisible() {
+    this.proHelper.verifyElementVisibleUsingXPath(this.questionManagerTextXPath);
+  }
+
+  selectPaperManagement() {
+    this.proHelper.clickUsingButtonText(this.paperManagementButtonText);
+  }
+
+  enterPaperName(paperName: string) {
+    this.proHelper.sendKeysUsingCss(this.paperNameCss,paperName);
+  }
 
 }

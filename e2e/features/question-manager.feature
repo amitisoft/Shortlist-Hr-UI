@@ -16,10 +16,10 @@ Scenario: HR can create question by entering text
 		| this                  |
 		| None of the mentioned |
 	And I select the check box for right choices
-	And I select category "Java" from dropdown
+	And I select category "QA" from dropdown
 	And I click on Add Button
-	Then I Verify the success alert
-# Then I Verify the question count is updated to 4
+  Then I Verify the success alert
+  And I Verify the question count is updated to 4
 
 
 #@CannotCreateQuestion
@@ -89,27 +89,27 @@ Scenario: HR can filter the question upon category in Show Question module
 #   Then I Verify the questions are filtered upon selected category
 
 
-#@CreatePaper
+@CreatePaper
 Scenario: HR can create paper of single categories in question manager
 	Given I am on the question manager module
 	When I click on paper management module
-	When I enter paper name as "JS_Paper1"
-	When I select "JavaScript" category
-	Then I select set of questions for paper and verify
-		| optionNo |
-		| 1        |
-		| 2        |
-		| 3        |
-		| 4        |
-		| 5        |
-		| 7        |
-		| 9        |
-		| 11       |
-		| 12       |
-		| 13       |
-		| 15       |
-	When I click on save button
-    Then I verify the alert message "Paper saved successfully."
+	And I enter paper name as "JS_Paper1"
+	And I select "JavaScript" category
+#	Then I select set of questions for paper and verify
+#		| optionNo |
+#		| 1        |
+#		| 2        |
+#		| 3        |
+#		| 4        |
+#		| 5        |
+#		| 7        |
+#		| 9        |
+#		| 11       |
+#		| 12       |
+#		| 13       |
+#		| 15       |
+#	When I click on save button
+ #   Then I verify the alert message "Paper saved successfully."
     Then I accept the alert
 
 
