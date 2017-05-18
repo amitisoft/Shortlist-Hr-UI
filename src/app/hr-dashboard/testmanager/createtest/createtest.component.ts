@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { CreateTestService } from './createtest.service';
 import { Response } from '@angular/http';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
+import{ WindowRefService } from './createtest.service';
 
 @Component({
     selector: 'amiti-createtest',
   templateUrl: './createtest.component.html',
   styleUrls: ['./createtest.component.css'],
-  providers: [CreateTestService]
+  providers: [CreateTestService, WindowRefService]
 })
 
 export class CreatetestComponent implements OnInit {
@@ -17,16 +18,19 @@ export class CreatetestComponent implements OnInit {
     emailData:any;
     getData: any;
     convertedEmailData = [];
-    saveStatus: boolean = false;
+    questionSuccessStatus: boolean = false;
+    questionFailureStatus: boolean = false;
     listOfSelectedEmails = [];
     arrayOfSelectedEmails = [];
     queryResults: any;
     categoryQueryResults: any;
     allEmailsArray = [];
     allCategoriesArray = [];
+    private _window: Window;
     constructor(private autoCompleteService: CreateTestService,
-        myElement: ElementRef, private categoryManagerService: CategorymanagerService) {
+        myElement: ElementRef, private categoryManagerService: CategorymanagerService, windowRef: WindowRefService) {
         this.elementRef = myElement;
+        this._window = windowRef.nativeWindow;
     }
 
     ngOnInit() {
@@ -50,6 +54,8 @@ export class CreatetestComponent implements OnInit {
                 this.categoryItems = this.allCategoriesArray;
             }
         );
+
+        console.log(this._window);
     }
 
     sendTestLink(form:NgForm){
@@ -73,6 +79,7 @@ export class CreatetestComponent implements OnInit {
     }
 
     wrapFunction(form:NgForm){
+        var frm = form;
             this.emailData = {
                 emails: form.value.queryResults,
                 emailsubject : form.value.subject,
@@ -81,7 +88,7 @@ export class CreatetestComponent implements OnInit {
                 category:form.value.categoryQueryResults
             };
 
-            this.autoCompleteService.sendEmail(this.emailData).subscribe(
+            /*this.autoCompleteService.sendEmail(this.emailData).subscribe(
                 (response) => {
                     if (response.status == 200) {
                         this.saveStatus = true;
@@ -92,10 +99,52 @@ export class CreatetestComponent implements OnInit {
                         this.categorySelected = [];
                         document.getElementsByClassName('fr-element fr-view')[0].innerHTML = '';
                         form.reset();
+                        window.scrollTo(0,0);
+                    }else{
+                        window.scrollTo(0,0);
                     }
                 }
+            );*/
+
+            this.autoCompleteService.sendEmail(this.emailData).subscribe(
+                (data) => {
+
+                },
+                (error) => {
+                    // this.questionFailureStatus = true;
+                    this.notificationShow('questionFailureStatus', 'true', 'failure-alert');
+                    this.formReset(frm);
+                },
+                () => {
+                    // this.questionSuccessStatus = true;
+                    this.notificationShow('questionSuccessStatus', 'true', 'success-alert');
+                    this.formReset(frm);
+                }
             );
+
+            // this._window.scrollTo(0,0);
         }
+
+        formReset(form:NgForm){
+            this.categoryQueryResults = '';
+            this.queryResults = '';
+            this.selected = [];
+            this.categorySelected = [];
+            document.getElementsByClassName('fr-element fr-view')[0].innerHTML = '';
+            form.reset();
+            // window.scrollTo(0,0);
+            this._window.scrollTo(0,0);       
+        }
+
+        notificationShow(questionSuccessFailureStatus, notificationFlag, idName){
+            this[questionSuccessFailureStatus] = notificationFlag;
+            /*$("#'+idName+'").alert();
+            $("#'+idName+'").fadeTo(2000, 500).slideUp(500, function(){
+               $("#'+idName+'").slideUp(500);
+            });*/   
+        }
+
+
 
     private query = '';
     private emailsList = [];
@@ -180,4 +229,9 @@ export class CreatetestComponent implements OnInit {
     }
 
     //auto complete code ends here
+
+
 }
+
+                    /*this.questionSuccessStatus = false;
+                    this.questionFailureStatus = false;*/

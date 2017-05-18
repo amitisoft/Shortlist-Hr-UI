@@ -17,7 +17,6 @@ export class ManagetestComponent implements OnInit {
     ngOnInit() {
 
         this.router.navigate(['testNotTaken'], { relativeTo: this.route });
-
     
     }
 

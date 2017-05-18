@@ -1,6 +1,16 @@
 
   <div class="row">
     <div class="col-xs-12">
+        <div class="alert alert-success" id="success-alert" *ngIf="questionSuccessStatus">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>Success!</strong> Email Sent Successfully.
+        </div>
+
+        <div class="alert alert-danger" id="failure-alert" *ngIf="questionFailureStatus"> 
+          <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>Warning!</strong> Email not sent to <br />
+          <!-- <p *ng-for="">{{}}</p>  -->
+        </div>
       <hr />
       <form #f="ngForm" (ngSubmit)="sendTestLink(f)">
         <div class="form-group row">
@@ -131,7 +141,7 @@
                 Send Link
                 <span class="glyphicon glyphicon-envelope"></span>
               </button>
-              <button class="btn btn-info" type="reset">
+              <button class="btn btn-info" type="reset" (click)="formReset(f)">
                 Reset
                 <span class="glyphicon glyphicon-refresh"></span>
               </button>
