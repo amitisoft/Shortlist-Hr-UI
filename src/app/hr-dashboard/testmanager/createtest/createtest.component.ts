@@ -111,13 +111,12 @@ export class CreatetestComponent implements OnInit {
 
                 },
                 (error) => {
-                    // this.questionFailureStatus = true;
-                    this.notificationShow('questionFailureStatus', 'true', 'failure-alert');
                     this.formReset(frm);
                 },
                 () => {
                     // this.questionSuccessStatus = true;
                     this.notificationShow('questionSuccessStatus', 'true', 'success-alert');
+                    //alert('data submitted auccessfully');
                     this.formReset(frm);
                 }
             );
@@ -132,8 +131,9 @@ export class CreatetestComponent implements OnInit {
             this.categorySelected = [];
             document.getElementsByClassName('fr-element fr-view')[0].innerHTML = '';
             form.reset();
+            this.notificationShow('questionFailureStatus', 'true', 'failure-alert');
             // window.scrollTo(0,0);
-            this._window.scrollTo(0,0);       
+            this._window.scrollTo(0,0);      
         }
 
         notificationShow(questionSuccessFailureStatus, notificationFlag, idName){
