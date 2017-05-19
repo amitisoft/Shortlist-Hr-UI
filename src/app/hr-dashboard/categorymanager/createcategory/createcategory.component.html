@@ -6,7 +6,7 @@
       <div class="col-sm-6 col-xs-12">
         <input type="text" class="form-control form-control-lg" id="categoryname"
                placeholder="Enter Category Type" name="categoryname" ngModel
-               required #categoryname >
+               required #categoryname [(ngModel)]="items.categoryname" >
       </div>
     </div>
   </div>
@@ -20,21 +20,25 @@
                   style="height:80px;"
                   name="categorydescription" ngModel
                   required
-                  #categorydescription>
+                  #categorydescription [(ngModel)]="items.categorydescription">
         </textarea>
       </div>
     </div>
   </div>
-
+<input type="hidden" name="categoryId" class="form-control" [(ngModel)]="items.categoryId">
   <div class="row">
     <div class="col-sm-3 col-xs-12"></div>
     <div class="col-sm-6 col-xs-12">
       <div class="form-group" >
-        <button class="btn btn-primary"
+        <button *ngIf="!editMode" class="btn btn-primary"
                 type="submit"
                 [disabled]="!f.valid"
-                (click)="onCreateCategory(categoryname.value,categorydescription.value)">Add
-          <span class="glyphicon glyphicon-ok"></span></button> &nbsp;
+                (click)="onCreateCategory(categoryname.value,categorydescription.value)">Add<span class="glyphicon glyphicon-ok"></span></button>
+           <button *ngIf="editMode" class="btn btn-primary"
+                type="submit"
+                [disabled]="!f.valid"
+                (click)="onCreateCategory(categoryname.value,categorydescription.value)">Update<span class="glyphicon glyphicon-ok"></span>
+          </button> &nbsp;
         <button class="btn btn-success" type="reset" (click)="onClear()">Clear
           <span class="glyphicon glyphicon-erase"></span></button>
       </div>

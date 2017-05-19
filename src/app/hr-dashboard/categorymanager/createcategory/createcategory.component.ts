@@ -21,26 +21,33 @@ export class CreatecategoryComponent implements OnInit, OnDestroy {
 
     categoryForm: FormGroup;
     editMode = false;
-    id: number;
+    id: string;
     
     items: any[] = [];
 
     constructor(private categoryMngService: CategorymanagerService, private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
-
-        //this.route.params
-        //    .subscribe(
-        //    (params: Params) => {
-        //        this.id = +params['id'];
-        //        this.editMode = params['id'] != null;
-        //        console.log(this.editMode);
-        //        }
-        //    )
-
-      
+        this.route.params
+           .subscribe(
+           (params: Params) => {
+               this.id = params['id'];
+               this.editMode = params['id'] != null;
+                this.initForm();
+               }
+           )
     }
-
+initForm() {
+    if(this.editMode){
+        this.categoryMngService.getcategoryDetails(this.id)
+            .subscribe(
+            data => {
+                this.items=data;
+                console.log(this.items);
+            }
+            );
+    }
+}
     
 
 
@@ -52,7 +59,11 @@ export class CreatecategoryComponent implements OnInit, OnDestroy {
           (response) => {
               alert('data submitted auccessfully');
               this.onClear();
+              if(this.editMode){
+                this.router.navigate(['../../viewcategory'], { relativeTo: this.route });
+              }else{
               this.router.navigate(['../viewcategory'], { relativeTo: this.route });
+            }
 
             if (response.status == 200) {
                     

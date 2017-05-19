@@ -12,7 +12,7 @@ import { CandidateDataService } from '../candidatedata.service';
 export class RegisterComponent implements OnInit {
     @ViewChild('f') uForm: NgForm;
     data: any[] = [];
-    id: number;
+    id: string;
     editMode = false;
     user: any[]=[];
     constructor(private candidateService: CandidateDataService, private route: ActivatedRoute) { }

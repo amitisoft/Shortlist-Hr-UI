@@ -41,7 +41,10 @@ export class CategorymanagerService {
         return this.http.get(this.categoryPro.viewCategories)
             .map((response: Response) => response.json());
     }
-
+    getcategoryDetails(id : string){
+        return this.http.get(this.categoryPro.getcategoryDetails)
+            .map((response: Response) => response.json());
+    }
 
     getCategory(index: number) {
         return this.items[index];
