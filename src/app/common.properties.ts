@@ -13,6 +13,7 @@
 
     sendCategories = 'https://category-creation.firebaseio.com/createcategory.json';
     viewCategories = 'https://category-creation.firebaseio.com/createcategory.json';
+    getcategoryDetails='https://api.myjson.com/bins/eg9l1';
 
     /*----createquestion Component----*/
     saveQuestionUrl = 'https://38klsv9mz0.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
