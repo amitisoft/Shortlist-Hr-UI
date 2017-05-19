@@ -1,20 +1,22 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CreateTestService } from './createtest.service';
 import { Response } from '@angular/http';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
-import{ WindowRefService } from './createtest.service';
+import { WindowRefService } from './createtest.service';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
     selector: 'amiti-createtest',
   templateUrl: './createtest.component.html',
+  //styles: [`.simple-notification-wrapper {left: 200px !important;}`],
   styleUrls: ['./createtest.component.css'],
   providers: [CreateTestService, WindowRefService]
 })
 
 export class CreatetestComponent implements OnInit {
-    categoryItems:any=[];
+
     emailData:any;
     getData: any;
     convertedEmailData = [];
@@ -24,13 +26,18 @@ export class CreatetestComponent implements OnInit {
     arrayOfSelectedEmails = [];
     queryResults: any;
     categoryQueryResults: any;
-    allEmailsArray = [];
+    allEmailsArray:any = [];
+    emailsList:any = [];
     allCategoriesArray = [];
-    private _window: Window;
-    constructor(private autoCompleteService: CreateTestService,
-        myElement: ElementRef, private categoryManagerService: CategorymanagerService, windowRef: WindowRefService) {
-        this.elementRef = myElement;
-        this._window = windowRef.nativeWindow;
+    private _window: Window;   
+    private selected = [];
+    private categoryList = [];
+    private categoryFilteredList = [];
+    private categoryElementRef;
+    private categorySelected = [];
+
+    constructor(private autoCompleteService: CreateTestService, private categoryManagerService: CategorymanagerService, windowRef: WindowRefService, private _notificationService: NotificationsService) {      
+        this._window = windowRef.nativeWindow;    // for fetching window variable reference
     }
 
     ngOnInit() {
@@ -39,9 +46,14 @@ export class CreatetestComponent implements OnInit {
             data => {
                 for (let key in data) {
                     this.allEmailsArray.push(data[key][0].emails);
-                }
+                }   
+                this.emailsList = this.allEmailsArray;
+                console.log("Emails List coppied array: "+this.emailsList);
+                console.log("Emails List Original array: "+this.allEmailsArray);              
             }
         );
+                                     
+        
 
         //Getting all enetred categories 
         this.categoryManagerService.getOwnData().subscribe(
@@ -50,163 +62,20 @@ export class CreatetestComponent implements OnInit {
                     if(data[key]['categoryname']){
                         this.allCategoriesArray.push(data[key]['categoryname']);
                     }
-                }
-                this.categoryItems = this.allCategoriesArray;
+                }   
+                this.categoryList = this.allCategoriesArray;                        
             }
         );
-
         console.log(this._window);
     }
 
-    sendTestLink(form:NgForm){
-        var frm = form;
-/*        if(!form.value.queryResults || !form.value.subject || !form.value.singleSelect || !form.value.mailbody || !form.value.categoryQueryResults){
-            alert('Please provide required inputs');
-            return false;
-        }*/
 
-        if(!form.value.mailbody){
-            var retVal = confirm("The mail has no body, Do you want to continue ?");
-               if( retVal == true ){
-                  this.wrapFunction(frm);
-               }
-               else{
-                  return false;
-               }
-        }else{
-           this.wrapFunction(frm);
-        }  
-    }
-
-    wrapFunction(form:NgForm){
-        var frm = form;
-            this.emailData = {
-                emails: form.value.queryResults,
-                emailsubject : form.value.subject,
-                jobPosition : form.value.singleSelect,
-                emailbody:form.value.mailbody,
-                category:form.value.categoryQueryResults
-            };
-
-            /*this.autoCompleteService.sendEmail(this.emailData).subscribe(
-                (response) => {
-                    if (response.status == 200) {
-                        this.saveStatus = true;
-                        alert('data submitted auccessfully');
-                        this.categoryQueryResults = '';
-                        this.queryResults = '';
-                        this.selected = [];
-                        this.categorySelected = [];
-                        document.getElementsByClassName('fr-element fr-view')[0].innerHTML = '';
-                        form.reset();
-                        window.scrollTo(0,0);
-                    }else{
-                        window.scrollTo(0,0);
-                    }
-                }
-            );*/
-
-            this.autoCompleteService.sendEmail(this.emailData).subscribe(
-                (data) => {
-
-                },
-                (error) => {
-                    this.formReset(frm);
-                },
-                () => {
-                    // this.questionSuccessStatus = true;
-                    this.notificationShow('questionSuccessStatus', 'true', 'success-alert');
-                    //alert('data submitted auccessfully');
-                    this.formReset(frm);
-                }
-            );
-
-            // this._window.scrollTo(0,0);
-        }
-
-        formReset(form:NgForm){
-            this.categoryQueryResults = '';
-            this.queryResults = '';
-            this.selected = [];
-            this.categorySelected = [];
-            document.getElementsByClassName('fr-element fr-view')[0].innerHTML = '';
-            form.reset();
-            this.notificationShow('questionFailureStatus', 'true', 'failure-alert');
-            // window.scrollTo(0,0);
-            this._window.scrollTo(0,0);      
-        }
-
-        notificationShow(questionSuccessFailureStatus, notificationFlag, idName){
-            this[questionSuccessFailureStatus] = notificationFlag;
-            /*$("#'+idName+'").alert();
-            $("#'+idName+'").fadeTo(2000, 500).slideUp(500, function(){
-               $("#'+idName+'").slideUp(500);
-            });*/   
-        }
-
-
-
-    private query = '';
-    private emailsList = [];
-    private filteredList = [];
-    private elementRef;
-    private selected = [];
-
-    private categoryQuery = '';
-    private categoryList = [];
-    private categoryFilteredList = [];
-    private categoryElementRef;
-    private categorySelected = [];
-
-     //auto complete code starts here
-
-    filter(emails,query,filteredList,emailsList) {
-    
-        this.emailsList = this.allEmailsArray;
-        this.categoryList = this.allCategoriesArray;
-        if (this[query] !== "") {
-            this[filteredList] = this[emailsList].filter(function (el) {
-                return el.toLowerCase().indexOf(this[query].toLowerCase()) > -1;
-            }.bind(this));
-        } else {
-            this[filteredList] = [];
-        }
-    }
-
-/*    filter(emailsParam,queryParam,filteredListParam,emailsListParam) {
-    
-        this.emailsList = this.allEmailsArray;
-        this.categoryList = this.allCategoriesArray;
-        if (this[queryParam] !== "") {
-            this[filteredListParam] = this[emailsParam].filter(function (el) {
-                return el.toLowerCase().indexOf(this[queryParam].toLowerCase()) > -1;
-            }.bind(this));
-        } else {
-            this[filteredListParam] = [];
-        }
-    }*/
-
-    select(item,query,selected,filteredList,queryResults, catEmailList) {
+    // ---------------------- auto complete Begins ------------------------
+    select(item,selected,queryResults, catEmailList) {
         this[selected].push(item);
         this[catEmailList].splice(this[catEmailList].indexOf(item), 1);
-        this[query] = '';
-        this[filteredList] = [];
         this[queryResults] = this[selected].toString();
     }
-
-/*    select(item,query,selected,filteredList,queryResults) {
-        for(let x in this[selected]){
-            if(x === item){
-                alert("This Email is already selected.");
-            }
-            else{
-                this[selected].push(item);
-            }
-        }
-        this[query] = '';
-        this[filteredList] = [];
-        this[queryResults] = this[selected].toString();
-    }*/
 
     remove(item,selected,queryResults, catEmailList) {
         this[selected].splice(this[selected].indexOf(item), 1);
@@ -214,24 +83,99 @@ export class CreatetestComponent implements OnInit {
         this[queryResults] = this[selected].toString();
     }
 
-    handleClick(event) {
-        var clickedComponent = event.target;
-        var inside = false;
-        do {
-            if (clickedComponent === this.elementRef.nativeElement) {
-                inside = true;
+
+    // ---------------------- Send Create Test Form Begins ----------------------
+    sendTestLink(form:NgForm){
+        var frm = form;
+        if(!form.value.mailbody){
+            var retVal = confirm("The mail has no body, Do you want to continue ?");
+            if( retVal == true ){
+                this.wrapFunction(frm);
             }
-            clickedComponent = clickedComponent.parentNode;
-        } while (clickedComponent);
-        if (!inside) {
-            this.filteredList = [];
-        }
+            else{
+                return false;
+            }
+        }else{
+            this.wrapFunction(frm);
+        }  
     }
 
-    //auto complete code ends here
+    wrapFunction(form:NgForm){
+        var frm = form;
+        this.emailData = {
+            emails: form.value.queryResults,
+            emailsubject : form.value.subject,
+            jobPosition : form.value.singleSelect,
+            emailbody:form.value.mailbody,
+            category:form.value.categoryQueryResults
+        };
+        this.autoCompleteService.sendEmail(this.emailData).subscribe(
+            (data) => {},
+            (error) => {
+                this.formReset(frm);
+                this.errorNotification(); 
+            },
+            () => {
+                this.formReset(frm);
+                // this.questionSuccessStatus = true;             
+                this.successrNotification();
+            }
+        );
+    }
 
+
+    // ---------------------- Form Reset begins ---------------------
+    formReset(form:NgForm){
+        this.categoryQueryResults = '';
+        this.queryResults = '';
+        this.selected = [];
+        this.categorySelected = [];
+        document.getElementsByClassName('fr-element fr-view')[0].innerHTML = '';
+        form.reset();
+        //this.notificationShow('questionFailureStatus', 'true', 'failure-alert');
+        // window.scrollTo(0,0);
+        this._window.scrollTo(0,0);  
+    }
+
+        
+    // ---------------------- Notification plugin Call begins ---------------------
+    public options = {
+      timeOut: 0,
+      lastOnBottom: true
+    };
+    errorNotification(){
+        this._notificationService.error(
+            'Warning!',
+            'The email was not sent to below people for some internal problems.',
+            {
+                showProgressBar: true,
+                pauseOnHover: true,
+                clickToClose: true,
+                maxLength: 0
+            }
+        )
+    }
+    successrNotification(){
+        this._notificationService.success(
+            'Success!',
+            'The email was successfully sent.',
+            {
+                showProgressBar: true,
+                pauseOnHover: true,
+                clickToClose: true,
+                maxLength: 0
+            }
+        )
+    }
+
+    
+    // ---------------------- Notification custom function -Old begins ---------------------
+    notificationShow(questionSuccessFailureStatus, notificationFlag, idName){
+        this[questionSuccessFailureStatus] = notificationFlag;
+        /*$("#'+idName+'").alert();
+        $("#'+idName+'").fadeTo(2000, 500).slideUp(500, function(){
+            $("#'+idName+'").slideUp(500);
+        });*/   
+    }
 
 }
-
-                    /*this.questionSuccessStatus = false;
-                    this.questionFailureStatus = false;*/

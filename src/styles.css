@@ -6,3 +6,24 @@ textarea.ng-invalid.ng-touched{
 .error{
 	color :red;
 }
+
+/*.simple-notification-wrapper {
+    left: 200px !important;
+}*/
+
+.simple-notification-wrapper {
+    position: relative !important;
+    width: 100% !important;
+}
+.simple-notification.error{
+	background: #d05850 !important;
+}
+.simple-notification {
+    padding: 6px 20px !important;
+}
+.simple-notification-wrapper.bottom {
+    bottom: -10px !important;
+}
+.simple-notification-wrapper.right {
+    right: inherit !important;
+}
