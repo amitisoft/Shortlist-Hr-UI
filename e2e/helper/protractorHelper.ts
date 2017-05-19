@@ -301,12 +301,31 @@ export class ProtractorHelper {
   }
 
   /**
+   * Simulates typing keys into the specified css value
+   *
+   * @param css css value of element field to send keys to
+   * @param keys keys to send to css
+   */
+  sendKeysUsingCss(css: string, keys: string) {
+    this.getWebElementUsingBy(by.css(css)).sendKeys(keys);
+  }
+
+  /**
    * Method that return a WebElement based on provided id Attribute
    *
    * @param id id attribute use to find element
    */
   getWebElementUsingId(id: string) {
     return this.getWebElementUsingBy(by.id(id));
+  }
+
+  /**
+   * Method that return a WebElement based on provided id Attribute
+   *
+   * @param id id attribute use to find element
+   */
+  getWebElementUsingTagName(tagName: string) {
+    return this.getWebElementUsingBy(by.tagName(tagName));
   }
 
 
@@ -335,19 +354,5 @@ export class ProtractorHelper {
   clickUsingCss(cssString: string) {
     this.clickUsingBy(by.css(cssString));
   }
-
-  /**
-   * Simulates selecting options in the specified combo.
-   *
-   * @param by   By locator of comboBox
-   * @param optionValue option text to be selected
-   */
-  selectComboOptionByValue(idValue: string, optionValue: string) {
-    //let select = element(by.id('singleSelect'));
-     //select.$('[value="'+optionValue+'"]').click();
-    element(by.id('singleSelect')).$('[value="Stack"]');
-  }
-
-
 
 }

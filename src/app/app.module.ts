@@ -86,7 +86,7 @@ import { ViewpapersComponent } from './hr-dashboard/questionsmanager/viewpapers/
       RegisterComponent,
       ForgotpasswordComponent,
       ChangepasswordComponent,
-      ViewpapersComponent
+      ViewpapersComponent,
       EqualValidator
   ],
   imports: [
