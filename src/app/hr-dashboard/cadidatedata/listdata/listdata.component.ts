@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { NgForm, FormsModule } from '@angular/forms';
 import { CandidateDataService } from '../candidatedata.service';
 import { Response } from '@angular/http';
 @Component({
@@ -9,10 +10,24 @@ import { Response } from '@angular/http';
 export class ListdataComponent implements OnInit {
     useritems: any[] = [];
     constructor(private candidateService: CandidateDataService) { }
-
-
+    searchdata={
+        'firstName' : '',
+        'lastName' : '',
+        'email' : ''
+    }
     ngOnInit() {
-        this.candidateService.getuserlist()
+        let page='';
+        this.onSearch(this.searchdata,page);
+       
+    }
+    deletecandidate(user, index) {
+        if (confirm("Are you sure to delete?")) {
+            this.candidateService.deleteCandidate(user.mobile);
+            this.useritems.splice(index, 1);
+        }
+    }
+    onSearch(searchvalue:any,pageno){
+         this.candidateService.getuserlist(searchvalue,pageno)
             .subscribe(
             data => {
                 console.log(data.candidates);
@@ -24,12 +39,6 @@ export class ListdataComponent implements OnInit {
                 console.log(this.useritems);
             }
             );
-    }
-    deletecandidate(user, index) {
-        if (confirm("Are you sure to delete?")) {
-            this.candidateService.deleteCandidate(user.mobile);
-            this.useritems.splice(index, 1);
-        }
     }
 
 

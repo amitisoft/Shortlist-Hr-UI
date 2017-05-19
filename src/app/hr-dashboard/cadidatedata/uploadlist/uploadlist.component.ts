@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http, RequestOptions, ResponseContentType, Response } from '@angular/http';
 import { FileSaverService } from 'ngx-filesaver';
 import { Observable } from "rxjs/Observable";
@@ -17,34 +17,34 @@ export class UploadlistComponent implements OnInit {
     public text: string;
   public fileName: string;
   fileToUpload: any[]=[];
+  error: any[];
+  duplicate: any[];
   constructor(private candidateDataService: CandidateDataService,private _http: Http, private _FileSaverService: FileSaverService) { }
 
   ngOnInit() {
 
   }
 
-  onFileUpload(form: NgForm) {
-      let fi = this.files.nativeElement;
+  onFileUpload() {
+    let fi = this.files.nativeElement;
   if (fi.files && fi.files[0]) {
        this.fileToUpload = fi.files[0];
+        this.candidateDataService.sendCandidateData(this.fileToUpload)
+         .subscribe(
+          data => { 
+          this.error=data.invalid;
+          this.duplicate=data.duplicate;
+          alert('Successfully Upload'); 
+          }
+      );
     }
-    console.log(this.fileToUpload);
-      // this.candidateDataService.sendCandidateData({ CADIDATEFILE: form })
-      //    .subscribe(
-      //     data => alert('Successfully Upload'),
-
-
-
-      //   error => console.log(error),
-
-      //    );
-     }
+  }
   onDownload() {
     const fileName = 'candidateformat.xlsx';
       let options = new RequestOptions({
         responseType: ResponseContentType.Blob
       });
-      this._http.get('assets/CandidateFormat.xlsx', options).subscribe(res => {
+      this._http.get('CandidateFormat.xlsx', options).subscribe(res => {
         this._FileSaverService.save((<any>res)._body, fileName);
       });
       return;

@@ -11,18 +11,15 @@ export class CandidateDataService {
     constructor(private http: Http, private candidateDataPro: CommonProperties) { }
 
     sendCandidateData(user: any) {
-        const body = JSON.stringify(user);
-       // const headers = new Headers(); // we can pass javascript objet inside header like this, Headers({});
+        console.log(user);
+    return this.http.get('https://api.myjson.com/bins/xukh1')
+            .map(response => response.json());
 
-      //  headers.append('Content-Type', 'application/json');
-
-        return this.http.post(this.candidateDataPro.uploadCandidateDataUrl, body, {
-        //    headers: headers
-
-        })
-            .map((data: Response) => data.json())
-
-            .catch(this.handleError); // For Error Handling
+//live url use here
+        // return this.http.post(this.candidateDataPro.uploadCandidateDataUrl, user, {
+        // })
+        // .map((data: Response) => data.json())
+        // .catch(this.handleError);
 
     }
 
@@ -45,9 +42,8 @@ export class CandidateDataService {
 
   
 
-    getuserlist(){
-
-        return this.http.get(this.candidateDataPro.getcandidateurl)
+    getuserlist(searchdata,page){
+        return this.http.get(this.candidateDataPro.getcandidateurl+"?firstName="+searchdata.firstName+"&lastName="+searchdata.lastName+"&email="+searchdata.email+"&page="+page)
             .map(response => response.json());
     }
     getcandidateDetails(id){
