@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
             )
     }
     initForm() {
-   
     if(this.editMode){
         this.candidateService.getcandidateDetails(this.id)
             .subscribe(
