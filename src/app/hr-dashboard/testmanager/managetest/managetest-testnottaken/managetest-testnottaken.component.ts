@@ -2,6 +2,12 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { ManagetestService } from '../managetest.service';
 import { CategorymanagerService } from '../../../categorymanager/categorymanager.service';
 import {IMyDrpOptions} from 'mydaterangepicker';
+﻿import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
+import { ManagetestService } from '../managetest.service';
+import { Subscription } from 'rxjs/Subscription';
+
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'amiti-managetest-testnottaken',
@@ -9,7 +15,11 @@ import {IMyDrpOptions} from 'mydaterangepicker';
   styleUrls: ['./managetest-testnottaken.component.css'],
   providers: [ManagetestService]
 })
-export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
+export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDestroy  {
+
+    private subscription: Subscription;
+
+    private ngUnsubscribe: Subject<void> = new Subject<void>();
 
     manageTest: any[] = [];
 
@@ -31,7 +41,6 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
         }
     }
     constructor(private mngTestService: ManagetestService,private categoryMngService: CategorymanagerService) { }
-
     ngOnInit() {
         this.onSearch(this.searchdata,'');
         this.onSelectPaper();
@@ -88,7 +97,9 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
     /** Select Paper **/
 
     onSendCategory(value: string, java) {
+        //this.subscription = 
         this.mngTestService.sendCategoryForPaper(java)
+            .takeUntil(this.ngUnsubscribe)
             .subscribe(
             (response) => {
                // alert('data submitted auccessfully');
@@ -129,9 +140,12 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
             );
     }
     ngOnChanges() {
+    }
 
-       
-
+    ngOnDestroy() {
+        this.ngUnsubscribe.next();
+        this.ngUnsubscribe.complete();
+       // this.subscription.unsubscribe();
     }
 
 

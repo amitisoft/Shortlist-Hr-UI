@@ -84,6 +84,8 @@ export class ManagetestService {
 
     /**Select Paper**/
 
+
+
     getStartTestdata() {
         return this.http.get('https://questiontable-630db.firebaseio.com/startTestData.json')
             .map((response: Response) => response.json());

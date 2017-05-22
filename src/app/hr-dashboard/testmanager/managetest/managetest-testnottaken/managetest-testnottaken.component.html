@@ -78,7 +78,8 @@
                class="form-control"
                (click)="onSendCategory(this.value, mgtxt.category)"
                auto-complete
-               [source]="items" (keyup)="onSelectPaper()" style="overflow:scroll" />
+               [source]="items" max-num-list="4" 
+                />
         </td> 
         <td>{{mgtxt.testStatus}}</td>
         <td>{{mgtxt.status}}</td>

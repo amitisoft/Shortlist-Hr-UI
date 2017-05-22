@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { PapermanagementService } from './papermanagement.service';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ViewpapersService } from '../viewpapers/viewpapers.service';
 import 'rxjs/Rx';
 declare var swal: any;
 
@@ -8,9 +10,13 @@ declare var swal: any;
   selector: 'amiti-papermanagement',
   templateUrl: './papermanagement.component.html',
   styleUrls: ['./papermanagement.component.css'],
-  providers: [PapermanagementService, CategorymanagerService]
+  providers: [PapermanagementService, CategorymanagerService, ViewpapersService]
 })
 export class PapermanagementComponent implements OnInit {
+
+    editMode = false;
+    id: string;
+    paperQuestions: any[] = [];
 
     questions: any[] = [];
     catQuestions: any;
@@ -18,15 +24,20 @@ export class PapermanagementComponent implements OnInit {
     /*------- Category list variables ----------*/
     selectedCategory: any;
     categoryList: any[] = [];
+    questionsCheckedArr: any[] = [];
+   // questionsCheckedArr: Array<any> = [];
 
-    questionsCheckedArr: Array<any> = [];
     //qpQuestionsCount: number = this.questionsCheckedArr.length;
     paperName:string;
     paperCreationData:any;
     paperCreationArray: Array<any> = [];
     
 
-    constructor(private paperService: PapermanagementService, private categoryMngService: CategorymanagerService) {
+    constructor(private paperService: PapermanagementService,
+        private categoryMngService: CategorymanagerService,
+        private route: ActivatedRoute,
+        private viewPaperService: ViewpapersService) {
+
         this.categoryMngService.getOwnData()
             .subscribe(
             data => {
@@ -39,11 +50,35 @@ export class PapermanagementComponent implements OnInit {
             () => {
                 this.selectedCategory = this.categoryList[0]['categoryname'];
                 this.changeCategory(this.categoryList[0]['categoryname']);
-        });
+            });
+        
     }
 
     ngOnInit() {
 
+        //Editing Paper
+        this.route.params
+            .subscribe(
+            (params: Params) => {
+                this.id = params['id'];
+                this.editMode = params['id'] != null;
+                this.initForm();
+            }
+            )
+
+    }
+
+    initForm() {
+        if (this.editMode) {
+            this.viewPaperService.viewPaperQuestions()
+                .subscribe((data: any) => {
+                    this.questionsCheckedArr = data;
+
+                    console.log(this.questionsCheckedArr);
+                }
+
+                ); 
+        }
     }
 
     changeCategory(catName: string) {
