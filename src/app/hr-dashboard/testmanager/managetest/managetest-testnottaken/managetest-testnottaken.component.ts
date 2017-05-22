@@ -1,5 +1,3 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { ManagetestService } from '../managetest.service';
 import { CategorymanagerService } from '../../../categorymanager/categorymanager.service';
 import {IMyDrpOptions} from 'mydaterangepicker';
 ﻿import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
@@ -12,8 +10,7 @@ import { Subject } from 'rxjs/Subject';
 @Component({
   selector: 'amiti-managetest-testnottaken',
   templateUrl: './managetest-testnottaken.component.html',
-  styleUrls: ['./managetest-testnottaken.component.css'],
-  providers: [ManagetestService]
+  styleUrls: ['./managetest-testnottaken.component.css']
 })
 export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDestroy  {
 
