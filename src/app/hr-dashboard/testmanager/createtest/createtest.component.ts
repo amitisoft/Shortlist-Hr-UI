@@ -27,16 +27,18 @@ export class CreatetestComponent implements OnInit {
     queryResults: any;
     categoryQueryResults: any;
     allEmailsArray:any = [];
+    /*------- Category list variables ----------*/
+    selectedCategory: any;
     emailsList:any = [];
     allCategoriesArray = [];
     private _window: Window;   
     private selected = [];
-    private categoryList = [];
+    categoryList = [];
     private categoryFilteredList = [];
     private categoryElementRef;
     private categorySelected = [];
 
-    constructor(private autoCompleteService: CreateTestService, private categoryManagerService: CategorymanagerService, windowRef: WindowRefService, private _notificationService: NotificationsService, private elementRef: ElementRef) {      
+    constructor(private autoCompleteService: CreateTestService, private categoryMngService: CategorymanagerService, windowRef: WindowRefService, private _notificationService: NotificationsService, private elementRef: ElementRef) {      
         this._window = windowRef.nativeWindow;    // for fetching window variable reference
     }
 
@@ -52,20 +54,22 @@ export class CreatetestComponent implements OnInit {
                 console.log("Emails List Original array: "+this.allEmailsArray);              
             }
         );
-                                     
-        
-
-        //Getting all enetred categories 
-        this.categoryManagerService.getOwnData().subscribe(
+                
+        //Getting all enetred categories                     
+        this.categoryMngService.getOwnData()
+            .subscribe(
             data => {
                 for (let key in data) {
-                    if(data[key]['categoryname']){
-                        this.allCategoriesArray.push(data[key]['categoryname']);
-                    }
-                }   
-                this.categoryList = this.allCategoriesArray;                        
-            }
-        );
+                    this.categoryList.push(data[key]);
+                }
+                console.log(this.categoryList[0]);
+            },
+            error => {console.log(error)},
+            () => {
+                //this.selectedCategory = this.categoryList[0]['categoryname'];
+            });
+        
+        
         console.log(this._window);
     }
 
@@ -118,7 +122,7 @@ export class CreatetestComponent implements OnInit {
                 emailsubject : form.value.subject,
                 jobPosition : form.value.singleSelect,
                 emailbody:form.value.mailbody,
-                category:form.value.categoryQueryResults,
+                category:form.value.categorySelected,
                 sendExamLinkBody: mailBody
             }            
         };
