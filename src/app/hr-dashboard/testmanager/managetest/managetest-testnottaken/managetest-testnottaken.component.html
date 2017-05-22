@@ -1,14 +1,40 @@
 ﻿<div class="row">
   <div class="col-xs-12">
     <hr />
-    <ul class="nav navbar-nav">
+    <!-- <ul class="nav navbar-nav">
       <li>
         <button class="btn btn-primary" type="button" (click)="startTest(manageTest)">
           Start Test
           <span class="glyphicon glyphicon-hourglass"></span>
         </button>
       </li>
-    </ul>
+    </ul> -->
+     
+  <form action="listdata_submit" #f="ngForm" (ngSubmit)="onSearch(f.value,'')">
+    <div class="col-xs-3 cols-sm-3 col-md-3">
+      <input type='text' class="form-control" placeholder="Enter name" name="name" ngModel>
+    </div>
+    <div class="col-xs-3 cols-sm-3 col-md-3">
+      <input type='text' class="form-control" placeholder="Enter Email" name="email" ngModel>
+    </div>
+    <div class="col-xs-3 cols-sm-3 col-md-3">
+
+     <select name="" class='form-control' ngModel name="category">
+       <option value="">--select category--</option>
+       <option [ngValue]="category.categoryname" *ngFor="let category of category">{{category.categoryname}}</option>
+     </select>
+    </div>
+     <div class="col-xs-3 cols-sm-3 col-md-3">
+      <my-date-range-picker name="dateRange" [options]="myDateRangePickerOptions"
+                    ngModel placeholder="Enter date range"></my-date-range-picker>
+    </div>
+    <div class="col-xs-1 cols-sm-1 col-md-1">
+      <button type='button' class="btn btn-primary" type="submit">Search</button>
+    </div>
+     <div class="col-xs-1 cols-sm-1 col-md-1">
+      <button type='button' class="btn btn-info" type="button" (click)="startTest(manageTest)">Start Test<span class="glyphicon glyphicon-hourglass"></span></button>
+    </div>
+  </form>
   </div>
 </div>
 
@@ -45,7 +71,7 @@
         <td>{{mgtxt.candidateFullName}}</td>
         <td>{{mgtxt.jobPosition}}</td>
         <td>{{mgtxt.candidateMailId}}</td>
-        <td>{{mgtxt.DOE}}</td>
+        <td>{{mgtxt.dateOfExam}}</td>
         <td>{{mgtxt.category}}</td>
         
          <td><input type="text"
