@@ -1,16 +1,22 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
+import { ViewpapersService } from './viewpapers.service';
 
 @Component({
   selector: 'amiti-viewpapers',
   templateUrl: './viewpapers.component.html',
-  styleUrls: ['./viewpapers.component.css']
+  styleUrls: ['./viewpapers.component.css'],
+  providers: [ViewpapersService]
 })
 export class ViewpapersComponent implements OnInit {
     items: any[] = [];
     category: any[] = [];
+    papers: any[] = [];
+    paperQuestions: any[] = [];
 
-    constructor(private categoryMngService: CategorymanagerService) { }
+    selectedCategory: any;
+
+    constructor(private categoryMngService: CategorymanagerService, private paperService: ViewpapersService) { }
 
     ngOnInit() {
         this.categoryMngService.getOwnData()
@@ -22,13 +28,52 @@ export class ViewpapersComponent implements OnInit {
                     myArray.push(data[key]);
                 }
                 this.category = myArray;
+
+
             }); console.log(this.category);
-  }
+
+
+            //this.paperService.getPaperList()
+            //    .subscribe((data: any) => {
+            //        this.papers = data.questionPaper;
+            //       console.log(this.papers);
+            //    }
+
+            //    ); 
+
+    }
+
+    changeCategory(catName: string) {
+        this.paperService.getPaperList()
+            .subscribe((data: any) => {
+                this.papers = data.questionPaper;
+                console.log(this.papers);
+            }
+
+            ); 
+    }
 
   deletePaper(item: any, index: number) {
       if (confirm('Are you sure to delete Paper ?')) {
           //this.categoryMngService.deletecategory(item);
           this.items.splice(index, 1);
       }
+    }
+
+  onViewPaper() {
+
+      this.paperService.viewPaperQuestions()
+          .subscribe((data: any) => {
+              this.paperQuestions = data;
+              
+              console.log(this.paperQuestions);
+          }
+
+          ); 
+
+  }
+
+  onEditPaper() {
+
   }
 }
