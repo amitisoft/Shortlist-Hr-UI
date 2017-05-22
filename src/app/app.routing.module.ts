@@ -17,6 +17,7 @@ import { TestmanagerComponent } from './hr-dashboard/testmanager/testmanager.com
 import { CreatequestionComponent } from './hr-dashboard/questionsmanager/createquestion/createquestion.component';
 import { ViewquestionsComponent } from './hr-dashboard/questionsmanager/viewquestions/viewquestions.component';
 import { PapermanagementComponent } from './hr-dashboard/questionsmanager/papermanagement/papermanagement.component';
+import { ViewpapersComponent } from './hr-dashboard/questionsmanager/viewpapers/viewpapers.component';
 
 import { CreatetestComponent } from './hr-dashboard/testmanager/createtest/createtest.component';
 import { ManagetestComponent } from './hr-dashboard/testmanager/managetest/managetest.component';
@@ -28,6 +29,7 @@ import { CreatecategoryComponent } from './hr-dashboard/categorymanager/createca
 import { ViewcategoryComponent } from './hr-dashboard/categorymanager/viewcategory/viewcategory.component';
 import { CadidatedataComponent } from './hr-dashboard/cadidatedata/cadidatedata.component';
 import { HomeComponent } from './hr-dashboard/home/home.component';
+import { ChangepasswordComponent } from './hr-dashboard/changepassword/changepassword.component';
 import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata.component';
 import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
 import { UploadlistComponent } from './hr-dashboard/cadidatedata/uploadlist/uploadlist.component';
@@ -46,11 +48,13 @@ const appRoutes: Routes = [
         path: 'hrdashboard', component: HrDashboardComponent, canActivate: [AuthGaurd], children: [
             { path: '', component: HomeComponent } ,
             { path: 'home', component: HomeComponent } ,
+             { path: 'changepassword', component: ChangepasswordComponent } ,
             {
                 path: 'qmanager', component: QuestionsmanagerComponent, canActivate: [AuthGaurd], children: [
                     { path: 'createquestion', component: CreatequestionComponent },
                     { path: 'viewquestion', component: ViewquestionsComponent },
-                    { path: 'papermange', component: PapermanagementComponent }
+                    { path: 'papermange', component: PapermanagementComponent },
+                    { path: 'viewPaper', component: ViewpapersComponent}
                 ]
             },
             

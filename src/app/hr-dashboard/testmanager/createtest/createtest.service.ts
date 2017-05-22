@@ -18,3 +18,13 @@ export class CreateTestService {
     }
 
 }
+
+
+function getWindow (): any {
+    return window;
+}
+export class WindowRefService {
+    get nativeWindow (): any {
+        return getWindow();
+    }
+}

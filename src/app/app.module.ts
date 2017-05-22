@@ -2,12 +2,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppRoutingModule } from './app.routing.module';
 
 import { CommonProperties } from './common.properties';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { DropdownDirective } from './share/dropdown.directive';
+import { EqualValidator } from './share/equal-validator.directive';
 import { AppComponent } from './app.component';
 import { HeaderMainComponent } from './header-main/header-main.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -52,6 +53,8 @@ import { UploadlistComponent } from './hr-dashboard/cadidatedata/uploadlist/uplo
 import { ListdataComponent } from './hr-dashboard/cadidatedata/listdata/listdata.component';
 import { RegisterComponent } from './hr-dashboard/cadidatedata/register/register.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ChangepasswordComponent } from './hr-dashboard/changepassword/changepassword.component';
+import { ViewpapersComponent } from './hr-dashboard/questionsmanager/viewpapers/viewpapers.component';
 
 
 
@@ -82,16 +85,19 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
       UploadlistComponent,
       ListdataComponent,
       RegisterComponent,
-      ForgotpasswordComponent
+      ForgotpasswordComponent,
+      ChangepasswordComponent,
+      ViewpapersComponent,
+      EqualValidator
   ],
   imports: [
       BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,
     BrowserModule,ChartsModule,FileSaverModule,
       BrowserModule, ChartsModule, Ng2AutoCompleteModule,
     FormsModule, ReactiveFormsModule , TruncateModule,
-    HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(), SimpleNotificationsModule.forRoot()
   ],
   providers: [AuthService, AuthGaurd, CategorymanagerService, CreateTestService, PapermanagementService, CommonProperties],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

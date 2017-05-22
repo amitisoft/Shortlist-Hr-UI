@@ -18,3 +18,7 @@ textarea.ng-invalid.ng-touched {
 .error{
 	color: red;
 }
+
+:host-context(.simple-notification-wrapper){
+  left: 200px !important;
+}
