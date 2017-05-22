@@ -1,11 +1,12 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ManagetestService } from '../managetest.service';
+import { CategorymanagerService } from '../../../categorymanager/categorymanager.service';
+import {IMyDrpOptions} from 'mydaterangepicker';
 
 @Component({
   selector: 'amiti-managetest-testinprocess',
   templateUrl: './managetest-testinprocess.component.html',
-  styleUrls: ['./managetest-testinprocess.component.css'],
-  providers: [ManagetestService]
+  styleUrls: ['./managetest-testinprocess.component.css']
 })
 export class ManagetestTestinprocessComponent implements OnInit {
     manageTest: any[] = [];
@@ -14,15 +15,37 @@ export class ManagetestTestinprocessComponent implements OnInit {
     rowValue: any;
     selectedRows: boolean = false;
     startTestRows = [];
-
-    constructor(private mngTestService: ManagetestService) { }
+    category: any[]=[];
+    private myDateRangePickerOptions: IMyDrpOptions = {
+        dateFormat: 'dd/mm/yyyy',
+    };
+    searchdata={
+        'name' : '',
+        'category' : '',
+        'email' : '',
+        'dateRange':{
+            'formatted':''
+        }
+    }
+    constructor(private mngTestService: ManagetestService,private categoryMngService: CategorymanagerService) { }
 
     ngOnInit() {
-        this.mngTestService.getDataTestInProgress()
+            this.onSearch(this.searchdata,'');
+             this.categoryMngService.getOwnData()
+            .subscribe(
+            data => {
+                const myArray = [];
+                for (let key in data) {
+                    myArray.push(data[key]);
+                }
+                this.category = myArray;
+            });
+  }
+  onSearch(searchvalue:any,pageno){
+     this.mngTestService.getDataTestInProgress(searchvalue,pageno)
             .subscribe((data: any) => {
                 this.manageTest = data.bookings;
             }
-
             );
   }
 

@@ -1,5 +1,7 @@
-﻿import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ManagetestService } from '../managetest.service';
+import { CategorymanagerService } from '../../../categorymanager/categorymanager.service';
+import {IMyDrpOptions} from 'mydaterangepicker';
 
 @Component({
   selector: 'amiti-managetest-testnottaken',
@@ -15,21 +17,33 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
     rowValue: any;
     selectedRows: boolean = false;
     startTestRows = [];
-
     items: any[] = []; // Question paper
-
-    constructor(private mngTestService: ManagetestService) { }
+    category: any[] = [];
+    private myDateRangePickerOptions: IMyDrpOptions = {
+        dateFormat: 'dd/mm/yyyy',
+    };
+    searchdata={
+        'name' : '',
+        'category' : '',
+        'email' : '',
+        'dateRange':{
+            'formatted':''
+        }
+    }
+    constructor(private mngTestService: ManagetestService,private categoryMngService: CategorymanagerService) { }
 
     ngOnInit() {
-        this.mngTestService.getDataTestNotTaken()
-            .subscribe((data: any) => {
-                this.manageTest = data.bookings;
-            }
-
-            );
-
-
+        this.onSearch(this.searchdata,'');
         this.onSelectPaper();
+      this.categoryMngService.getOwnData()
+            .subscribe(
+            data => {
+                const myArray = [];
+                for (let key in data) {
+                    myArray.push(data[key]);
+                }
+                this.category = myArray;
+            });
     }
 
     startTest(sampleManageTestData) {
@@ -102,10 +116,18 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
                 }
                 this.items = myArray;
 
-            }); console.log(this.items);
+            }); 
+            console.log(this.items);
 
     }
+    onSearch(searchvalue:any,pageno){
+        this.mngTestService.getDataTestNotTaken(searchvalue,pageno)
+            .subscribe((data: any) => {
+                this.manageTest = data.bookings;
+            }
 
+            );
+    }
     ngOnChanges() {
 
        
