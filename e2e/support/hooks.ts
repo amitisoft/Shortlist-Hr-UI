@@ -13,8 +13,8 @@ defineSupportCode(function ({ registerHandler, registerListener, After, setDefau
     let targetJson = jsonReports + "/cucumber_report.json";
 
     registerHandler('BeforeFeature', function (event, callback) {
-        browser.get(config.baseUrl);
-        setTimeout(callback, 10000);
+      browser.get(config.baseUrl);
+        setTimeout(callback, 30000);
     });
 
     After(function (scenario) {

@@ -306,7 +306,13 @@ export class ProtractorHelper {
    * @param id id attribute use to find element
    */
   getWebElementUsingId(id: string) {
-    return this.getWebElementUsingBy(by.id(id));
+    this.getWebElementUsingBy(by.id(id));
+  }
+
+  selectCategory(id: string) {
+
+    let select = this.getWebElementUsingBy(by.id(id));
+    return select.$('[value="JAVA TRAINEE"]').click();
   }
 
 
@@ -342,12 +348,11 @@ export class ProtractorHelper {
    * @param by   By locator of comboBox
    * @param optionValue option text to be selected
    */
-  selectComboOptionByValue(idValue: string, optionValue: string) {
+  selectComboOptionByValue(id: string) {
     //let select = element(by.id('singleSelect'));
-     //select.$('[value="'+optionValue+'"]').click();
-    element(by.id('singleSelect')).$('[value="Stack"]');
+   let select = this.getWebElementUsingBy(by.id(id));
+    return select.$('[value="JAVA TRAINEE"]').click();
   }
-
 
 
 }
