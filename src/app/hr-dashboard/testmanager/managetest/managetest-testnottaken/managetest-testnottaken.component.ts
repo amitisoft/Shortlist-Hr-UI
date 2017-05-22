@@ -1,5 +1,9 @@
-﻿import { Component, OnInit, OnChanges } from '@angular/core';
+﻿import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { ManagetestService } from '../managetest.service';
+import { Subscription } from 'rxjs/Subscription';
+
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'amiti-managetest-testnottaken',
@@ -7,7 +11,11 @@ import { ManagetestService } from '../managetest.service';
   styleUrls: ['./managetest-testnottaken.component.css'],
   providers: [ManagetestService]
 })
-export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
+export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDestroy  {
+
+    private subscription: Subscription;
+
+    private ngUnsubscribe: Subject<void> = new Subject<void>();
 
     manageTest: any[] = [];
 
@@ -17,6 +25,8 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
     startTestRows = [];
 
     items: any[] = []; // Question paper
+
+    
 
     constructor(private mngTestService: ManagetestService) { }
 
@@ -74,7 +84,9 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
     /** Select Paper **/
 
     onSendCategory(value: string, java) {
+        //this.subscription = 
         this.mngTestService.sendCategoryForPaper(java)
+            .takeUntil(this.ngUnsubscribe)
             .subscribe(
             (response) => {
                // alert('data submitted auccessfully');
@@ -107,9 +119,12 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
+    }
 
-       
-
+    ngOnDestroy() {
+        this.ngUnsubscribe.next();
+        this.ngUnsubscribe.complete();
+       // this.subscription.unsubscribe();
     }
 
 
