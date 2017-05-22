@@ -9,7 +9,6 @@ Feature: Hr login in amiti page
 		Then I click on submit button
     Then I verify status
 
-
 #Feature: HR Login
 
 #Scenario: HR Login as a Registered user using valid credentials

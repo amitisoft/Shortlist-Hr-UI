@@ -7,7 +7,7 @@ export class AuthenticationPage {
 
   private signInPanelXPath= "//div[@class='panel-heading']";
   private loginButtonXPath = "//a[@href='/signin']";
- private userInputXPath = "//input[@id='login-username']";
+  private userInputXPath = "//input[@id='login-username']";
   private userPasswordXPath = "//input[@name='password']";
   private submitButtonXPath = "//button[@id ='btn-login']";
 

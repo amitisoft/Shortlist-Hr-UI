@@ -6,7 +6,6 @@ export class AuthenticationSteps {
   private authenticationPage: AuthenticationPage = new AuthenticationPage();
 
 
-
   clickLogin(){
     this.authenticationPage.clickLoginButton();
   }
