@@ -3,14 +3,6 @@ import {AuthenticationSteps} from "./steps/hr-login.steps";
 import { browser } from 'protractor';
 
   import { defineSupportCode } from 'cucumber';
-import {before} from "selenium-webdriver/testing";
-//let chai = require('chai');
-//let chaiAsPromised = require("chai-as-promised");
-//chai.use(chaiAsPromised);
-
-
-//let chai = require('chai').use(require('chai-as-promised'));
-//let expect = chai.expect;
 
 import {TestManagerSteps} from "./steps/testManager.steps";
 
