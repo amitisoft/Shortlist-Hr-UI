@@ -5,8 +5,7 @@ import { Response } from '@angular/http';
 
 @Component({
   selector: 'amiti-header-main',
-  templateUrl: './header-main.component.html',
-  providers:[NotificationService, AuthService]
+  templateUrl: './header-main.component.html'
 })
 export class HeaderMainComponent implements OnInit {
 
@@ -23,16 +22,5 @@ export class HeaderMainComponent implements OnInit {
 
 	onLogOut() {
 		this.authService.logOut();
-	}
-
-
-	showNotifications(){
-		var sleekElement = document.getElementsByClassName("sleekBlock");
-		if(this.notiflag){
-			this.notiflag = false;
-		}else{
-			this.notiflag = true;
-		}
-		console.log("Hi");
 	}
 }
