@@ -1,11 +1,31 @@
 ﻿
 
-
+<div class="row">
 <hr />
-Test In Progress
+<form action="listdata_submit" #f="ngForm" (ngSubmit)="onSearch(f.value,'')">
+    <div class="col-sm-2 col-md-2">
+      <input type='text' class="form-control" placeholder="Enter name" name="name" ngModel>
+    </div>
+    <div class="col-sm-3 col-md-3">
+      <input type='text' class="form-control" placeholder="Enter Email" name="email" ngModel>
+    </div>
+     <div class="col-sm-3 col-md-3">
+      <select class='form-control' ngModel name="category">
+       <option value="">--select category--</option>
+       <option [ngValue]="category.categoryname" *ngFor="let category of category">{{category.categoryname}}</option>
+     </select>
+    </div>
+     <div class="col-sm-3 col-md-3">
+      <my-date-range-picker name="dateRange" [options]="myDateRangePickerOptions"
+                    ngModel required placeholder="Enter range"></my-date-range-picker>
+    </div>
+    <div class="col-sm-2 col-md-2">
+      <button class="btn btn-info" type="submit">Search</button>
+    </div>
+  </form>
+</div>
 
 <div class="row">
-
   <div class="col-xs-12">
     <hr />
     <table class="table table-striped " style="overflow:scroll">
@@ -33,7 +53,7 @@ Test In Progress
         <td>{{mgtxt.candidateFullName}}</td>
         <td>{{mgtxt.jobPosition}}</td>
         <td>{{mgtxt.candidateMailId}}</td>
-        <td>{{mgtxt.DOE}}</td>
+        <td>{{mgtxt.dateOfExam}}</td>
         <td>{{mgtxt.category}}</td>
        
         <td>{{mgtxt.testStatus}}</td>

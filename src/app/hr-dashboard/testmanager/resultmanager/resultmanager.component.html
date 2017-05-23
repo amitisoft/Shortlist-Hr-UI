@@ -32,22 +32,39 @@
 <div class="row">
   <div class="col-lg-12 col-xs-12">
     <hr/>
-    <div class="col-sm-3 col-xs-12 result_manager">
-      <select class="form-control">
-        <option></option>
-        <option>CATEGORY</option>
-      </select>
-    </div>
-    <div class="col-sm-3 col-xs-12 result_manager">
-      <input type="text" class="form-control" placeholder="name,score" />
-    </div>
-    <div class="col-sm-3 col-xs-12 result_manager ">
-      <button class="btn btn-primary" type="button">
+    <form action="listdata_submit" #f="ngForm" (ngSubmit)="onSearch(f.value,'')">
+
+      <div class="col-xs-4 result_manager">
+        <select class='form-control' ngModel name="category">
+          <option value="">--select category--</option>
+          <option [ngValue]="category.categoryname" *ngFor="let category of category">{{category.categoryname}}</option>
+        </select>
+      </div>
+      <div class="col-xs-4 result_manager">
+        <input type="text" class="form-control" placeholder="Name" name="name" ngModel/>
+      </div>
+      <div class="col-xs-2 result_manager">
+        <input type="number" class="form-control" placeholder="score" name="score" ngModel/>
+      </div> <br /> &nbsp; &nbsp;
+      <div class="col-xs-4 result_manager">
+        <input type="email" class="form-control" placeholder="E-mail" name="email" ngModel />
+      </div>
+      <div class="col-xs-4 result_manager">
+        <input type="number" class="form-control" placeholder="Phone Number" name="phone" ngModel/>
+      </div>
+      <div class="col-xs-4 result_manager">
+        <my-date-range-picker name="dateRange" [options]="myDateRangePickerOptions"
+                              ngModel placeholder="Enter date range"></my-date-range-picker>
+      </div>
+      <div class="col-sm-3 col-xs-12 result_manager ">
+        <button class="btn btn-primary" type="submit" >
           Search
-          <span class="glyphicon glyphicon-search"></span>
-      </button>
-    </div>
-  </div>
+          <span class="glyphicon glyphicon-filter"></span>
+        </button>
+      </div>
+
+      </form>
+</div>
 </div>
 
 

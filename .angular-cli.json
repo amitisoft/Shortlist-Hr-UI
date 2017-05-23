@@ -21,7 +21,7 @@
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/sweetalert2/dist/sweetalert2.css",
-        "styles.css",
+        "./styles.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/froala-editor/css/froala_editor.pkgd.min.css"
       ],
@@ -29,7 +29,8 @@
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/sweetalert2/dist/sweetalert2.js",
         "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
-        "../node_modules/chart.js/dist/Chart.bundle.js"
+        "../node_modules/chart.js/dist/Chart.bundle.js",
+        "../node_modules/angular2-notifications/dist/index.js"
       ],
       "addons": [
         "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"

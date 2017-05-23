@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
-
+import { NotificationService } from './notification.service';
 import { AuthService } from '../auth/auth.service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'amiti-header-main',
@@ -8,12 +9,18 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderMainComponent implements OnInit {
 
-  constructor( private authService: AuthService) { }
+	private notiflag:boolean = true;
+  	constructor( private authService: AuthService, private notificServ: NotificationService) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+		this.notificServ.pullNotification().subscribe(
+			(data) => {},
+			(error) => {},
+			() => {}
+		);
+	}
 
-  onLogOut() {
-      this.authService.logOut();
-  }
+	onLogOut() {
+		this.authService.logOut();
+	}
 }
