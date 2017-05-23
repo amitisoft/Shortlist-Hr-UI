@@ -30,7 +30,16 @@ export class ViewpapersComponent implements OnInit {
                 this.category = myArray;
 
 
-            }); console.log(this.category);
+            },
+            error => { console.log(error) },
+            () => {
+                this.selectedCategory = this.category[0]['categoryname'];
+                this.changeCategory(this.category[0]['categoryname']);
+            });
+
+        console.log(this.category);
+        console.log();
+
 
 
             //this.paperService.getPaperList()
@@ -44,9 +53,9 @@ export class ViewpapersComponent implements OnInit {
     }
 
     changeCategory(catName: string) {
-        this.paperService.getPaperList()
+        this.paperService.getPaperList(catName)
             .subscribe((data: any) => {
-                this.papers = data.questionPaper;
+                this.papers = data.questionPaperNames;
                 console.log(this.papers);
             }
 

@@ -28,8 +28,8 @@
       <tbody>
         <tr *ngFor="let paper of papers;let i = index">
           <td>{{i+1}}</td>
-          <td hidden #paperId>{{paper.QsnPaper_id}}</td>
-          <td #paperList style="cursor:pointer"><a style="text-decoration: none;">{{paper.Qsn_Paper_name}}</a></td>
+          <td hidden #paperId>{{paper.questionPaperId}}</td>
+          <td #paperList style="cursor:pointer"><a style="text-decoration: none;">{{paper.questionPaperName}}</a></td>
 
           <td>
             <a class="btn btn-default" (click)="onViewPaper()" style="cursor:pointer;color:aqua">
@@ -54,7 +54,7 @@
     </table>
   </div>
   <div class="col-xs-8">
-    <h3>Paper Name : {{paperQuestions.Qsn_Paper_name}}</h3>
+    
      
     <ul class="list-group" *ngFor="let question of paperQuestions.qsns; let i = index">
       <li class="list-group-item">{{i+1}} | {{question.Qsn_id}} | {{question.Qsn}} | {{question.Category}}</li>
