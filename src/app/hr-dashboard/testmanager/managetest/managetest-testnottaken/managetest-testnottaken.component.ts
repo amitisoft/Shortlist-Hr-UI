@@ -1,3 +1,5 @@
+import { CategorymanagerService } from '../../../categorymanager/categorymanager.service';
+import {IMyDrpOptions} from 'mydaterangepicker';
 ﻿import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { ManagetestService } from '../managetest.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -8,8 +10,7 @@ import { Subject } from 'rxjs/Subject';
 @Component({
   selector: 'amiti-managetest-testnottaken',
   templateUrl: './managetest-testnottaken.component.html',
-  styleUrls: ['./managetest-testnottaken.component.css'],
-  providers: [ManagetestService]
+  styleUrls: ['./managetest-testnottaken.component.css']
 })
 export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDestroy  {
 
@@ -23,23 +24,32 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDes
     rowValue: any;
     selectedRows: boolean = false;
     startTestRows = [];
-
     items: any[] = []; // Question paper
-
-    
-
-    constructor(private mngTestService: ManagetestService) { }
-
+    category: any[] = [];
+    private myDateRangePickerOptions: IMyDrpOptions = {
+        dateFormat: 'dd/mm/yyyy',
+    };
+    searchdata={
+        'name' : '',
+        'category' : '',
+        'email' : '',
+        'dateRange':{
+            'formatted':''
+        }
+    }
+    constructor(private mngTestService: ManagetestService,private categoryMngService: CategorymanagerService) { }
     ngOnInit() {
-        this.mngTestService.getDataTestNotTaken()
-            .subscribe((data: any) => {
-                this.manageTest = data.bookings;
-            }
-
-            );
-
-
+        this.onSearch(this.searchdata,'');
         this.onSelectPaper();
+      this.categoryMngService.getOwnData()
+            .subscribe(
+            data => {
+                const myArray = [];
+                for (let key in data) {
+                    myArray.push(data[key]);
+                }
+                this.category = myArray;
+            });
     }
 
     startTest(sampleManageTestData) {
@@ -114,10 +124,18 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDes
                 }
                 this.items = myArray;
 
-            }); console.log(this.items);
+            }); 
+            console.log(this.items);
 
     }
+    onSearch(searchvalue:any,pageno){
+        this.mngTestService.getDataTestNotTaken(searchvalue,pageno)
+            .subscribe((data: any) => {
+                this.manageTest = data.bookings;
+            }
 
+            );
+    }
     ngOnChanges() {
     }
 

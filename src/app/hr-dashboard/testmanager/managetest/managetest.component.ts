@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ManagetestService } from './managetest.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -20,14 +20,12 @@ export class ManagetestComponent implements OnInit {
     
     }
 
-   
+    // onTestNotTaken() {
+    //     this.router.navigate(['testNotTaken'], { relativeTo: this.route });
+    // }
 
-    onTestNotTaken() {
-        this.router.navigate(['testNotTaken'], { relativeTo: this.route });
-    }
-
-    onTestInProgress() {
-        this.router.navigate(['testInProgress'], { relativeTo: this.route });
-    }
+    // onTestInProgress() {
+    //     this.router.navigate(['testInProgress'], { relativeTo: this.route });
+    // }
 
 }

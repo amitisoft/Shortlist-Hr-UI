@@ -9,17 +9,17 @@ export class AuthenticationSteps {
   clickLogin(){
     this.authenticationPage.clickLoginButton();
   }
-  username(user: string) {
+  hrUsername(user: string) {
     this.authenticationPage.enterUsername(user);
 
   }
 
-  password(pass: string) {
+  hrPassword(pass: string) {
     this.authenticationPage.enterPassword(pass);
 
   }
 
-  submit() {
+  clickSubmit() {
     this.authenticationPage.clickSubmitButton();
 
   }

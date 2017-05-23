@@ -56,18 +56,18 @@
 
   <div class="col-lg-6 col-sm-6 col-xs-12">
     CREATE PAPER
-    <h3>Paper Name : {{questionsCheckedArr.name}}</h3>
+   
     <hr />
 
     <div class="row">
       <div class="col-xs-5">
         <input type="text" id="papername" class="form-control" [(ngModel)]="paperName" placeholder="Paper Name" />
       </div>
-      <div class="col-xs-3">
-        <label></label>
-        <button class="btn btn-success" (click)="createCandidatePaper()">SAVE <span class="glyphicon glyphicon-floppy-save"></span></button>
-      </div>
       <div class="col-xs-4">
+        <label></label>
+        <button class="btn btn-success" (click)="createCandidatePaper()">{{editMode? 'Update' : 'SAVE'}} <span class="glyphicon glyphicon-floppy-save"></span></button>
+      </div>
+      <div class="col-xs-3">
         <label></label>
         <button class="btn btn-primary" (click)="clearCandidatePaper()">Clear <span class="glyphicon glyphicon-erase"></span></button>
       </div>
@@ -85,17 +85,20 @@
 
         <tbody>
           
-          <!--<tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr; let i = index ">
+          <tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr; let i = index ">
             <td class="hidden-xs">{{i+1}}</td>
+            <td hidden>{{eachQuestionsCheckedArr.Qsn_id}}</td>
             <td>{{eachQuestionsCheckedArr.Qsn}}</td>
             <td>{{eachQuestionsCheckedArr.Category}}</td>
-          </tr>-->
-          <tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr.qsns; let i = index ">
+            <td *ngIf="editMode" (click)="onRemoveQuestion(i)" style="cursor:pointer">x</td>
+          </tr>
+
+          <!--<tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr.qsns; let i = index ">
             <td class="hidden-xs">{{i+1}}</td>
             <td>{{eachQuestionsCheckedArr.QusName}}</td>
             <td>{{ eachQuestionsCheckedArr.Category }}</td>
             <td></td>
-          </tr>
+          </tr>-->
         </tbody>
       </table>
     </div>

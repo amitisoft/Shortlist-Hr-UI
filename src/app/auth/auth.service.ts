@@ -1,7 +1,10 @@
 ﻿import * as firebase from 'firebase';
 
 import { Injectable } from '@angular/core';
+import { Http, Response, Headers } from '@angular/http';
 import { Router } from '@angular/router';
+
+import { CommonProperties } from '../common.properties';
 
 @Injectable()
 
@@ -19,7 +22,7 @@ export class AuthService {
 
     }
 
-    constructor(private router: Router) { }
+    constructor(private router: Router,private http: Http, private candidateDataPro: CommonProperties) { }
 
     /** signinUser(email: string, password: string) {
         firebase.auth().signInWithEmailAndPassword(email, password)
@@ -92,5 +95,11 @@ export class AuthService {
         firebase.auth().signOut();
         this.token = null;
         this.router.navigate(['/signin']);
+    }
+    changepassword(changevalue){
+        return this.http.post(this.candidateDataPro.changepassword, changevalue);
+    }
+    forgotpassword(changevalue){
+        return this.http.post(this.candidateDataPro.forgotpassword, changevalue);
     }
 }

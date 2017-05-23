@@ -24,6 +24,8 @@ export class PapermanagementComponent implements OnInit {
     /*------- Category list variables ----------*/
     selectedCategory: any;
     categoryList: any[] = [];
+
+    deletedEditPaperArray: any[] = [];
     questionsCheckedArr: any[] = [];
    // questionsCheckedArr: Array<any> = [];
 
@@ -72,8 +74,8 @@ export class PapermanagementComponent implements OnInit {
         if (this.editMode) {
             this.viewPaperService.viewPaperQuestions()
                 .subscribe((data: any) => {
-                    this.questionsCheckedArr = data;
-
+                    this.questionsCheckedArr = data.qsns;
+                    this.paperName = data.Qsn_Paper_name;
                     console.log(this.questionsCheckedArr);
                 }
 
@@ -163,6 +165,10 @@ export class PapermanagementComponent implements OnInit {
         for(let newArr of this.questionsCheckedArr){
             this.paperCreationArray.push({"QsnId": newArr.Qsn_id, "Category":newArr.Category});
         }
+
+        if (this.editMode) {
+
+        }
         
         this.paperService.createPaperService(this.paperCreationArray).subscribe(
         /* data => {console.log("Data: "+data);},
@@ -217,6 +223,19 @@ export class PapermanagementComponent implements OnInit {
         })
 // alert("Check");
 
+    }
+
+    onRemoveQuestion(index: number) {
+       // delete this.questionsCheckedArr[index];
+        //var index = this.questionsCheckedArr.indexOf(this.questionsCheckedArr);
+        
+        this.questionsCheckedArr[index].Qsn_id = '';
+       this.questionsCheckedArr[index].Qsn = '';
+       this.questionsCheckedArr[index].Category = '';
+
+       this.deletedEditPaperArray.push(index);
+       console.log(this.deletedEditPaperArray);
+        
     }
 
 }

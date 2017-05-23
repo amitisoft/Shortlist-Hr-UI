@@ -22,7 +22,7 @@ export class ViewpapersService {
     viewPaperQuestions() {
         // var headers = new Headers();
         // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        var getPaperUrl = 'https://api.myjson.com/bins/ypo2l';
+        var getPaperUrl = 'https://api.myjson.com/bins/a0l7d';
         return this.http.get(getPaperUrl)
             .map(res => res.json());
     }

@@ -18,8 +18,9 @@ import { HrDashboardComponent } from './hr-dashboard/hr-dashboard.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGaurd } from './auth/auth-gaurd.service';
 
-import { ChartsModule } from 'ng2-charts';
-import { FileSaverModule } from 'ngx-filesaver';
+import { ChartsModule } from 'ng2-charts'; //for displaying chart
+import { FileSaverModule } from 'ngx-filesaver'; //for file download 
+import { MyDateRangePickerModule } from 'mydaterangepicker'; //for date picker
 import { QuestionsmanagerComponent } from './hr-dashboard/questionsmanager/questionsmanager.component';
 
 import { CategorymanagerComponent } from './hr-dashboard/categorymanager/categorymanager.component';
@@ -94,7 +95,7 @@ import { ViewpapersComponent } from './hr-dashboard/questionsmanager/viewpapers/
   imports: [
       BrowserAnimationsModule, NoopAnimationsModule, MdInputModule, MdCheckboxModule,
     BrowserModule,ChartsModule,FileSaverModule,
-      BrowserModule, ChartsModule, Ng2AutoCompleteModule,
+      BrowserModule, ChartsModule, Ng2AutoCompleteModule,MyDateRangePickerModule ,
     FormsModule, ReactiveFormsModule , TruncateModule,
     HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(), SimpleNotificationsModule.forRoot()
   ],
