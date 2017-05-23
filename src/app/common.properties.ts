@@ -25,6 +25,7 @@ export class CommonProperties {
 
     /*----viewquestions Component----*/
     viewQuestionsUrl = 'https://6x2a0jjalb.execute-api.us-east-1.amazonaws.com/dev/api/getquestionpapernames';
+    getCategoryQuestionsUrl = 'https://6x2a0jjalb.execute-api.us-east-1.amazonaws.com/dev/api/getquestionbycategory';
 
     /*----createtest Component----*/
     sendEmailUrl = 'https://6x2a0jjalb.execute-api.us-east-1.amazonaws.com/dev/api/testlink';
