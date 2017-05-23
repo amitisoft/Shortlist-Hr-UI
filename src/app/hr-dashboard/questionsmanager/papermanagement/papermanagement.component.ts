@@ -75,7 +75,7 @@ export class PapermanagementComponent implements OnInit {
             this.viewPaperService.viewPaperQuestions()
                 .subscribe((data: any) => {
                     this.questionsCheckedArr = data.qsns;
-
+                    this.paperName = data.Qsn_Paper_name;
                     console.log(this.questionsCheckedArr);
                 }
 
