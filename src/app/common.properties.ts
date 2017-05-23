@@ -37,10 +37,12 @@ export class CommonProperties {
     //sendTestStartedDatas = 'https://amitionlinemanagetest.firebaseio.com/startTestData.json';
     sendTestStartedDatas = 'https://6x2a0jjalb.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
     // Getting Manage Test Data [Test In Progress]
+
+    notificationUrl = 'https://test.com';
+
     getManageTestInProgress = 'https://6x2a0jjalb.execute-api.us-east-1.amazonaws.com/dev/api/startTestInProgressDashboard';
 
     //change and forgot password
     changepassword='https://api.myjson.com/bins/eg9l1';
     forgotpassword='https://api.myjson.com/bins/eg9l1';
-
 }

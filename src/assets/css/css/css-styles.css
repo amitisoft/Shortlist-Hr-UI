@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched{
+ border: 1px solid red;
+}
+.error{
+	color :red;
+}
+
+/*.simple-notification-wrapper {
+    left: 200px !important;
+}*/
+
+.simple-notification-wrapper {
+    position: relative !important;
+    width: 100% !important;
+}
+.simple-notification.error{
+	background: #d05850 !important;
+}
+.simple-notification {
+    padding: 6px 20px !important;
+}
+.simple-notification-wrapper.bottom {
+    bottom: -10px !important;
+}
+.simple-notification-wrapper.right {
+    right: inherit !important;
+}
+
+.notificationImage{
+	width:30px;
+	height:30px;
+}

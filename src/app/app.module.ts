@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app.routing.module';
 
 import { CommonProperties } from './common.properties';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { NotificationService } from './header-main/notification.service';
 
 import { DropdownDirective } from './share/dropdown.directive';
 import { EqualValidator } from './share/equal-validator.directive';
@@ -98,7 +99,7 @@ import { ViewpapersComponent } from './hr-dashboard/questionsmanager/viewpapers/
     FormsModule, ReactiveFormsModule , TruncateModule,
     HttpModule, AppRoutingModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(), SimpleNotificationsModule.forRoot()
   ],
-  providers: [AuthService, AuthGaurd, CategorymanagerService, CreateTestService, PapermanagementService, CommonProperties],
+  providers: [AuthService, AuthGaurd, CategorymanagerService, CreateTestService, PapermanagementService, CommonProperties, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
