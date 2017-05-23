@@ -15,52 +15,39 @@ import {TestManagerSteps} from "./steps/testManager.steps";
     const testmanagerstep: TestManagerSteps = new TestManagerSteps();
 
     Given(/^I am on amiti page$/, () => {
-      // browser.get('http://localhost:4200/');
+      browser.get('http://hr-ui.com.s3-website.ap-south-1.amazonaws.com/signin');
      return browser.sleep(5000);
-      //browser.pause();
-     // return search.waitForSignInDashboard();
       //return expect(browser.getTitle()).to.eventually.equal('AmitiOnlineTest');
 
     });
     When(/^I click on login button$/, () => {
-     // browser.sleep(2000);
+      browser.sleep(2000);
       return search.clickLogin();
-
     });
     When(/^I type username$/, () => {
       browser.sleep(2000);
-      return search.username("hradmin@gmail.com");
+      return search.hrUsername("hradmin@gmail.com");
     });
     When(/^I enter password$/, () => {
       browser.sleep(2000);
-      let user = search.password("hradmin");
+      let user = search.hrPassword("hradmin");
       console.log(user);
     });
 
     Then(/^I click on submit button$/, () => {
       browser.sleep(2000);
       browser.waitForAngular();
-      return search.submit();
+      return search.clickSubmit();
     });
 
-   // Then(/^I select the CREATE TEST button$/, () => {
-     // browser.waitForAngular();
-      //return testmanagerstep.clickTestManger();
-      //console.log(click);
-
-      //return expect(browser.getTitle()).to.eventually.equal('AmitiOnlineTest');
-    //});
     Then(/^I verify status$/, () => {
-      browser.pause(5859);
+
        return browser.sleep(10000);
 
-
-      //  return search.waitForHrDashboard();
     });
 
 
-    });
-
+    })
 
 
 

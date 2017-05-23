@@ -11,14 +11,11 @@ export class AuthenticationPage {
   private userPasswordXPath = "//input[@name='password']";
   private submitButtonXPath = "//button[@id ='btn-login']";
 
-//  private loginButtonXPath = "//a[@href='/signin']";
- // private userInputXPath = "//input[@name='email']";
- // private userPasswordXPath = "//input[@name='password']";
-  //private submitButtonXPath = "//button[@type ='submit']";
 
-  //waitForSignInPanel() {
-   // return this.proHelper.verifyElementVisibleUsingXPath(this.signInPanelXPath);
- // }
+
+  waitForSignInPanel() {
+    return this.proHelper.verifyElementVisibleUsingXPath(this.signInPanelXPath);
+ }
 
 
   clickLoginButton() {
