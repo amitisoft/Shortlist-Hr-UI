@@ -38,6 +38,7 @@ export class CommonProperties {
     // Getting Manage Test Data [Test In Progress]
     getManageTestInProgress = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/startTestInProgressDashboard';
 
-
+    // ----------- Notification URL --------------
+    notificationUrl = 'https://test.com';
 
 }
