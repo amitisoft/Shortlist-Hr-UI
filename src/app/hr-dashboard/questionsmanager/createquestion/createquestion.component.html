@@ -55,7 +55,7 @@
         <label for="singleSelect">Select Category:</label>
         <select name="singleSelect" id="singleSelect" class="form-control"  [(ngModel)]="selectedCategory" #categoryText="ngModel" required>
           <option></option>
-          <option [ngValue]="category.categoryname" *ngFor="let category of categoryList">{{category.categoryname}}</option>
+          <option [ngValue]="category.category_Id" *ngFor="let category of categoryList">{{category.category_Name}}</option>
         </select>
         <p class="help-block error" *ngIf="!categoryText.valid && categoryText.touched">Select Category</p>
     </div>

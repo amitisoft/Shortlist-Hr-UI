@@ -51,10 +51,9 @@ initForm() {
     
 
 
-  onCreateCategory(categoryname: string, categorydescription: string) {
-    var categoryInfo:any = {categoryname: categoryname, categorydescription: categorydescription};
-    console.log(categoryInfo);
-      this.categoryMngService.sendData(categoryInfo)
+  onCreateCategory(form :NgForm) {
+    console.log(form.value);
+      this.categoryMngService.sendData(form.value)
       .subscribe(
           (response) => {
               alert('data submitted auccessfully');
