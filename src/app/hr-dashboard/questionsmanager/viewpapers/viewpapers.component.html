@@ -54,10 +54,10 @@
     </table>
   </div>
   <div class="col-xs-8">
-    <h3>Paper Name : {{paperQuestions.name}}</h3>
+    <h3>Paper Name : {{paperQuestions.Qsn_Paper_name}}</h3>
      
     <ul class="list-group" *ngFor="let question of paperQuestions.qsns; let i = index">
-      <li class="list-group-item">{{i+1}} | {{question.QsnId}} | {{question.QusName}} | {{question.Category}}</li>
+      <li class="list-group-item">{{i+1}} | {{question.Qsn_id}} | {{question.Qsn}} | {{question.Category}}</li>
     </ul>
   </div>
 </div>
