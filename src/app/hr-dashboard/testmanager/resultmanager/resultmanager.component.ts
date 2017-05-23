@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
+import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
+import { IMyDrpOptions } from 'mydaterangepicker';
 
 @Component({
   selector: 'amiti-resultmanager',
@@ -6,10 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resultmanager.component.css']
 })
 export class ResultmanagerComponent implements OnInit {
+    category: any[] = [];
+    private myDateRangePickerOptions: IMyDrpOptions = {
+        dateFormat: 'dd/mm/yyyy',
+    };
 
-  constructor() { }
+    constructor(private categoryMngService: CategorymanagerService) { }
 
-  ngOnInit() {
+    ngOnInit() {
+
+        this.categoryMngService.getOwnData()
+            .subscribe(
+            data => {
+                const myArray = [];
+                for (let key in data) {
+                    myArray.push(data[key]);
+                }
+                this.category = myArray;
+            });
   }
 
 }

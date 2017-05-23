@@ -9,14 +9,14 @@ export class ManagetestService {
 
     constructor(private http: Http, private manageTestPro: CommonProperties) { }
 
-    getDataTestNotTaken() {
+    getDataTestNotTaken(searchdata,page) {
         // return this Observable
-        return this.http.get(this.manageTestPro.getManageTestDatas)
+        return this.http.get(this.manageTestPro.getManageTestDatas+"?name="+searchdata.name+"&category="+searchdata.category+"&email="+searchdata.email+"&daterange="+searchdata.dateRange.formatted+"&page="+page)
         .map((response: Response) => response.json());
     }
 
-    getDataTestInProgress() {
-        return this.http.get(this.manageTestPro.getManageTestInProgress)
+    getDataTestInProgress(searchdata,page) {
+        return this.http.get(this.manageTestPro.getManageTestInProgress+"?name="+searchdata.name+"&category="+searchdata.category+"&email="+searchdata.email+"&daterange="+searchdata.dateRange.formatted+"&page="+page)
             .map((response: Response) => response.json());
     }
 
@@ -83,6 +83,8 @@ export class ManagetestService {
     }
 
     /**Select Paper**/
+
+
 
     getStartTestdata() {
         return this.http.get('https://questiontable-630db.firebaseio.com/startTestData.json')

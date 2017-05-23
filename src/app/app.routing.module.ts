@@ -54,6 +54,7 @@ const appRoutes: Routes = [
                     { path: 'createquestion', component: CreatequestionComponent },
                     { path: 'viewquestion', component: ViewquestionsComponent },
                     { path: 'papermange', component: PapermanagementComponent },
+                    { path: 'papermange/:id', component: PapermanagementComponent },
                     { path: 'viewPaper', component: ViewpapersComponent}
                 ]
             },
