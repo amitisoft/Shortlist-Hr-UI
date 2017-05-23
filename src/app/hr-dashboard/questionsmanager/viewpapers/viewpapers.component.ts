@@ -33,8 +33,8 @@ export class ViewpapersComponent implements OnInit {
             },
             error => { console.log(error) },
             () => {
-                this.selectedCategory = this.category[0]['categoryname'];
-                this.changeCategory(this.category[0]['categoryname']);
+                this.selectedCategory = this.category[0]['category_Id'];
+                this.changeCategory(this.category[0]['category_Id']);
             });
 
         console.log(this.category);
