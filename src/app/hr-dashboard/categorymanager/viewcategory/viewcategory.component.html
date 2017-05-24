@@ -10,9 +10,9 @@
     </tr>
     <tr *ngFor="let item of items; let i = index; ">
       <!--<td>{{item.index}}</td>-->
-      <td #category>{{item.category_Name}}</td>
-      <td>{{item.category_Desc  | truncate: 15}}</td>
-     <td><a class="btn btn-success" [routerLink]="['../createcategory',item.category_Id]">
+      <td #category>{{item.categoryName}}</td>
+      <td>{{item.categoryDesc  | truncate: 15}}</td>
+     <td><a class="btn btn-success" [routerLink]="['../createcategory',item.categoryId]">
         <span class="glyphicon glyphicon-pencil"></span></a>
 
       <a class="btn btn-danger" (click)="deleteCategory(item,i)">

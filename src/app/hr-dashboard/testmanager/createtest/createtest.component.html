@@ -96,7 +96,7 @@
             <select name="categorySelected" id="categorySelected" 
                 class="form-control" [(ngModel)]="selectedCategory" #categorySelect="ngModel" required>
               <option value="">Select a category</option>
-              <option [ngValue]="category.category_Id" *ngFor="let category of categoryList">{{category.category_Name}}</option>
+              <option [ngValue]="category.categoryId" *ngFor="let category of categoryList">{{category.categoryName}}</option>
             </select>
             <p class="help-block error" *ngIf="!categorySelect.valid && categorySelect.touched">Select a Category</p>
             <!-- <p class="help-block error" *ngIf="rangeForm.controls.range.errors?.required">Select post applied</p> -->
