@@ -46,7 +46,7 @@
                 <th>QUESTIONS</th>
                 <th align="center" class="textCenter"><!--<label for="singleSelect"></label>-->
                 <select name="singleSelect" id="singleSelect" class="form-control" (ngModelChange)="changeCategory($event)" [(ngModel)]="selectedCategory" required>
-                <option [ngValue]="category.category_Id" *ngFor="let category of categoryList">{{category.category_Name}}</option>
+                <option [ngValue]="category.categoryId" *ngFor="let category of categoryList">{{category.categoryName}}</option>
               </select>
                 </th>
                 <th align="center" class="textDecorationScratch textCenter">CREATED DATE</th>

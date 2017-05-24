@@ -8,9 +8,9 @@
             [(ngModel)]="selectedCategory" #categoryText="ngModel" required >
 
 
-      <option [ngValue]="category.category_Id" 
+      <option [ngValue]="category.categoryId" 
               *ngFor="let category of category"
-              >{{category.category_Name}}</option>
+              >{{category.categoryName}}</option>
     </select>
     <p class="help-block error" *ngIf="!categoryText.valid && categoryText.touched">Select Category</p>
     
