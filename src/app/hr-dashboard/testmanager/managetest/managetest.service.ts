@@ -23,7 +23,7 @@ export class ManagetestService {
     //Result Manager Serach
     getResultManagerData(searchResultManager, page) {
         // return this Observable
-        return this.http.get(this.manageTestPro.getManageTestDatas + "&category=" + searchResultManager.category + "?name=" + searchResultManager.name + "?score=" + searchResultManager.score + "&email=" + searchResultManager.email + "?phone=" + searchResultManager.phone + "&daterange=" + searchResultManager.dateRange.formatted + "&page=" + page)
+        return this.http.get(this.manageTestPro.getManageTestDatas + "&post=" + searchResultManager.post + "?name=" + searchResultManager.name + "?score=" + searchResultManager.score + "&email=" + searchResultManager.email + "?phone=" + searchResultManager.phone + "&daterange=" + searchResultManager.dateRange.formatted + "&page=" + page)
             .map((response: Response) => response.json());
     }
 

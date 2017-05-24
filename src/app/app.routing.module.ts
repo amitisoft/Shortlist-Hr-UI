@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 
 
 import { Routes, RouterModule } from '@angular/router';
@@ -51,6 +51,7 @@ const appRoutes: Routes = [
              { path: 'changepassword', component: ChangepasswordComponent } ,
             {
                 path: 'qmanager', component: QuestionsmanagerComponent, canActivate: [AuthGaurd], children: [
+                    { path: '', component: CreatequestionComponent },
                     { path: 'createquestion', component: CreatequestionComponent },
                     { path: 'viewquestion', component: ViewquestionsComponent },
                     { path: 'papermange', component: PapermanagementComponent },
