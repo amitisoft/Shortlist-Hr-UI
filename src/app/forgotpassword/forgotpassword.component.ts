@@ -11,10 +11,23 @@ import { AuthService } from '../auth/auth.service';
 })
 export class ForgotpasswordComponent implements OnInit {
    //@ViewChild('form') uForm: NgForm;
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService,  private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() { 
-   
+
+     this.route.params
+            .subscribe(
+            (params: Params) => {
+                let linktime= +params['id'];
+                // let next24hour=24*3600*1000;
+                // let activetime=+(linktime+next24hour);
+                // let curtime=new Date().getTime();
+                // if(curtime<activetime){
+                //   alert('Link has been expired,please try again');
+                //   this.router.navigate(['../../signin'], { relativeTo: this.route });
+                // }
+            }
+            )
   }
   updatepassowrd(form: NgForm){
     this.authService.forgotpassword(form.value)

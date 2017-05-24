@@ -50,8 +50,8 @@ export class PapermanagementComponent implements OnInit {
             },
             error => {console.log(error)},
             () => {
-                this.selectedCategory = this.categoryList[0]['categoryname'];
-                this.changeCategory(this.categoryList[0]['categoryname']);
+                this.selectedCategory = this.categoryList[0]['category_Id'];
+                this.changeCategory(this.categoryList[0]['category_Id']);
             });
         
     }
