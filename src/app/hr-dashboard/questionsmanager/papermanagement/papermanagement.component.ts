@@ -50,8 +50,8 @@ export class PapermanagementComponent implements OnInit {
             },
             error => {console.log(error)},
             () => {
-                this.selectedCategory = this.categoryList[0]['category_Id'];
-                this.changeCategory(this.categoryList[0]['category_Id']);
+                this.selectedCategory = this.categoryList[0]['categoryId'];
+                this.changeCategory(this.categoryList[0]['categoryId']);
             });
         
     }
@@ -120,24 +120,44 @@ export class PapermanagementComponent implements OnInit {
 
 
     updateQuestionsCheckbox(chkbx, evnt) {
-        console.log(chkbx);
-        console.log(evnt.target.value);
-        console.log(evnt.target.checked);
-        console.log(evnt.target.getAttribute('data-questionName'));
-        console.log(evnt.target.getAttribute('data-categoryName'));
+        var i;
+        //console.log(chkbx);
+        //console.log(evnt.target.value);
+        //console.log(evnt.target.checked);
+        //console.log(evnt.target.getAttribute('data-questionName'));
+        //console.log(evnt.target.getAttribute('data-categoryName'));
         var queObj = { Qsn_id: evnt.target.value, Qsn: evnt.target.getAttribute('data-questionName'), Category: evnt.target.getAttribute('data-categoryName') };
         console.log("-----------------------------");
         console.log(queObj);
 
-
-        if (evnt.target.checked === true) {
-            // if(this.qpQuestionsCount < 30)
-            this.questionsCheckedArr.push(queObj);
-            console.log(this.questionsCheckedArr);
+        if (this.editMode) {
+            console.log(this.deletedEditPaperArray);
+            if (evnt.target.checked === true) {
+                if (this.deletedEditPaperArray.length > 0) {
+                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].Qsn_id = queObj.Qsn_id;
+                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].Qsn = queObj.Qsn;
+                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].Category = queObj.Category;
+                    this.deletedEditPaperArray.splice(0, 1);
+                    console.log(this.deletedEditPaperArray[0]);
+                    console.log(this.deletedEditPaperArray);
+                } else {
+                    this.questionsCheckedArr.push(queObj);
+                }
+            } else {
+                var selectedQueIdIndex = this.questionsCheckedArr.findIndex(x => x.questionid == evnt.target.value);
+                this.questionsCheckedArr.splice(selectedQueIdIndex, 1);
+                console.log(this.questionsCheckedArr);
+            }
         } else {
-            var selectedQueIdIndex = this.questionsCheckedArr.findIndex(x => x.questionid == evnt.target.value);
-            this.questionsCheckedArr.splice(selectedQueIdIndex, 1);
-            console.log(this.questionsCheckedArr);
+            if (evnt.target.checked === true) {
+                // if(this.qpQuestionsCount < 30)
+                this.questionsCheckedArr.push(queObj);
+                console.log(this.questionsCheckedArr);
+            } else {
+                var selectedQueIdIndex = this.questionsCheckedArr.findIndex(x => x.questionid == evnt.target.value);
+                this.questionsCheckedArr.splice(selectedQueIdIndex, 1);
+                console.log(this.questionsCheckedArr);
+            }
         }
     }
 
@@ -167,9 +187,9 @@ export class PapermanagementComponent implements OnInit {
         }
 
         if (this.editMode) {
-
+            this.paperCreationArray['questionPaperId'] = this.id;
         }
-        
+        console.log(this.paperCreationArray);
         this.paperService.createPaperService(this.paperCreationArray).subscribe(
         /* data => {console.log("Data: "+data);},
             error => alert("CustomError: "+error),
@@ -229,7 +249,7 @@ export class PapermanagementComponent implements OnInit {
        // delete this.questionsCheckedArr[index];
         //var index = this.questionsCheckedArr.indexOf(this.questionsCheckedArr);
         
-        this.questionsCheckedArr[index].Qsn_id = '';
+       this.questionsCheckedArr[index].Qsn_id = '';
        this.questionsCheckedArr[index].Qsn = '';
        this.questionsCheckedArr[index].Category = '';
 

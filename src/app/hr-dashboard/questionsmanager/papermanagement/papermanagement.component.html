@@ -12,7 +12,7 @@
                 class="form-control" 
                 (ngModelChange)="changeCategory($event)" 
                 [(ngModel)]="selectedCategory" required>
-          <option [ngValue]="category.category_Id" *ngFor="let category of categoryList">{{category.category_Name}}</option>
+          <option [ngValue]="category.categoryId" *ngFor="let category of categoryList">{{category.categoryName}}</option>
         </select>
     </div>
     <div class="col-xs-7">
@@ -30,7 +30,7 @@
           </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let eachCatQuestion of catQuestions; let i = index; let lastQuestion = last ">
+        <tr *ngFor="let eachCatQuestion of catQuestions.qsns; let i = index; let lastQuestion = last ">
           <td align="center"><input type="checkbox" #chkbx 
                                     [attr.data-questionName]="eachCatQuestion.Qsn" 
                                     [attr.data-categoryName]="eachCatQuestion.Category" 

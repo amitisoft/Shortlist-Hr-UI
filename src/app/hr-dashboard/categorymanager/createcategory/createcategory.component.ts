@@ -23,7 +23,7 @@ export class CreatecategoryComponent implements OnInit, OnDestroy {
     editMode = false;
     id: string;
     
-    items: any[] = [];
+    item: any[] = [];
 
     constructor(private categoryMngService: CategorymanagerService, private router: Router, private route: ActivatedRoute) { }
 
@@ -42,8 +42,8 @@ initForm() {
         this.categoryMngService.getcategoryDetails(this.id)
             .subscribe(
             data => {
-                this.items=data;
-                console.log(this.items);
+                this.item=data;
+                console.log(this.item);
             }
             );
     }
@@ -56,18 +56,18 @@ initForm() {
       this.categoryMngService.sendData(form.value)
       .subscribe(
           (response) => {
+            console.log(response);
               alert('data submitted auccessfully');
-              this.onClear();
               if(this.editMode){
                 this.router.navigate(['../../viewcategory'], { relativeTo: this.route });
               }else{
               this.router.navigate(['../viewcategory'], { relativeTo: this.route });
             }
 
-            if (response.status == 200) {
+            // if (response.status == 200) {
                     
                    
-            }
+            // }
         }
 
       );
