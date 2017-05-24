@@ -30,7 +30,7 @@
           </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let eachCatQuestion of catQuestions; let i = index; let lastQuestion = last ">
+        <tr *ngFor="let eachCatQuestion of catQuestions.qsns; let i = index; let lastQuestion = last ">
           <td align="center"><input type="checkbox" #chkbx 
                                     [attr.data-questionName]="eachCatQuestion.Qsn" 
                                     [attr.data-categoryName]="eachCatQuestion.Category" 
