@@ -5,8 +5,8 @@
       <label for="categoryname" class="col-sm-2 col-xs-12 col-form-label col-form-label-lg">Enter Category Type</label>
       <div class="col-sm-6 col-xs-12">
         <input type="text" class="form-control form-control-lg" id="categoryname"
-               placeholder="Enter Category Type" name="CategoryName" ngModel
-               required #categoryname [(ngModel)]="items.categoryname" >
+               placeholder="Enter Category Type" name="categoryName" 
+               required #categoryname [(ngModel)]="item.categoryName" >
       </div>
     </div>
   </div>
@@ -18,14 +18,14 @@
                   id="categorydescription"
                   placeholder="Enter Category Description"
                   style="height:80px;"
-                  name="CategoryDesc" ngModel
+                  name="categoryDesc" 
                   required
-                  #categorydescription [(ngModel)]="items.CategoryDesc">
+                  #categorydescription [(ngModel)]="item.categoryDesc">
         </textarea>
       </div>
     </div>
   </div>
-<input type="hidden" name="categoryId" *ngIf="editMode" class="form-control" [(ngModel)]="items.categoryId">
+<input type="hidden" name="categoryId" *ngIf="editMode" class="form-control" [(ngModel)]="item.categoryId">
   <div class="row">
     <div class="col-sm-3 col-xs-12"></div>
     <div class="col-sm-6 col-xs-12">
@@ -35,8 +35,7 @@
                 [disabled]="!f.valid">Add<span class="glyphicon glyphicon-ok"></span></button>
            <button *ngIf="editMode" class="btn btn-primary"
                 type="submit"
-                [disabled]="!f.valid"
-                (click)="onCreateCategory(categoryname.value,categorydescription.value)">Update<span class="glyphicon glyphicon-ok"></span>
+                [disabled]="!f.valid">Update<span class="glyphicon glyphicon-ok"></span>
           </button> &nbsp;
         <button class="btn btn-success" type="reset" (click)="onClear()">Clear
           <span class="glyphicon glyphicon-erase"></span></button>
