@@ -14,7 +14,7 @@ export class ViewpapersService {
     getPaperList(categoryName) {
         // var headers = new Headers();
         // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      //  var getPaperUrl = 'https://api.myjson.com/bins/19gqhh';
+      var getPaperUrl = 'https://api.myjson.com/bins/19gqhh';
         return this.http.get(getPaperUrl)
             .map(res => res.json());
     }

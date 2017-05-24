@@ -22,6 +22,9 @@ textarea.ng-invalid.ng-touched{
 .navWrap{
     background-color: orange;
 }
+.visibilityHidden{
+  visibility:hidden;
+}
 
 
 /* ---------------------------- Success / Warning sweetalert2 CSS -----------------------*/
@@ -110,8 +113,8 @@ width: 45px;
   padding: 5px 15px 10px 15px;
 }
 .navbar-default .dropdown-menu.notify-drop .drop-content {
-  min-height: 280px;
-  max-height: 280px;
+    min-height: 316px;
+    max-height: 316px;
   overflow-y: scroll;
 }
 .navbar-default .dropdown-menu.notify-drop .drop-content::-webkit-scrollbar-track

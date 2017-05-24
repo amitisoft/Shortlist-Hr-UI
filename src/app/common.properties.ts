@@ -38,7 +38,9 @@ export class CommonProperties {
     sendTestStartedDatas = 'https://6x2a0jjalb.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
     // Getting Manage Test Data [Test In Progress]
 
-    notificationUrl = 'https://api.myjson.com/bins/eg9l1';
+    //notificationUrl = 'https://candidate-notification.firebaseio.com/notificationData.json';
+    notificationUrl = 'http://localhost:3000/notificationData';
+    
 
     getManageTestInProgress = 'https://6x2a0jjalb.execute-api.us-east-1.amazonaws.com/dev/api/startTestInProgressDashboard';
 
