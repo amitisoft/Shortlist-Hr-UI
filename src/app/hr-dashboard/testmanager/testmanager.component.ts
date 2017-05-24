@@ -11,7 +11,7 @@ export class TestmanagerComponent implements OnInit {
     constructor(private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.router.navigate(['createtest'], { relativeTo: this.route });
+        //this.router.navigate(['createtest'], { relativeTo: this.route });
   }
 
   onCreateTest() {
