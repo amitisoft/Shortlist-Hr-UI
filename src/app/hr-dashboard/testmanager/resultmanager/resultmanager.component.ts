@@ -21,7 +21,7 @@ export class ResultmanagerComponent implements OnInit {
     };
 
     searchResultManager = {
-        'category': '',
+        'post': '',
         'name': '',
         'score':'',
         'email': '',
@@ -66,7 +66,7 @@ export class ResultmanagerComponent implements OnInit {
                 this.manageTest = data.bookings;
             }
 
-            ); //console.log(searchvalue);
+            ); console.log(searchvalue);
     }
 
 }

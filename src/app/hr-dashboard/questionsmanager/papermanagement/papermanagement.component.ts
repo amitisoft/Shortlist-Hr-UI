@@ -88,7 +88,7 @@ export class PapermanagementComponent implements OnInit {
         //var startQuestions: string = "startQue";
         //catName = "UI@";
         this.paperService.getThisCategoryQuestions(catName, lastQuestion).subscribe(
-            data => this.catQuestions = data,
+            data => this.catQuestions = data.qsns,
             error => alert(error),
             () => console.log(this.catQuestions)
         );
