@@ -7,7 +7,7 @@
             (ngModelChange)="changeCategory($event)" 
             [(ngModel)]="selectedCategory" #categoryText="ngModel" required >
 
-
+      <option>XXX</option>
       <option [ngValue]="category.categoryId" 
               *ngFor="let category of category"
               >{{category.categoryName}}</option>

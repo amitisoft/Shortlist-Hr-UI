@@ -2,6 +2,8 @@
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
 import { ManagetestService } from '../managetest/managetest.service';
 import { IMyDrpOptions } from 'mydaterangepicker';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { NotificationService } from '../../../header-main/notification.service';
 
 @Component({
   selector: 'amiti-resultmanager',
@@ -12,12 +14,14 @@ import { IMyDrpOptions } from 'mydaterangepicker';
 export class ResultmanagerComponent implements OnInit {
     category: any[] = [];
     manageTest: any[] = [];
+    cid: string;
+    editMode = false;
     private myDateRangePickerOptions: IMyDrpOptions = {
         dateFormat: 'dd/mm/yyyy',
     };
 
     searchResultManager = {
-        'category': '',
+        'post': '',
         'name': '',
         'score':'',
         'email': '',
@@ -27,7 +31,7 @@ export class ResultmanagerComponent implements OnInit {
         }
     }
 
-    constructor(private mngTestService: ManagetestService,private categoryMngService: CategorymanagerService) { }
+    constructor(private mngTestService: ManagetestService,private categoryMngService: CategorymanagerService, private route: ActivatedRoute, private notificServ: NotificationService) { }
 
     ngOnInit() {
 
@@ -40,6 +44,18 @@ export class ResultmanagerComponent implements OnInit {
                 }
                 this.category = myArray;
             });
+
+            this.route.params.subscribe(
+                (params: Params) => {
+                    this.cid = params['id'];
+                    //this.editMode = params['id'] != null;
+                    //this.initForm();
+                }
+            )
+    }
+
+    ngAfterViewInit(){
+        this.notificServ.updateNotification(this.cid);
     }
 
     onSearch(searchvalue: any, pageno) {
@@ -48,7 +64,7 @@ export class ResultmanagerComponent implements OnInit {
                 this.manageTest = data.bookings;
             }
 
-            ); //console.log(searchvalue);
+            ); console.log(searchvalue);
     }
 
 }

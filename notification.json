@@ -1,0 +1,72 @@
+{
+	"notificationData":[{
+		"id": 1,
+		"cId": "c23",
+		"cName": "Sharath",
+		"cScore": "30",
+		"cread": false
+	},
+	{
+		"id": 2,
+		"cId": "c25",
+		"cName": "Sathya",
+		"cScore": "35",
+		"cread": false
+	},
+	{
+		"id": 3,
+		"cId": "c14",
+		"cName": "Kiran",
+		"cScore": "28",
+		"cread": false
+	},
+	{
+		"id": 4,
+		"cId": "c30",
+		"cName": "Prashanth",
+		"cScore": "28",
+		"cread": false
+	},
+	{
+		"id": 5,
+		"cId": "c08",
+		"cName": "Prem",
+		"cScore": "15",
+		"cread": false
+	},
+	{
+		"id": 6,
+		"cId": "c27",
+		"cName": "Monica",
+		"cScore": "06",
+		"cread": false
+	},
+	{
+		"id": 7,
+		"cId": "c14",
+		"cName": "Mahesh",
+		"cScore": "19",
+		"cread": false
+	},
+	{
+		"id": 8,
+		"cId": "c19",
+		"cName": "Ashok",
+		"cScore": "12",
+		"cread": false
+	},
+	{
+		"id": 9,
+		"cId": "c05",
+		"cName": "Ramya",
+		"cScore": "24",
+		"cread": false
+	},
+	{
+		"id": 10,
+		"cId": "c02",
+		"cName": "John",
+		"cScore": "19",
+		"cread": false
+	}]
+}

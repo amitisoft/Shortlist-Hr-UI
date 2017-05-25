@@ -35,17 +35,26 @@
     <form action="listdata_submit" #f="ngForm" (ngSubmit)="onSearch(f.value,'')">
 
       <div class="col-xs-4 result_manager">
-        <select class='form-control' ngModel name="category">
+        <!--<select class='form-control' ngModel name="category">
           <option value="">--select category--</option>
           <option [ngValue]="category.categoryId" *ngFor="let category of category">{{category.categoryName}}</option>
-        </select>
+        </select>-->
+        <input type="text" class="form-control" placeholder="Post Applied For" name="post" ngModel />
       </div>
       <div class="col-xs-4 result_manager">
         <input type="text" class="form-control" placeholder="Name" name="name" ngModel/>
       </div>
       <div class="col-xs-2 result_manager">
-        <input type="number" class="form-control" placeholder="score" name="score" ngModel/>
-      </div> <br /> &nbsp; &nbsp;
+        <!--<input type="number" class="form-control" placeholder="score" name="score" ngModel/>-->
+        <select class='form-control' ngModel name="score" >
+          <option [ngValue]="'30-25'">30-25</option>
+          <option [ngValue]="'24-20'">24-20</option>
+          <option [ngValue]="'19-15'">19-15</option>
+          <option [ngValue]="'14-10'">14-10</option>
+          <option [ngValue]="'9-0'">9-0</option>
+
+        </select>
+</div> <br /> &nbsp; &nbsp;
       <div class="col-xs-4 result_manager">
         <input type="email" class="form-control" placeholder="E-mail" name="email" ngModel />
       </div>
@@ -81,7 +90,7 @@
         <th>NAME</th>
         <th class="hidden-xs">EMAIL</th>
         <th class="hidden-xs">PHONE NO</th>
-        <th>CATEGORY</th>
+        <th>POST APPLIED</th>
         <th class="hidden-xs">DATE</th>
         <th>SCORE</th>
       </tr>
@@ -119,5 +128,7 @@
 
   </div>
 </div>
+
+<p>Candidate id is: {{cid}}</p>
 
 

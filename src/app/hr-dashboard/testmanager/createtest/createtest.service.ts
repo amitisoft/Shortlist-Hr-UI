@@ -14,6 +14,7 @@ export class CreateTestService {
     }
 
     getEmail() {
+        
         return this.http.get(this.createtestProperties.getEmailUrl).map(response => response.json());
     }
 

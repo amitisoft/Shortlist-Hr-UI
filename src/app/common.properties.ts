@@ -11,9 +11,9 @@ export class CommonProperties {
 
 	/*----categorymanager Component----*/
 
-    sendCategories = 'https://u476su0nfa.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
-    viewCategories = 'https://u476su0nfa.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
-    getcategoryDetails='https://u476su0nfa.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
+    sendCategories = 'https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
+    viewCategories = 'https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
+    getcategoryDetails='https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
     deletecategories='https://f4l096njvh.execute-api.us-east-1.amazonaws.com/dev/api/deleteCategory/categoryId';
 
     /*----createquestion Component----*/
@@ -39,7 +39,9 @@ export class CommonProperties {
     sendTestStartedDatas = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
     // Getting Manage Test Data [Test In Progress]
 
-    notificationUrl = 'https://api.myjson.com/bins/eg9l1';
+    //notificationUrl = 'https://candidate-notification.firebaseio.com/notificationData.json';
+    notificationUrl = 'http://localhost:3000/notificationData';
+    
 
     getManageTestInProgress = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/startTestInProgressDashboard';
 
