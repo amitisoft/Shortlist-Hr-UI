@@ -51,9 +51,11 @@ const appRoutes: Routes = [
              { path: 'changepassword', component: ChangepasswordComponent } ,
             {
                 path: 'qmanager', component: QuestionsmanagerComponent, canActivate: [AuthGaurd], children: [
+                    { path: '', component: CreatequestionComponent },
                     { path: 'createquestion', component: CreatequestionComponent },
                     { path: 'viewquestion', component: ViewquestionsComponent },
                     { path: 'papermange', component: PapermanagementComponent },
+                    { path: 'papermange/:id', component: PapermanagementComponent },
                     { path: 'viewPaper', component: ViewpapersComponent}
                 ]
             },
@@ -71,6 +73,7 @@ const appRoutes: Routes = [
             {
                 path: 'testmanagerComp', component: TestmanagerComponent, canActivate: [AuthGaurd], children: [
 
+                    { path: '', component: CreatetestComponent },
                     { path: 'createtest', component: CreatetestComponent },
                     {
                         path: 'managetest', component: ManagetestComponent, children: [
@@ -80,6 +83,9 @@ const appRoutes: Routes = [
                         ]
                     },
                     { path: 'testmanager', component: ResultmanagerComponent },
+                    //{ path: 'testmanager/:id', component: ResultmanagerComponent }
+                    { path: 'testmanager/:id', component: ResultmanagerComponent }
+                    
                 ]
             },
             { path: 'cadidateTest', component: CadidatedataComponent, children: [

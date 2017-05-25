@@ -1,27 +1,88 @@
-﻿
-<nav class="navbar navbar-default" style="background-color: orange">
+
+<nav class="navbar navbar-default navWrap">
   <!--<div class="container-fluid">-->
+  <div class="navbar-header">
+    <a class="navbar-brand" ><img src="../../assets/images/amiti.png" alt="amiti" img="img-responsive" style="height:30px;width:100px"/></a>
+  </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+      
+      <li *ngIf="!authService.isAuthenticated()" style="cursor: pointer"><a routerLink="/signin" > Log In </a></li>
+      <li *ngIf="authService.isAuthenticated()" style="cursor: pointer" ><a  routerLink="hrdashboard/changepassword"> Change Password </a></li>
+      <li *ngIf="authService.isAuthenticated()" style="cursor: pointer" ><a  routerLink="/signin" (click)="onLogOut()"> Log Out </a></li>
+    </ul>
 
-    <div class="navbar-header">
+    <!--  ********************** FB Notification html Begins ************************** -->
+<ul *ngIf="authService.isAuthenticated()" class="nav navbar-nav navbar-right notificationWrap">
+        <li appDropdown class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell" aria-hidden="true"></i> (<b id="notificationCount">{{notifBucket.length}}</b>)</a>
+          <ul class="dropdown-menu notify-drop">
+            <div class="notify-drop-title">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12"><h4 class="testAlignCenter">Updates</h4></div>
+              </div>
+            </div>
+            <!-- end notify title -->
+            <!-- notify content -->
+            <div class="drop-content">
+              <li *ngFor="let eachNotif of notifBucket" [routerLink]="['../hrdashboard/testmanagerComp/testmanager',eachNotif.cId]" >
+                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><a href="javascript:void(0);"><img class="notificationImage" src="../../assets/images/user.png" alt=""></a></div></div>
+                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><p><a class="blackColor" href="javascript:void(0);">{{eachNotif.cName}} has finished his exam.</a></p>
+                <p><a class="lightGreyColor" href="javascript:void(0);">Score is {{eachNotif.cScore}}</a></p>
+                </div>
+              </li>
+            </div>
+            <!-- <div class="notify-drop-footer text-center">
+              <a href=""><i class="fa fa-eye"></i> Show All</a>
+            </div> -->
+          </ul>
+        </li>
+</ul>
 
+      <button class="visibilityHidden" (click)="getNotification()">Get Notf</button>
+<!--  ********************** FB Notification html Ends ************************** -->
+  </div><!-- /.navbar-collapse -->
 
-      <a class="navbar-brand" ><img src="../../assets/images/amiti.png" alt="amiti"
-                                    img="img-responsive"
-                                    style="height:30px;width:100px"/></a>
-    </div>
-
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
-      <ul class="nav navbar-nav navbar-right">
-        
-        <li *ngIf="!authService.isAuthenticated()" style="cursor: pointer"><a routerLink="/signin" > Log In </a></li>
-        <li *ngIf="authService.isAuthenticated()" style="cursor: pointer" ><a  routerLink="hrdashboard/changepassword"> Change Password </a></li>
-        <li *ngIf="authService.isAuthenticated()" style="cursor: pointer" ><a  routerLink="/signin" (click)="onLogOut()"> Log Out </a></li>
-
-
-      </ul>
-    </div><!-- /.navbar-collapse -->
   <!--</div>--><!-- /.container-fluid -->
 </nav>
+
+
+  <!-- ***************** Notification bropdown table ******************* -->
+<!-- <div [hidden]="notiflag" class="notificationWrap" id="notification-body">
+  <table>
+  <thead><tr><th colspan="2"><h4>Updates</h4></th></tr></thead>
+  <tbody>
+    <tr>
+      <td align="center"><a href="javascript:void(0);"><img src="../../assets/images/user.png" class="notificationImage" /></a></td>
+      <td><a href="javascript:void(0);">
+        <p>The user has scored 80% in the exam.</p>
+        <p class="lightGreyColor">Click here to view.</p>
+        </a>
+      </td>
+    </tr>
+        <tr>
+      <td align="center"><a href="javascript:void(0);"><img src="../../assets/images/user.png" class="notificationImage" /></a></td>
+      <td><a href="javascript:void(0);">
+        <p>The user has scored 80% in the exam.</p>
+        <p class="lightGreyColor">Click here to view.</p>
+        </a>
+      </td>
+    </tr>    <tr>
+      <td align="center"><a href="javascript:void(0);"><img src="../../assets/images/user.png" class="notificationImage" /></a></td>
+      <td><a href="javascript:void(0);">
+        <p>The user has scored 80% in the exam.</p>
+        <p class="lightGreyColor">Click here to view.</p>
+        </a>
+      </td>
+    </tr>    <tr>
+      <td align="center"><a href="javascript:void(0);"><img src="../../assets/images/user.png" class="notificationImage" /></a></td>
+      <td><a href="javascript:void(0);">
+        <p>The user has scored 80% in the exam.</p>
+        <p class="lightGreyColor">Click here to view.</p>
+        </a>
+      </td>
+    </tr>
+    <tr><td colspan="2"><p class="moreNote"><a href="javascript:void(0);">Show More</a></p></td></tr>
+  </tbody>
+  </table>
+</div> -->

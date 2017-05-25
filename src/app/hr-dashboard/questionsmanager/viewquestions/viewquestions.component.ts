@@ -37,8 +37,8 @@ export class ViewquestionsComponent implements OnInit {
             },
             error => {console.log(error)},
             () => {
-                this.selectedCategory = this.categoryList[0]['categoryname'];
-                this.changeCategory(this.categoryList[0]['categoryname']);
+                this.selectedCategory = this.categoryList[0]['categoryId'];
+                this.changeCategory(this.categoryList[0]['categoryId']);
         });
     }
 

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { PapermanagementService } from './papermanagement.service';
 import { CategorymanagerService } from '../../categorymanager/categorymanager.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ViewpapersService } from '../viewpapers/viewpapers.service';
 import 'rxjs/Rx';
 declare var swal: any;
 
@@ -8,9 +10,13 @@ declare var swal: any;
   selector: 'amiti-papermanagement',
   templateUrl: './papermanagement.component.html',
   styleUrls: ['./papermanagement.component.css'],
-  providers: [PapermanagementService, CategorymanagerService]
+  providers: [PapermanagementService, CategorymanagerService, ViewpapersService]
 })
 export class PapermanagementComponent implements OnInit {
+
+    editMode = false;
+    id: string;
+    paperQuestions: any[] = [];
 
     questions: any[] = [];
     catQuestions: any;
@@ -19,14 +25,21 @@ export class PapermanagementComponent implements OnInit {
     selectedCategory: any;
     categoryList: any[] = [];
 
-    questionsCheckedArr: Array<any> = [];
+    deletedEditPaperArray: any[] = [];
+    questionsCheckedArr: any[] = [];
+   // questionsCheckedArr: Array<any> = [];
+
     //qpQuestionsCount: number = this.questionsCheckedArr.length;
     paperName:string;
     paperCreationData:any;
     paperCreationArray: Array<any> = [];
     
 
-    constructor(private paperService: PapermanagementService, private categoryMngService: CategorymanagerService) {
+    constructor(private paperService: PapermanagementService,
+        private categoryMngService: CategorymanagerService,
+        private route: ActivatedRoute,
+        private viewPaperService: ViewpapersService) {
+
         this.categoryMngService.getOwnData()
             .subscribe(
             data => {
@@ -37,13 +50,37 @@ export class PapermanagementComponent implements OnInit {
             },
             error => {console.log(error)},
             () => {
-                this.selectedCategory = this.categoryList[0]['categoryname'];
-                this.changeCategory(this.categoryList[0]['categoryname']);
-        });
+                this.selectedCategory = this.categoryList[0]['categoryId'];
+                this.changeCategory(this.categoryList[0]['categoryId']);
+            });
+        
     }
 
     ngOnInit() {
 
+        //Editing Paper
+        this.route.params
+            .subscribe(
+            (params: Params) => {
+                this.id = params['id'];
+                this.editMode = params['id'] != null;
+                this.initForm();
+            }
+            )
+
+    }
+
+    initForm() {
+        if (this.editMode) {
+            this.viewPaperService.viewPaperQuestions()
+                .subscribe((data: any) => {
+                    this.questionsCheckedArr = data.qsns;
+                    this.paperName = data.Qsn_Paper_name;
+                    console.log(this.questionsCheckedArr);
+                }
+
+                ); 
+        }
     }
 
     changeCategory(catName: string) {
@@ -51,7 +88,7 @@ export class PapermanagementComponent implements OnInit {
         //var startQuestions: string = "startQue";
         //catName = "UI@";
         this.paperService.getThisCategoryQuestions(catName, lastQuestion).subscribe(
-            data => this.catQuestions = data,
+            data => this.catQuestions = data.qsns,
             error => alert(error),
             () => console.log(this.catQuestions)
         );
@@ -83,24 +120,44 @@ export class PapermanagementComponent implements OnInit {
 
 
     updateQuestionsCheckbox(chkbx, evnt) {
-        console.log(chkbx);
-        console.log(evnt.target.value);
-        console.log(evnt.target.checked);
-        console.log(evnt.target.getAttribute('data-questionName'));
-        console.log(evnt.target.getAttribute('data-categoryName'));
+        var i;
+        //console.log(chkbx);
+        //console.log(evnt.target.value);
+        //console.log(evnt.target.checked);
+        //console.log(evnt.target.getAttribute('data-questionName'));
+        //console.log(evnt.target.getAttribute('data-categoryName'));
         var queObj = { Qsn_id: evnt.target.value, Qsn: evnt.target.getAttribute('data-questionName'), Category: evnt.target.getAttribute('data-categoryName') };
         console.log("-----------------------------");
         console.log(queObj);
 
-
-        if (evnt.target.checked === true) {
-            // if(this.qpQuestionsCount < 30)
-            this.questionsCheckedArr.push(queObj);
-            console.log(this.questionsCheckedArr);
+        if (this.editMode) {
+            console.log(this.deletedEditPaperArray);
+            if (evnt.target.checked === true) {
+                if (this.deletedEditPaperArray.length > 0) {
+                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].Qsn_id = queObj.Qsn_id;
+                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].Qsn = queObj.Qsn;
+                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].Category = queObj.Category;
+                    this.deletedEditPaperArray.splice(0, 1);
+                    console.log(this.deletedEditPaperArray[0]);
+                    console.log(this.deletedEditPaperArray);
+                } else {
+                    this.questionsCheckedArr.push(queObj);
+                }
+            } else {
+                var selectedQueIdIndex = this.questionsCheckedArr.findIndex(x => x.questionid == evnt.target.value);
+                this.questionsCheckedArr.splice(selectedQueIdIndex, 1);
+                console.log(this.questionsCheckedArr);
+            }
         } else {
-            var selectedQueIdIndex = this.questionsCheckedArr.findIndex(x => x.questionid == evnt.target.value);
-            this.questionsCheckedArr.splice(selectedQueIdIndex, 1);
-            console.log(this.questionsCheckedArr);
+            if (evnt.target.checked === true) {
+                // if(this.qpQuestionsCount < 30)
+                this.questionsCheckedArr.push(queObj);
+                console.log(this.questionsCheckedArr);
+            } else {
+                var selectedQueIdIndex = this.questionsCheckedArr.findIndex(x => x.questionid == evnt.target.value);
+                this.questionsCheckedArr.splice(selectedQueIdIndex, 1);
+                console.log(this.questionsCheckedArr);
+            }
         }
     }
 
@@ -128,7 +185,11 @@ export class PapermanagementComponent implements OnInit {
         for(let newArr of this.questionsCheckedArr){
             this.paperCreationArray.push({"QsnId": newArr.Qsn_id, "Category":newArr.Category});
         }
-        
+
+        if (this.editMode) {
+            this.paperCreationArray['questionPaperId'] = this.id;
+        }
+        console.log(this.paperCreationArray);
         this.paperService.createPaperService(this.paperCreationArray).subscribe(
         /* data => {console.log("Data: "+data);},
             error => alert("CustomError: "+error),
@@ -182,6 +243,19 @@ export class PapermanagementComponent implements OnInit {
         })
 // alert("Check");
 
+    }
+
+    onRemoveQuestion(index: number) {
+       // delete this.questionsCheckedArr[index];
+        //var index = this.questionsCheckedArr.indexOf(this.questionsCheckedArr);
+        
+       this.questionsCheckedArr[index].Qsn_id = '';
+       this.questionsCheckedArr[index].Qsn = '';
+       this.questionsCheckedArr[index].Category = '';
+
+       this.deletedEditPaperArray.push(index);
+       console.log(this.deletedEditPaperArray);
+        
     }
 
 }

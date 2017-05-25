@@ -1,6 +1,7 @@
-﻿import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { NotificationService } from './notification.service';
 import { AuthService } from '../auth/auth.service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'amiti-header-main',
@@ -8,12 +9,41 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderMainComponent implements OnInit {
 
-  constructor( private authService: AuthService) { }
+	private notifBucket:any = [];
+	private interval:any;
+  	constructor( private authService: AuthService, private notificServ: NotificationService) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+		//this.functionLoopCall();
+	}
 
-  onLogOut() {
-      this.authService.logOut();
-  }
+	functionLoopCall(){
+		//var that = this;
+		//that.interval = setInterval(that.getNotification, 2000);
+		//that.interval = setInterval(() => {that.getNotification}, 2000);
+		//this.getNotification();
+	}
+
+	
+
+	getNotification(){
+		this.notificServ.pullNotification().subscribe(
+			(data) => {
+				var tempData = data[0];
+				this.notifBucket.push(tempData);
+				console.log(this.notifBucket);
+			},
+			(error) => {},
+			() => {}
+		);
+		//alert("Hi");
+	}
+
+/*	stopInterval(){
+		clearInterval(this.interval);
+	}*/
+
+	onLogOut() {
+		this.authService.logOut();
+	}
 }

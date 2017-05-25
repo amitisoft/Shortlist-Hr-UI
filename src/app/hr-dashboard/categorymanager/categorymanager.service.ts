@@ -42,10 +42,13 @@ export class CategorymanagerService {
             .map((response: Response) => response.json());
     }
     getcategoryDetails(id : string){
-        return this.http.get(this.categoryPro.getcategoryDetails)
+        return this.http.get(this.categoryPro.getcategoryDetails+"/"+id)
             .map((response: Response) => response.json());
     }
-
+    deletecategory(id : string){
+             return this.http.get(this.categoryPro.deletecategories+"/"+id)
+            .map((response: Response) => response.json());
+    }
     getCategory(index: number) {
         return this.items[index];
     }

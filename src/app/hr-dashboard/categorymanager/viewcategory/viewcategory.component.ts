@@ -31,7 +31,7 @@ export class ViewcategoryComponent implements OnInit {
 
     deleteCategory(item: any,index: number) {
         if(confirm('Are you sure to delete ?')){
-        //this.categoryMngService.deletecategory(item);
+        this.categoryMngService.deletecategory(item.categoryId);
         this.items.splice(index, 1);
         }
     }

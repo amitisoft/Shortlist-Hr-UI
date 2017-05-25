@@ -9,8 +9,6 @@ import { HeaderMainComponent } from './header-main/header-main.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    title = 'amiti works!';
-
     ngOnInit() {
 
         firebase.initializeApp({

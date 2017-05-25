@@ -8,8 +8,12 @@
     SELECT CATEGORY
     <div class="col-xs-12"><hr/></div>
     <div class="col-xs-5">
-        <select name="singleSelect" id="singleSelect" class="form-control" (ngModelChange)="changeCategory($event)" [(ngModel)]="selectedCategory" required>
-          <option [ngValue]="category.categoryname" *ngFor="let category of categoryList">{{category.categoryname}}</option>
+        <select name="singleSelect" id="singleSelect" 
+                class="form-control" 
+                (ngModelChange)="changeCategory($event)" 
+                [(ngModel)]="selectedCategory" required>
+          <option>xxxx</option>
+          <option [ngValue]="category.categoryId" *ngFor="let category of categoryList">{{category.categoryName}}</option>
         </select>
     </div>
     <div class="col-xs-7">
@@ -28,7 +32,12 @@
         </thead>
         <tbody>
         <tr *ngFor="let eachCatQuestion of catQuestions; let i = index; let lastQuestion = last ">
-          <td align="center"><input type="checkbox" #chkbx [attr.data-questionName]="eachCatQuestion.Qsn" [attr.data-categoryName]="eachCatQuestion.Category" value={{eachCatQuestion.Qsn_id}} (change)="updateQuestionsCheckbox(chkbx, $event)" [checked]="eachCatQuestion.checked" /></td>
+          <td align="center"><input type="checkbox" #chkbx 
+                                    [attr.data-questionName]="eachCatQuestion.Qsn" 
+                                    [attr.data-categoryName]="eachCatQuestion.Category" 
+                                    value={{eachCatQuestion.Qsn_id}} 
+                                    (change)="updateQuestionsCheckbox(chkbx, $event)"
+                                    [checked]="eachCatQuestion.checked" /></td>
           <td align="center" class="hidden-xs">{{i+1}}</td>
           <td>{{eachCatQuestion.Qsn | truncate: 30}}</td>
           <td align="center">{{eachCatQuestion.Category}}</td>
@@ -48,17 +57,18 @@
 
   <div class="col-lg-6 col-sm-6 col-xs-12">
     CREATE PAPER
+   
     <hr />
 
     <div class="row">
       <div class="col-xs-5">
         <input type="text" id="papername" class="form-control" [(ngModel)]="paperName" placeholder="Paper Name" />
       </div>
-      <div class="col-xs-3">
-        <label></label>
-        <button class="btn btn-success" (click)="createCandidatePaper()">SAVE <span class="glyphicon glyphicon-floppy-save"></span></button>
-      </div>
       <div class="col-xs-4">
+        <label></label>
+        <button class="btn btn-success" (click)="createCandidatePaper()">{{editMode? 'Update' : 'SAVE'}} <span class="glyphicon glyphicon-floppy-save"></span></button>
+      </div>
+      <div class="col-xs-3">
         <label></label>
         <button class="btn btn-primary" (click)="clearCandidatePaper()">Clear <span class="glyphicon glyphicon-erase"></span></button>
       </div>
@@ -73,12 +83,23 @@
             <th align="center">CATEGORY</th>
           </tr>
         </thead>
+
         <tbody>
+          
           <tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr; let i = index ">
             <td class="hidden-xs">{{i+1}}</td>
+            <td hidden>{{eachQuestionsCheckedArr.Qsn_id}}</td>
             <td>{{eachQuestionsCheckedArr.Qsn}}</td>
             <td>{{eachQuestionsCheckedArr.Category}}</td>
+            <td *ngIf="editMode" (click)="onRemoveQuestion(i)" style="cursor:pointer">x</td>
           </tr>
+
+          <!--<tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr.qsns; let i = index ">
+            <td class="hidden-xs">{{i+1}}</td>
+            <td>{{eachQuestionsCheckedArr.QusName}}</td>
+            <td>{{ eachQuestionsCheckedArr.Category }}</td>
+            <td></td>
+          </tr>-->
         </tbody>
       </table>
     </div>

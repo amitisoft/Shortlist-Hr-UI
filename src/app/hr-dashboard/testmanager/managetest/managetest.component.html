@@ -1,7 +1,7 @@
 ﻿<hr />
 <ul class="nav nav-tabs">
   
-  <li role="presentation" class="active" (click)="onTestNotTaken()"><a >TEST NOT TAKEN</a></li>
-  <li role="presentation" (click)="onTestInProgress()"><a >TEST IN PROGRESS</a></li>
+  <li role="presentation" routerLinkActive="active" routerLink="testNotTaken" ><a >TEST NOT TAKEN</a></li>
+  <li role="presentation"  routerLinkActive="active" routerLink="testInProgress" ><a >TEST IN PROGRESS</a></li>
 </ul>
 <router-outlet></router-outlet>
