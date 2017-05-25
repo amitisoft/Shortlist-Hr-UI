@@ -1,15 +1,16 @@
-Feature: Hr login in amiti page
+Feature: HR can Login and access the dashboards
+As a HR of Candidate Shortlisting Application
+I should be able to use all Dashboard
+In order to access and Mange candidates data
 
-	@Login
-	Scenario: Hr login
-		Given I am on amiti page
-		When I click on login button
-		When I type username
-		When I enter password
-		Then I click on submit button
-    Then I verify status
-
-#Feature: HR Login
+@Login
+Scenario: HR can Login to the application
+  Given I am on amiti page
+	When I click on login button
+	And I type username
+	And I enter password
+	Then I click on submit button
+  And I verify the Dashboards
 
 #Scenario: HR Login as a Registered user using valid credentials
 
