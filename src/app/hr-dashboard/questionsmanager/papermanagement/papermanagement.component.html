@@ -13,7 +13,7 @@
                 (ngModelChange)="changeCategory($event)" 
                 [(ngModel)]="selectedCategory" required>
           <option>xxxx</option>
-          <option [ngValue]="category.categoryId" *ngFor="let category of categoryList">{{category.categoryName}}</option>
+          <option [ngValue]="category.categoryName" *ngFor="let category of categoryList">{{category.categoryName}}</option>
         </select>
     </div>
     <div class="col-xs-7">
@@ -35,12 +35,12 @@
           <td align="center"><input type="checkbox" #chkbx 
                                     [attr.data-questionName]="eachCatQuestion.Qsn" 
                                     [attr.data-categoryName]="eachCatQuestion.Category" 
-                                    value={{eachCatQuestion.Qsn_id}} 
+                                    value={{eachCatQuestion.QsnId}} 
                                     (change)="updateQuestionsCheckbox(chkbx, $event)"
                                     [checked]="eachCatQuestion.checked" /></td>
           <td align="center" class="hidden-xs">{{i+1}}</td>
           <td>{{eachCatQuestion.Qsn | truncate: 30}}</td>
-          <td align="center">{{eachCatQuestion.Category}}</td>
+          <td align="center">{{eachCatQuestion.category}}</td>
         </tr>
         </tbody>
       </table>
@@ -88,9 +88,9 @@
           
           <tr *ngFor="let eachQuestionsCheckedArr of questionsCheckedArr; let i = index ">
             <td class="hidden-xs">{{i+1}}</td>
-            <td hidden>{{eachQuestionsCheckedArr.Qsn_id}}</td>
+            <td hidden>{{eachQuestionsCheckedArr.QsnId}}</td>
             <td>{{eachQuestionsCheckedArr.Qsn}}</td>
-            <td>{{eachQuestionsCheckedArr.Category}}</td>
+            <td>{{eachQuestionsCheckedArr.category}}</td>
             <td *ngIf="editMode" (click)="onRemoveQuestion(i)" style="cursor:pointer">x</td>
           </tr>
 

@@ -50,8 +50,8 @@ export class PapermanagementComponent implements OnInit {
             },
             error => {console.log(error)},
             () => {
-                this.selectedCategory = this.categoryList[0]['categoryId'];
-                this.changeCategory(this.categoryList[0]['categoryId']);
+                this.selectedCategory = this.categoryList[0]['categoryName'];
+                this.changeCategory(this.categoryList[0]['categoryName']);
             });
         
     }
@@ -72,11 +72,12 @@ export class PapermanagementComponent implements OnInit {
 
     initForm() {
         if (this.editMode) {
-            this.viewPaperService.viewPaperQuestions()
+            this.viewPaperService.editPaperQuestions(this.id)
                 .subscribe((data: any) => {
-                    this.questionsCheckedArr = data.qsns;
-                    this.paperName = data.Qsn_Paper_name;
-                    console.log(this.questionsCheckedArr);
+                    this.questionsCheckedArr = data;
+                    this.paperName = data[0].questionPaperName;
+                    //console.log(this.questionsCheckedArr);
+                    console.log(data);
                 }
 
                 ); 
@@ -126,7 +127,7 @@ export class PapermanagementComponent implements OnInit {
         //console.log(evnt.target.checked);
         //console.log(evnt.target.getAttribute('data-questionName'));
         //console.log(evnt.target.getAttribute('data-categoryName'));
-        var queObj = { Qsn_id: evnt.target.value, Qsn: evnt.target.getAttribute('data-questionName'), Category: evnt.target.getAttribute('data-categoryName') };
+        var queObj = { QsnId: evnt.target.value, Qsn: evnt.target.getAttribute('data-questionName'), category: evnt.target.getAttribute('data-categoryName') };
         console.log("-----------------------------");
         console.log(queObj);
 
@@ -134,9 +135,9 @@ export class PapermanagementComponent implements OnInit {
             console.log(this.deletedEditPaperArray);
             if (evnt.target.checked === true) {
                 if (this.deletedEditPaperArray.length > 0) {
-                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].Qsn_id = queObj.Qsn_id;
+                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].QsnId = queObj.QsnId;
                     this.questionsCheckedArr[this.deletedEditPaperArray[0]].Qsn = queObj.Qsn;
-                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].Category = queObj.Category;
+                    this.questionsCheckedArr[this.deletedEditPaperArray[0]].category = queObj.category;
                     this.deletedEditPaperArray.splice(0, 1);
                     console.log(this.deletedEditPaperArray[0]);
                     console.log(this.deletedEditPaperArray);
@@ -249,9 +250,9 @@ export class PapermanagementComponent implements OnInit {
        // delete this.questionsCheckedArr[index];
         //var index = this.questionsCheckedArr.indexOf(this.questionsCheckedArr);
         
-       this.questionsCheckedArr[index].Qsn_id = '';
+       this.questionsCheckedArr[index].QsnId = '';
        this.questionsCheckedArr[index].Qsn = '';
-       this.questionsCheckedArr[index].Category = '';
+       this.questionsCheckedArr[index].category = '';
 
        this.deletedEditPaperArray.push(index);
        console.log(this.deletedEditPaperArray);
