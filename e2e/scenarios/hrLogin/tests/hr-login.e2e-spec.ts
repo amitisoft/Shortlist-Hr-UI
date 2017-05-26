@@ -1,10 +1,10 @@
 import {Utilities} from '../../../utils/utilities';
 import { config } from 'C:/Users/Amiti/WebstormProjects/Shortlist-Hr-UI/protractor.conf.js';
 import {AuthenticationPage} from "../../../pages/hrLogin/hr-login.po";
-import {defineSupportCode} from "cucumber";
 import {expect} from 'chai';
 import {browser} from 'protractor';
 
+const {defineSupportCode} = require('cucumber');
 
 defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
 
