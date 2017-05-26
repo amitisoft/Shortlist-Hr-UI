@@ -1,9 +1,10 @@
 import {Utilities} from "../../../utils/utilities";
 import {QuestionManagerPage} from "../../../pages/questionManager/question-manager.po";
 import {expect} from 'chai';
-import {defineSupportCode, TableDefinition} from "cucumber";
+import {TableDefinition} from "cucumber";
 import {browser} from "protractor";
 
+const {defineSupportCode} = require('cucumber');
 
 defineSupportCode(({Given, Then, When,setDefaultTimeout}) => {
   let questionManagerPage: QuestionManagerPage = new QuestionManagerPage();
