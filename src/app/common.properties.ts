@@ -11,9 +11,9 @@ export class CommonProperties {
 
 	/*----categorymanager Component----*/
 
-    sendCategories = 'https://u476su0nfa.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
-    viewCategories = 'https://u476su0nfa.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
-    getcategoryDetails='https://u476su0nfa.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
+    sendCategories = 'https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
+    viewCategories = 'https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
+    getcategoryDetails='https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
     deletecategories='https://f4l096njvh.execute-api.us-east-1.amazonaws.com/dev/api/deleteCategory/categoryId';
 
     /*----createquestion Component----*/
