@@ -1,5 +1,5 @@
 import {Utilities} from '../../../utils/utilities';
-import {CadidateManagerPage} from "../../../pages/candidateManager/upload-candidate.po";
+import {CadidateManagerPage} from "../../../pages/candidateManager/candidate-manager.po";
 import {expect} from 'chai';
 import {browser} from 'protractor';
 
@@ -20,7 +20,7 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return cadidateManagerPage.selectUploadCandidates();
   });
 
-  When(/^I add the data file directory$/, () => {
+  When(/^I add the candidates data file directory$/, () => {
     return cadidateManagerPage.addCandidateFilePath();
   });
 
@@ -29,8 +29,8 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
   });
 
   Then(/^I verify successful upload message$/, () => {
-    browser.pause();
-    return browser.pause();
+    //console.log(utils.getAlertText());
+    return utils.acceptAlert();
   });
 
 });

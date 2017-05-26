@@ -1,5 +1,6 @@
 import {ProtractorDriver} from './protractor-driver';
 import {browser} from "protractor";
+import {protractor} from "protractor";
 
 export class Utilities {
   private protractorDriver: ProtractorDriver = new ProtractorDriver();
@@ -42,12 +43,34 @@ export class Utilities {
   navigatesToLandingPage(url: string = '/') {
     return this.protractorDriver.navigateTo(url);
   }
+
   maximizeWindow() {
     return this.protractorDriver.maximizeWindow();
   }
 
   navigatesToWatchList() {
     this.protractorDriver.clickUsingXPath(this.watchlistMenuXPath);
+  }
+
+  acceptAlert() {
+    browser.wait(protractor.ExpectedConditions.alertIsPresent(), 30000).then(function (ispresent) {
+      return browser.switchTo().alert().accept();
+    });
+  }
+
+  getAlertText() {
+    browser.wait(protractor.ExpectedConditions.alertIsPresent(), 30000).then(function (ispresent) {
+     browser.switchTo().alert().getText().then(function (text) {
+       return console.log("asdfgjashdiysudt"+text);
+     });
+    });
+    /*browser.sleep(10000).then(function () {
+      browser.wait(protractor.ExpectedConditions.alertIsPresent(), 30000).then(function (ispresent) {
+        browser.switchTo().alert().getText().then(function (text) {
+          return text;
+        });
+      });
+    });*/
   }
 
 }
