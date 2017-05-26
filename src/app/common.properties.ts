@@ -1,23 +1,25 @@
-export class CommonProperties {
+﻿export class CommonProperties {
 
 
     /*----cadidatedata Component----*/
     uploadCandidateDataUrl = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/getCandidatesListFile';
 
    
-    addcandidateurl='https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
-    getcandidateurl='https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/allcandidates';
-    getcandidateDetails='https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
+    addcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
+    getcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getESCandidateInformation';
+    getcandidateDetails='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
+    getcandidatraftersearch='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/findESCandidateSearchResult';
 
 	/*----categorymanager Component----*/
 
-    sendCategories = 'https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
-    viewCategories = 'https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
-    getcategoryDetails='https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
+    sendCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
+    viewCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
+    getcategoryDetails='https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
     deletecategories='https://f4l096njvh.execute-api.us-east-1.amazonaws.com/dev/api/deleteCategory/categoryId';
 
     /*----createquestion Component----*/
-    saveQuestionUrl = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
+    saveQuestionUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
+    //saveQuestionUrl = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
 
     /*----papermanagement Component----*/
     categoryPermission = 'https://amitionlinetestcategory.firebaseio.com/categoryPermission.json';
@@ -33,17 +35,18 @@ export class CommonProperties {
     getEmailUrl = 'https://questiontable-630db.firebaseio.com/createEmailList.json';
 
     /*----managetest Component----*/
-    getManageTestDatas = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/starttestdashboard/candidateId/{candidateId}/bookingId/{bookingId}/testStatus/{testStatus}';
+    getManageTestDatas = 'https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getESTestNotTakenResults';
     
     //sendTestStartedDatas = 'https://amitionlinemanagetest.firebaseio.com/startTestData.json';
     sendTestStartedDatas = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
+    sendTestStartedDatassearch='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/findESBookingSearchResult';
     // Getting Manage Test Data [Test In Progress]
 
     //notificationUrl = 'https://candidate-notification.firebaseio.com/notificationData.json';
     notificationUrl = 'http://localhost:3000/notificationData';
     
 
-    getManageTestInProgress = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/startTestInProgressDashboard';
+    getManageTestInProgress = 'https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getESTestInProgressResults';
 
     //change and forgot password
     changepassword='https://api.myjson.com/bins/eg9l1';

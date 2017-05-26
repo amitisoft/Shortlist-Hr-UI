@@ -6,43 +6,37 @@ export class AuthenticationPage {
 
   private signInPanelXPath= "//div[@class='panel-heading']";
   private loginButtonXPath = "//a[@href='/signin']";
-  private userInputXPath = "//input[@id='login-username']";
+  private userNameXPath = "//input[@id='login-username']";
   private userPasswordXPath = "//input[@name='password']";
   private submitButtonXPath = "//button[@id ='btn-login']";
-  private loginPageTitle = "AmitiOnlineTest";
+  private dashboardPanelXPath = "//amiti-root/div/div/div/amiti-hr-dashboard/amiti-dashboardpanel";
 
   clickLoginButton() {
-    this.protractorDriver.clickUsingXPath(this.loginButtonXPath);
-  }
-
-  verifyLoginPageTitle() {
-     this.protractorDriver.getPageTitle().then(function (titleText) {
-       return titleText;
-    });
+    return this.protractorDriver.clickUsingXPath(this.loginButtonXPath);
   }
 
   enterUsername(Username: string){
-    this.protractorDriver.sendKeysUsingXPath(this.userInputXPath, Username)
+    return this.protractorDriver.sendKeysUsingXPath(this.userNameXPath, Username)
   }
 
   enterPassword(Password: string){
-    this.protractorDriver.sendKeysUsingXPath(this.userPasswordXPath, Password)
+    return this.protractorDriver.sendKeysUsingXPath(this.userPasswordXPath, Password)
   }
 
   clickSubmitButton() {
-    this.protractorDriver.clickUsingXPath(this.submitButtonXPath);
+    return this.protractorDriver.clickUsingXPath(this.submitButtonXPath);
   }
 
   getEmailInput() {
-    return this.protractorDriver.getWebElementUsingXPath(this.userInputXPath);
+    return this.protractorDriver.getWebElementUsingXPath(this.userNameXPath);
   }
 
   getLoginButton() {
     return this.protractorDriver.getWebElementUsingXPath(this.loginButtonXPath);
   }
 
-  waitForLoginButton() {
-    return this.protractorDriver.waitForElementVisibleUsingXPath(this.loginButtonXPath);
+  waitForDashboardPanel() {
+    return this.protractorDriver.waitForElementVisibleUsingXPath(this.dashboardPanelXPath);
   }
 
 }
