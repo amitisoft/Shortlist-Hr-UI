@@ -16,21 +16,18 @@ export class ManagetestTestinprocessComponent implements OnInit {
     selectedRows: boolean = false;
     startTestRows = [];
     category: any[]=[];
+    testStatus:string='progress';
     private myDateRangePickerOptions: IMyDrpOptions = {
         dateFormat: 'dd/mm/yyyy',
     };
-    searchdata={
-        'name' : '',
-        'category' : '',
-        'email' : '',
-        'dateRange':{
-            'formatted':''
-        }
-    }
     constructor(private mngTestService: ManagetestService,private categoryMngService: CategorymanagerService) { }
 
     ngOnInit() {
-            this.onSearch(this.searchdata,'');
+             this.mngTestService.getDataTestInProgress()
+            .subscribe((data: any) => {
+                this.manageTest = data.bookings;
+            }
+            );
              this.categoryMngService.getOwnData()
             .subscribe(
             data => {
@@ -41,8 +38,9 @@ export class ManagetestTestinprocessComponent implements OnInit {
                 this.category = myArray;
             });
   }
-  onSearch(searchvalue:any,pageno){
-     this.mngTestService.getDataTestInProgress(searchvalue,pageno)
+  onSearch(searchvalue:any){
+      console.log(searchvalue);
+     this.mngTestService.getDataTestseacrh(searchvalue)
             .subscribe((data: any) => {
                 this.manageTest = data.bookings;
             }

@@ -6,8 +6,9 @@
 
    
     addcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
-    getcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/allcandidates';
+    getcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getESCandidateInformation';
     getcandidateDetails='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
+    getcandidatraftersearch='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/findESCandidateSearchResult';
 
 	/*----categorymanager Component----*/
 
@@ -34,17 +35,18 @@
     getEmailUrl = 'https://questiontable-630db.firebaseio.com/createEmailList.json';
 
     /*----managetest Component----*/
-    getManageTestDatas = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/starttestdashboard/candidateId/{candidateId}/bookingId/{bookingId}/testStatus/{testStatus}';
+    getManageTestDatas = 'https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getESTestNotTakenResults';
     
     //sendTestStartedDatas = 'https://amitionlinemanagetest.firebaseio.com/startTestData.json';
     sendTestStartedDatas = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
+    sendTestStartedDatassearch='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/findESBookingSearchResult';
     // Getting Manage Test Data [Test In Progress]
 
     //notificationUrl = 'https://candidate-notification.firebaseio.com/notificationData.json';
     notificationUrl = 'http://localhost:3000/notificationData';
     
 
-    getManageTestInProgress = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/startTestInProgressDashboard';
+    getManageTestInProgress = 'https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getESTestInProgressResults';
 
     //change and forgot password
     changepassword='https://api.myjson.com/bins/eg9l1';

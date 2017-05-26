@@ -9,14 +9,18 @@ export class ManagetestService {
 
     constructor(private http: Http, private manageTestPro: CommonProperties) { }
 
-    getDataTestNotTaken(searchdata,page) {
+    getDataTestNotTaken() {
         // return this Observable
-        return this.http.get(this.manageTestPro.getManageTestDatas+"?name="+searchdata.name+"&category="+searchdata.category+"&email="+searchdata.email+"&daterange="+searchdata.dateRange.formatted+"&page="+page)
+        return this.http.get(this.manageTestPro.getManageTestDatas)
         .map((response: Response) => response.json());
     }
-
-    getDataTestInProgress(searchdata,page) {
-        return this.http.get(this.manageTestPro.getManageTestInProgress+"?name="+searchdata.name+"&category="+searchdata.category+"&email="+searchdata.email+"&daterange="+searchdata.dateRange.formatted+"&page="+page)
+    getDataTestseacrh(searchdata) {
+        // return this Observable
+        return this.http.post(this.manageTestPro.sendTestStartedDatassearch,searchdata)
+        .map((response: Response) => response.json());
+    }
+    getDataTestInProgress() {
+        return this.http.get(this.manageTestPro.getManageTestInProgress)
             .map((response: Response) => response.json());
     }
 
