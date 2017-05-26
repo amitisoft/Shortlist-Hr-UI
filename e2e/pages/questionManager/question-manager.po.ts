@@ -22,46 +22,46 @@ export class QuestionManagerPage {
   private categoryOptionSuffixCss = "\"]'";
 
   verifyHrDashboardVisible() {
-     this.protractorDriver.checkElementVisibleUsingXPath(this.hrDashboardPanelXPath);
+     return this.protractorDriver.checkElementVisibleUsingXPath(this.hrDashboardPanelXPath);
   }
 
   verifyQuestionManagerTabVisible() {
-     this.protractorDriver.checkElementVisibleUsingXPath(this.questionManagerTabXPath);
+    return this.protractorDriver.checkElementVisibleUsingXPath(this.questionManagerTabXPath);
   }
 
   clickQuestionManagerTab() {
-     this.protractorDriver.clickUsingXPath(this.questionManagerTabXPath);
+    return this.protractorDriver.clickUsingXPath(this.questionManagerTabXPath);
   }
 
   clickCreateQuestionButton() {
-     this.protractorDriver.clickUsingButtonText(this.createQuestionButtonText);
+    return this.protractorDriver.clickUsingButtonText(this.createQuestionButtonText);
   }
 
   enterQuestion(question: string){
-    this.protractorDriver.sendKeysUsingId(this.questionTextFieldId, question);
+    return this.protractorDriver.sendKeysUsingId(this.questionTextFieldId, question);
   }
 
   enterOption(optionNo: number, optionString: string){
     const optionName = this.optionsTextFieldPrefixName+optionNo+this.optionsTextFieldSuffixName;
-    this.protractorDriver.sendKeysUsingName(optionName, optionString);
+    return this.protractorDriver.sendKeysUsingName(optionName, optionString);
   }
 
   selectCorrectOption(optionNo: number){
     const optionName = this.optionsCheckboxPrefixName+optionNo+this.optionsCheckboxSuffixName;
-    this.protractorDriver.clickUsingName(optionName);
+    return this.protractorDriver.clickUsingName(optionName);
   }
 
   selectCategory(categoryOption: string) {
     let select = this.protractorDriver.getWebElementUsingId(this.categoryComboId)
-    select.$('[ng-reflect-ng-value="'+categoryOption+'"]').click();
+    return select.$('[ng-reflect-ng-value="'+categoryOption+'"]').click();
   }
 
   clickAddButton() {
-     this.protractorDriver.clickUsingButtonText(this.addQuestionButtonText);
+    return this.protractorDriver.clickUsingButtonText(this.addQuestionButtonText);
   }
 
   clickClearButton() {
-     this.protractorDriver.clickUsingButtonText(this.clearFieldsButtonText);
+    return this.protractorDriver.clickUsingButtonText(this.clearFieldsButtonText);
   }
 
   verifySelectedOption() {
@@ -73,11 +73,11 @@ export class QuestionManagerPage {
   }
 
   selectPaperManagement() {
-     this.protractorDriver.clickUsingButtonText(this.paperManagementButtonText);
+    return this.protractorDriver.clickUsingButtonText(this.paperManagementButtonText);
   }
 
   enterPaperName(paperName: string) {
-     this.protractorDriver.sendKeysUsingCss(this.paperNameCss,paperName);
+    return this.protractorDriver.sendKeysUsingCss(this.paperNameCss,paperName);
   }
 
 }

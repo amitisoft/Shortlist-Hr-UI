@@ -1,23 +1,15 @@
 import {Utilities} from "../../../utils/utilities";
 import {QuestionManagerPage} from "../../../pages/questionManager/question-manager.po";
-const {defineSupportCode} = require('cucumber');
 import {expect} from 'chai';
-import {TableDefinition} from "cucumber";
+import {defineSupportCode, TableDefinition} from "cucumber";
+import {browser} from "protractor";
 
-defineSupportCode(({Given, Then, When, Before, After}) => {
 
-  let questionManagerPage: QuestionManagerPage;
-  let utils: Utilities;
+defineSupportCode(({Given, Then, When,setDefaultTimeout}) => {
+  let questionManagerPage: QuestionManagerPage = new QuestionManagerPage();
+  let utils: Utilities = new Utilities();
 
-  Before({tags: '@CreateQuestion'}, (scenario, callback) => {
-    questionManagerPage = new QuestionManagerPage();
-    utils = new Utilities();
-    callback();
-  });
-
-  After({tags: '@CreateQuestion'}, (scenario, callback) => {
-    callback();
-  });
+  setDefaultTimeout(5 * 10000);
 
   Given('I am on the Dashboard page', () => {
     return questionManagerPage.verifyHrDashboardVisible();
@@ -51,7 +43,10 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
   });
 
   When(/^I click on Add Button$/, () => {
-    return questionManagerPage.clickAddButton();
+    browser.pause();
+    return browser.pause();
+
+    //return questionManagerPage.clickAddButton();
   });
 
   Given(/^I am on the question manager module$/, () => {
