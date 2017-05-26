@@ -29,18 +29,16 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDes
     private myDateRangePickerOptions: IMyDrpOptions = {
         dateFormat: 'dd/mm/yyyy',
     };
-    searchdata={
-        'name' : '',
-        'category' : '',
-        'email' : '',
-        'dateRange':{
-            'formatted':''
-        }
-    }
+    testStatus:string='NotTaken';
     constructor(private mngTestService: ManagetestService,private categoryMngService: CategorymanagerService) { }
     ngOnInit() {
-        this.onSearch(this.searchdata,'');
-        this.onSelectPaper();
+       this.mngTestService.getDataTestNotTaken()
+            .subscribe((data: any) => {
+                this.manageTest = data.bookings;
+            }
+
+            );
+      this.onSelectPaper();
       this.categoryMngService.getOwnData()
             .subscribe(
             data => {
@@ -128,8 +126,9 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDes
             console.log(this.items);
 
     }
-    onSearch(searchvalue:any,pageno){
-        this.mngTestService.getDataTestNotTaken(searchvalue,pageno)
+    onSearch(searchvalue:any){
+        console.log(searchvalue);
+        this.mngTestService.getDataTestseacrh(searchvalue)
             .subscribe((data: any) => {
                 this.manageTest = data.bookings;
             }

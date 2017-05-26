@@ -13,11 +13,22 @@ export class ListdataComponent implements OnInit {
     searchdata={
         'firstName' : '',
         'lastName' : '',
-        'email' : ''
+        'email' : '',
+        'page' :'',
+        'phoneNumber':''
     }
     ngOnInit() {
-        let page='';
-        this.onSearch(this.searchdata,page);
+        this.candidateService.getuserlist()
+            .subscribe(
+            data => {
+                const myArray = [];
+                for (let key in data.candidates) {
+                    myArray.push(data.candidates[key]);
+                }
+                this.useritems = myArray;
+                console.log(this.useritems);
+            }
+            );
        
     }
     deletecandidate(user, index) {
@@ -26,17 +37,16 @@ export class ListdataComponent implements OnInit {
             this.useritems.splice(index, 1);
         }
     }
-    onSearch(searchvalue:any,pageno){
-         this.candidateService.getuserlist(searchvalue,pageno)
+    onSearch(searchvalue:any){
+        console.log(searchvalue);
+         this.candidateService.getuserlistbysearch(searchvalue)
             .subscribe(
             data => {
-                console.log(data.candidates);
                 const myArray = [];
                 for (let key in data.candidates) {
                     myArray.push(data.candidates[key]);
                 }
                 this.useritems = myArray;
-                console.log(this.useritems);
             }
             );
     }

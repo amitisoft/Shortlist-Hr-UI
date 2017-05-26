@@ -42,8 +42,12 @@ export class CandidateDataService {
 
   
 
-    getuserlist(searchdata,page){
-        return this.http.get(this.candidateDataPro.getcandidateurl+"?firstName="+searchdata.firstName+"&lastName="+searchdata.lastName+"&email="+searchdata.email+"&page="+page)
+    getuserlist(){
+        return this.http.get(this.candidateDataPro.getcandidateurl)
+            .map(response => response.json());
+    }
+    getuserlistbysearch(searchdata){
+        return this.http.post(this.candidateDataPro.getcandidatraftersearch,searchdata)
             .map(response => response.json());
     }
     getcandidateDetails(id){
