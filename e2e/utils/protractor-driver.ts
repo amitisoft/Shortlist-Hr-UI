@@ -410,6 +410,16 @@ export class ProtractorDriver {
   }
 
   /**
+   * Wait for an button to present
+   *
+   *
+   * @param {string} text of Button
+   */
+  waitForButtonVisibleUsingText(text: string) {
+    return this.waitForElementVisibleUsingBy(by.buttonText(text));
+  }
+
+  /**
    *
    * @param  buttonText Text of button to click
    */
@@ -489,15 +499,5 @@ export class ProtractorDriver {
   clickUsingDeepCss(cssString: string) {
     return this.clickUsingBy(by.deepCss(cssString));
   }
-
-  /**
-   * Get the title of in a given page.
-   *
-   * @returns {string} result
-   */
-  getPageTitle() {
-    return browser.getTitle();
-  }
-
 
 }

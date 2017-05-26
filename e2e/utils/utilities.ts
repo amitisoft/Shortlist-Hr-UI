@@ -50,8 +50,4 @@ export class Utilities {
     this.protractorDriver.clickUsingXPath(this.watchlistMenuXPath);
   }
 
-  getPageTitle(){
-    return  this.protractorDriver.getPageTitle();
-  }
-
 }
