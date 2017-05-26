@@ -14,20 +14,30 @@ export class ViewpapersService {
     getPaperList(categoryName) {
         // var headers = new Headers();
         // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-          var getPaperUrl = 'https://api.myjson.com/bins/u4qnd';
-        //var getPaperUrl = 'https://9t3ee4b9hf.execute-api.us-east-1.amazonaws.com/dev/api/getquestionpapernamesbycategory/category/' + categoryName + '';
+         // var getPaperUrl = 'https://api.myjson.com/bins/u4qnd';
+        var getPaperUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionPaperNamesByCategory/' + categoryName + '';
+          
         return this.http.get(getPaperUrl)
             .map(res => res.json());
     }
 
-    viewPaperQuestions() {
+    viewPaperQuestions(categoryName) {
         // var headers = new Headers();
         // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        var getPaperUrl = 'https://api.myjson.com/bins/a0l7d';
+       // var getPaperUrl = 'https://api.myjson.com/bins/a0l7d';
+        var getPaperUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionsByPaperId/qsnPaperId/' + categoryName;
         return this.http.get(getPaperUrl)
             .map(res => res.json());
     }
 
+    editPaperQuestions(QsnPprId) {
+        // var headers = new Headers();
+        // headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        // var getPaperUrl = 'https://api.myjson.com/bins/a0l7d';
+        var getPaperUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionsByPaperId/qsnPaperId/' + QsnPprId;
+        return this.http.get(getPaperUrl)
+            .map(res => res.json());
+    }
  
 
 }

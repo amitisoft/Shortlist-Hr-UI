@@ -1,23 +1,24 @@
-export class CommonProperties {
+﻿export class CommonProperties {
 
 
     /*----cadidatedata Component----*/
     uploadCandidateDataUrl = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/getCandidatesListFile';
 
    
-    addcandidateurl='https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
-    getcandidateurl='https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/allcandidates';
-    getcandidateDetails='https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
+    addcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
+    getcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/allcandidates';
+    getcandidateDetails='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
 
 	/*----categorymanager Component----*/
 
-    sendCategories = 'https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
-    viewCategories = 'https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
-    getcategoryDetails='https://z6dfd04nl3.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
+    sendCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
+    viewCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
+    getcategoryDetails='https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
     deletecategories='https://f4l096njvh.execute-api.us-east-1.amazonaws.com/dev/api/deleteCategory/categoryId';
 
     /*----createquestion Component----*/
-    saveQuestionUrl = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
+    saveQuestionUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
+    //saveQuestionUrl = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
 
     /*----papermanagement Component----*/
     categoryPermission = 'https://amitionlinetestcategory.firebaseio.com/categoryPermission.json';

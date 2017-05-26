@@ -19,10 +19,11 @@ export class NotificationService{
 		return this.http.get(this.candidateDataPro.notificationUrl+"?cId="+randomCID).map(response => response.json());
 	}
 
-	updateNotification(candidateId){
+	updateNotification(notificationObj){
 		var headers = new Headers();
     	headers.append('Content-Type', 'application/json');
 
+    	console.log("Notification Object: "+notificationObj);
     	var params;
 		var randomCID;
 

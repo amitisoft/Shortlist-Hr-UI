@@ -37,8 +37,8 @@ export class ViewquestionsComponent implements OnInit {
             },
             error => {console.log(error)},
             () => {
-                this.selectedCategory = this.categoryList[0]['categoryId'];
-                this.changeCategory(this.categoryList[0]['categoryId']);
+                this.selectedCategory = this.categoryList[0]['categoryName'];
+                this.changeCategory(this.categoryList[0]['categoryName']);
         });
     }
 
@@ -57,7 +57,7 @@ export class ViewquestionsComponent implements OnInit {
     }
 
     getNextPageQuestions(catName: string) {
-        var lastQuestionIdVal: string = this.catQuestions[this.catQuestions.length - 1]['Qsn_id'];
+        var lastQuestionIdVal: string = this.catQuestions[this.catQuestions.length - 1]['QsnId'];
         //var nextQuestions: string = "nextQue";
         console.log("Category Name: " + catName);
         console.log("Last question id: " + lastQuestionIdVal);

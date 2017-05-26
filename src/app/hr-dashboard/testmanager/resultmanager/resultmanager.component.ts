@@ -14,7 +14,7 @@ import { NotificationService } from '../../../header-main/notification.service';
 export class ResultmanagerComponent implements OnInit {
     category: any[] = [];
     manageTest: any[] = [];
-    cid: string;
+    notificationCID:any;
     editMode = false;
     private myDateRangePickerOptions: IMyDrpOptions = {
         dateFormat: 'dd/mm/yyyy',
@@ -47,7 +47,8 @@ export class ResultmanagerComponent implements OnInit {
 
             this.route.params.subscribe(
                 (params: Params) => {
-                    this.cid = params['id'];
+                    this.notificationCID = params['id'];
+                    console.log("On init: "+this.notificationCID);
                     //this.editMode = params['id'] != null;
                     //this.initForm();
                 }
@@ -55,7 +56,8 @@ export class ResultmanagerComponent implements OnInit {
     }
 
     ngAfterViewInit(){
-        this.notificServ.updateNotification(this.cid);
+        console.log("After View: "+this.notificationCID);
+        this.notificServ.updateNotification(this.notificationCID);
     }
 
     onSearch(searchvalue: any, pageno) {
