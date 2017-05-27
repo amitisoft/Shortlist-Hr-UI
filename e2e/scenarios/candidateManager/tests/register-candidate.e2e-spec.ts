@@ -40,12 +40,6 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return cadidateManagerPage.clickRegisterButton();
   });
 
-  Then(/^I verify successful alert message$/, () => {
-    //console.log(browser.switchTo().alert().getText());
-    //console.log(utils.getAlertText());
-    return utils.acceptAlert();
-  });
-
 });
 
 

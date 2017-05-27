@@ -13,4 +13,4 @@ Feature: HR can register the Candidate
     And I add mobile number "1234567890"
     And I add address "Adress1\\nAddress2"
     And I click register button
-    Then I verify successful alert message
+    Then I verify alert message "Successfully Upload"

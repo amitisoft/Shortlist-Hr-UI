@@ -1,6 +1,7 @@
 import {ProtractorDriver} from './protractor-driver';
 import {browser} from "protractor";
 import {protractor} from "protractor";
+import {expect} from 'chai';
 
 export class Utilities {
   private protractorDriver: ProtractorDriver = new ProtractorDriver();
@@ -58,19 +59,13 @@ export class Utilities {
     });
   }
 
-  getAlertText() {
-    browser.wait(protractor.ExpectedConditions.alertIsPresent(), 30000).then(function (ispresent) {
-     browser.switchTo().alert().getText().then(function (text) {
-       return console.log("asdfgjashdiysudt"+text);
-     });
-    });
-    /*browser.sleep(10000).then(function () {
-      browser.wait(protractor.ExpectedConditions.alertIsPresent(), 30000).then(function (ispresent) {
-        browser.switchTo().alert().getText().then(function (text) {
-          return text;
-        });
+  verifyAlertText(alertText: string) {
+    return browser.wait(protractor.ExpectedConditions.alertIsPresent(), 60000).then(function (ispresent) {
+      browser.switchTo().alert().getText().then(function (text) {
+        //console.log(text);
+        expect(alertText).to.equal(text);
       });
-    });*/
+    });
   }
 
 }

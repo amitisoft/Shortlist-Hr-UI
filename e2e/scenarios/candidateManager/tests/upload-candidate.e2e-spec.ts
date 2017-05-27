@@ -28,8 +28,8 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return cadidateManagerPage.clickUploadButton();
   });
 
-  Then(/^I verify successful upload message$/, () => {
-    //console.log(utils.getAlertText());
+  Then(/^I verify alert message "(.*?)"$/, (alertText) => {
+    utils.verifyAlertText(alertText);
     return utils.acceptAlert();
   });
 
