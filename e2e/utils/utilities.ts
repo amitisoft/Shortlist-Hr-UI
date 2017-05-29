@@ -62,7 +62,6 @@ export class Utilities {
   verifyAlertText(alertText: string) {
     return browser.wait(protractor.ExpectedConditions.alertIsPresent(), 60000).then(function (ispresent) {
       browser.switchTo().alert().getText().then(function (text) {
-        //console.log(text);
         expect(alertText).to.equal(text);
       });
     });

@@ -40,6 +40,18 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return cadidateManagerPage.clickRegisterButton();
   });
 
+  Then(/^I verify Register button is disabled$/, () => {
+    cadidateManagerPage.checkRegisterButtonEnabled().then(function(isEnabled){
+      return expect(isEnabled).to.be.false;
+    })
+  });
+
+  Then(/^I verify Register button is enabled$/, () => {
+    cadidateManagerPage.checkRegisterButtonEnabled().then(function(isEnabled){
+      return expect(isEnabled).to.be.true;
+    })
+  });
+
 });
 
 

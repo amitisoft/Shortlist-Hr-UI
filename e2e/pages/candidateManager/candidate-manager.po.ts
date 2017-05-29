@@ -19,6 +19,7 @@ export class CadidateManagerPage {
   private candidateAdressFieldXPath = "//*[@id='address']";
   private registerButtonText = "Register";
 
+
   selectCandidateDashBoard() {
     return this.protractorDriver.clickUsingXPath(this.candidateDataTabXPath);
   }
@@ -62,6 +63,10 @@ export class CadidateManagerPage {
 
   clickRegisterButton() {
     return this.protractorDriver.clickUsingButtonText(this.registerButtonText);
+  }
+
+  checkRegisterButtonEnabled() {
+    return this.protractorDriver.checkButtonEnabledUsingText(this.registerButtonText);
   }
 
 }
