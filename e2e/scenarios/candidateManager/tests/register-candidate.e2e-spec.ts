@@ -10,7 +10,7 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
   let cadidateManagerPage: CadidateManagerPage = new CadidateManagerPage();
   let utils: Utilities = new Utilities();
 
-  setDefaultTimeout(5 * 10000);
+  setDefaultTimeout(10 * 10000);
 
   When(/^I click on register candidate button$/, () => {
     return cadidateManagerPage.selectRegisterCandidate();

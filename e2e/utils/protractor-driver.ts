@@ -253,6 +253,16 @@ export class ProtractorDriver {
   }
 
   /**
+   * Verifies if the specified Button is enabled on the current page.
+   *
+   * @param {string} buttonText to verify
+   * @returns <code>true</code> if button enabled, false if button not enabled
+   */
+  checkButtonEnabledUsingText(buttonText: string) {
+    return this.checkElementEnabledUsingBy(by.buttonText(buttonText));
+  }
+
+  /**
    * Verifies if the specified By locator is not enabled on the current page.
    *
    * @param {By} by locator to verify

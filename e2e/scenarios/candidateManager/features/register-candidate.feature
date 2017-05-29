@@ -17,7 +17,8 @@ Feature: HR can register the Candidate
     Then I verify Register button is disabled
     When I add mobile number "1234567890"
     Then I verify Register button is disabled
-    When I add address "Adress1\\nAddress2"
+    When I add address "Adress1\nAddress2"
     Then I verify Register button is enabled
     And I click register button
     Then I verify alert message "Successfully Upload"
+    And I accept the alert

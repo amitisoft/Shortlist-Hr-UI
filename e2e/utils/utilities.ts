@@ -54,17 +54,16 @@ export class Utilities {
   }
 
   acceptAlert() {
-    browser.wait(protractor.ExpectedConditions.alertIsPresent(), 30000).then(function (ispresent) {
+    return browser.wait(protractor.ExpectedConditions.alertIsPresent(), 90000).then(function (ispresent) {
       return browser.switchTo().alert().accept();
     });
   }
 
   verifyAlertText(alertText: string) {
-    return browser.wait(protractor.ExpectedConditions.alertIsPresent(), 60000).then(function (ispresent) {
+    return browser.wait(protractor.ExpectedConditions.alertIsPresent(), 90000).then(function (ispresent) {
       browser.switchTo().alert().getText().then(function (text) {
-        expect(alertText).to.equal(text);
+        return expect(alertText).to.equal(text);
       });
     });
   }
-
 }

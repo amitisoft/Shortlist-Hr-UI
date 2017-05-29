@@ -10,3 +10,4 @@ Feature: HR can upload the Candidates data
     And I add the candidates data file directory
     And I click Upload
     Then I verify alert message "Successfully Upload"
+    And I accept the alert
