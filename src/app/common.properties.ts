@@ -12,9 +12,9 @@
 
 	/*----categorymanager Component----*/
 
-    sendCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
-    viewCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
-    getcategoryDetails='https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
+    sendCategories = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
+    viewCategories = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
+    getcategoryDetails='https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
     deletecategories='https://f4l096njvh.execute-api.us-east-1.amazonaws.com/dev/api/deleteCategory/categoryId';
 
     /*----createquestion Component----*/
