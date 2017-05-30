@@ -26,8 +26,8 @@ Feature: HR can register the Candidate
   @VerifyCandidate
   Scenario: HR can verify the registered candidate in the application
     Given I am on candidate data page
-    Then I verify the candidate Name "Rajni kanth"
-    #And I verify the email "Rajnikanth_007@gmail.com"
+    Then I verify the candidate "Name" as "Rajni kanth"
+    And I verify the email "Rajnikanth_007@gmail.com"
     #And I verify the mobileNo "1234567890"
     #When I enter name "Rajnikanth_007@gmail.com" in search
 
