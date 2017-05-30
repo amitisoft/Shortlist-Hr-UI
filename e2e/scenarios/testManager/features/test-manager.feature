@@ -2,7 +2,7 @@ Feature: TestManager Dashboard
 
   @CreateTest
 	Scenario: Creating the test with proper Data
-    Given I am on the Dashboarda page
+  #  Given I am on the Dashboarda page
 		When  I select the CREATE TEST button
 	  And   I Enter email field
    # And   I verify

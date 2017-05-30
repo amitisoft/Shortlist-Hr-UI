@@ -10,31 +10,68 @@ export class CategoryManagerPage {
   private descriptionTextFieldXPath = "//textarea[@id='categorydescription']";
   private createCategoryTabXPath= "html/body/amiti-root/div/div/div/amiti-hr-dashboard/div/amiti-categorymanager/div[1]/div[2]/button";
   private addButtonXPath = "//button[@class='btn btn-primary']";
-  private clearButtonXPath = "//button[class='btn btn-success']";
+  private clearButtonXPath = "//button[@class='btn btn-success']";
+  private categoryEditBtnXPath = "//table[@class='table table-striped']//tr[3]//td[3]//a[1]";
+  private categoryDeleteBtnXPath = "//table[@class='table table-striped']//tr[2]//td[3]//a[1]";
+ // private editcategoryTextFieldXPath = "//input[@ng-reflect-model='mango ok']";
+ // private editdescriptionTextFieldXPath = "//textarea[@id='categorydescription']";
 
 
   waitHrDashboard() {
     return this.protractorDriver.checkElementVisibleUsingXPath(this.hrDashboardPanelXPath);
   }
   clickCategoryManagerTab() {
-    this.protractorDriver.clickUsingXPath(this.categoryManagerTabXPath);
+    return this.protractorDriver.clickUsingXPath(this.categoryManagerTabXPath);
   }
 
   clickCreateCategoryManagerTab() {
-    this.protractorDriver.clickUsingXPath(this.createCategoryTabXPath);
+    return this.protractorDriver.clickUsingXPath(this.createCategoryTabXPath);
   }
   enterCategory(category: string) {
-    this.protractorDriver.sendKeysUsingXPath(this.categoryTextFieldXPath, category);
+    return this.protractorDriver.sendKeysUsingXPath(this.categoryTextFieldXPath, category);
   }
 
   enterCategoryDescription(description: string) {
-    this.protractorDriver.sendKeysUsingXPath(this.descriptionTextFieldXPath, description);
+    return this.protractorDriver.sendKeysUsingXPath(this.descriptionTextFieldXPath, description);
   }
   clickAddButton() {
-    this.protractorDriver.clickUsingXPath(this.addButtonXPath);
+    return this.protractorDriver.clickUsingXPath(this.addButtonXPath);
   }
   clickClearButton() {
-    this.protractorDriver.clickUsingXPath(this.clearButtonXPath);
+    return this.protractorDriver.clickUsingXPath(this.clearButtonXPath);
   }
 
+  clickEditCategory() {
+    return this.protractorDriver.clickUsingXPath(this.categoryEditBtnXPath);
+
+  }
+  verifyTextEditCategory() {
+     return this.protractorDriver.getAttributeUsingXPath(this.categoryTextFieldXPath,'ng-reflect-model');
+
+  }
+  verifyTextEditDescCategory() {
+    return this.protractorDriver.getAttributeUsingXPath(this.descriptionTextFieldXPath,'ng-reflect-model');
+
+  }
+
+  enterEditCategory(category: string) {
+    return this.protractorDriver.sendKeysUsingXPath(this.categoryTextFieldXPath, category);
+  }
+
+  enterEditCategoryDescription(description: string) {
+    return this.protractorDriver.sendKeysUsingXPath(this.descriptionTextFieldXPath, description);
+  }
+  verifyCreateCategorybtnEnable()
+  {
+    return this.protractorDriver.checkElementEnabledUsingXPath(this.createCategoryTabXPath)
+  }
+
+  verifyAddCategorybtnEnable()
+  {
+    return this.protractorDriver.checkElementEnabledUsingXPath(this.addButtonXPath);
+  }
+  verifyClearCategorybtnEnable()
+  {
+    return this.protractorDriver.checkElementEnabledUsingXPath(this.clearButtonXPath);
+  }
 }

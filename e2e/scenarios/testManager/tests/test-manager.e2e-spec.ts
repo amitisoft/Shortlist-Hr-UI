@@ -16,11 +16,11 @@ defineSupportCode(function ({Given,When,Then}) {
 
       const testmanagerpage: TestManagerPage = new TestManagerPage();
 
-        Given(/^I am on the Dashboarda page$/, () => {
+        /*Given(/^I am on the Dashboarda page$/, () => {
           browser.sleep(10000);
         //   expect(browser.getTitle()).to.eventually.equal('AmitiOnlineTest');
           return testmanagerpage.waitHrDashboard();
-        });
+        });*/
 
         When(/^I select the CREATE TEST button$/, () => {
           browser.driver.sleep(500);

@@ -3,7 +3,7 @@ import {browser, element, by} from 'protractor';
 export class TestManagerPage {
   private protractorDriver: ProtractorDriver = new ProtractorDriver();
 
-  private hrDashboardPanelXPath = "html/body/amiti-root/div/div/div/amiti-hr-dashboard/amiti-dashboardpanel/div/div[2]/nav";
+  //private hrDashboardPanelXPath = "html/body/amiti-root/div/div/div/amiti-hr-dashboard/amiti-dashboardpanel/div/div[2]/nav";
   //private hrDashboardPanelXPath = "//div[@class='col-lg-10 col-xs-12']";
   private testManagerTabXPath = "html/body/amiti-root/div/div/div/amiti-hr-dashboard/amiti-dashboardpanel/div/div[2]/nav/ul/li[4]/a";
 
@@ -46,9 +46,9 @@ export class TestManagerPage {
   {
     return this.protractorDriver.clearUsingXPath(this.emailTextFieldXpath);
   }
-  waitHrDashboard() {
+ /* waitHrDashboard() {
     return this.protractorDriver.checkElementVisibleUsingXPath(this.hrDashboardPanelXPath);
-  }
+  }*/
   verifyTestManagerTabVisible() {
     return this.protractorDriver.checkElementVisibleUsingXPath(this.testManagerTabXPath);
   }
