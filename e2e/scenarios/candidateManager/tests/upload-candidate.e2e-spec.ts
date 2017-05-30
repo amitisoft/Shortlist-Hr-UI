@@ -28,7 +28,7 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return cadidateManagerPage.clickUploadButton();
   });
 
-  Then(/^I verify alert message "(.*?)"$/, (alertText) => {
+  Then(/^I verify alert message "(.*)"$/, (alertText) => {
     return utils.verifyAlertText(alertText);
   });
 

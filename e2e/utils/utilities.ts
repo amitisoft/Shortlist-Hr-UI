@@ -1,6 +1,5 @@
 import {ProtractorDriver} from './protractor-driver';
-import {browser} from "protractor";
-import {protractor} from "protractor";
+import {browser, protractor, element, by} from "protractor";
 import {expect} from 'chai';
 
 export class Utilities {
@@ -24,7 +23,7 @@ export class Utilities {
 
   clickLogoutButton() {
     this.protractorDriver.clickUsingXPath(this.logoutDropDownXPath);
-    return  this.protractorDriver.waitForElementVisibleUsingXPath(this.logoutSubMenuXPath).then(() => {
+    return this.protractorDriver.waitForElementVisibleUsingXPath(this.logoutSubMenuXPath).then(() => {
       this.protractorDriver.clickUsingXPath(this.logoutSubMenuXPath);
     });
   }
@@ -66,4 +65,57 @@ export class Utilities {
       });
     });
   }
+
+
+
+  getTableColumnIndex(tableXpath, columnName) : any {
+    let col = element.all(by.xpath("" + tableXpath + "/thead/tr/th"));
+      col.count().then(function (cCount) {
+      /*for (let i = 0; i < cCount; i++) {
+        //console.log("asdsad"+i)
+         col.get(i).getText().then(function (colName) {
+          if (colName == columnName) {
+            console.log(i);
+            return i;
+          }
+        });
+      }*/
+         function loop(i){
+           if( i >= cCount) {
+             return null; //not found
+           }else{
+             return col.get(i).getText().then(function(colName) {
+               if (colName == columnName) {
+                 console.log('i: ' + i);
+                 return i;
+               }else{
+                 return loop(i+1);
+               }
+             });
+           }
+         }
+
+         return loop(0);
+       });
+
+  }
+
+  getTableRowIndex(tableXpath, columnIndex, rowData):any{
+    let data;
+    let row = element.all(by.xpath("" + tableXpath + "/tbody/tr"));
+     return row.count().then(function (rCount)  {
+      for (let i = 1; i <= rCount; i++) {
+        element.all(by.xpath(""+tableXpath+"/tbody/tr["+i+"]/td["+columnIndex+"]")).getText().then(function (rData) {
+          data = rData.toString();
+          if(data == rowData)
+          {
+            console.log("i----->"+i);
+            return i;
+           }
+
+        });
+      }
+    });
+  }
+
 }

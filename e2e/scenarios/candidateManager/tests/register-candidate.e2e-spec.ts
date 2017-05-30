@@ -52,6 +52,80 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     })
   });
 
+  Then(/^I verify the candidate Name "(.*?)"$/, (str) => {
+    browser.sleep(10000);
+    return utils.getTableRowIndex("//amiti-hr-dashboard/div/amiti-cadidatedata/div[2]/div[2]/amiti-listdata/div[2]/div/div/table",1,"Rajni kanth").then(
+      function(val){
+        console.log("value",val);
+      });
+  });
+
+  Then(/^I verify the email "(.*?)"$/, () => {
+  });
+
+  Then(/^I verify the mobileNo "(.*?)"$/, () => {
+  });
+
+  When(/^I type the candidate FirstName "(.*?)" in search field$/, () => {
+  });
+
+  Then(/^I verify the searched candidate "(.*?)"$/, () => {
+  });
+
+  When(/^I type the candidate LastName "(.*?)" in search field$/, () => {
+  });
+
+  Then(/^I verify the searched candidate "(.*?)"$/, () => {
+  });
+
+  When(/^I type the candidate email "(.*?)" in search field$/, () => {
+  });
+
+  Then(/^I verify the searched candidate "(.*?)"$/, () => {
+  });
+
+  When(/^I type the candidate phoneNumber "(.*?)" in search field$/, () => {
+  });
+
+  When(/^I click edit for candidate "(.*?)"$/, () => {
+  });
+
+  Then(/^I verify the candidate firstname "(.*?)"$/, () => {
+  });
+
+  Then(/^I verify the candidate lastname "(.*?)"$/, () => {
+  });
+
+  Then(/^I verify the candidate email "(.*?)"$/, () => {
+  });
+
+  Then(/^I verify the candidate PhoneNumber "(.*?)"$/, () => {
+  });
+
+  Then(/^I verify the candidate adress is empty$/, () => {
+  });
+
+  When(/^I change the candidate phoneNumber "(.*?)"$/, () => {
+  });
+
+  When(/^I change the candidate email "(.*?)"$/, () => {
+  });
+
+  When(/^I change the candidate LastName "(.*?)"$/, () => {
+  });
+
+  When(/^I click register button$/, () => {
+  });
+
+  When(/^I click candidate data tab$/, () => {
+  });
+
+  When(/^I verify the updated data of candidate$/, () => {
+  });
+
+
+
+
 });
 
 
