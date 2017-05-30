@@ -35,9 +35,15 @@
 
     /*----managetest Component----*/
     getManageTestDatas = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/starttestdashboard/candidateId/{candidateId}/bookingId/{bookingId}/testStatus/{testStatus}';
-    
+    postResultManageDatas = ' https://mi07qzvi10.execute-api.us-east-1.amazonaws.com/dev/api/findESResultSearch ';
     //sendTestStartedDatas = 'https://amitionlinemanagetest.firebaseio.com/startTestData.json';
     sendTestStartedDatas = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
+
+    /** Result Manager**/
+
+    getResultManagerFullListDataUrl = 'https://mi07qzvi10.execute-api.us-east-1.amazonaws.com/dev/api/getESResultSearch';
+
+    /** Result Manager**/
     // Getting Manage Test Data [Test In Progress]
 
     //notificationUrl = 'https://candidate-notification.firebaseio.com/notificationData.json';
