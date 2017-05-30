@@ -2,21 +2,22 @@
 
 <div class="row">
 <hr />
-<form action="listdata_submit" #f="ngForm" (ngSubmit)="onSearch(f.value,'')">
+<form action="listdata_submit" #f="ngForm" (ngSubmit)="onSearch(f.value)">
     <div class="col-sm-2 col-md-2">
-      <input type='text' class="form-control" placeholder="Enter name" name="name" ngModel>
+      <input type='text' class="form-control" placeholder="Enter name" name="fullName" ngModel>
     </div>
     <div class="col-sm-3 col-md-3">
       <input type='text' class="form-control" placeholder="Enter Email" name="email" ngModel>
     </div>
      <div class="col-sm-3 col-md-3">
+     <input type='hidden' class="form-control" name="testStatus" [(ngModel)]="testStatus" >
       <select class='form-control' ngModel name="category">
        <option value="">--select category--</option>
        <option [ngValue]="category.categoryName" *ngFor="let category of category">{{category.categoryName}}</option>
      </select>
     </div>
      <div class="col-sm-3 col-md-3">
-      <my-date-range-picker name="dateRange" [options]="myDateRangePickerOptions"
+      <my-date-range-picker name="dateOfExamRange" [options]="myDateRangePickerOptions"
                     ngModel required placeholder="Enter range"></my-date-range-picker>
     </div>
     <div class="col-sm-2 col-md-2">

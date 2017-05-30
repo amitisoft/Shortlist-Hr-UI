@@ -1,5 +1,5 @@
 import {Utilities} from '../../../utils/utilities';
-import {CadidateManagerPage} from "../../../pages/candidateManager/upload-candidate.po";
+import {CadidateManagerPage} from "../../../pages/candidateManager/candidate-manager.po";
 import {expect} from 'chai';
 import {browser} from 'protractor';
 
@@ -10,7 +10,7 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
   let cadidateManagerPage: CadidateManagerPage = new CadidateManagerPage();
   let utils: Utilities = new Utilities();
 
-  setDefaultTimeout(5 * 10000);
+  setDefaultTimeout(10 * 10000);
 
   Given(/^I am on candidate data page$/, () => {
     return cadidateManagerPage.selectCandidateDashBoard();
@@ -20,7 +20,7 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return cadidateManagerPage.selectUploadCandidates();
   });
 
-  When(/^I add the data file directory$/, () => {
+  When(/^I add the candidates data file directory$/, () => {
     return cadidateManagerPage.addCandidateFilePath();
   });
 
@@ -28,9 +28,12 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return cadidateManagerPage.clickUploadButton();
   });
 
-  Then(/^I verify successful upload message$/, () => {
-    browser.pause();
-    return browser.pause();
+  Then(/^I verify alert message "(.*)"$/, (alertText) => {
+    return utils.verifyAlertText(alertText);
+  });
+
+  Then(/^I accept the alert$/, () => {
+    return utils.acceptAlert();
   });
 
 });
