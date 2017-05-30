@@ -8,6 +8,7 @@
     addcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
     getcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/allcandidates';
     getcandidateDetails='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
+    getcandidatraftersearch = 'https://u4m8g9nxgi.execute-api.us-east-1.amazonaws.com/dev/api/findESCandidateSearchResult';
 
 	/*----categorymanager Component----*/
 
@@ -38,6 +39,7 @@
     postResultManageDatas = ' https://mi07qzvi10.execute-api.us-east-1.amazonaws.com/dev/api/findESResultSearch ';
     //sendTestStartedDatas = 'https://amitionlinemanagetest.firebaseio.com/startTestData.json';
     sendTestStartedDatas = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/updateBookingAfterStartTest';
+    sendTestStartedDatassearch = 'https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/findESBookingSearchResult';
 
     /** Result Manager**/
 
