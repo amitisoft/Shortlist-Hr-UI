@@ -4,6 +4,7 @@ import { ManagetestService } from '../managetest/managetest.service';
 import { IMyDrpOptions } from 'mydaterangepicker';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotificationService } from '../../../header-main/notification.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'amiti-resultmanager',
@@ -19,6 +20,8 @@ export class ResultmanagerComponent implements OnInit {
     private myDateRangePickerOptions: IMyDrpOptions = {
         dateFormat: 'dd/mm/yyyy',
     };
+
+    resultManagerFull: any[] = [];
 
     searchResultManager = {
         'post': '',
@@ -53,6 +56,14 @@ export class ResultmanagerComponent implements OnInit {
                     //this.initForm();
                 }
             )
+
+            this.mngTestService.getResultManagerFullData()
+                .subscribe((data: any) => {
+                    this.resultManagerFull = data.resultsSearch;
+                    // form.reset();
+                }
+
+                ); console.log(this.resultManagerFull);
     }
 
     ngAfterViewInit(){
@@ -60,13 +71,23 @@ export class ResultmanagerComponent implements OnInit {
         this.notificServ.updateNotification(this.notificationCID);
     }
 
-    onSearch(searchvalue: any, pageno) {
-        this.mngTestService.getResultManagerData(searchvalue, pageno)
+    //onSearch(searchvalue: any, pageno) {
+    //    this.mngTestService.getResultManagerData(searchvalue, pageno)
+    //        .subscribe((data: any) => {
+    //            this.manageTest = data.bookings;
+    //        }
+
+    //        ); console.log(searchvalue);
+    //}
+
+    onSearch(form: NgForm) {
+        this.mngTestService.sendResultManager(form)
             .subscribe((data: any) => {
                 this.manageTest = data.bookings;
+               // form.reset();
             }
 
-            ); console.log(searchvalue);
+            ); console.log(form);
     }
 
 }

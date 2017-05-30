@@ -94,9 +94,9 @@
         <th class="hidden-xs">DATE</th>
         <th>SCORE</th>
       </tr>
-      <tr>
+      <tr *ngFor="let result of resultManagerFull">
         <td class="hidden-xs">01</td>
-        <td>SARATH</td>
+        <td>{{result.fullName}}</td>
         <td class="hidden-xs">sarath@gmail.com</td>
         <td class="hidden-xs">9999888800</td>
         <td>java</td>

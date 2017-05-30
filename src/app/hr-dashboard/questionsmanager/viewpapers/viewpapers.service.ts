@@ -15,7 +15,7 @@ export class ViewpapersService {
         // var headers = new Headers();
         // headers.append('Content-Type', 'application/x-www-form-urlencoded');
          // var getPaperUrl = 'https://api.myjson.com/bins/u4qnd';
-        var getPaperUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionPaperNamesByCategory/' + categoryName + '';
+        var getPaperUrl = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getquestionpapernamesbycategory/category/' + categoryName + '';
           
         return this.http.get(getPaperUrl)
             .map(res => res.json());
@@ -25,7 +25,7 @@ export class ViewpapersService {
         // var headers = new Headers();
         // headers.append('Content-Type', 'application/x-www-form-urlencoded');
        // var getPaperUrl = 'https://api.myjson.com/bins/a0l7d';
-        var getPaperUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionsByPaperId/qsnPaperId/' + categoryName;
+        var getPaperUrl = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionsByPaperId' + categoryName;
         return this.http.get(getPaperUrl)
             .map(res => res.json());
     }
