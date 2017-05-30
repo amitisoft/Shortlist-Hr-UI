@@ -5,10 +5,10 @@
     uploadCandidateDataUrl = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/getCandidatesListFile';
 
    
-    addcandidateurl='https://f85ottm6l3.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
-    getcandidateurl='https://f85ottm6l3.execute-api.us-east-1.amazonaws.com/dev/api/getESCandidateInformation';
-    getcandidateDetails='https://f85ottm6l3.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
-    getcandidatraftersearch='https://f85ottm6l3.execute-api.us-east-1.amazonaws.com/dev/api/findESCandidateSearchResult';
+    addcandidateurl='https://b0ovi53g4m.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
+    getcandidateurl='https://u4m8g9nxgi.execute-api.us-east-1.amazonaws.com/dev/api/getESCandidateInformation';
+    getcandidateDetails='https://b0ovi53g4m.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
+    getcandidatraftersearch='https://u4m8g9nxgi.execute-api.us-east-1.amazonaws.com/dev/api/findESCandidateSearchResult';
 
 	/*----categorymanager Component----*/
 
