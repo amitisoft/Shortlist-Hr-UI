@@ -10,7 +10,7 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
   let cadidateManagerPage: CadidateManagerPage = new CadidateManagerPage();
   let utils: Utilities = new Utilities();
 
-  setDefaultTimeout(5 * 10000);
+  setDefaultTimeout(10 * 10000);
 
   When(/^I click on register candidate button$/, () => {
     return cadidateManagerPage.selectRegisterCandidate();
@@ -40,10 +40,16 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return cadidateManagerPage.clickRegisterButton();
   });
 
-  Then(/^I verify successful alert message$/, () => {
-    //console.log(browser.switchTo().alert().getText());
-    //console.log(utils.getAlertText());
-    return utils.acceptAlert();
+  Then(/^I verify Register button is disabled$/, () => {
+    cadidateManagerPage.checkRegisterButtonEnabled().then(function(isEnabled){
+      return expect(isEnabled).to.be.false;
+    })
+  });
+
+  Then(/^I verify Register button is enabled$/, () => {
+    cadidateManagerPage.checkRegisterButtonEnabled().then(function(isEnabled){
+      return expect(isEnabled).to.be.true;
+    })
   });
 
 });

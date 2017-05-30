@@ -5,16 +5,16 @@
     uploadCandidateDataUrl = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/getCandidatesListFile';
 
    
-    addcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
-    getcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getESCandidateInformation';
-    getcandidateDetails='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
-    getcandidatraftersearch='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/findESCandidateSearchResult';
+    addcandidateurl='https://f85ottm6l3.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
+    getcandidateurl='https://f85ottm6l3.execute-api.us-east-1.amazonaws.com/dev/api/getESCandidateInformation';
+    getcandidateDetails='https://f85ottm6l3.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
+    getcandidatraftersearch='https://f85ottm6l3.execute-api.us-east-1.amazonaws.com/dev/api/findESCandidateSearchResult';
 
 	/*----categorymanager Component----*/
 
-    sendCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
-    viewCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
-    getcategoryDetails='https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
+    sendCategories = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
+    viewCategories = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
+    getcategoryDetails='https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
     deletecategories='https://f4l096njvh.execute-api.us-east-1.amazonaws.com/dev/api/deleteCategory/categoryId';
 
     /*----createquestion Component----*/
