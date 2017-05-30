@@ -4,18 +4,18 @@
     /*----cadidatedata Component----*/
     uploadCandidateDataUrl = 'https://lgtqza61fa.execute-api.us-east-1.amazonaws.com/dev/api/getCandidatesListFile';
 
-   
-    addcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
-    getcandidateurl='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/allcandidates';
-    getcandidateDetails='https://szlqcpr19k.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
+
+    addcandidateurl = 'https://b0ovi53g4m.execute-api.us-east-1.amazonaws.com/dev/api/insertCandidate';//'https://user-a1ecd.firebaseio.com/userlist.json';
+    getcandidateurl = 'https://u4m8g9nxgi.execute-api.us-east-1.amazonaws.com/dev/api/getESCandidateInformation';
+    getcandidateDetails = 'https://b0ovi53g4m.execute-api.us-east-1.amazonaws.com/dev/api/getCandidateInfoForView/candidateId';
     getcandidatraftersearch = 'https://u4m8g9nxgi.execute-api.us-east-1.amazonaws.com/dev/api/findESCandidateSearchResult';
 
 	/*----categorymanager Component----*/
 
-    sendCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
-    viewCategories = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
-    getcategoryDetails='https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
-    deletecategories='https://f4l096njvh.execute-api.us-east-1.amazonaws.com/dev/api/deleteCategory/categoryId';
+    sendCategories = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/createCategory';
+    viewCategories = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getAllCategories';
+    getcategoryDetails = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getCategoryById';
+    deletecategories = 'https://f4l096njvh.execute-api.us-east-1.amazonaws.com/dev/api/deleteCategory/categoryId';
 
     /*----createquestion Component----*/
     saveQuestionUrl = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
