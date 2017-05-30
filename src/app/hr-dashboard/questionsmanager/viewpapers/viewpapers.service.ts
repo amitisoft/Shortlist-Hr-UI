@@ -21,20 +21,20 @@ export class ViewpapersService {
             .map(res => res.json());
     }
 
-    viewPaperQuestions(categoryName) {
+    viewPaperQuestions(questionPaperId) {
         // var headers = new Headers();
         // headers.append('Content-Type', 'application/x-www-form-urlencoded');
        // var getPaperUrl = 'https://api.myjson.com/bins/a0l7d';
-        var getPaperUrl = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionsByPaperId' + categoryName;
+        var getPaperUrl = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionsByPaperId/' + questionPaperId;
         return this.http.get(getPaperUrl)
             .map(res => res.json());
     }
 
-    editPaperQuestions(QsnPprId) {
+    editPaperQuestions(questionPaperId) {
         // var headers = new Headers();
         // headers.append('Content-Type', 'application/x-www-form-urlencoded');
         // var getPaperUrl = 'https://api.myjson.com/bins/a0l7d';
-        var getPaperUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionsByPaperId/qsnPaperId/' + QsnPprId;
+        var getPaperUrl = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getAllQuestionsByPaperId/' + questionPaperId;
         return this.http.get(getPaperUrl)
             .map(res => res.json());
     }

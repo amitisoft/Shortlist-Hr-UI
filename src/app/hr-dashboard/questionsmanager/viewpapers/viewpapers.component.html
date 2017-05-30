@@ -28,16 +28,16 @@
       <tbody>
         <tr *ngFor="let paper of papers;let i = index">
           <td>{{i+1}}</td>
-          <td hidden #paperId>{{paper.QsnPprId}}</td>
+          <td hidden #paperId>{{paper.questionPaperId}}</td>
           <td #paperList style="cursor:pointer"><a style="text-decoration: none;">{{paper.questionPaperName}}</a></td>
 
           <td>
-            <a class="btn btn-default" (click)="onViewPaper(paper.QsnPprId)" style="cursor:pointer;color:aqua">
+            <a class="btn btn-default" (click)="onViewPaper(paper.questionPaperId)" style="cursor:pointer;color:aqua">
               <span class="glyphicon glyphicon-eye-open"></span>
             </a>
           </td>
           <td>
-            <a class="btn btn-default" [routerLink]="['../papermange',paper.QsnPprId]"  style="cursor:pointer;color:green">
+            <a class="btn btn-default" [routerLink]="['../papermange',paper.questionPaperId]"  style="cursor:pointer;color:green">
               <span class="glyphicon glyphicon-pencil"></span>
             </a>
           </td>

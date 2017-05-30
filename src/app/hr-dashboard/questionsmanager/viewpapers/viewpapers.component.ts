@@ -69,9 +69,9 @@ export class ViewpapersComponent implements OnInit {
       }
     }
 
-  onViewPaper(QsnPprId: string) {
+  onViewPaper(questionPaperId: string) {
 
-      this.paperService.viewPaperQuestions(QsnPprId)
+      this.paperService.viewPaperQuestions(questionPaperId)
           .subscribe((data: any) => {
               this.paperQuestions = data;
               
