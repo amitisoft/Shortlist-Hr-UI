@@ -18,12 +18,14 @@
     deletecategories='https://f4l096njvh.execute-api.us-east-1.amazonaws.com/dev/api/deleteCategory/categoryId';
 
     /*----createquestion Component----*/
-    saveQuestionUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
+    saveQuestionUrl = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
+   // saveQuestionUrl = 'https://e6zf4dv2g6.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
     //saveQuestionUrl = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/createquestion';
 
     /*----papermanagement Component----*/
     categoryPermission = 'https://amitionlinetestcategory.firebaseio.com/categoryPermission.json';
-    questionpaper = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/questionpaper';
+    questionpaper = 'https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/questionpaper';
+   // questionpaper = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/questionpaper';
 
 
     /*----viewquestions Component----*/
