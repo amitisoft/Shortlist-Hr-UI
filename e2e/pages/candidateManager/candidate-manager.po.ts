@@ -5,7 +5,7 @@ import {expect} from 'chai';
 
 let path = require('path');
 
-export class CadidateManagerPage {
+export class CandidateManagerPage {
   private protractorDriver: ProtractorDriver = new ProtractorDriver();
   private utils: Utilities = new Utilities();
 
@@ -78,10 +78,21 @@ export class CadidateManagerPage {
     return this.protractorDriver.checkButtonEnabledUsingText(this.registerButtonText);
   }
 
-  getTableRow() {
-    return this.utils.getTableColumnIndex("//amiti-hr-dashboard/div/amiti-cadidatedata/div[2]/div[2]/amiti-listdata/div[2]/div/div/table","Name").then(function (text) {
-      return text;
+  verifyCandidateTableName(Name) {
+    return this.utils.verifyTableDataisPresent(this.candidateTableXPath,1,Name).then(function (isPresent) {
+      expect(isPresent).to.be.true;
+    });
+  }
 
+  verifyCandidateTableEmail(email) {
+    return this.utils.verifyTableDataisPresent(this.candidateTableXPath,2,email).then(function (isPresent) {
+      expect(isPresent).to.be.true;
+    });
+  }
+
+  verifyCandidateTablePhNo(no) {
+    return this.utils.verifyTableDataisPresent(this.candidateTableXPath,3,no).then(function (isPresent) {
+      expect(isPresent).to.be.true;
     });
   }
 

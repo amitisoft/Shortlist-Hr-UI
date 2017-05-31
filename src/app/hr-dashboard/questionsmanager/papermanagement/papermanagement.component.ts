@@ -67,7 +67,7 @@ export class PapermanagementComponent implements OnInit {
                 this.initForm();
             }
             )
-
+        console.log(this.id);
     }
 
     initForm() {
