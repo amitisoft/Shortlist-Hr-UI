@@ -34,7 +34,7 @@
 
     /*----createtest Component----*/
     //sendEmailUrl = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/testlink';
-    sendEmailUrl = 'https://5fzpcspzll.execute-api.us-east-1.amazonaws.com/dev/api/registerCandidates';
+    sendEmailUrl = 'https://yufinedfhg.execute-api.us-east-1.amazonaws.com/dev/api/registerCandidates';
     getEmailUrl = 'https://questiontable-630db.firebaseio.com/createEmailList.json';
 
     /*----managetest Component----*/
