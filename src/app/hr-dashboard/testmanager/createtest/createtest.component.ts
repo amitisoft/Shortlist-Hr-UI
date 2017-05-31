@@ -118,7 +118,7 @@ export class CreatetestComponent implements OnInit {
         mailAddress = mailAddr.split(',');
 
         this.emailData = {
-            emails: ["kiranagre111@gmail.com", "kiran.a@amitisoft.com", "a.kiran029@gmail.com"],
+            emails: ["ashok@amitisoft.com", "kiran@amitisoft.com"],
             emailSubject: form.value.subject,
             jobPosition: form.value.singleSelect,
             emailBody: form.value.mailbody,
@@ -182,6 +182,7 @@ export class CreatetestComponent implements OnInit {
             {
                 showProgressBar: true,
                 pauseOnHover: true,
+                timeOut: 2000,
                 clickToClose: true,
                 maxLength: 0
             }
