@@ -39,10 +39,10 @@
           <option value="">--select category--</option>
           <option [ngValue]="category.categoryName" *ngFor="let category of category">{{category.categoryName}}</option>
         </select>-->
-        <input type="text" class="form-control" placeholder="Post Applied For" name="post" ngModel />
+        <input type="text" class="form-control" placeholder="Post Applied For" name="jobPosition" ngModel />
       </div>
       <div class="col-xs-4 result_manager">
-        <input type="text" class="form-control" placeholder="Name" name="name" ngModel/>
+        <input type="text" class="form-control" placeholder="Name" name="fullName" ngModel/>
       </div>
       <div class="col-xs-2 result_manager">
         <!--<input type="number" class="form-control" placeholder="score" name="score" ngModel/>-->
@@ -59,7 +59,8 @@
         <input type="email" class="form-control" placeholder="E-mail" name="email" ngModel />
       </div>
       <div class="col-xs-4 result_manager">
-        <input type="number" class="form-control" placeholder="Phone Number" name="phone" ngModel/>
+        <input type="text" class="form-control" placeholder="Phone Number" name="phoneNumber" 
+               ngModel maxlength="10" pattern="[0-9]"/>
       </div>
       <div class="col-xs-4 result_manager">
         <my-date-range-picker name="dateRange" [options]="myDateRangePickerOptions"
@@ -90,39 +91,23 @@
         <th>NAME</th>
         <th class="hidden-xs">EMAIL</th>
         <th class="hidden-xs">PHONE NO</th>
+        <th hidden>Booking Id</th>
         <th>POST APPLIED</th>
         <th class="hidden-xs">DATE</th>
         <th>SCORE</th>
       </tr>
-      <tr>
-        <td class="hidden-xs">01</td>
-        <td>SARATH</td>
-        <td class="hidden-xs">sarath@gmail.com</td>
-        <td class="hidden-xs">9999888800</td>
-        <td>java</td>
-        <td class="hidden-xs">16-02-2017</td>
-        <td>30</td>
+      <tr *ngFor="let result of resultManagerFull">
+        <td class="hidden-xs">{{result.candidateId}}</td>
+        <td>{{result.fullName}}</td>
+        <td class="hidden-xs">{{result.email}}</td>
+        <td class="hidden-xs">{{result.phoneNumber}}</td>
+        <td hidden>{{result.bookingId}}</td>
+        <td>{{result.jobPosition}}</td>
+        <td class="hidden-xs">{{result.dateOfExam}}</td>
+        <td>{{result.score}}</td>
 
       </tr>
-      <tr>
-        <td class="hidden-xs">02</td>
-        <td>SARATH</td>
-        <td class="hidden-xs">sarath@gmail.com</td>
-        <td class="hidden-xs">9999888800</td>
-        <td>java</td>
-        <td class="hidden-xs">16-02-2017</td>
-        <td>30</td>
-      </tr>
-      <tr>
-        <td class="hidden-xs">03</td>
-        <td>SARATH</td>
-        <td class="hidden-xs">sarath@gmail.com</td>
-        <td class="hidden-xs">9999888800</td>
-        <td>java</td>
-        <td class="hidden-xs">16-02-2017</td>
-        <td>30</td>
-      </tr>
-
+      
     </table>
 
 

@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
     id: string;
     editMode = false;
     user: any[]=[];
-    constructor(private candidateService: CandidateDataService, private route: ActivatedRoute) { }
+    constructor(private candidateService: CandidateDataService, private route: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
         this.route.params
@@ -43,13 +43,26 @@ export class RegisterComponent implements OnInit {
             (response: Response) => {
              var res=JSON.parse(JSON.stringify(response));
              alert(res._body);
-             console.log(res._body);
+              if(this.editMode){
+                this.router.navigate(['../../listdata'], { relativeTo: this.route });
+              }else{
+              this.router.navigate(['../listdata'], { relativeTo: this.route });
+            }    
             }
             );
-        this.onClear();
+
+       
+       // this.onClear();
     }
     onClear() {
         this.uForm.reset();
+    }
+    cancel(){
+       if(this.editMode){
+                this.router.navigate(['../../listdata'], { relativeTo: this.route });
+              }else{
+              this.router.navigate(['../listdata'], { relativeTo: this.route });
+            }    
     }
 
 }

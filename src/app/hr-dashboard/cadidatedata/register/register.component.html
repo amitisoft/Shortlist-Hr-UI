@@ -18,14 +18,6 @@
 									<p class="help-block error" *ngIf="(!lname.valid && lname.touched)">Enter Last Name</p>
 								</div>
 							</div>
-							<div class="form-group">
-								<label class="form-label" for="email">E-mail</label>
-								<div class="controls">
-									<input type="email" name="email" [(ngModel)]="user.email" class="form-control" required email #mail="ngModel">
-									<p class="help-block error" *ngIf="!mail.valid && mail.touched">Please provide your E-mail</p>
-								</div>
-							</div>
-							
 							
 							<!-- <div class="form-group">
 								<label class="form-label" for="password">Password</label>
@@ -37,20 +29,27 @@
 							
 						</div>
 						<div class="col-sm-5 col-md-5 col-md-offset-1">
-							<div class="form-group">
-								<label class="form-label" for="mobile">Mobile</label>
+						<div class="form-group">
+								<label class="form-label" for="email">E-mail</label>
 								<div class="controls">
-									<input type="text" id="mobile" name="phoneNumber" placeholder="" class="form-control" required [(ngModel)]="user.phoneNumber" pattern="^[1-9]+[0-9]*$" minlength="10" maxlength="10" #mobiles>
-									<p class="help-block error" *ngIf="!mobiles.valid && mobiles.touched" >Provide 10 digit mobile number</p>
+									<input type="email" name="email" [(ngModel)]="user.email" class="form-control" required email #mail="ngModel">
+									<p class="help-block error" *ngIf="!mail.valid && mail.touched">Please provide your E-mail</p>
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="form-label" for="mobile">Mobile</label>
+								<div class="controls">
+									<input type="text" id="mobile" name="phoneNumber" placeholder="" class="form-control" required [(ngModel)]="user.phoneNumber" pattern="^[1-9]+[0-9]*$" minlength="10" maxlength="10" #mobiles="ngModel">
+									<p class="help-block error" *ngIf="!mobiles.valid && mobiles.touched" >Provide 10 digit mobile number</p>
+								</div>
+							</div>
+							<!-- <div class="form-group">
 								<label class="form-label" for="address">Address</label>
 								<div class="controls">
 									<textarea type="text" id="address" name="address" placeholder="" class="form-control" required ngModel #addresss>{{ user.address }}</textarea>
 									<p class="help-block error" *ngIf="!addresss.valid && addresss.touched">Enter Address</p>
 								</div>
-							</div>
+							</div> -->
 							<input type="hidden" name="candidateId" class="form-control" [(ngModel)]="user.candidateId">
 							<!-- <div class="form-group">
 								<label class="form-label" for="gender">Gender</label>
@@ -77,8 +76,9 @@
 							</div> -->
 							<div class="form-group">
 								<div class="controls">
-									<button class="btn btn-warning" type="button" (click)="onClear()">Cancel</button>
-									<button class="btn btn-success" type="submit" [disabled]="!f.valid">Register</button>
+									<button class="btn btn-warning" type="button" (click)="cancel()">Cancel</button>
+									<button class="btn btn-success" type="submit" [disabled]="!f.valid" *ngIf="!editMode">Register</button>
+									<button class="btn btn-success" type="submit" [disabled]="!f.valid" *ngIf="editMode">Update</button>
 								</div>
 							</div>
 						</div>

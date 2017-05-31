@@ -1,6 +1,5 @@
 import {ProtractorDriver} from './protractor-driver';
-import {browser} from "protractor";
-import {protractor} from "protractor";
+import {browser, protractor, element, by} from "protractor";
 import {expect} from 'chai';
 
 export class Utilities {
@@ -24,7 +23,7 @@ export class Utilities {
 
   clickLogoutButton() {
     this.protractorDriver.clickUsingXPath(this.logoutDropDownXPath);
-    return  this.protractorDriver.waitForElementVisibleUsingXPath(this.logoutSubMenuXPath).then(() => {
+    return this.protractorDriver.waitForElementVisibleUsingXPath(this.logoutSubMenuXPath).then(() => {
       this.protractorDriver.clickUsingXPath(this.logoutSubMenuXPath);
     });
   }
@@ -66,4 +65,75 @@ export class Utilities {
       });
     });
   }
+
+  getTableColumnIndex(tableXpath, columnName) : any {
+    let col = element.all(by.xpath("" + tableXpath + "/thead/tr/th"));
+    return col.count().then(function (cCount) {
+      function loop(i){
+        if( i >= cCount) {
+          return null; //not found
+          }else{
+          return col.get(i).getText().then(function(colName) {
+            if (colName == columnName) {
+              return i;
+            }else{
+              return loop(i+1);
+            }
+          });
+        }
+      }
+      return loop(0);
+    });
+  }
+
+  verifyTableDataisPresent(tableXpath, columnIndex, rowData):any {
+    let data;
+    let row = element.all(by.xpath(""+tableXpath+"/tbody/tr"));
+    return row.count().then(function (rCount) {
+      function loop(k) {
+        if (k > rCount) {
+          return null; //not found
+        } else {
+          return element.all(by.xpath(""+tableXpath+"/tbody/tr["+k+"]/td["+columnIndex+"]")).getText().then(function (rData) {
+            data = rData.toString();
+              if (data == rowData) {
+                return true;
+                } else {
+                return loop(k + 1);
+              }
+          });
+        }
+      }
+      return loop(1);
+    });
+  }
+
+  getTableRowIndex(tableXpath, columnIndex, rowData):any {
+    let data;
+    let row = element.all(by.xpath(""+tableXpath+"/tbody/tr"));
+    return row.count().then(function (rCount) {
+      function loop(j) {
+        if (j > rCount) {
+          return null; //not found
+        } else {
+          return element.all(by.xpath(""+tableXpath+"/tbody/tr["+j+"]/td["+columnIndex+"]")).getText().then(function (rData) {
+            data = rData.toString();
+            if (data == rowData) {
+              return j;
+            } else {
+              return loop(j + 1);
+            }
+          });
+        }
+      }
+      return loop(1);
+    });
+  }
+
+  getTableData(tableXpath, columnIndex, rowIndex) {
+    return element.all(by.xpath(""+tableXpath+"/tbody/tr["+rowIndex+"]/td["+columnIndex+"]")).getText().then(function (data) {
+      return data;
+    });
+  }
+
 }
