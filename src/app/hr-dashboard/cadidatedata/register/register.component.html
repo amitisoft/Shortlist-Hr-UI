@@ -76,8 +76,9 @@
 							</div> -->
 							<div class="form-group">
 								<div class="controls">
-									<button class="btn btn-warning" type="button" (click)="onClear()">Cancel</button>
-									<button class="btn btn-success" type="submit" [disabled]="!f.valid">Register</button>
+									<button class="btn btn-warning" type="button" (click)="cancel()">Cancel</button>
+									<button class="btn btn-success" type="submit" [disabled]="!f.valid" *ngIf="!editMode">Register</button>
+									<button class="btn btn-success" type="submit" [disabled]="!f.valid" *ngIf="editMode">Update</button>
 								</div>
 							</div>
 						</div>
