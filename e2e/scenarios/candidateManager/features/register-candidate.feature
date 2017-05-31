@@ -26,22 +26,22 @@ Feature: HR can register the Candidate
   @VerifyCandidate
   Scenario: HR can verify the registered candidate in the application
     Given I am on candidate data page
-    Then I verify the candidate "Name" as "Rajni kanth"
+    Then I verify the candidateName "Rajni kanth"
     And I verify the email "Rajnikanth_007@gmail.com"
-    #And I verify the mobileNo "1234567890"
+    And I verify the mobileNo "1234567890"
     #When I enter name "Rajnikanth_007@gmail.com" in search
 
   @SearchCandidate
   Scenario: HR can search the candidate in the application
     Given I am on candidate data page
-    When I type the candidate FirstName "" in search field
-    Then I verify the searched candidate ""
-    When I type the candidate LastName "" in search field
-    Then I verify the searched candidate ""
-    When I type the candidate email "" in search field
-    Then I verify the searched candidate ""
+    When I type the candidate FirstName "Rajni" in search field
+    Then I verify the searched candidate "Rajni kanth"
+    When I type the candidate LastName "kanth" in search field
+    Then I verify the searched candidate "Rajni kanth"
+    When I type the candidate email "Rajnikanth_007@gmail.com" in search field
+    Then I verify the searched candidate "Rajni kanth"
     When I type the candidate phoneNumber "" in search field
-    Then I verify the searched candidate ""
+    Then I verify the searched candidate "Rajni kanth"
 
   @EditCandidate
   Scenario: HR can Edit the candidate details in the application

@@ -78,20 +78,22 @@ export class CandidateManagerPage {
     return this.protractorDriver.checkButtonEnabledUsingText(this.registerButtonText);
   }
 
-  verifyCandidateTableRow(colName,rowData) {
-     let a = this.utils.getTableColumnIndex(this.candidateTableXPath,colName).then(function (b) {
-     return b;
-    })
-
-     return this.utils.verifyTableDataisPresent(this.candidateTableXPath,(a+1),rowData).then(function (isPresent) {
-        console.log(isPresent);
+  verifyCandidateTableName(Name) {
+    return this.utils.verifyTableDataisPresent(this.candidateTableXPath,1,Name).then(function (isPresent) {
+      expect(isPresent).to.be.true;
     });
-    /*let a;
-    this.utils.getTableColumnIndex(this.candidateTableXPath,colName).then(function (columnIndex) { a= columnIndex; });
-        return this.utils.verifyTableDataisPresent(this.candidateTableXPath,(a+1),rowData).then(function (isPresent) {
-          console.log("adsfasdf"+isPresent);
-       expect(isPresent).to.be.false;
-       });*/
+  }
+
+  verifyCandidateTableEmail(email) {
+    return this.utils.verifyTableDataisPresent(this.candidateTableXPath,2,email).then(function (isPresent) {
+      expect(isPresent).to.be.true;
+    });
+  }
+
+  verifyCandidateTablePhNo(no) {
+    return this.utils.verifyTableDataisPresent(this.candidateTableXPath,3,no).then(function (isPresent) {
+      expect(isPresent).to.be.true;
+    });
   }
 
   enterSearchFName(fName) {
