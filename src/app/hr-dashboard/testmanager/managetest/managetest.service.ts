@@ -110,8 +110,9 @@ export class ManagetestService {
             .catch(this.handleError); // For Error Handling
     }
 
-    getQuestionPaper() {
-        return this.http.get('https://collectpaper-182eb.firebaseio.com/getPaper.json')
+    getQuestionPaper(cat) {
+        return this.http.get('https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getquestionpapernamesbycategory/category/' + cat)
+        //return this.http.get('https://collectpaper-182eb.firebaseio.com/getPaper.json')
             .map((response: Response) => response.json());
     }
 
