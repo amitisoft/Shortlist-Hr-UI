@@ -56,17 +56,26 @@ Feature: HR can register the Candidate
     Then I verify alert message ""Successfully updated data""
     And I accept the alert
     When I click candidate data tab
-    Then I verify the updated data of candidate
+    Then I verify the updated data of Rajni
+      | fName  | Rajni                 |
+      | lName  | Bond                  |
+      | email  | Kanth_Rajni@amiti.com |
+      | phNo   | 3214569870            |
 
   @CancelEditCandidate
   Scenario: HR can cancel editing the candidate
     Given I am on candidate data page
-    When I type the candidate FirstName "Rajni" and search
+    When I type the candidate email "mail1@amiti.in" and search
     When I click edit for candidate
-    And I accept the alert
-    Then I verify the searched candidate ""
-    When I click candidate data tab
-    Then I verify the updated data of candidate
+    When I change the candidate phoneNumber "0000000000"
+    And I change the candidate email "changed@email"
+    And I change the candidate LastName "changed"
+    And I click cancel button
+    Then I verify the updated data of Rajni
+      | fName  | Rajni                 |
+      | lName  | Bond                  |
+      | email  | Kanth_Rajni@amiti.com |
+      | phNo   | 3214569870            |
 
   @DeleteCandidate
   Scenario: HR can delete the candidate
@@ -76,6 +85,6 @@ Feature: HR can register the Candidate
     And I accept the alert
     Then I verify the searched candidate ""
     When I click candidate data tab
-    Then I verify the updated data of candidate
+    Then I verify the candidate is deleted
 
 

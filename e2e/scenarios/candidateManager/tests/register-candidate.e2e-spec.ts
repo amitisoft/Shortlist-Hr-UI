@@ -2,8 +2,9 @@ import {Utilities} from '../../../utils/utilities';
 import {CandidateManagerPage} from "../../../pages/candidateManager/candidate-manager.po";
 import {expect} from 'chai';
 import {browser} from 'protractor';
+import {TableDefinition} from 'cucumber'
 
-const {defineSupportCode} = require('cucumber');
+const {defineSupportCode } = require('cucumber');
 
 defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
 
@@ -71,7 +72,7 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
   });
 
   Then(/^I verify the searched candidate "(.*?)"$/, (name) => {
-    browser.sleep(6000);
+    browser.sleep(9000);
     candidateManagerPage.verifyCandidateTableName(name);
     return candidateManagerPage.clickSearchResetButton();
   });
@@ -142,7 +143,11 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return candidateManagerPage.enterCandidateLName(lName);
   });
 
-  When(/^I verify the updated data of candidate$/, () => {
+  When(/^I verify the updated data of Rajni/, (cTable: TableDefinition ) => {
+    let rowData = cTable.rowsHash();
+    candidateManagerPage.verifyCandidateTableName(rowData['fName']+" "+rowData['lName']);
+    candidateManagerPage.verifyCandidateTableEmail(rowData['email']);
+    return candidateManagerPage.verifyCandidateTablePhNo(rowData['phNo']);
   });
 
   When(/^I click candidate data tab$/, () => {
@@ -153,7 +158,15 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return candidateManagerPage.clickUpdateButton();
   });
 
-});
+  When(/^I click cancel button$/, () => {
+    return candidateManagerPage.clickCancelButton();
+  });
+
+  Then(/^I verify the data is not updated$/, () => {
+    return ;
+  });
+
+})
 
 
 
