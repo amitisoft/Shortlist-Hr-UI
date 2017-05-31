@@ -39,7 +39,7 @@
 							<div class="form-group">
 								<label class="form-label" for="mobile">Mobile</label>
 								<div class="controls">
-									<input type="text" id="mobile" name="phoneNumber" placeholder="" class="form-control" required [(ngModel)]="user.phoneNumber" pattern="^[1-9]+[0-9]*$" minlength="10" maxlength="10" #mobiles>
+									<input type="text" id="mobile" name="phoneNumber" placeholder="" class="form-control" required [(ngModel)]="user.phoneNumber" pattern="^[1-9]+[0-9]*$" minlength="10" maxlength="10" #mobiles="ngModel">
 									<p class="help-block error" *ngIf="!mobiles.valid && mobiles.touched" >Provide 10 digit mobile number</p>
 								</div>
 							</div>
