@@ -45,7 +45,7 @@
 
     /** Result Manager**/
 
-    getResultManagerFullListDataUrl = 'https://yz74ispp1i.execute-api.us-east-1.amazonaws.com/dev/api/getESResultSearch';
+    getResultManagerFullListDataUrl = 'https://yz74ispp1i.execute-api.us-east-1.amazonaws.com/dev/api/getESResultSearch/';
 
     /** Result Manager**/
     // Getting Manage Test Data [Test In Progress]

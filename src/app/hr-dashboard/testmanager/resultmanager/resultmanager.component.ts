@@ -83,8 +83,9 @@ export class ResultmanagerComponent implements OnInit {
     onSearch(form: NgForm) {
         this.mngTestService.sendResultManager(form)
             .subscribe((data: any) => {
-                this.manageTest = data.bookings;
+                this.resultManagerFull = data.resultsSearch;
                // form.reset();
+
             }
 
             ); console.log(form);
