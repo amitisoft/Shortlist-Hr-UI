@@ -98,7 +98,9 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDes
         this.mngTestService.getQuestionPaper(category)
             .takeUntil(this.ngUnsubscribe)
             .subscribe(
+            
             data => {
+                
                 const myArray = [];
                 for (let key in data) {
                     myArray.push(data[key].questionPaperName);
