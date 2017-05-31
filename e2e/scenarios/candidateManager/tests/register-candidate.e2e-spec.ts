@@ -49,7 +49,7 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
   Then(/^I verify Register button is enabled$/, () => {
     candidateManagerPage.checkRegisterButtonEnabled().then(function(isEnabled){
       return expect(isEnabled).to.be.true;
-    })
+    });
   });
 
   Then(/^I verify the candidateName "(.*?)"$/, (name) => {
@@ -65,70 +65,93 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return candidateManagerPage.verifyCandidateTablePhNo(no);
   });
 
-  When(/^I type the candidate FirstName "(.*?)" in search field$/, (searchFName) => {
+  When(/^I type the candidate FirstName "(.*?)" and search$/, (searchFName) => {
     candidateManagerPage.enterSearchFName(searchFName);
     return candidateManagerPage.clickSearchButton();
   });
 
   Then(/^I verify the searched candidate "(.*?)"$/, (name) => {
-    browser.sleep(10000);
+    browser.sleep(6000);
     candidateManagerPage.verifyCandidateTableName(name);
-    return candidateManagerPage.selectCandidateDashBoard();
+    return candidateManagerPage.clickSearchResetButton();
   });
 
-  When(/^I type the candidate LastName "(.*?)" in search field$/, (searchLName) => {
+  When(/^I type the candidate LastName "(.*?)" and search$/, (searchLName) => {
     candidateManagerPage.enterSearchLName(searchLName);
     return candidateManagerPage.clickSearchButton();
   });
 
-  When(/^I type the candidate email "(.*?)" in search field$/, (eMail) => {
+  When(/^I type the candidate email "(.*?)" and search$/, (eMail) => {
     candidateManagerPage.enterSearchEmail(eMail);
     return candidateManagerPage.clickSearchButton();
   });
 
-  When(/^I type the candidate phoneNumber "(.*?)" in search field$/, (phNo) => {
+  When(/^I type the candidate phoneNumber "(.*?)" and search$/, (phNo) => {
     candidateManagerPage.enterSearchPhNo(phNo);
     return candidateManagerPage.clickSearchButton();
   });
 
-  When(/^I click edit for candidate "(.*?)"$/, () => {
+  When(/^I click edit for candidate$/, () => {
+    browser.sleep(5000);
+    return candidateManagerPage.clickCandidateEditButton();
   });
 
-  Then(/^I verify the candidate firstname "(.*?)"$/, () => {
+  Then(/^I verify the candidate firstname "(.*?)"$/, (fName) => {
+    browser.sleep(6000);
+    return candidateManagerPage.getFName().then(function (data) {
+      expect(data).to.equal(fName);
+    });
   });
 
-  Then(/^I verify the candidate lastname "(.*?)"$/, () => {
+  Then(/^I verify the candidate lastname "(.*?)"$/, (lName) => {
+    return candidateManagerPage.getLName().then(function (data) {
+      expect(data).to.equal(lName);
+    });
   });
 
-  Then(/^I verify the candidate email "(.*?)"$/, () => {
+  Then(/^I verify the candidate email "(.*?)"$/, (email) => {
+    return candidateManagerPage.getEmail().then(function (data) {
+      expect(data).to.equal(email);
+    });
   });
 
-  Then(/^I verify the candidate PhoneNumber "(.*?)"$/, () => {
+  Then(/^I verify the candidate PhoneNumber "(.*?)"$/, (phNo) => {
+    return candidateManagerPage.getPhNo().then(function (data) {
+      expect(data).to.equal(phNo);
+    });
   });
 
   Then(/^I verify the candidate adress is empty$/, () => {
+    return candidateManagerPage.getAdress().then(function (data) {
+      expect(data).to.be.empty;
+    });
   });
 
-  When(/^I change the candidate phoneNumber "(.*?)"$/, () => {
+  When(/^I change the candidate phoneNumber "(.*?)"$/, (phNo) => {
+    candidateManagerPage.clearPhNo();
+    return candidateManagerPage.enterCandidateMobileNo(phNo);
   });
 
-  When(/^I change the candidate email "(.*?)"$/, () => {
+  When(/^I change the candidate email "(.*?)"$/, (email) => {
+    candidateManagerPage.clearEmail();
+    return candidateManagerPage.enterCandidateEmail(email);
   });
 
-  When(/^I change the candidate LastName "(.*?)"$/, () => {
-  });
-
-  When(/^I click register button$/, () => {
-  });
-
-  When(/^I click candidate data tab$/, () => {
+  When(/^I change the candidate LastName "(.*?)"$/, (lName) => {
+    candidateManagerPage.clearLName();
+    return candidateManagerPage.enterCandidateLName(lName);
   });
 
   When(/^I verify the updated data of candidate$/, () => {
   });
 
+  When(/^I click candidate data tab$/, () => {
+    return candidateManagerPage.selectCandidateDashBoard();
+  });
 
-
+  Then(/^I click update button$/, () => {
+    return candidateManagerPage.clickUpdateButton();
+  });
 
 });
 

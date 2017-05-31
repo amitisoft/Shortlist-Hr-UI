@@ -17,8 +17,6 @@ Feature: HR can register the Candidate
     Then I verify Register button is disabled
     When I add mobile number "1234567890"
     Then I verify Register button is disabled
-    When I add address "Adress1\nAddress2"
-    Then I verify Register button is enabled
     And I click register button
     Then I verify alert message ""Successfully inserted data""
     And I accept the alert
@@ -29,35 +27,44 @@ Feature: HR can register the Candidate
     Then I verify the candidateName "Rajni kanth"
     And I verify the email "Rajnikanth_007@gmail.com"
     And I verify the mobileNo "1234567890"
-    #When I enter name "Rajnikanth_007@gmail.com" in search
 
   @SearchCandidate
   Scenario: HR can search the candidate in the application
     Given I am on candidate data page
-    When I type the candidate FirstName "Rajni" in search field
+    When I type the candidate FirstName "Rajni" and search
     Then I verify the searched candidate "Rajni kanth"
-    When I type the candidate LastName "kanth" in search field
+    When I type the candidate LastName "kanth" and search
     Then I verify the searched candidate "Rajni kanth"
-    When I type the candidate email "Rajnikanth_007@gmail.com" in search field
+    When I type the candidate email "Rajnikanth_007@gmail.com" and search
     Then I verify the searched candidate "Rajni kanth"
-    When I type the candidate phoneNumber "" in search field
+    When I type the candidate phoneNumber "1234567890" and search
     Then I verify the searched candidate "Rajni kanth"
 
   @EditCandidate
   Scenario: HR can Edit the candidate details in the application
     Given I am on candidate data page
-    When I click edit for candidate ""
-    Then I verify the candidate firstname ""
-    And I verify the candidate lastname ""
-    And I verify the candidate email ""
-    And I verify the candidate PhoneNumber ""
-    And I verify the candidate adress is empty
-    When I change the candidate phoneNumber ""
-    And I change the candidate email ""
-    And I change the candidate LastName ""
-    When I click register button
-    Then I verify alert message "Successfully inserted data"
+    When I type the candidate FirstName "Rajni" and search
+    When I click edit for candidate
+    Then I verify the candidate firstname "Rajni"
+    And I verify the candidate lastname "kanth"
+    And I verify the candidate email "Rajnikanth_007@gmail.com"
+    And I verify the candidate PhoneNumber "1234567890"
+    When I change the candidate phoneNumber "3214569870"
+    And I change the candidate email "Kanth_Rajni@amiti.com"
+    And I change the candidate LastName "Bond"
+    When I click update button
+    Then I verify alert message ""Successfully updated data""
     And I accept the alert
+    When I click candidate data tab
+    Then I verify the updated data of candidate
+
+  @CancelEditCandidate
+  Scenario: HR can cancel editing the candidate
+    Given I am on candidate data page
+    When I type the candidate FirstName "Rajni" and search
+    When I click edit for candidate
+    And I accept the alert
+    Then I verify the searched candidate ""
     When I click candidate data tab
     Then I verify the updated data of candidate
 
