@@ -1,6 +1,6 @@
 <div class="row">
 	<form action="listdata_submit" #f="ngForm" (ngSubmit)="onSearch(f.value)">
-		<div class="cols-sm-3 col-md-3">
+		<div class="cols-sm-2 col-md-2">
 			<input type='text' class="form-control" placeholder="Enter Firstname" name="firstName" ngModel>
 		</div>
 		<div class="cols-sm-2 col-md-2">
@@ -9,11 +9,12 @@
 		<div class="cols-sm-3 col-md-3">
 			<input type='text' class="form-control" placeholder="Enter Email" name="email" ngModel>
 		</div>
-		<div class="cols-sm-3 col-md-3">
+		<div class="cols-sm-2 col-md-2">
 			<input type='text' class="form-control" placeholder="Enter Mobile" name="phoneNumber" ngModel maxlength="10">
 		</div>
-		<div class="cols-sm-1 col-md-1">
+		<div class="cols-sm-3 col-md-3">
 			<button class="btn btn-info" type="submit">Search</button>
+			<button class="btn btn-info" type="reset" (click)="resetValue()">Reset</button>
 		</div>
 	</form>
 </div>

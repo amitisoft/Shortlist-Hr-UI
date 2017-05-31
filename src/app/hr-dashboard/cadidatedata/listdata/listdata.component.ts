@@ -18,17 +18,18 @@ export class ListdataComponent implements OnInit {
         'phoneNumber':''
     }
     ngOnInit() {
-        this.candidateService.getuserlist()
-            .subscribe(
-            data => {
-                const myArray = [];
-                for (let key in data.candidates) {
-                    myArray.push(data.candidates[key]);
-                }
-                this.useritems = myArray;
-                console.log(this.useritems);
-            }
-            );
+        this.resetValue();
+        // this.candidateService.getuserlist()
+        //     .subscribe(
+        //     data => {
+        //         const myArray = [];
+        //         for (let key in data.candidates) {
+        //             myArray.push(data.candidates[key]);
+        //         }
+        //         this.useritems = myArray;
+        //         console.log(this.useritems);
+        //     }
+        //     );
        
     }
     deletecandidate(user, index) {
@@ -50,6 +51,18 @@ export class ListdataComponent implements OnInit {
             }
             );
     }
-
+resetValue(){
+     this.candidateService.getuserlist()
+            .subscribe(
+            data => {
+                const myArray = [];
+                for (let key in data.candidates) {
+                    myArray.push(data.candidates[key]);
+                }
+                this.useritems = myArray;
+                console.log(this.useritems);
+            }
+            );
+}
 
 }
