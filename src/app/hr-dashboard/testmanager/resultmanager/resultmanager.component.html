@@ -59,7 +59,8 @@
         <input type="email" class="form-control" placeholder="E-mail" name="email" ngModel />
       </div>
       <div class="col-xs-4 result_manager">
-        <input type="number" class="form-control" placeholder="Phone Number" name="phoneNumber" ngModel/>
+        <input type="text" class="form-control" placeholder="Phone Number" name="phoneNumber" 
+               ngModel maxlength="10" pattern="[0-9]"/>
       </div>
       <div class="col-xs-4 result_manager">
         <my-date-range-picker name="dateRange" [options]="myDateRangePickerOptions"

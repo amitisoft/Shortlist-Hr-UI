@@ -111,7 +111,7 @@ export class ManagetestService {
     }
 
     getQuestionPaper() {
-        return this.http.get('https://collectpaper-182eb.firebaseio.com/getPaper.json')
+        return this.http.get('https://vxouh67191.execute-api.us-east-1.amazonaws.com/dev/api/getquestionpapernamesbycategory/category/')
             .map((response: Response) => response.json());
     }
 

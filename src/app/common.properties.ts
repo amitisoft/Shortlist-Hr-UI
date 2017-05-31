@@ -33,7 +33,7 @@
     getCategoryQuestionsUrl = 'https://yz74ispp1i.execute-api.us-east-1.amazonaws.com/dev/api/getquestionpapernamesbycategory';
 
     /*----createtest Component----*/
-    sendEmailUrl = 'https://8i9879447i.execute-api.us-east-1.amazonaws.com/dev/api/testlink';
+    sendEmailUrl = ' https://yufinedfhg.execute-api.us-east-1.amazonaws.com/dev/api/registerCandidates ';
     getEmailUrl = 'https://questiontable-630db.firebaseio.com/createEmailList.json';
 
     /*----managetest Component----*/
