@@ -7,8 +7,8 @@
             (ngModelChange)="changeCategory($event)" 
             [(ngModel)]="selectedCategory" #categoryText="ngModel" required >
 
-      <option>XXX</option>
-      <option [ngValue]="category.categoryId" 
+      <option>--select category--</option>
+      <option [ngValue]="category.categoryName" 
               *ngFor="let category of category"
               >{{category.categoryName}}</option>
     </select>
@@ -32,7 +32,7 @@
           <td #paperList style="cursor:pointer"><a style="text-decoration: none;">{{paper.questionPaperName}}</a></td>
 
           <td>
-            <a class="btn btn-default" (click)="onViewPaper()" style="cursor:pointer;color:aqua">
+            <a class="btn btn-default" (click)="onViewPaper(paper.questionPaperId)" style="cursor:pointer;color:aqua">
               <span class="glyphicon glyphicon-eye-open"></span>
             </a>
           </td>
@@ -55,9 +55,9 @@
   </div>
   <div class="col-xs-8">
     
-     
-    <ul class="list-group" *ngFor="let question of paperQuestions.qsns; let i = index">
-      <li class="list-group-item">{{i+1}} | {{question.Qsn_id}} | {{question.Qsn}} | {{question.Category}}</li>
+     {{paperQuestions.questionPaperName}}
+    <ul class="list-group" *ngFor="let question of paperQuestions; let i = index">
+      <li class="list-group-item">{{i+1}} | {{question.Qsn}} | {{question.category}}</li>
     </ul>
   </div>
 </div>

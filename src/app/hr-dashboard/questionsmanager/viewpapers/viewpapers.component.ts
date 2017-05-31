@@ -33,8 +33,8 @@ export class ViewpapersComponent implements OnInit {
             },
             error => { console.log(error) },
             () => {
-                this.selectedCategory = this.category[0]['categoryId'];
-                this.changeCategory(this.category[0]['categoryId']);
+                this.selectedCategory = this.category[0]['categoryName'];
+                this.changeCategory(this.category[0]['categoryName']);
             });
 
         console.log(this.category);
@@ -55,7 +55,7 @@ export class ViewpapersComponent implements OnInit {
     changeCategory(catName: string) {
         this.paperService.getPaperList(catName)
             .subscribe((data: any) => {
-                this.papers = data.questionPaperNames;
+                this.papers = data;
                 console.log(this.papers);
             }
 
@@ -69,9 +69,9 @@ export class ViewpapersComponent implements OnInit {
       }
     }
 
-  onViewPaper() {
+  onViewPaper(questionPaperId: string) {
 
-      this.paperService.viewPaperQuestions()
+      this.paperService.viewPaperQuestions(questionPaperId)
           .subscribe((data: any) => {
               this.paperQuestions = data;
               

@@ -1,4 +1,4 @@
-<!-- ****************Notifications Block **************** -->
+﻿<!-- ****************Notifications Block **************** -->
   <div class="row">
     <div class="col-xs-12">
       <!-- <div class="alert alert-success" id="success-alert" *ngIf="questionSuccessStatus">
@@ -96,7 +96,7 @@
             <select name="categorySelected" id="categorySelected" 
                 class="form-control" [(ngModel)]="selectedCategory" #categorySelect="ngModel" required>
               <option value="">Select a category</option>
-              <option [ngValue]="category.categoryId" *ngFor="let category of categoryList">{{category.categoryName}}</option>
+              <option [ngValue]="category.categoryName" *ngFor="let category of categoryList">{{category.categoryName}}</option>
             </select>
             <p class="help-block error" *ngIf="!categorySelect.valid && categorySelect.touched">Select a Category</p>
             <!-- <p class="help-block error" *ngIf="rangeForm.controls.range.errors?.required">Select post applied</p> -->

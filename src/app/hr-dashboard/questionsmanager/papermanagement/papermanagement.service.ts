@@ -17,8 +17,9 @@ export class PapermanagementService {
   getThisCategoryQuestions(categoryName, lastQuestionId) {
     // var headers = new Headers();
     // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      var getCategoryQuestionsUrl = 'https://api.myjson.com/bins/1559c9';
-   // var getCategoryQuestionsUrl = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/getquestionbycategory/Category/'+categoryName+'/LastqsnId/'+lastQuestionId+'';
+     
+     // var getCategoryQuestionsUrl = 'https://api.myjson.com/bins/1559c9';
+    var getCategoryQuestionsUrl = 'https://f8ahuuoen7.execute-api.us-east-1.amazonaws.com/dev/api/getquestionbycategory/Category/'+categoryName+'/LastqsnId/'+lastQuestionId+'';
     return this.http.get(getCategoryQuestionsUrl).map(res => res.json());
   }
     

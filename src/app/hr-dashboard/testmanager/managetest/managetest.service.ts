@@ -9,22 +9,47 @@ export class ManagetestService {
 
     constructor(private http: Http, private manageTestPro: CommonProperties) { }
 
-    getDataTestNotTaken(searchdata,page) {
+    getDataTestNotTaken() {
         // return this Observable
-        return this.http.get(this.manageTestPro.getManageTestDatas+"?name="+searchdata.name+"&category="+searchdata.category+"&email="+searchdata.email+"&daterange="+searchdata.dateRange.formatted+"&page="+page)
+        return this.http.get(this.manageTestPro.getManageTestDatas)
         .map((response: Response) => response.json());
     }
-
-    getDataTestInProgress(searchdata,page) {
-        return this.http.get(this.manageTestPro.getManageTestInProgress+"?name="+searchdata.name+"&category="+searchdata.category+"&email="+searchdata.email+"&daterange="+searchdata.dateRange.formatted+"&page="+page)
+    getDataTestseacrh(searchdata) {
+        // return this Observable
+        return this.http.post(this.manageTestPro.sendTestStartedDatassearch,searchdata)
+        .map((response: Response) => response.json());
+    }
+    getDataTestInProgress() {
+        return this.http.get(this.manageTestPro.getManageTestInProgress)
             .map((response: Response) => response.json());
     }
 
     //Result Manager Serach
-    getResultManagerData(searchResultManager, page) {
+    getResultManagerData(searchResultManager) {
         // return this Observable
-        return this.http.get(this.manageTestPro.getManageTestDatas + "&post=" + searchResultManager.post + "?name=" + searchResultManager.name + "?score=" + searchResultManager.score + "&email=" + searchResultManager.email + "?phone=" + searchResultManager.phone + "&daterange=" + searchResultManager.dateRange.formatted + "&page=" + page)
+        return this.http.get(this.manageTestPro.postResultManageDatas)
+        //return this.http.get(this.manageTestPro.getManageTestDatas + "&post=" + searchResultManager.post + "?name=" + searchResultManager.name + "?score=" + searchResultManager.score + "&email=" + searchResultManager.email + "?phone=" + searchResultManager.phone + "&daterange=" + searchResultManager.dateRange.formatted + "&page=" + page)
             .map((response: Response) => response.json());
+    }
+
+    getResultManagerFullData() {
+        // return this Observable
+        return this.http.get(this.manageTestPro.getResultManagerFullListDataUrl)
+           
+            .map((response: Response) => response.json());
+    }
+
+
+    sendResultManager(user: any) {
+        const body = JSON.stringify(user);
+
+       
+
+        return this.http.post('https://mi07qzvi10.execute-api.us-east-1.amazonaws.com/dev/api/findESResultSearch/', body, {
+           
+        })
+            .map((data: Response) => data.json())
+            .catch(this.handleError); // For Error Handling
     }
 
 
