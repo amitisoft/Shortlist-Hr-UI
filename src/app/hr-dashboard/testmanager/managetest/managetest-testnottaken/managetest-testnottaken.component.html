@@ -64,7 +64,7 @@
                  id="{{ 'row' + mgtxt.candidateId }}"
                  name="{{ 'row' + mgtxt.candidateId }}" />
         </td>
-        
+        <td hidden>{{mgtxt.bookingId}}</td>
         <td>{{mgtxt.candidateId}}</td>
         <td>{{mgtxt.candidateFullName}}</td>
         <td>{{mgtxt.jobPosition}}</td>
@@ -74,9 +74,9 @@
         
          <td><input type="text"
                class="form-control"
-               (click)="onSendCategory(this.value, mgtxt.category)"
+               (keyup)="onSendCategory(mgtxt.category)"
                auto-complete
-               [source]="items" max-num-list="4" 
+               [source]="items" max-num-list="4"  placeholder="Click Twice"
                 />
         </td> 
         <td>{{mgtxt.testStatus}}</td>

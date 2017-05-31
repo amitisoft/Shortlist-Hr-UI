@@ -1,39 +1,60 @@
-Feature: TestManager Dashboard
+Feature:  HR can create manage and resultmanager operations in test manager dashboard
+          As a user of Candidate Shortlisting Application
+          I should be able to use Test Manager Dashboard
+          In order to Create/Manage and Result of Test
+
 
   @CreateTest
 	Scenario: Creating the test with proper Data
-  #  Given I am on the Dashboarda page
+
+    Given I am on the Test Manager Dashboard page
 		When  I select the CREATE TEST button
 	  And   I Enter email field
-   # And   I verify
+    And   I verify
 		When  I Enter Subject field
 		And   I Enter Post Applied
 		And   I Click on Bold Button
 		When  I Enter Mail Body field
-		#When  I verify bold
+		When  I verify bold
 		When  I Select Exam category
-		Then I verify
+		Then  I verify category
 	#	Then I reset
 	#	Then I verify Option field are empty
   #Then mail should be sent
 
-#@managetest
+  @SearchManageTest
+  Scenario: click search on manage test in test manager
 
-	#Scenario: click on manage test
-	#  Given I select the Manage TEST button
-  #When I Select checkboxes
-  #Then I click start
-  #Then I verify
+    Given I am on the Test Manager Dashboard
+    When  I select the Manage TEST button
+    When  I select the TEST NOT TAKEN button
+    And   I enter name for search
+    And   I enter email for search
+    And   I select category for search
+    And   I enter date range for search
+    Then  I click Search Button
+    Then  I verify search Results
+
+  @StartManageTest
+  Scenario: click start on manage test in test manager
+
+    Given I am on the Test Manager
+    When  I select the Manage TEST button
+    When  I select the TEST NOT TAKEN button
+    And   I Select Checkboxes for candidate to start test
+    And   I Select Papers for candidate to start test
+    Then  I select Start Test Button
+
 
 
 	#@resultmanager
+  #Scenario: click on result manager
 
-	#Scenario: click on result manager
-	  #Given I select the  result manager button
-  #When I Select category
-  #when I enter name and score
-  #Then I click search
-  #Then I verify
+    #Given I select the  result manager button
+    #When I Select category
+    #when I enter name and score
+    #Then I click search
+    #Then I verify
 
 
 

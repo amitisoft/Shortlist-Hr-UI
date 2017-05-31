@@ -8,11 +8,16 @@
     "lib": [
       "es2016"
     ],
+    "types":[
+      "node",
+      "cucumber"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "../dist/out-tsc-e2e",
     "sourceMap": true,
-    "target": "es6",
+    "target": "es5",
+    "allowJs": true,
     "typeRoots": [
       "../node_modules/@types"
     ]

@@ -1,6 +1,6 @@
 import {ProtractorDriver} from '../../utils/protractor-driver';
 import {expect} from 'chai';
-
+//var json = require('C:\Users\User\Desktop\hrlogin.json');
 export class CategoryManagerPage {
   private protractorDriver: ProtractorDriver = new ProtractorDriver();
 
@@ -11,7 +11,7 @@ export class CategoryManagerPage {
   private createCategoryTabXPath= "html/body/amiti-root/div/div/div/amiti-hr-dashboard/div/amiti-categorymanager/div[1]/div[2]/button";
   private addButtonXPath = "//button[@class='btn btn-primary']";
   private clearButtonXPath = "//button[@class='btn btn-success']";
-  private categoryEditBtnXPath = "//table[@class='table table-striped']//tr[3]//td[3]//a[1]";
+  private categoryEditBtnXPath = "//table[@class='table table-striped']//tr[4]//td[3]//a[1]";
   private categoryDeleteBtnXPath = "//table[@class='table table-striped']//tr[2]//td[3]//a[1]";
  // private editcategoryTextFieldXPath = "//input[@ng-reflect-model='mango ok']";
  // private editdescriptionTextFieldXPath = "//textarea[@id='categorydescription']";

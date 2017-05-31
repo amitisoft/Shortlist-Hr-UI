@@ -1,4 +1,4 @@
-import { CategorymanagerService } from '../../../categorymanager/categorymanager.service';
+﻿import { CategorymanagerService } from '../../../categorymanager/categorymanager.service';
 import {IMyDrpOptions} from 'mydaterangepicker';
 ﻿import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { ManagetestService } from '../managetest.service';
@@ -38,7 +38,9 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDes
             }
 
             );
-      this.onSelectPaper();
+     //  this.onSelectPaper('Java');
+      
+
       this.categoryMngService.getOwnData()
             .subscribe(
             data => {
@@ -91,34 +93,52 @@ export class ManagetestTestnottakenComponent implements OnInit, OnChanges, OnDes
 
     /** Select Paper **/
 
-    onSendCategory(value: string, java) {
+    onSendCategory(category: string) {
         //this.subscription = 
-        this.mngTestService.sendCategoryForPaper(java)
+        this.mngTestService.getQuestionPaper(category)
             .takeUntil(this.ngUnsubscribe)
             .subscribe(
-            (response) => {
-               // alert('data submitted auccessfully');
-               // this.onSelectPaper();
+            
+            data => {
                 
-                //if (response.status == 200) {
+                const myArray = [];
+                for (let key in data) {
+                    myArray.push(data[key].questionPaperName);
+                }
+                this.items = myArray;
 
-
-                //}
-                this.onSelectPaper();
-            }
-
-            );
+            }); console.log(this.items);
     }
 
-    onSelectPaper() {
-       // alert("Hi Sarath");
-        this.mngTestService.getQuestionPaper()
+
+    //onSendCategory(value: string, category) {
+    //    //this.subscription = 
+    //    this.mngTestService.sendCategoryForPaper(category)
+    //        .takeUntil(this.ngUnsubscribe)
+    //        .subscribe(
+    //        (response) => {
+    //           // alert('data submitted auccessfully');
+    //           // this.onSelectPaper();
+                
+    //            //if (response.status == 200) {
+
+
+    //            //}
+    //            this.onSelectPaper(category);
+    //        }
+
+    //        );
+    //}
+
+    onSelectPaper(cat) {
+        //alert("Hi Sarath");
+        this.mngTestService.getQuestionPaper(cat)
             .subscribe(
             //for loopping // data => this.items = data
             data => {
                 const myArray = [];
                 for (let key in data) {
-                    myArray.push(data[key]);
+                    myArray.push(data[key].questionPaperName);
                 }
                 this.items = myArray;
 
