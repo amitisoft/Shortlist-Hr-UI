@@ -16,11 +16,11 @@ defineSupportCode(function ({Given,When,Then}) {
 
       const testmanagerpage: TestManagerPage = new TestManagerPage();
 
-        /*Given(/^I am on the Dashboarda page$/, () => {
+        Given(/^I am on the Test Manager Dashboard page$/, () => {
           browser.sleep(10000);
         //   expect(browser.getTitle()).to.eventually.equal('AmitiOnlineTest');
           return testmanagerpage.waitHrDashboard();
-        });*/
+        });
 
         When(/^I select the CREATE TEST button$/, () => {
           browser.driver.sleep(500);
@@ -29,12 +29,12 @@ defineSupportCode(function ({Given,When,Then}) {
         //return expect(browser.getTitle()).to.eventually.equal('AmitiOnlineTest');
         });
         When(/^I Enter email field$/, () => {
-          browser.sleep(10000);
+          browser.sleep(1000);
           testmanagerpage.enterEmail("kiran@amitisoft.com")
-          browser.sleep(20000);
+          browser.sleep(10000);
           return browser.actions().sendKeys(protractor.Key.ENTER).perform().then(function (click) {
             testmanagerpage.clearEmailField();
-            browser.sleep(10000);
+            browser.sleep(1000);
             testmanagerpage.enterEmail("mahesh@amiti.in");
             browser.sleep(10000);
             return browser.actions().sendKeys(protractor.Key.ENTER).perform();
@@ -48,16 +48,18 @@ defineSupportCode(function ({Given,When,Then}) {
 
         When(/^I Enter Subject field$/, () => {
 
+          browser.sleep(2000);
+
          return testmanagerpage.enterSubject("Online Examination");
          });
 
          When(/^I Enter Post Applied$/, () => {
-
-          return testmanagerpage.selectCategoryDropdown();
+           browser.sleep(2000);
+          return testmanagerpage.selectCategory();
          });
 
          When(/^I Click on Bold Button$/, () => {
-
+           browser.sleep(2000);
           return testmanagerpage.clickBoldButton();
          });
 
@@ -66,18 +68,22 @@ defineSupportCode(function ({Given,When,Then}) {
           return testmanagerpage.enterMailBody("HI AM PRASHANTH\nhi this prashanth");
 
         });
-          When(/^I Select Exam category$/, () => {
-            testmanagerpage.enterCategory("java");
-           browser.sleep(20000);
-           return browser.actions().sendKeys(protractor.Key.ENTER).perform().then(function (click) {
-             testmanagerpage.clearCategoryField();
 
-             testmanagerpage.enterCategory("javascript");
-            return browser.actions().sendKeys(protractor.Key.ENTER).perform()
-            });
+
+          When(/^I verify bold$/, () => {
+            browser.sleep(2000);
+            return testmanagerpage.textboldVerify();
+
+          });
+          When(/^I Select Exam category$/, () => {
+            browser.sleep(20000);
+            return testmanagerpage.selectCategorydrop();
+
 
         });
-
+  Then(/^I verify category$/, () => {
+    return browser.sleep(20000);
+  })
 
 
 

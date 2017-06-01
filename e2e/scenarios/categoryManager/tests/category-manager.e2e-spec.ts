@@ -5,7 +5,7 @@ import {expect} from 'chai';
 import {TableDefinition} from "cucumber";
 import { $ } from 'protractor';
 import { browser,protractor } from 'protractor';
-import * as data from 'C:\\Users\\User\\Desktop\\example.json';
+import * as data from 'D:\\mysore\\Shortlist-Hr-UI\\e2e\\scenarios\\categoryManager\\data\\category-data.json';
 
 
 
@@ -49,8 +49,8 @@ defineSupportCode(function ({Given,When,Then}) {
     });
 
     When(/^enter description for category description$/, () => {
-      browser.sleep(1000);
-      return categorymanagerpage.enterCategoryDescription("orange");
+      browser.sleep(2000);
+      return categorymanagerpage.enterCategoryDescription((<any>data).description);
     });
 
     When(/^click on add button$/, () => {
@@ -68,6 +68,13 @@ defineSupportCode(function ({Given,When,Then}) {
       });
 
     });
+
+  Then(/^verify the data updated in the table$/, () => {
+    browser.sleep(20000);
+    return categorymanagerpage.verifyTextUpdatedTable();
+
+  });
+
     Then(/^click on clear button$/, () => {
       return browser.sleep(30000);
     });
@@ -127,7 +134,7 @@ defineSupportCode(function ({Given,When,Then}) {
       browser.sleep(2000);
       categorymanageredit.verifyTextEditDescCategory().then((text) => {
         console.log(text);
-        return expect(text).to.equal('orange')
+        return expect(text).to.equal('hi prashanth')
       });
 
     });

@@ -10,7 +10,7 @@ Feature:  HR can create manage and resultmanager operations in test manager dash
     Given I am on the Test Manager Dashboard page
 		When  I select the CREATE TEST button
 	  And   I Enter email field
-    And   I verify
+   # And   I verify
 		When  I Enter Subject field
 		And   I Enter Post Applied
 		And   I Click on Bold Button
@@ -35,7 +35,7 @@ Feature:  HR can create manage and resultmanager operations in test manager dash
     Then  I click Search Button
     Then  I verify search Results
 
-  @StartManageTest
+  @StartManageTestNotTaken
   Scenario: click start on manage test in test manager
 
     Given I am on the Test Manager
@@ -45,16 +45,34 @@ Feature:  HR can create manage and resultmanager operations in test manager dash
     And   I Select Papers for candidate to start test
     Then  I select Start Test Button
 
+  @StartManageTestProgress
+  Scenario: click start on manage test in test manager
+
+    Given I am on the Test Manager
+    When  I select the Manage TEST button
+    When  I select the TEST In progress button
+    And   I enter name for search
+    And   I enter email for search
+    And   I select category for search
+    And   I enter date range for search
+    Then  I select search Button
+    Then  I verify search Results
 
 
-	#@resultmanager
-  #Scenario: click on result manager
 
-    #Given I select the  result manager button
-    #When I Select category
-    #when I enter name and score
-    #Then I click search
-    #Then I verify
+	@ResultManager
+  Scenario: click on result manager
+
+    Given I am on the Test Manager
+    When  I select the result manager button
+    When  I Select postapplied for search
+    When  I Select category name for search
+    When  I enter score for search
+    When  I enter email for search
+    When  I enter phone number for search
+    And   I enter date range for search
+    Then  I click search button
+    Then  I verify search results
 
 
 
@@ -79,18 +97,7 @@ Feature:  HR can create manage and resultmanager operations in test manager dash
 		#AND I verify Post Applied combo box items
 	#	AND I verify Exam category combo box items
 
-   # Scenario: Creating the test with proper Data
-    #    Given I select the CREATE TEST button
-   #     AND I Enter candidate Emails
-	#	||||
-	#	AND I  Enter Subject
-	#	AND I  Enter Post Applied
-	#	AND I  Enter Mail Body
-	#	AND I  Select Exam category
-	#	||||
-	#	Then i verify selected categories
-	#	When I click send Link
-	#	Then mail should be sent
+
 
 	#Scenario: Creating the test with missing Data and reset the data
      #   Given I select the CREATE TEST button

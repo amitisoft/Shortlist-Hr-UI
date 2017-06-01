@@ -1,6 +1,7 @@
 import {ProtractorDriver} from '../../utils/protractor-driver';
 import {expect} from 'chai';
-//var json = require('C:\Users\User\Desktop\hrlogin.json');
+import {browser, element, by} from 'protractor';
+
 export class CategoryManagerPage {
   private protractorDriver: ProtractorDriver = new ProtractorDriver();
 
@@ -11,10 +12,11 @@ export class CategoryManagerPage {
   private createCategoryTabXPath= "html/body/amiti-root/div/div/div/amiti-hr-dashboard/div/amiti-categorymanager/div[1]/div[2]/button";
   private addButtonXPath = "//button[@class='btn btn-primary']";
   private clearButtonXPath = "//button[@class='btn btn-success']";
-  private categoryEditBtnXPath = "//table[@class='table table-striped']//tr[4]//td[3]//a[1]";
+  private categoryEditBtnXPath = "//table[@class='table table-striped']//tr[3]//td[3]//a[1]";
   private categoryDeleteBtnXPath = "//table[@class='table table-striped']//tr[2]//td[3]//a[1]";
  // private editcategoryTextFieldXPath = "//input[@ng-reflect-model='mango ok']";
  // private editdescriptionTextFieldXPath = "//textarea[@id='categorydescription']";
+  private textUpdatedColumn = "//td[text()='testing']"
 
 
   waitHrDashboard() {
@@ -73,5 +75,21 @@ export class CategoryManagerPage {
   verifyClearCategorybtnEnable()
   {
     return this.protractorDriver.checkElementEnabledUsingXPath(this.clearButtonXPath);
+  }
+  verifyTextUpdatedTable()
+  {
+    var text = element.all(by.xpath("//td[text()='testing']"));
+return text.isPresent().then((isPresent)=>{
+ // console.log(isPresent);
+  if (isPresent) {
+    text.getText().then(function(x){
+      console.log("text: " + x);
+    });
+    }
+    else {
+    console.log("text is missing")
+  }
+  })
+
   }
 }
