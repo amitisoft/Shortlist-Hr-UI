@@ -64,10 +64,10 @@ export class TestManagerPage {
   enterPostApplied(postapplied: string){
     this.protractorDriver.sendKeysUsingXPath(this.emailMailbodyXpath, postapplied);
   }
-  selectCategoryDropdown() {
+ /* selectCategoryDropdown() {
     this.protractorDriver.selectCategory();
 
-  }clickBoldButton() {
+  }*/clickBoldButton() {
     this.protractorDriver.clickUsingXPath(this.boldButtonXpath);
   }
   enterMailBody(mail: string){
@@ -88,11 +88,11 @@ export class TestManagerPage {
       //return expect(bold)
     });
   }
-    selectCategoryDrop()
+    /*selectCategoryDrop()
     {
       this.protractorDriver.selectCategorydrop();
 
-    }
+    }*/
 
 /*
 
@@ -116,6 +116,15 @@ waitForCssValue(elementFinder, cssProperty, cssValue) {
     };
 };
 */
+selectCategory() {
+  let select = element(by.id('singleSelect'));
+  return select.$('[value="JAVA TRAINEE"]').click();
+}
+selectCategorydrop() {
+
+  let select = element(by.id('categorySelected'));
+  return select.$('[value="2: testing"]').click();
+}
 
 
 }

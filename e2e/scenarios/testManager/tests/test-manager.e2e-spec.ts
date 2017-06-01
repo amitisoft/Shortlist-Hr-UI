@@ -55,7 +55,7 @@ defineSupportCode(function ({Given,When,Then}) {
 
          When(/^I Enter Post Applied$/, () => {
            browser.sleep(2000);
-          return testmanagerpage.selectCategoryDropdown();
+          return testmanagerpage.selectCategory();
          });
 
          When(/^I Click on Bold Button$/, () => {
@@ -77,7 +77,7 @@ defineSupportCode(function ({Given,When,Then}) {
           });
           When(/^I Select Exam category$/, () => {
             browser.sleep(20000);
-            return testmanagerpage.selectCategoryDrop();
+            return testmanagerpage.selectCategorydrop();
 
 
         });
