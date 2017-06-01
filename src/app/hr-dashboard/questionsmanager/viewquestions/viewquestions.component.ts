@@ -49,7 +49,7 @@ export class ViewquestionsComponent implements OnInit {
     changeCategory(catName: string) {
         var lastQuestion: any = null;
         //var startQuestions: string = "startQue";
-        this.paperService.getThisCategoryQuestions(catName, lastQuestion).subscribe(
+        this.paperService.getThisCategoryQuestionsUrl(catName).subscribe(
             data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)

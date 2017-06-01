@@ -85,15 +85,27 @@ export class PapermanagementComponent implements OnInit {
     }
 
     changeCategory(catName: string) {
-        var lastQuestion: any = null;
+       // var lastQuestion: any = null;
         //var startQuestions: string = "startQue";
         //catName = "UI@";
-        this.paperService.getThisCategoryQuestions(catName, lastQuestion).subscribe(
-            data => this.catQuestions = data.qsns,
+        this.paperService.getThisCategoryQuestionsUrl(catName).subscribe(
+            data => this.catQuestions = data,
             error => alert(error),
             () => console.log(this.catQuestions)
         );
     }
+
+
+    //changeCategory(catName: string) {
+    //    var lastQuestion: any = null;
+    //    //var startQuestions: string = "startQue";
+    //    //catName = "UI@";
+    //    this.paperService.getThisCategoryQuestions(catName, lastQuestion).subscribe(
+    //        data => this.catQuestions = data,
+    //        error => alert(error),
+    //        () => console.log(this.catQuestions)
+    //    );
+    //}
 
     getNextPageQuestions(catName: string) {
         var lastQuestionIdVal: string = this.catQuestions[this.catQuestions.length - 1]['Qsn_id'];
