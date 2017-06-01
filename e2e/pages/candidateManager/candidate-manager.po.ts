@@ -18,7 +18,6 @@ export class CandidateManagerPage {
   private candidateLNameFieldXPath = "//*[@id='lastname']";
   private candidateEmailFieldXPath = "//*[@name='email']";
   private candidateMobNoFieldXPath = "//*[@id='mobile']";
-  private candidateAdressFieldXPath = "//*[@id='address']";
   private registerButtonText = "Register";
   private updateButtonText = "Update";
   private candidateTableXPath = "//amiti-hr-dashboard/div/amiti-cadidatedata/div[2]/div[2]/amiti-listdata/div[2]/div/div/table";
@@ -28,10 +27,14 @@ export class CandidateManagerPage {
   private phNoSearchFieldXPath = "//*[@name='phoneNumber']";
   private searchButtonText = "Search";
   private cancelButtonText = "Cancel";
-  private searchResetButtonText = "Reset";
+  private resetButtonXpath = "//*[@type='reset']";
   private candidateEditButtonXpath = "//*[@title='Edit']";
   private candidateDeleteButtonXpath = "//*[@title='Delete']";
   private candidateDataAttribute = "ng-reflect-model";
+  private fNameFieldErrorXpath = "//amiti-register/div/div/div/div/form/div[1]/div[1]/div/p";
+  private lNameFieldErrorXpath = "//amiti-register/div/div/div/div/form/div[1]/div[2]/div/p";
+  private emailFieldErrorXpath = "//amiti-register/div/div/div/div/form/div[2]/div[1]/div/p";
+  private mobNoFieldErrorXpath = "//amiti-register/div/div/div/div/form/div[2]/div[2]/div/p";
 
 
   selectCandidateDashBoard() {
@@ -59,20 +62,32 @@ export class CandidateManagerPage {
     return this.protractorDriver.sendKeysUsingXPath(this.candidateFNameFieldXPath,fName);
   }
 
+  clickFNameField() {
+    return this.protractorDriver.clickUsingXPath(this.candidateFNameFieldXPath);
+  }
+
   enterCandidateLName(lName) {
     return this.protractorDriver.sendKeysUsingXPath(this.candidateLNameFieldXPath,lName);
+  }
+
+  clickLNameField() {
+    return this.protractorDriver.clickUsingXPath(this.candidateLNameFieldXPath);
   }
 
   enterCandidateEmail(email) {
     return this.protractorDriver.sendKeysUsingXPath(this.candidateEmailFieldXPath,email);
   }
 
-  enterCandidateAddress(adress) {
-    return this.protractorDriver.sendKeysUsingXPath(this.candidateAdressFieldXPath,adress);
+  clickEmailField() {
+    return this.protractorDriver.clickUsingXPath(this.candidateEmailFieldXPath);
   }
 
   enterCandidateMobileNo(mobNo) {
     return this.protractorDriver.sendKeysUsingXPath(this.candidateMobNoFieldXPath,mobNo);
+  }
+
+  clickMobileNoField() {
+    return this.protractorDriver.clickUsingXPath(this.candidateMobNoFieldXPath);
   }
 
   clickRegisterButton() {
@@ -88,19 +103,19 @@ export class CandidateManagerPage {
     return this.protractorDriver.checkButtonEnabledUsingText(this.registerButtonText);
   }
 
-  verifyCandidateTableName(Name) {
+  verifyCandidateNameIsPresent(Name) {
     return this.utils.verifyTableDataisPresent(this.candidateTableXPath,1,Name).then(function (isPresent) {
       expect(isPresent).to.be.true;
     });
   }
 
-  verifyCandidateTableEmail(email) {
+  verifyCandidateEmailIsPresent(email) {
     return this.utils.verifyTableDataisPresent(this.candidateTableXPath,2,email).then(function (isPresent) {
       expect(isPresent).to.be.true;
     });
   }
 
-  verifyCandidateTablePhNo(no) {
+  verifyCandidatePhNoIsPresent(no) {
     return this.utils.verifyTableDataisPresent(this.candidateTableXPath,3,no).then(function (isPresent) {
       expect(isPresent).to.be.true;
     });
@@ -146,20 +161,48 @@ export class CandidateManagerPage {
     return this.protractorDriver.getAttributeUsingXPath(this.candidateFNameFieldXPath,this.candidateDataAttribute);
   }
 
+  getFNameFieldError(): any {
+    return this.protractorDriver.getTextUsingXPath(this.fNameFieldErrorXpath);
+  }
+
+  checkFNameFieldError(): any {
+    return this.protractorDriver.checkElementPresentUsingXPath(this.fNameFieldErrorXpath);
+  }
+
   getLName() {
     return this.protractorDriver.getAttributeUsingXPath(this.candidateLNameFieldXPath,this.candidateDataAttribute);
+  }
+
+  getLNameFieldError(): any {
+    return this.protractorDriver.getTextUsingXPath(this.lNameFieldErrorXpath);
+  }
+
+  checkLNameFieldError(): any {
+    return this.protractorDriver.checkElementPresentUsingXPath(this.lNameFieldErrorXpath);
   }
 
   getEmail() {
     return this.protractorDriver.getAttributeUsingXPath(this.candidateEmailFieldXPath,this.candidateDataAttribute);
   }
 
+  getEmailFieldError(): any {
+    return this.protractorDriver.getTextUsingXPath(this.emailFieldErrorXpath);
+  }
+
+  checkEmailFieldError(): any {
+    return this.protractorDriver.checkElementPresentUsingXPath(this.emailFieldErrorXpath);
+  }
+
   getPhNo() {
     return this.protractorDriver.getAttributeUsingXPath(this.candidateMobNoFieldXPath,this.candidateDataAttribute);
   }
 
-  getAdress() {
-    return this.protractorDriver.getAttributeUsingXPath(this.candidateAdressFieldXPath,this.candidateDataAttribute);
+  getMobNoFieldError(): any {
+    return this.protractorDriver.getTextUsingXPath(this.mobNoFieldErrorXpath);
+  }
+
+  checkMobNoFieldError(): any {
+    return this.protractorDriver.checkElementPresentUsingXPath(this.mobNoFieldErrorXpath);
   }
 
   clickCancelButton() {
@@ -174,8 +217,8 @@ export class CandidateManagerPage {
     return this.protractorDriver.clickUsingXPath(this.candidateDeleteButtonXpath);
   }
 
-  clickSearchResetButton() {
-    return this.protractorDriver.clickUsingButtonText(this.searchResetButtonText);
+  clickResetButton() {
+    return this.protractorDriver.clickUsingXPath(this.resetButtonXpath);
   }
 
 }

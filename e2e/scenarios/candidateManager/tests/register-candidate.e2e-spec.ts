@@ -26,6 +26,7 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
   });
 
   When(/^I add email "(.*?)"$/, (email) => {
+    candidateManagerPage.clearEmail();
     return candidateManagerPage.enterCandidateEmail(email);
   });
 
@@ -33,17 +34,13 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return candidateManagerPage.enterCandidateMobileNo(mobNo);
   });
 
-  When(/^I add address "(.*?)"$/, (adress) => {
-    return candidateManagerPage.enterCandidateAddress(adress);
-  });
-
   When(/^I click register button$/, () => {
     return candidateManagerPage.clickRegisterButton();
   });
 
   Then(/^I verify Register button is disabled$/, () => {
-    candidateManagerPage.checkRegisterButtonEnabled().then(function(isEnabled){
-      return expect(isEnabled).to.be.false;
+    return candidateManagerPage.checkRegisterButtonEnabled().then(function(isEnabled){
+      expect(isEnabled).to.be.false;
     })
   });
 
@@ -54,46 +51,62 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
   });
 
   Then(/^I verify the candidateName "(.*?)"$/, (name) => {
-    browser.sleep(10000);
-    return candidateManagerPage.verifyCandidateTableName(name);
+    return browser.sleep(10000).then(function () {
+      candidateManagerPage.clickResetButton().then(function () {
+        browser.sleep(5000);
+        candidateManagerPage.verifyCandidateNameIsPresent(name);
+      });
+    });
   });
 
   Then(/^I verify the email "(.*?)"$/, (email) => {
-    return candidateManagerPage.verifyCandidateTableEmail(email);
+    return candidateManagerPage.verifyCandidateEmailIsPresent(email);
   });
 
   Then(/^I verify the mobileNo "(.*?)"$/, (no) => {
-    return candidateManagerPage.verifyCandidateTablePhNo(no);
+    return candidateManagerPage.verifyCandidatePhNoIsPresent(no);
   });
 
   When(/^I type the candidate FirstName "(.*?)" and search$/, (searchFName) => {
-    candidateManagerPage.enterSearchFName(searchFName);
-    return candidateManagerPage.clickSearchButton();
+    return candidateManagerPage.clickResetButton().then(function () {
+      candidateManagerPage.enterSearchFName(searchFName).then(function () {
+        candidateManagerPage.clickSearchButton();
+      });
+    });
   });
 
   Then(/^I verify the searched candidate "(.*?)"$/, (name) => {
-    browser.sleep(9000);
-    candidateManagerPage.verifyCandidateTableName(name);
-    return candidateManagerPage.clickSearchResetButton();
+    browser.sleep(5000);
+    return candidateManagerPage.verifyCandidateNameIsPresent(name);
   });
 
   When(/^I type the candidate LastName "(.*?)" and search$/, (searchLName) => {
-    candidateManagerPage.enterSearchLName(searchLName);
-    return candidateManagerPage.clickSearchButton();
+    return candidateManagerPage.clickResetButton().then(function () {
+      candidateManagerPage.enterSearchLName(searchLName).then(function () {
+        candidateManagerPage.clickSearchButton();
+      });
+    });
   });
 
   When(/^I type the candidate email "(.*?)" and search$/, (eMail) => {
-    candidateManagerPage.enterSearchEmail(eMail);
-    return candidateManagerPage.clickSearchButton();
+    return candidateManagerPage.clickResetButton().then(function () {
+      candidateManagerPage.enterSearchEmail(eMail).then(function () {
+        candidateManagerPage.clickSearchButton();
+      });
+    });
   });
 
+
   When(/^I type the candidate phoneNumber "(.*?)" and search$/, (phNo) => {
-    candidateManagerPage.enterSearchPhNo(phNo);
-    return candidateManagerPage.clickSearchButton();
+    return candidateManagerPage.clickResetButton().then(function () {
+      candidateManagerPage.enterSearchPhNo(phNo).then(function () {
+        candidateManagerPage.clickSearchButton();
+      });
+    });
   });
 
   When(/^I click edit for candidate$/, () => {
-    browser.sleep(5000);
+    browser.sleep(6000);
     return candidateManagerPage.clickCandidateEditButton();
   });
 
@@ -122,12 +135,6 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     });
   });
 
-  Then(/^I verify the candidate adress is empty$/, () => {
-    return candidateManagerPage.getAdress().then(function (data) {
-      expect(data).to.be.empty;
-    });
-  });
-
   When(/^I change the candidate phoneNumber "(.*?)"$/, (phNo) => {
     candidateManagerPage.clearPhNo();
     return candidateManagerPage.enterCandidateMobileNo(phNo);
@@ -143,15 +150,14 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return candidateManagerPage.enterCandidateLName(lName);
   });
 
-  When(/^I verify the updated data of Rajni/, (cTable: TableDefinition ) => {
+  When(/^I verify the data of Rajni/, (cTable: TableDefinition ) => {
+    browser.sleep(6000);
     let rowData = cTable.rowsHash();
-    candidateManagerPage.verifyCandidateTableName(rowData['fName']+" "+rowData['lName']);
-    candidateManagerPage.verifyCandidateTableEmail(rowData['email']);
-    return candidateManagerPage.verifyCandidateTablePhNo(rowData['phNo']);
-  });
-
-  When(/^I click candidate data tab$/, () => {
-    return candidateManagerPage.selectCandidateDashBoard();
+    return candidateManagerPage.verifyCandidateNameIsPresent(rowData['fName']+" "+rowData['lName']).then(function () {
+      candidateManagerPage.verifyCandidateEmailIsPresent(rowData['email']).then(function() {
+        candidateManagerPage.verifyCandidatePhNoIsPresent(rowData['phNo']);
+      });
+    });
   });
 
   Then(/^I click update button$/, () => {
@@ -162,11 +168,71 @@ defineSupportCode(function ({Before,Given,When,Then,setDefaultTimeout}) {
     return candidateManagerPage.clickCancelButton();
   });
 
-  Then(/^I verify the data is not updated$/, () => {
-    return ;
+  When(/^I refresh the page$/, () => {
+    return candidateManagerPage.clickResetButton().then(function () {
+      browser.sleep(4000);
+      candidateManagerPage.clickSearchButton();
+    });
   });
 
-})
+  When(/^I click firstname field$/, () => {
+    return candidateManagerPage.clickFNameField();
+  });
+
+  When(/^I click lastname field$/, () => {
+    return candidateManagerPage.clickLNameField();
+  });
+
+  When(/^I click email field$/, () => {
+    return candidateManagerPage.clickEmailField();
+  });
+
+  When(/^I click phno field$/, () => {
+    return candidateManagerPage.clickMobileNoField();
+  });
+
+  Then(/^I verify the fname field error text "(.*)"$/, (fName) => {
+    return candidateManagerPage.getFNameFieldError().then(function (data) {
+      expect(data).to.equal(fName);
+    });
+  });
+
+  Then(/^I verify the lname field error text "(.*)"$/, (lName) => {
+    return candidateManagerPage.getLNameFieldError().then(function (data) {
+      expect(data).to.equal(lName);
+    });
+  });
+
+  Then(/^I verify the email field error text "(.*)"$/, (email) => {
+    return candidateManagerPage.getEmailFieldError().then(function (data) {
+      expect(data).to.equal(email);
+    });
+  });
+
+  Then(/^I verify the mobileNo field error text "(.*)"$/, (mobNo) => {
+    return candidateManagerPage.getMobNoFieldError().then(function (data) {
+      expect(data).to.equal(mobNo);
+    });
+  });
+
+  Then(/^I verify mobile number error is not present$/, () => {
+    return candidateManagerPage.checkMobNoFieldError().then(function (isPresent) {
+      expect(isPresent).to.equal(false);
+    });
+  });
+
+  Then(/^I verify email error text is not present$/, () => {
+    return candidateManagerPage.checkEmailFieldError().then(function (isPresent) {
+      expect(isPresent).to.equal(false);
+    });
+  });
+
+  Then(/^pause$/, () => {
+    browser.pause();
+    return browser.pause();
+  });
+
+});
 
 
 

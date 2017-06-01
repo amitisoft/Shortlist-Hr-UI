@@ -16,15 +16,11 @@ Feature: HR can register the Candidate
     When I add email "Rajnikanth_007@gmail.com"
     Then I verify Register button is disabled
     When I add mobile number "1234567890"
-    Then I verify Register button is disabled
+    Then I verify Register button is enabled
     And I click register button
     Then I verify alert message ""Successfully inserted data""
     And I accept the alert
-
-  @VerifyCandidate
-  Scenario: HR can verify the registered candidate in the application
-    Given I am on candidate data page
-    Then I verify the candidateName "Rajni kanth"
+    And I verify the candidateName "Rajni kanth"
     And I verify the email "Rajnikanth_007@gmail.com"
     And I verify the mobileNo "1234567890"
 
@@ -55,12 +51,43 @@ Feature: HR can register the Candidate
     When I click update button
     Then I verify alert message ""Successfully updated data""
     And I accept the alert
-    When I click candidate data tab
-    Then I verify the updated data of Rajni
+    When I refresh the page
+    Then I verify the data of Rajni
       | fName  | Rajni                 |
       | lName  | Bond                  |
       | email  | Kanth_Rajni@amiti.com |
       | phNo   | 3214569870            |
+
+
+  @ErrorMessage_DuplicateEmail
+  Scenario: HR can verify the registered candidate in the application
+    Given I am on candidate data page
+    When I click on register candidate button
+    When I click firstname field
+    And I click lastname field
+    Then I verify the fname field error text "Enter First Name"
+    When I click email field
+    Then I verify the lname field error text "Enter Last Name"
+    When I click phno field
+    Then I verify the email field error text "Please provide your E-mail"
+    When I click firstname field
+    Then I verify the mobileNo field error text "Provide 10 digit mobile number"
+    When I add firstname "duplicate"
+    And I add lastname "email"
+    And I add mobile number "1234567890"
+    Then I verify mobile number error is not present
+    And I change the candidate phoneNumber "123"
+    Then I verify the mobileNo field error text "Provide 10 digit mobile number"
+    And I add mobile number "1234567890"
+    When I add email "abc@"
+    Then I verify the email field error text "Please provide your E-mail"
+    And I change the candidate email "ashok@amitisoft.com"
+    Then I verify email error text is not present
+    And I add email "Kanth_Rajni@amiti.com"
+    And I click register button
+    Then I verify alert message ""Email ID already exist""
+    And I accept the alert
+    #Then I verify the Name "duplicate email" is not added
 
   @CancelEditCandidate
   Scenario: HR can cancel editing the candidate
@@ -71,7 +98,7 @@ Feature: HR can register the Candidate
     And I change the candidate email "changed@email"
     And I change the candidate LastName "changed"
     And I click cancel button
-    Then I verify the updated data of Rajni
+    Then I verify the data of Rajni
       | fName  | Rajni                 |
       | lName  | Bond                  |
       | email  | Kanth_Rajni@amiti.com |
