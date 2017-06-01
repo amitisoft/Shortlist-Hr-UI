@@ -3,7 +3,7 @@ import {browser, element, by} from 'protractor';
 export class TestManagerPage {
   private protractorDriver: ProtractorDriver = new ProtractorDriver();
 
-  //private hrDashboardPanelXPath = "html/body/amiti-root/div/div/div/amiti-hr-dashboard/amiti-dashboardpanel/div/div[2]/nav";
+  private hrDashboardPanelXPath = "html/body/amiti-root/div/div/div/amiti-hr-dashboard/amiti-dashboardpanel/div/div[2]/nav";
   //private hrDashboardPanelXPath = "//div[@class='col-lg-10 col-xs-12']";
   private testManagerTabXPath = "html/body/amiti-root/div/div/div/amiti-hr-dashboard/amiti-dashboardpanel/div/div[2]/nav/ul/li[4]/a";
 
@@ -17,10 +17,10 @@ export class TestManagerPage {
   private emailMailbodyXpath = "//div[@class='fr-element fr-view']";
   private boldButtonXpath = "//button[@id ='bold-1']";
   private selCat ="html/body/amiti-root/div/div/div/amiti-hr-dashboard/div/amiti-createtest/div[2]/div[2]/amiti-createtest/div[2]/div/form/div[1]/div[3]/div/div/span";
-  private emailCategoryXpath = "//input[@name ='categorySelected']";
+  private emailCategoryXpath = "//select[@name ='categorySelected']";
 //  private clickCategoryLinkXapth = "html/body/amiti-root/div/div/div/amiti-hr-dashboard/div/div/amiti-createtest/amiti-createtest/div/div/form/div[6]/div[2]/ul[1]/li/a";
-     // this.boldVerify = element(by.xpath("//div[@class='fr-element fr-view']/p[1]"));
-  // private boldVerify = element(by.css("div[class^='fr-element fr-view']>p:nth-child(1)"));
+  private boldVerify = "//div[@class='fr-element fr-view']/p[1]";
+   //private boldVerify = element(by.css("div[class^='fr-element fr-view']>p:nth-child(1)"));
 
 
 
@@ -46,9 +46,9 @@ export class TestManagerPage {
   {
     return this.protractorDriver.clearUsingXPath(this.emailTextFieldXpath);
   }
- /* waitHrDashboard() {
+  waitHrDashboard() {
     return this.protractorDriver.checkElementVisibleUsingXPath(this.hrDashboardPanelXPath);
-  }*/
+  }
   verifyTestManagerTabVisible() {
     return this.protractorDriver.checkElementVisibleUsingXPath(this.testManagerTabXPath);
   }
@@ -82,6 +82,18 @@ export class TestManagerPage {
   selectselCat() {
     this.protractorDriver.getTextUsingXPath(this.selCat);
   }
+  textboldVerify() {
+    this.protractorDriver.getAttributeUsingXPath(this.boldVerify).then((bold) => {
+     // console.log(bold);
+      //return expect(bold)
+    });
+  }
+    selectCategoryDrop()
+    {
+      this.protractorDriver.selectCategorydrop();
+
+    }
+
 /*
 
 getOptions(enterText) {
@@ -98,12 +110,13 @@ return checkBoxes.get(1).click();
 
 waitForCssValue(elementFinder, cssProperty, cssValue) {
     return function () {
-        return elementFinder.getCssValue(cssProperty).then(function(actualValue) {
+        return elementFinder.geseltCssValue(cssProperty).then(function(actualValue) {
             return actualValue === cssValue;
         });
     };
 };
 */
+
 
 }
 

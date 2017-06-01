@@ -16,7 +16,7 @@ Feature:  HR can create and edit category manager dashboard
     And   enter description for category description
     And   click on add button
     And   verify alert msg and i accept the alert
-
+    Then  verify the data updated in the table
 
   @EditCategory
   Scenario: HR can edit view category in category manager
@@ -42,14 +42,14 @@ Feature:  HR can create and edit category manager dashboard
 	  And   I verify fields should be empty
     And   click clear button
 
-  @VerifyCategoryTable
+  #@VerifyCategoryTable
   #Scenario: HR can view category in category manager
 
     #Given click on category manager module
 	  #When  I click on view category button
 	  #Then  Verify Hr can able to view the category list
 
-  @VerifyCategoryUpdated##Tab
+  #@VerifyCategoryUpdated##Tab
   #Scenario: After creating a category it has to updated in question manager
 
     #Given I am on the Dashboard page
