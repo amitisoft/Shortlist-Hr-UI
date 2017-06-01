@@ -1,8 +1,6 @@
 import {browser, by, element, protractor} from 'protractor';
 import {By} from '@angular/platform-browser';
 import {WebElement} from 'selenium-webdriver';
-let chai = require('chai').use(require('chai-as-promised'));
-let expect = chai.expect;
 
 export class ProtractorDriver {
 
@@ -23,7 +21,7 @@ export class ProtractorDriver {
    *
    */
   navigateTo(url: string) {
-   return browser.get(url);
+    return browser.get(url);
   }
 
   /**
@@ -122,35 +120,6 @@ export class ProtractorDriver {
   getTextUsingXPath(xPath: string) {
     return this.getTextUsingBy(by.xpath(xPath));
   }
-  getTextUsingXPath1(xPath: string) {
-    return this.getTextUsingBy(by.xpath(xPath));
-  }
-  verifyElementPresentUsingBy(by: By) {
-    return this.getWebElementUsingBy(by).isPresent().then(function (isPresent) {
-      return expect(isPresent).to.be.true;
-    });
-  }
-  verifyTextIgnoreCaseUsingXPath(xpath: string, expectedText: string) {
-    let actualText;
-     this.verifyElementPresentUsingBy(xpath);
-    return this.getWebElementUsingBy(by).getText().then(function(text){
-      actualText = text;
-    }).then(function(){
-      expect(actualText.toLowerCase()).to.contain(expectedText.toLowerCase());
-    });
-  }
-
-
-  verifyTextUsingBy(by: By, expectedText: string){
-    this.verifyElementPresentUsingBy(by);
-     this.getWebElementUsingBy(by).getText().then((text) => {
-      expect(text).to.contain(expectedText);
-    });
-  }
-  verifyTextUsingXPath(xPath: string, expectedText: string){
-    this.verifyTextUsingBy(by.xpath(xPath), expectedText);
-  }
-
 
   /**
    * Verifies if the specified By locator exists on the current page.
@@ -328,7 +297,7 @@ export class ProtractorDriver {
    * @returns {string} text result
    */
   getAttributeUsingBy(by: By, attribute: string = 'value') {
-     return this.getWebElementUsingBy(by).getAttribute(attribute);
+    return this.getWebElementUsingBy(by).getAttribute(attribute);
   }
 
   /**
@@ -340,9 +309,6 @@ export class ProtractorDriver {
    */
   getAttributeUsingXPath(xPath: string, attribute: string = 'value') {
     return this.getAttributeUsingBy(by.xpath(xPath), attribute);
-  }
-  getAttributeUsingCSs(cSs: string, attribute: string = 'value') {
-    return this.getAttributeUsingBy(by.xpath(cSs), attribute);
   }
 
   /**
@@ -542,16 +508,6 @@ export class ProtractorDriver {
    */
   clickUsingDeepCss(cssString: string) {
     return this.clickUsingBy(by.deepCss(cssString));
-  }
-  selectCategory() {
-
-    let select = element(by.id('singleSelect'));
-    return select.$('[value="JAVA TRAINEE"]').click();
-  }
-  selectCategorydrop() {
-
-    let select = element(by.id('categorySelected'));
-    return select.$('[value="2: testing"]').click();
   }
 
 }
