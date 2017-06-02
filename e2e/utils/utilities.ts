@@ -2,6 +2,8 @@ import {ProtractorDriver} from './protractor-driver';
 import {browser, protractor, element, by} from "protractor";
 import {expect} from 'chai';
 
+let path = require('path');
+
 export class Utilities {
   private protractorDriver: ProtractorDriver = new ProtractorDriver();
 
@@ -133,6 +135,12 @@ export class Utilities {
   getTableData(tableXpath, columnIndex, rowIndex) {
     return element.all(by.xpath(""+tableXpath+"/tbody/tr["+rowIndex+"]/td["+columnIndex+"]")).getText().then(function (data) {
       return data;
+    });
+  }
+
+  resolvePath(path) {
+    return path.resolve(__dirname, path).then(function (resolvedPath) {
+      return resolvedPath;
     });
   }
 
