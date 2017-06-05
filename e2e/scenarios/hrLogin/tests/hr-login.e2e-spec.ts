@@ -1,5 +1,5 @@
 import {Utilities} from '../../../utils/utilities';
-import { config } from 'C:/Users/Amiti/WebstormProjects/Shortlist-Hr-UI/protractor.conf.js';
+import { config } from '../../../../protractor.conf.js';
 import {AuthenticationPage} from "../../../pages/hrLogin/hr-login.po";
 import {expect} from 'chai';
 import {browser} from 'protractor';

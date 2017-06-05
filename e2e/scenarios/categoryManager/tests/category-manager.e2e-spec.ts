@@ -5,7 +5,7 @@ import {expect} from 'chai';
 import {TableDefinition} from "cucumber";
 import { $ } from 'protractor';
 import { browser,protractor } from 'protractor';
-import * as data from 'D:\\mysore\\Shortlist-Hr-UI\\e2e\\scenarios\\categoryManager\\data\\category-data.json';
+import * as data from './../data/category-data.json';
 
 
 
